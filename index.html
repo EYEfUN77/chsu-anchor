@@ -587,6 +587,23 @@ header:hover::after,header:hover .dep2{display:none}
 .ct-oth h6{font-size:16px;color:#555;margin-bottom:10px}.ct-oth div{display:flex;flex-wrap:wrap;gap:8px}
 .ct-oth a{border:1px solid #c7d9f7;background:#f4f8fe;color:var(--b);border-radius:20px;padding:7px 16px;font-size:15px;font-weight:600}.ct-oth a:hover{background:var(--g);color:#fff}
 @media(max-width:900px){.ct-hero,.ct-story{grid-template-columns:1fr}.ct-pg{grid-template-columns:1fr}.ct-tx h3{font-size:26px}}
+/* 교통편 이용안내 */
+.tr-my{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tr-my a{border:1px solid #c7d9f7;background:#f4f8fe;color:var(--b);border-radius:24px;padding:10px 20px;font-weight:700;font-size:15px}
+.tr-my a.go{background:#fee500;border-color:#fee500;color:#191919}
+.tr-lead{font-size:17px;color:#444;margin-bottom:16px}.tr-lead b{color:var(--g)}
+.tr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tr-card{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.tr-hd{display:flex;align-items:center;gap:12px;padding:16px 18px;background:#f4f8fe;border-bottom:1px solid var(--line)}
+.tr-hd span{font-size:28px}.tr-hd b{display:block;font-size:19px;color:#111}.tr-hd small{font-size:13px;color:#777}
+.tr-row{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px dashed #e3e8f0}.tr-row:last-child{border-bottom:0}
+.tr-row i{font-style:normal;flex:none;font-size:13px;font-weight:800;color:#fff;border-radius:5px;padding:3px 9px}
+.tr-row i.bus{background:#1f5fd1}.tr-row i.taxi{background:#e8a200}
+.tr-row p{flex:1;font-size:15px;color:#444}
+.tr-row a{flex:none;background:#fee500;color:#191919;font-weight:800;font-size:14px;border-radius:6px;padding:8px 14px}
+.tr-row a:hover{background:#f5d400}
+.tr-note{font-size:13px;color:#888;margin-top:12px}
+@media(max-width:900px){.tr-grid{grid-template-columns:1fr}}
 .ov-kt span{display:inline-block;margin-left:10px;color:var(--g);font-weight:600}
 .ov-tg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .ov-tg div{border:1px solid var(--line);border-radius:8px;padding:18px 10px;text-align:center;font-size:16px;color:#555;background:#fff}
@@ -1116,6 +1133,18 @@ function centerSub(k){const c=CENTERS.find(x=>x.k===k)||CENTERS[0];const t=TASKS
  <section>${stit('2차년도 중점 추진','Focus 2026')}<ul class="ct-fx">${c.focus.map(f=>`<li>${f}</li>`).join('')}</ul></section>
  <section class="ct-oth"><h6>다른 협력 센터 보기</h6><div>${CENTERS.filter(x=>x!==c).map(x=>`<a href="#/center/${x.k}">${x.n}</a>`).join('')}</div></section>
  </div>`}
+
+/* ===== 교통편 이용안내(카카오맵 길찾기) ===== */
+const CHSU={n:'춘해보건대학교',lat:35.4578572,lng:129.1964003};
+const KMAP={to:`https://map.kakao.com/link/to/${encodeURIComponent(CHSU.n)},${CHSU.lat},${CHSU.lng}`,map:`https://map.kakao.com/link/map/${encodeURIComponent(CHSU.n)},${CHSU.lat},${CHSU.lng}`};
+const TRANS=[
+ {n:'울산(통도사)역',d:'KTX · SRT',ic:'🚄',lat:35.551431,lng:129.138506},
+ {n:'울산공항',d:'국내선 항공',ic:'✈️',lat:35.5934465,lng:129.3570302},
+ {n:'울산시외버스터미널',d:'시외버스',ic:'🚌',lat:35.5365477,lng:129.3396948},
+ {n:'울산고속버스터미널',d:'고속버스',ic:'🚍',lat:35.536949,lng:129.338756},
+ {n:'태화강역',d:'일반열차 · 동해선 광역전철',ic:'🚆',lat:35.539408,lng:129.353788}
+];
+const kway=(m,t)=>`https://map.kakao.com/link/by/${m}/${encodeURIComponent(t.n)},${t.lat},${t.lng}/${encodeURIComponent(CHSU.n)},${CHSU.lat},${CHSU.lng}`;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return[m,c];return null}
@@ -1351,6 +1380,14 @@ const PAGES={
  <section>${stit('오시는 길','Location')}
   <div class="mapbox"><iframe loading="lazy" title="춘해보건대학교 위치" src="https://maps.google.com/maps?q=%EC%B6%98%ED%95%B4%EB%B3%B4%EA%B1%B4%EB%8C%80%ED%95%99%EA%B5%90&z=15&output=embed"></iframe></div>
   <div class="info"><div><b>주소</b>울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 앵커사업단</div><div><b>연락처</b>Tel : 052-270-0480</div><div><b>대중교통</b>울산 시내버스 417번 이용, 춘해보건대학교 정류장 하차</div></div>
+  <div class="tr-my"><a href="${KMAP.map}" target="_blank" rel="noopener">📍 카카오맵에서 위치 보기</a><a href="${KMAP.to}" target="_blank" rel="noopener" class="go">🧭 내 위치에서 길찾기</a></div>
+ </section>
+ <section>${stit('교통편 이용안내','Directions')}
+  <p class="tr-lead">출발지를 고르고 <b>지도보기</b>를 누르면 카카오맵에서 춘해보건대학교까지의 길찾기가 바로 열립니다.</p>
+  <div class="tr-grid">${TRANS.map(t=>`<div class="tr-card"><div class="tr-hd"><span>${t.ic}</span><div><b>${t.n}</b><small>${t.d}</small></div></div>
+   <div class="tr-row"><i class="bus">버스</i><p>버스로 ${t.n}에서 춘해보건대학교 가는 길</p><a href="${kway('traffic',t)}" target="_blank" rel="noopener">지도보기</a></div>
+   <div class="tr-row"><i class="taxi">택시</i><p>택시로 ${t.n}에서 춘해보건대학교 가는 길</p><a href="${kway('car',t)}" target="_blank" rel="noopener">지도보기</a></div></div>`).join('')}</div>
+  <p class="tr-note">※ 카카오맵 길찾기 결과는 실시간 교통 상황과 배차에 따라 달라질 수 있습니다.</p>
  </section>`,
  faq:()=>`
  <section>${stit('FAQ','Frequently Asked Questions')}
