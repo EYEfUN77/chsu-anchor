@@ -16,23 +16,23 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button{font:inherit;curs
 header{position:fixed;top:0;left:0;right:0;z-index:50;height:120px;transition:.3s}
 header.on,header.sub,header:hover{background:#fff;box-shadow:0 1px 0 var(--line)}
 .hd{display:flex;align-items:center;height:80px;padding:0 40px}
-.logo{display:flex;align-items:center;gap:10px;color:#fff;min-width:330px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;min-width:0;flex:none}
 header.on .logo,header.sub .logo,header:hover .logo{color:var(--g)}
-.logo svg{width:38px;height:38px}.logo b{font-size:22px;font-weight:800;letter-spacing:-.5px}.logo b span{font-weight:700}
-.logo small{display:block;font-size:8.5px;letter-spacing:.2px;font-weight:600;opacity:.85;margin-top:-2px}
+.logo svg{width:38px;height:38px}.logo b{font-size:25px;font-weight:800;letter-spacing:-.5px}.logo b span{font-weight:700}
+.logo small{display:block;font-size:10px;letter-spacing:.2px;font-weight:600;opacity:.85;margin-top:-2px}
 .gnb{display:flex;flex:1;justify-content:center}
-.gnb>li{position:relative;width:160px;text-align:center}
-.gnb>li>a{display:block;line-height:80px;font-size:17px;font-weight:600;color:#fff}
+.gnb>li{position:relative;padding:0 24px;white-space:nowrap;text-align:center}
+.gnb>li>a{display:block;line-height:80px;font-size:20px;font-weight:600;color:#fff}
 header.on .gnb>li>a,header.sub .gnb>li>a,header:hover .gnb>li>a{color:var(--t)}
 .gnb>li.cur>a{color:var(--g)!important}
-.gnb .dep2{display:none;position:absolute;top:80px;left:0;right:0;padding:18px 0 22px;background:#fff}
+.gnb .dep2{display:none;position:absolute;top:80px;left:0;right:0;padding:18px 0 22px;background:transparent}
 header:hover .dep2{display:block}
-header:hover::after{content:"";position:absolute;top:120px;left:0;right:0;height:190px;background:#fff;border-top:1px solid var(--line);box-shadow:0 10px 20px rgba(0,0,0,.05);z-index:-1}
-.dep2 a{display:block;padding:7px 0;font-size:15px;color:#555}.dep2 a:hover{color:var(--g);font-weight:600}
-.util{display:flex;gap:18px;min-width:330px;justify-content:flex-end}
+header:hover::after{content:"";position:absolute;top:120px;left:0;right:0;height:var(--mh,240px);background:#fff;border-top:1px solid var(--line);box-shadow:0 10px 20px rgba(0,0,0,.05);z-index:-1}
+.dep2 a{display:block;padding:8px 0;font-size:18px;color:#555}.dep2 a:hover{color:var(--g);font-weight:600}
+.util{display:flex;gap:18px;min-width:120px;justify-content:flex-end}
 .util button{width:32px;height:32px;color:#fff}header.on .util button,header.sub .util button,header:hover .util button{color:var(--t)}
 .util svg{width:28px;height:28px}
-.topbar{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:13px;background:rgba(0,0,0,.2);color:#fff;transition:.3s}
+.topbar{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:16px;background:rgba(0,0,0,.2);color:#fff;transition:.3s}
 header.on .topbar,header.sub .topbar,header:hover .topbar{background:#eef3fb;color:#4a5568}
 .topbar .tl a+a::before,.topbar .tc a+a::before{content:"·";margin:0 9px;opacity:.6}
 .topbar .tc{border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:5px 18px;background:rgba(255,255,255,.08)}
@@ -43,36 +43,39 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 @media(max-width:1100px){.topbar .tc{display:none}.topbar{padding:0 20px}}
 .gban{height:340px;border-radius:24px;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 60%,#3b82f6);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;padding:36px 44px;color:#fff;margin-bottom:60px}
 .gban::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.08) 0 2px,transparent 2px 30px)}
-.gban span{position:relative;font-size:64px;font-weight:800;letter-spacing:2px;opacity:.9}.gban small{position:relative;font-size:13px;opacity:.75}
+.gban span{position:relative;font-size:70px;font-weight:800;letter-spacing:2px;opacity:.9}.gban small{position:relative;font-size:16px;opacity:.75}
 .gwrap{display:grid;grid-template-columns:1fr 1.6fr;gap:60px}
-.ghead{font-size:30px;line-height:1.45;font-weight:800;letter-spacing:-.5px}.ghead em{font-style:normal;color:var(--g)}
-.gbody p{font-size:16px;line-height:1.95;color:#444;margin-bottom:18px}
-.gbody .gintro{font-size:19px;font-weight:700;color:var(--t)}
-.gbody .gsign{text-align:right;margin-top:30px;color:#555}.gsign b{display:inline-block;margin-left:14px;font-size:22px;color:var(--t);letter-spacing:2px}
-@media(max-width:900px){.gwrap{grid-template-columns:1fr;gap:24px}.gban{height:220px}.gban span{font-size:40px}.ghead{font-size:24px}}
+.ghead{font-size:33px;line-height:1.45;font-weight:800;letter-spacing:-.5px}.ghead em{font-style:normal;color:var(--g)}
+.gbody p{font-size:19px;line-height:1.95;color:#444;margin-bottom:18px}
+.gbody .gintro{font-size:22px;font-weight:700;color:var(--t)}
+.gbody .gsign{text-align:right;margin-top:30px;color:#555}.gsign b{display:inline-block;margin-left:14px;font-size:25px;color:var(--t);letter-spacing:2px}
+@media(max-width:900px){.gwrap{grid-template-columns:1fr;gap:24px}.gban{height:220px}.gban span{font-size:44px}.ghead{font-size:28px}}
 .org{display:flex;flex-direction:column;align-items:center;padding:10px 0}
-.on{border-radius:10px;padding:14px 26px;text-align:center;font-weight:700;font-size:15px}
+.on{border-radius:10px;padding:14px 26px;text-align:center;font-weight:700;font-size:18px}
 .on.top{background:#0a1f44;color:#fff;min-width:200px}
-.on.main{background:var(--g);color:#fff;min-width:240px;font-size:17px;padding:18px 30px}
-.on.side{background:#fff;border:1.5px dashed #9fb6dc;color:#405070;font-weight:600;font-size:13.5px;min-width:180px}
+.on.main{background:var(--g);color:#fff;min-width:240px;font-size:20px;padding:18px 30px}
+.on.side{background:#fff;border:1.5px dashed #9fb6dc;color:#405070;font-weight:600;font-size:16px;min-width:180px}
 .on.sub{background:var(--gl);color:var(--g);border:1px solid #c7d9f7;min-width:160px}
-.on.hq{background:#fff;border:2px solid var(--g);color:var(--g);min-width:320px}.on.hq small{display:block;font-weight:500;color:#667;font-size:12.5px;margin-top:4px}
+.on.hq{background:#fff;border:2px solid var(--g);color:var(--g);min-width:320px}.on.hq small{display:block;font-weight:500;color:#667;font-size:15px;margin-top:4px}
 .orow{display:flex;gap:40px;align-items:center;justify-content:center}
 .ol{width:2px;height:26px;background:#b8c8e4}
 .ogrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%}
 .ocol{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
-.oph{color:#10213f;font-weight:800;text-align:center;padding:10px;font-size:14px}
-.otask{padding:12px 14px;font-size:13.5px;line-height:1.5;border-top:1px solid var(--line)}.otask b{display:block;color:var(--g);font-size:14px}
+.oph{color:#10213f;font-weight:800;text-align:center;padding:10px;font-size:17px}
+.otask{padding:12px 14px;font-size:16px;line-height:1.5;border-top:1px solid var(--line)}.otask b{display:block;color:var(--g);font-size:17px}
 @media(max-width:900px){.ogrid{grid-template-columns:1fr 1fr}.orow{gap:10px;flex-wrap:wrap}.on.side{min-width:auto}}
+.slide .art{position:absolute;right:4%;bottom:0;width:58%;max-width:900px;z-index:1}
+.dpic .art,.gban .art{position:absolute;right:-4%;top:6%;width:78%;z-index:0}
+.gban .art{right:2%;top:auto;bottom:0;width:48%}
 /* sitemap */
 #sitemap{position:fixed;inset:0;background:rgba(10,31,68,.97);z-index:100;display:none;color:#fff;overflow:auto}
 #sitemap.open{display:block}
-#sitemap .close{position:absolute;right:40px;top:24px;color:#fff;font-size:40px;line-height:1}
+#sitemap .close{position:absolute;right:40px;top:24px;color:#fff;font-size:44px;line-height:1}
 .smap{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:var(--w);margin:120px auto 60px;padding:0 20px}
-.smap h3{font-size:22px;padding-bottom:16px;border-bottom:2px solid var(--g2);margin-bottom:16px}
+.smap h3{font-size:25px;padding-bottom:16px;border-bottom:2px solid var(--g2);margin-bottom:16px}
 .smap a{display:block;padding:8px 0;color:#c9d6ec}.smap a:hover{color:#fff}
 .srch{max-width:640px;margin:0 auto;padding:0 20px;display:flex;gap:8px}
-.srch input{flex:1;height:52px;border-radius:26px;border:0;padding:0 24px;font:inherit;font-size:16px}
+.srch input{flex:1;height:52px;border-radius:26px;border:0;padding:0 24px;font:inherit;font-size:19px}
 .srch button{height:52px;padding:0 26px;border-radius:26px;background:var(--g2);color:#fff;font-weight:600}
 /* hero */
 .hero{position:relative;height:100vh;min-height:720px;overflow:hidden;color:#fff}
@@ -84,115 +87,115 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .slide::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 120px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 120px)}
 .ring{position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%}
 .hcopy{position:absolute;left:8%;top:31%;z-index:2}
-.hcopy p{font-size:30px;font-weight:400;margin-bottom:16px}
-.hcopy h1{font-size:58px;font-weight:800;letter-spacing:-1px}
+.hcopy p{font-size:33px;font-weight:400;margin-bottom:16px}
+.hcopy h1{font-size:64px;font-weight:800;letter-spacing:-1px}
 .hbar{display:flex;gap:6px;margin-top:60px;align-items:center}
 .hbar i{display:block;width:74px;height:3px;background:rgba(255,255,255,.35);position:relative;cursor:pointer}
 .hbar i.act::after{content:"";position:absolute;left:0;top:0;bottom:0;background:#fff;animation:prog 6s linear forwards}
 @keyframes prog{from{width:0}to{width:100%}}
-.hbar button{width:28px;height:28px;border:1px solid #fff;border-radius:50%;color:#fff;font-size:10px;margin-left:8px}
+.hbar button{width:28px;height:28px;border:1px solid #fff;border-radius:50%;color:#fff;font-size:12px;margin-left:8px}
 .qtab{position:absolute;left:8%;bottom:70px;z-index:2}
 .qtab .tabs{display:inline-flex;border:1.5px solid #fff;border-radius:22px;padding:2px;margin-bottom:22px}
-.qtab .tabs button{color:#fff;padding:9px 34px;border-radius:20px;font-size:15px;font-weight:600}
+.qtab .tabs button{color:#fff;padding:9px 34px;border-radius:20px;font-size:18px;font-weight:600}
 .qtab .tabs button.act{background:var(--g);}
 .qicons{display:flex;gap:10px}
-.qicons a{width:98px;height:98px;border-radius:14px;background:#fff;color:var(--g);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:12.5px;font-weight:700;text-align:center;transition:.2s}
+.qicons a{width:98px;height:98px;border-radius:14px;background:#fff;color:var(--g);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:700;text-align:center;transition:.2s}
 .qicons a:nth-child(-n+2){background:var(--g);color:#fff}
 .qicons a:hover{transform:translateY(-4px)}
 .qicons svg{width:40px;height:40px}
-.scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:13px;text-align:center;z-index:2}
+.scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:16px;text-align:center;z-index:2}
 .scroll span{display:block;width:30px;height:30px;border:1px solid #fff;border-radius:50%;margin:8px auto 0;line-height:28px}
-.vcard{position:absolute;right:96px;bottom:30px;width:270px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border-radius:14px 0 0 14px;padding:16px;z-index:2;font-size:13px}
-.vcard .th{height:130px;border-radius:8px;margin-top:10px;background:linear-gradient(135deg,#3b82f6,#0f3d7a);display:flex;align-items:center;justify-content:center;font-size:30px}
+.vcard{position:absolute;right:96px;bottom:30px;width:270px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border-radius:14px 0 0 14px;padding:16px;z-index:2;font-size:16px}
+.vcard .th{height:130px;border-radius:8px;margin-top:10px;background:linear-gradient(135deg,#3b82f6,#0f3d7a);display:flex;align-items:center;justify-content:center;font-size:33px}
 /* dash */
 .dash{background:var(--dk);color:#fff;padding:110px 0;position:relative;overflow:hidden}
 .dash .wrap{display:grid;grid-template-columns:200px 1fr 420px;gap:40px;align-items:center;max-width:1400px;margin:0 auto;padding:0 40px}
-.plist button{display:block;color:#8fa3c4;font-size:14.5px;padding:9px 0;text-align:left}
+.plist button{display:block;color:#8fa3c4;font-size:17px;padding:9px 0;text-align:left}
 .plist button.act{color:#fff;font-weight:700}.plist button.act::after{content:" ›"}
 .dmid{text-align:center}
-.dmid .lab{color:#8ab8ff;font-size:14px;font-weight:700}
-.dmid h2{font-size:34px;margin:14px 0 40px;font-weight:700}
+.dmid .lab{color:#8ab8ff;font-size:17px;font-weight:700}
+.dmid h2{font-size:37px;margin:14px 0 40px;font-weight:700}
 .dcards{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.dcards div{width:128px;height:118px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:13px;padding:8px}
+.dcards div{width:128px;height:118px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:16px;padding:8px}
 .dcards svg{width:28px;height:28px;color:#8ab8ff}
 .dmid ul{display:inline-block;text-align:left;margin-top:40px}
-.dmid li{font-size:15px;color:#c9d6ec;padding:6px 0}.dmid li::before{content:"·";margin-right:10px;color:#8ab8ff}
+.dmid li{font-size:18px;color:#c9d6ec;padding:6px 0}.dmid li::before{content:"·";margin-right:10px;color:#8ab8ff}
 .circ{width:380px;height:380px;border-radius:50%;margin:auto;position:relative;background:radial-gradient(circle at 35% 30%,#3b82f6,#1f5fd1 55%,#0f3d7a);display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:0 0 0 30px rgba(255,255,255,.03),0 0 0 70px rgba(255,255,255,.02)}
-.circ b{font-size:120px;font-weight:800;line-height:1}.circ span{font-size:15px;margin-top:10px;opacity:.9}
+.circ b{font-size:132px;font-weight:800;line-height:1}.circ span{font-size:18px;margin-top:10px;opacity:.9}
 .dyn{padding:120px 0;background:radial-gradient(circle at 85% 20%,rgba(59,130,246,.25),transparent 40%),var(--dk)}
 .dwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;max-width:1400px;margin:0 auto;padding:0 40px}
 .dpic{height:460px;border-radius:30px;background:linear-gradient(135deg,#0c2a5c 0%,#1f5fd1 52%,var(--dc,#3b82f6) 135%);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:44px}
 .dpic::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.07) 0 2px,transparent 2px 28px)}
-.dpin{position:relative;animation:fade .6s}.dpin small{display:block;font-size:18px;opacity:.8}.dpin b{display:block;font-size:84px;font-weight:800;letter-spacing:-1px;line-height:1}.dpin span{display:block;margin-top:12px;font-size:16px;opacity:.85}
+.dpin{position:relative;animation:fade .6s}.dpin small{display:block;font-size:21px;opacity:.8}.dpin b{display:block;font-size:92px;font-weight:800;letter-spacing:-1px;line-height:1}.dpin span{display:block;margin-top:12px;font-size:19px;opacity:.85}
 .dtabs{display:flex;gap:26px;align-items:flex-end;margin-bottom:46px}
-.dtabs button{color:#7f93b8;font-size:19px;font-weight:700;padding-bottom:10px;border-bottom:2px solid transparent;letter-spacing:.3px}
+.dtabs button{color:#7f93b8;font-size:22px;font-weight:700;padding-bottom:10px;border-bottom:2px solid transparent;letter-spacing:.3px}
 .dtabs button:hover{color:var(--tc)}
-.dtabs button.act{color:var(--dc,#f7c948);border-color:var(--dc,#f7c948);font-size:23px}
+.dtabs button.act{color:var(--dc,#f7c948);border-color:var(--dc,#f7c948);font-size:26px}
 #dbody>*{animation:fade .6s}
-#dbody h2{font-size:36px;font-weight:800;line-height:1.25;letter-spacing:-.5px}
-.dbig{font-size:68px;font-weight:800;margin:6px 0 34px;letter-spacing:-1px;line-height:1.1}.dbig em{font-style:normal;color:var(--dc,#f7c948)}
+#dbody h2{font-size:40px;font-weight:800;line-height:1.25;letter-spacing:-.5px}
+.dbig{font-size:60px;font-weight:800;margin:6px 0 34px;letter-spacing:-1px;line-height:1.1}.dbig em{font-style:normal;color:var(--dc,#f7c948)}
 #dbody ol{list-style:none}
-#dbody li{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px dashed rgba(255,255,255,.3);font-size:18px;font-weight:600}
-#dbody li span{flex:none;width:40px;height:40px;border:1.5px solid var(--dc,#f7c948);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+#dbody li{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px dashed rgba(255,255,255,.3);font-size:21px;font-weight:600}
+#dbody li span{flex:none;width:40px;height:40px;border:1.5px solid var(--dc,#f7c948);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff}
 #dbody li b{color:var(--dc,#f7c948);font-weight:600}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media(max-width:1100px){.dwrap{grid-template-columns:1fr;gap:40px;padding:0 20px}.dpic{height:240px}.dbig{font-size:44px}#dbody h2{font-size:25px}#dbody li{font-size:16px}}
+@media(max-width:1100px){.dwrap{grid-template-columns:1fr;gap:40px;padding:0 20px}.dpic{height:240px}.dbig{font-size:48px}#dbody h2{font-size:28px}#dbody li{font-size:19px}}
 .bars{display:flex;gap:24px;align-items:flex-end;height:260px;padding:20px 30px;border:1px solid var(--line);border-radius:8px}
-.bars div{flex:1;text-align:center;font-size:13px;color:#555;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bars div{flex:1;text-align:center;font-size:16px;color:#555;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
 .bars i{display:block;background:#bcd3f7;border-radius:6px 6px 0 0;margin:6px 0 8px;width:60%}
-.bars div.on i{background:var(--g)}.bars b{color:var(--t);font-size:15px}.bars div.on b{color:var(--g)}
+.bars div.on i{background:var(--g)}.bars b{color:var(--t);font-size:18px}.bars div.on b{color:var(--g)}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.flow div{background:var(--gl);border-radius:8px;padding:20px;text-align:center}.flow b{display:block;color:var(--g);font-size:18px;margin-bottom:4px}.flow small{color:#555;font-size:13px}
+.flow div{background:var(--gl);border-radius:8px;padding:20px;text-align:center}.flow b{display:block;color:var(--g);font-size:21px;margin-bottom:4px}.flow small{color:#555;font-size:16px}
 .tcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .tcard{border:1px solid var(--line);border-radius:10px;padding:24px}
-.tcard .hd2{display:flex;gap:10px;align-items:center;margin-bottom:10px}.tcard .code{background:var(--g);color:#fff;font-weight:800;padding:4px 10px;border-radius:6px;font-size:14px}.tcard .pj{color:var(--g);font-size:13px;font-weight:700}
-.tcard h4{font-size:17px;margin-bottom:6px;line-height:1.4}.tcard .meta{font-size:13px;color:#777;margin-bottom:12px}
-.tcard ul{font-size:14px;color:#444;line-height:1.75}
-.tcard .fx{margin-top:12px;background:#f4f7fc;border-radius:8px;padding:12px 14px;font-size:13.5px;line-height:1.75}.tcard .fx b{color:var(--g)}
+.tcard .hd2{display:flex;gap:10px;align-items:center;margin-bottom:10px}.tcard .code{background:var(--g);color:#fff;font-weight:800;padding:4px 10px;border-radius:6px;font-size:17px}.tcard .pj{color:var(--g);font-size:16px;font-weight:700}
+.tcard h4{font-size:20px;margin-bottom:6px;line-height:1.4}.tcard .meta{font-size:16px;color:#777;margin-bottom:12px}
+.tcard ul{font-size:17px;color:#444;line-height:1.75}
+.tcard .fx{margin-top:12px;background:#f4f7fc;border-radius:8px;padding:12px 14px;font-size:16px;line-height:1.75}.tcard .fx b{color:var(--g)}
 .kgrid.k3{grid-template-columns:repeat(3,1fr)}
-.kgrid small{display:block;color:#888;font-size:12px;margin-top:6px;line-height:1.5}
+.kgrid small{display:block;color:#888;font-size:14px;margin-top:6px;line-height:1.5}
 @media(max-width:680px){.flow,.tcards,.kgrid.k3{grid-template-columns:1fr}.bars{gap:8px;padding:14px}}
 /* news */
 .newszone{background:#eef3fa;padding:90px 0}
 .ngrid{display:grid;grid-template-columns:1.9fr 1fr;gap:20px}
 .box{background:#fff;border-radius:10px;padding:26px 30px;box-shadow:0 2px 10px rgba(0,0,0,.03);position:relative}
-.box .more{position:absolute;right:24px;top:24px;width:26px;height:26px;border:1px solid #bbb;border-radius:50%;font-size:16px;line-height:23px;text-align:center}
+.box .more{position:absolute;right:24px;top:24px;width:26px;height:26px;border:1px solid #bbb;border-radius:50%;font-size:19px;line-height:23px;text-align:center}
 .btabs{display:flex;gap:6px;margin-bottom:18px}
-.btabs button{padding:7px 14px;font-size:16px;color:#888;font-weight:600}.btabs button.act{color:var(--t);font-weight:800;border-bottom:2px solid var(--g)}
-.blist li a{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:14.5px}
-.blist .tag{font-size:12px;background:var(--gl);color:var(--g);padding:3px 9px;border-radius:12px;white-space:nowrap}
-.blist .tt{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.blist .dt{color:#888;font-size:13px}
-.empty{color:#999;font-size:14px;padding:26px 0;text-align:center}
+.btabs button{padding:7px 14px;font-size:19px;color:#888;font-weight:600}.btabs button.act{color:var(--t);font-weight:800;border-bottom:2px solid var(--g)}
+.blist li a{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:17px}
+.blist .tag{font-size:14px;background:var(--gl);color:var(--g);padding:3px 9px;border-radius:12px;white-space:nowrap}
+.blist .tt{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.blist .dt{color:#888;font-size:16px}
+.empty{color:#999;font-size:17px;padding:26px 0;text-align:center}
 .banner{background:linear-gradient(135deg,#e3edfc,#d4e3fb);border-radius:10px;display:flex;flex-direction:column;justify-content:center;padding:30px;min-height:200px}
-.banner small{color:var(--g);font-weight:700}.banner h3{font-size:26px;margin:8px 0 18px;line-height:1.35}
-.banner a{align-self:flex-start;background:#fff;color:var(--g);padding:9px 22px;border-radius:20px;font-size:14px;font-weight:700}
+.banner small{color:var(--g);font-weight:700}.banner h3{font-size:29px;margin:8px 0 18px;line-height:1.35}
+.banner a{align-self:flex-start;background:#fff;color:var(--g);padding:9px 22px;border-radius:20px;font-size:17px;font-weight:700}
 .ngrid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
-.box h4{font-size:17px;margin-bottom:18px}
+.box h4{font-size:20px;margin-bottom:18px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card .th{height:110px;border-radius:8px;background:linear-gradient(135deg,#d6e4fa,#c7d9f7);display:flex;align-items:center;justify-content:center;color:var(--g);font-weight:800;font-size:13px;text-align:center;padding:8px}
-.card p{font-size:13px;margin-top:8px;color:#555;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.nl .th{background:linear-gradient(135deg,#4f7fd1,#2f5fb0);color:#fff;font-family:Georgia,serif;font-size:16px;line-height:1.1}
+.card .th{height:110px;border-radius:8px;background:linear-gradient(135deg,#d6e4fa,#c7d9f7);display:flex;align-items:center;justify-content:center;color:var(--g);font-weight:800;font-size:16px;text-align:center;padding:8px}
+.card p{font-size:16px;margin-top:8px;color:#555;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.nl .th{background:linear-gradient(135deg,#4f7fd1,#2f5fb0);color:#fff;font-family:Georgia,serif;font-size:19px;line-height:1.1}
 .nl:nth-child(2) .th{background:linear-gradient(135deg,#d68a52,#b8692f)}.nl:nth-child(3) .th{background:linear-gradient(135deg,#c2a36a,#a3824a)}
 /* partners */
 .partners{background:#f4f7fc;padding:90px 0}
 .ptop{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px}
-.ptop h2{font-size:32px}.ptop p{color:#555;font-size:14px;margin-top:6px}
-.ptabs button{padding:10px 18px;font-size:14px;color:#666}.ptabs button.act{color:var(--g);font-weight:700;border-bottom:2px solid var(--g)}
+.ptop h2{font-size:35px}.ptop p{color:#555;font-size:17px;margin-top:6px}
+.ptabs button{padding:10px 18px;font-size:17px;color:#666}.ptabs button.act{color:var(--g);font-weight:700;border-bottom:2px solid var(--g)}
 .pwrap{display:grid;grid-template-columns:1.85fr 1fr;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line);height:440px}
 .pwrap iframe{width:100%;height:100%;border:0}
 .plist2{overflow:auto;padding:10px 20px}
 .plist2 li{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0}
-.plist2 em{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
-.plist2 b{font-size:14px;display:block}.plist2 small{color:#888;font-size:12px}
+.plist2 em{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.plist2 b{font-size:17px;display:block}.plist2 small{color:#888;font-size:14px}
 /* video */
 .vzone{background:linear-gradient(rgba(8,25,58,.82),rgba(8,25,58,.82)),linear-gradient(135deg,#1f5fd1,#0f3d7a);padding:70px 0}
 .vrow{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:30px;align-items:center}
 .vbox{aspect-ratio:16/10;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#0f3d7a);display:flex;align-items:center;justify-content:center;color:#fff;position:relative;font-weight:700;text-align:center;padding:20px}
 .vbox:nth-child(2){aspect-ratio:16/9}
-.vbox::before{content:"▶";position:absolute;width:58px;height:58px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;opacity:.9;top:50%;left:50%;transform:translate(-50%,-50%)}
-.vbox span{position:absolute;bottom:16px;left:0;right:0;font-size:14px}
+.vbox::before{content:"▶";position:absolute;width:58px;height:58px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;opacity:.9;top:50%;left:50%;transform:translate(-50%,-50%)}
+.vbox span{position:absolute;bottom:16px;left:0;right:0;font-size:17px}
 /* footer */
-footer{background:#2b2b2b;color:#aaa;font-size:13px}
+footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .flinks{border-bottom:1px solid #3a3a3a}
 .flinks .inner{display:flex;align-items:center;height:64px;gap:0}
 .flinks a{color:#ddd;padding:0 22px;position:relative}.flinks a:first-child{padding-left:0}
@@ -201,52 +204,52 @@ footer{background:#2b2b2b;color:#aaa;font-size:13px}
 .flinks option{color:#000}
 .fbot .inner{display:flex;align-items:center;gap:30px;padding-top:30px;padding-bottom:36px}
 .fbot .logo{color:#fff;min-width:auto}.fbot .sns{margin-left:auto;display:flex;gap:12px}
-.fbot .sns a{width:30px;height:30px;border-radius:50%;background:#444;color:#ddd;display:flex;align-items:center;justify-content:center;font-size:11px}
+.fbot .sns a{width:30px;height:30px;border-radius:50%;background:#444;color:#ddd;display:flex;align-items:center;justify-content:center;font-size:13px}
 /* quick */
 .quick{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;gap:10px}
-.quick a,.quick button{width:56px;height:56px;border-radius:50%;background:var(--g);color:#fff;font-size:10.5px;font-weight:700;line-height:1.1;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-.quick button{background:#333;font-size:20px}
+.quick a,.quick button{width:56px;height:56px;border-radius:50%;background:var(--g);color:#fff;font-size:13px;font-weight:700;line-height:1.1;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.quick button{background:#333;font-size:23px}
 /* sub */
 .svis{height:300px;margin-top:120px;background:radial-gradient(circle at 12% 40%,rgba(255,255,255,.6) 0 60px,transparent 61px),radial-gradient(circle at 88% 70%,rgba(255,255,255,.45) 0 110px,transparent 111px),linear-gradient(#e6eefb,#eff4fc);position:relative;text-align:center;padding-top:80px}
-.svis .bc{font-size:12px;color:#555}.svis .bc b{color:var(--g);margin:0 6px}
-.svis h2{font-size:34px;margin-top:10px}
+.svis .bc{font-size:14px;color:#555}.svis .bc b{color:var(--g);margin:0 6px}
+.svis h2{font-size:37px;margin-top:10px}
 .snav{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);width:calc(100% - 40px);max-width:var(--w);display:flex;align-items:flex-end}
-.snav select{width:205px;height:56px;border:1px solid var(--line);background:#fff;padding:0 18px;font:inherit;font-size:14px;color:#555}
+.snav select{width:205px;height:56px;border:1px solid var(--line);background:#fff;padding:0 18px;font:inherit;font-size:17px;color:#555}
 .snav .tools{margin-left:auto;display:flex;gap:8px;margin-bottom:38px}
-.snav .tools button{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:14px}
+.snav .tools button{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:17px}
 .cont{max-width:var(--w);margin:0 auto;padding:110px 20px 100px;min-height:50vh}
 .stit{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--g);padding-bottom:16px;margin:0 0 30px}
-.stit h3{font-size:22px}.stit small{color:#555;font-size:13px}
+.stit h3{font-size:25px}.stit small{color:#555;font-size:16px}
 .cont section+section{margin-top:70px}
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.vgrid div{border-radius:6px;padding:26px 18px;background:var(--gl);border:1px solid #c7d9f7;color:var(--g);font-weight:700;font-size:16px}
+.vgrid div{border-radius:6px;padding:26px 18px;background:var(--gl);border:1px solid #c7d9f7;color:var(--g);font-weight:700;font-size:19px}
 .vgrid div:first-child{background:var(--g);color:#fff;box-shadow:0 6px 14px rgba(31,95,209,.25)}
-.vgrid i{display:inline-block;font-style:normal;font-size:11px;background:#fff;color:var(--g);padding:3px 9px;border-radius:3px;margin-bottom:10px}
+.vgrid i{display:inline-block;font-style:normal;font-size:13px;background:#fff;color:var(--g);padding:3px 9px;border-radius:3px;margin-bottom:10px}
 .vgrid div:nth-child(2) i{background:var(--g);color:#fff}
-.kt{margin:28px 0 14px;font-weight:700}.kt::before{content:"✔";display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--g);color:#fff;font-size:10px;align-items:center;justify-content:center;margin-right:8px}
+.kt{margin:28px 0 14px;font-weight:700}.kt::before{content:"✔";display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--g);color:#fff;font-size:12px;align-items:center;justify-content:center;margin-right:8px}
 .kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.kgrid div{border:1px solid var(--line);border-radius:8px;padding:22px;text-align:center;font-size:14px;color:#555}
-.kgrid b{display:block;font-size:22px;color:var(--g);margin-top:8px}
-.tbl{width:100%;border-collapse:collapse;font-size:14.5px;border-top:2px solid var(--t)}
+.kgrid div{border:1px solid var(--line);border-radius:8px;padding:22px;text-align:center;font-size:17px;color:#555}
+.kgrid b{display:block;font-size:25px;color:var(--g);margin-top:8px}
+.tbl{width:100%;border-collapse:collapse;font-size:17px;border-top:2px solid var(--t)}
 .tbl th{background:#f4f7fc;font-weight:700;padding:14px 10px;border-bottom:1px solid var(--line)}
 .tbl td{padding:14px 10px;border-bottom:1px solid var(--line);text-align:center}
 .tbl td.l{text-align:left}
 .tbl tr.hl td{background:#eef4fd}
-.badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:10px;background:var(--g);color:#fff}
+.badge{display:inline-block;font-size:14px;padding:2px 8px;border-radius:10px;background:var(--g);color:#fff}
 .pcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .pcards div{border:1px solid var(--line);border-top:4px solid var(--g);border-radius:8px;padding:22px}
-.pcards b{color:var(--g);font-size:13px}.pcards h4{font-size:18px;margin:6px 0 12px}.pcards p{font-size:14px;color:#555;line-height:1.6}
-.para{line-height:1.8;color:#444;font-size:15.5px}
+.pcards b{color:var(--g);font-size:16px}.pcards h4{font-size:21px;margin:6px 0 12px}.pcards p{font-size:17px;color:#555;line-height:1.6}
+.para{line-height:1.8;color:#444;font-size:19px}
 .blist2 .tbl td.l a:hover{color:var(--g);text-decoration:underline}
 .faq details{border-bottom:1px solid var(--line)}.faq summary{padding:20px 10px;font-weight:600;cursor:pointer;list-style:none}
 .faq summary::before{content:"Q";color:var(--g);font-weight:800;margin-right:14px}.faq details p{padding:0 10px 20px 36px;color:#555;line-height:1.7}
 .mapbox{height:420px;border:1px solid var(--line);border-radius:8px;overflow:hidden}.mapbox iframe{width:100%;height:100%;border:0}
 .info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-.info div{background:#f4f7fc;border-radius:8px;padding:22px;font-size:14.5px;line-height:1.7}.info b{display:block;color:var(--g);margin-bottom:6px}
-.note{font-size:13px;color:#888;margin-top:14px}
-.btn{display:inline-block;background:var(--g);color:#fff;padding:12px 28px;border-radius:24px;font-weight:600;font-size:15px}
-@media(max-width:1100px){.gnb{display:none}.hd{padding:0 20px}.logo{min-width:auto}.util{min-width:auto;margin-left:auto}.dash .wrap{grid-template-columns:1fr}.circ{display:none}.ngrid,.ngrid2,.pwrap,.vrow{grid-template-columns:1fr}.pwrap{height:auto}.pwrap iframe{height:300px}.smap{grid-template-columns:1fr 1fr}.pcards,.kgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.hcopy h1{font-size:34px}.hcopy p{font-size:18px}.qicons a{width:62px;height:62px;font-size:10px}.qicons svg{width:24px;height:24px}.qtab .tabs button{padding:8px 16px}.vcard{display:none}.cards{grid-template-columns:1fr 1fr}.vgrid,.info,.pcards,.kgrid{grid-template-columns:1fr}.snav select{width:50%}.snav .tools{display:none}.flinks .inner{flex-wrap:wrap;height:auto;padding:14px 20px}.flinks select{margin:10px 0 0;width:100%}.fbot .inner{flex-wrap:wrap}.ptop{flex-direction:column;align-items:flex-start;gap:10px}.tbl{font-size:13px}}
+.info div{background:#f4f7fc;border-radius:8px;padding:22px;font-size:17px;line-height:1.7}.info b{display:block;color:var(--g);margin-bottom:6px}
+.note{font-size:16px;color:#888;margin-top:14px}
+.btn{display:inline-block;background:var(--g);color:#fff;padding:12px 28px;border-radius:24px;font-weight:600;font-size:18px}
+@media(max-width:1280px){.gnb{display:none}.hd{padding:0 20px}.logo{min-width:auto}.util{min-width:auto;margin-left:auto}.dash .wrap{grid-template-columns:1fr}.circ{display:none}.ngrid,.ngrid2,.pwrap,.vrow{grid-template-columns:1fr}.pwrap{height:auto}.pwrap iframe{height:300px}.smap{grid-template-columns:1fr 1fr}.pcards,.kgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.hcopy h1{font-size:37px}.hcopy p{font-size:21px}.qicons a{width:62px;height:62px;font-size:12px}.qicons svg{width:24px;height:24px}.qtab .tabs button{padding:8px 16px}.vcard{display:none}.cards{grid-template-columns:1fr 1fr}.vgrid,.info,.pcards,.kgrid{grid-template-columns:1fr}.snav select{width:50%}.snav .tools{display:none}.flinks .inner{flex-wrap:wrap;height:auto;padding:14px 20px}.flinks select{margin:10px 0 0;width:100%}.fbot .inner{flex-wrap:wrap}.ptop{flex-direction:column;align-items:flex-start;gap:10px}.tbl{font-size:16px}}
 </style>
 </head>
 <body>
@@ -336,7 +339,7 @@ const PRESS=[
 const BOARD={
  notice:[
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
-  {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성 인정으로 인센티브 5억 원 추가 확보\n\n■ 2차년도 추진 규모\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n- 본예산 48.2억 원(국비 43.57억·시비 4.63억) + 1차년도 이월금 6.04억 원\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
+  {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성과 인정\n\n■ 2차년도 추진 체계\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
  ],
  call:[],press:PRESS,video:[],newsletter:[],archive:[]
 };
@@ -349,18 +352,26 @@ const PROJ=[
 ];
 
 const TASKS=[
- {c:'A1',n:'지역 정주형 보건의료·휴먼서비스 전문융합인재 양성',t:'단독(주관) · 시그니처',b:'12.59',sub:['전문융합 교육과정 혁신','지역대학 공유협력 생태계','기업 주도형 산학일체 현장실무교육','하이브리드 현장캠퍼스 인프라','정주형 취업지원 거버넌스'],f:['지역현안 해결형 리빙랩(Living-Lab) 실천학습 도입','채용연계형 실무트랙(간호·작업치료 등) 확대','아동재활융합 전문기술석사과정 운영']},
- {c:'A3',n:'지역 특화형 글로벌화 지원체계 강화',t:'컨소시엄(참여)',b:'4.35',sub:['글로벌 보건의료 협력체계 구축','외국인 유학생 유치 강화','외국인 지역 정주 여건 강화'],f:['베트남 하노이보건대 방사선과 공동학위(2+2) 추진','외국인 요양보호사 양성 · 의료통역 실무교육']},
- {c:'B1',n:'기업 상생형 보건의료·휴먼서비스 산학협력 지원체계 강화',t:'컨소시엄(참여)',b:'2.11',sub:['지산학관 공동기술개발 지원체계','지역 특화형 기업지원체계'],f:['「늘배움, 모두 UP」 동남권 초광역 재직자 교육 플랫폼','U-Nexus 기반 3개 대학 공동장비 활용 지원','보건의료 서비스 R&amp;BD · 기업참여형 공동연구']},
- {c:'B4',n:'지역 체감형 복합재난 안전관리 지원체계 강화',t:'컨소시엄(참여) · 시그니처',b:'3.00',sub:['대학 특화 복합재난 안전지원 기반','복합재난 안전분야 전문가 양성','지산학관 연계 안전강화활동'],f:['춘해 울산형 건강안전지원센터 구축·운영','DMAT 장비 도입 · 방사선 안전 전문가 양성']},
- {c:'C1',n:'지속 가능형 평생·직업교육 브랜드화',t:'컨소시엄(주관)',b:'10.89',sub:['울산형 평생·직업교육 기반 구축','울산형 평생·직업교육 혁신','생애주기 맞춤 평생·직업교육','지역산업 연계형 평생·직업교육'],f:['CH-U-RUN 센터 · 울산형 통합 평생학습 플랫폼','4대 아카데미 : Medi-Learn · Care+ · NextUp · Human Bridge']},
- {c:'C2',n:'동반 성장형 늘돌봄 캠퍼스 에듀케어 지원체계 구축',t:'컨소시엄(참여)',b:'1.97',sub:['CH-U 늘봄서비스 운영','CH-U 늘돌봄 기반 구축','CH-U 돌봄서비스 운영'],f:['울산 늘봄허브 등록 · 초등학교 매칭 강사 파견','늘봄 전문강사 양성 · 부모-자녀 동반성장 지원']},
- {c:'D2',n:'지역 친화형 통합 건강관리 지원체계 강화',t:'컨소시엄(주관)',b:'3.55',sub:['사회적 약자 통합 건강관리','지역사회 연계 건강관리','의료소외계층 건강관리 지원','AI·DX 기반 울산형 헬스케어'],f:['동남권 6개 대학 보건의료 빅데이터 네트워크','울산 보건의료 데이터 분석센터 · 디지털 백서']},
- {c:'D3',n:'지역 공감형 문화·관광 힐링도시 활성화',t:'단독(주관)',b:'3.10',sub:['지역 녹색도시 조성 지원','문화·관광 인프라 조성 지원','문화·관광 활성화 지원'],f:['수목진단센터(U-Forest) 기반 보호수 진단·도시재생','「울산의 맛·멋·행복 4.0」 스마트 웰니스 콘텐츠','2028 울산국제정원박람회 연계 전문인력 양성']}
+ {c:'A1',n:'지역 정주형 보건의료·휴먼서비스 전문융합인재 양성',t:'단독(주관) · 시그니처',sub:['전문융합 교육과정 혁신','지역대학 공유협력 생태계','기업 주도형 산학일체 현장실무교육','하이브리드 현장캠퍼스 인프라','정주형 취업지원 거버넌스'],f:['지역현안 해결형 리빙랩(Living-Lab) 실천학습 도입','채용연계형 실무트랙(간호·작업치료 등) 확대','아동재활융합 전문기술석사과정 운영']},
+ {c:'A3',n:'지역 특화형 글로벌화 지원체계 강화',t:'컨소시엄(참여)',sub:['글로벌 보건의료 협력체계 구축','외국인 유학생 유치 강화','외국인 지역 정주 여건 강화'],f:['베트남 하노이보건대 방사선과 공동학위(2+2) 추진','외국인 요양보호사 양성 · 의료통역 실무교육']},
+ {c:'B1',n:'기업 상생형 보건의료·휴먼서비스 산학협력 지원체계 강화',t:'컨소시엄(참여)',sub:['지산학관 공동기술개발 지원체계','지역 특화형 기업지원체계'],f:['「늘배움, 모두 UP」 동남권 초광역 재직자 교육 플랫폼','U-Nexus 기반 3개 대학 공동장비 활용 지원','보건의료 서비스 R&amp;BD · 기업참여형 공동연구']},
+ {c:'B4',n:'지역 체감형 복합재난 안전관리 지원체계 강화',t:'컨소시엄(참여) · 시그니처',sub:['대학 특화 복합재난 안전지원 기반','복합재난 안전분야 전문가 양성','지산학관 연계 안전강화활동'],f:['춘해 울산형 건강안전지원센터 구축·운영','DMAT 장비 도입 · 방사선 안전 전문가 양성']},
+ {c:'C1',n:'지속 가능형 평생·직업교육 브랜드화',t:'컨소시엄(주관)',sub:['울산형 평생·직업교육 기반 구축','울산형 평생·직업교육 혁신','생애주기 맞춤 평생·직업교육','지역산업 연계형 평생·직업교육'],f:['CH-U-RUN 센터 · 울산형 통합 평생학습 플랫폼','4대 아카데미 : Medi-Learn · Care+ · NextUp · Human Bridge']},
+ {c:'C2',n:'동반 성장형 늘돌봄 캠퍼스 에듀케어 지원체계 구축',t:'컨소시엄(참여)',sub:['CH-U 늘봄서비스 운영','CH-U 늘돌봄 기반 구축','CH-U 돌봄서비스 운영'],f:['울산 늘봄허브 등록 · 초등학교 매칭 강사 파견','늘봄 전문강사 양성 · 부모-자녀 동반성장 지원']},
+ {c:'D2',n:'지역 친화형 통합 건강관리 지원체계 강화',t:'컨소시엄(주관)',sub:['사회적 약자 통합 건강관리','지역사회 연계 건강관리','의료소외계층 건강관리 지원','AI·DX 기반 울산형 헬스케어'],f:['동남권 6개 대학 보건의료 빅데이터 네트워크','울산 보건의료 데이터 분석센터 · 디지털 백서']},
+ {c:'D3',n:'지역 공감형 문화·관광 힐링도시 활성화',t:'단독(주관)',sub:['지역 녹색도시 조성 지원','문화·관광 인프라 조성 지원','문화·관광 활성화 지원'],f:['수목진단센터(U-Forest) 기반 보호수 진단·도시재생','「울산의 맛·멋·행복 4.0」 스마트 웰니스 콘텐츠','2028 울산국제정원박람회 연계 전문인력 양성']}
 ];
 const pk=c=>PROJ.find(p=>p.c===c[0]).k;
-const DYN=PROJ.map(p=>{const ts=TASKS.filter(t=>t.c[0]===p.c);return{k:p.k,col:p.col,bg:p.bg,s:'2026년 '+ts.map(t=>t.c).join(' · ')+' | '+ts.reduce((a,t)=>a+ +t.b,0).toFixed(2)+'억 원',h:p.hb,li:ts.map(t=>'<b>'+t.c+'</b> '+t.n)}});
+const DYN=PROJ.map(p=>{const ts=TASKS.filter(t=>t.c[0]===p.c);return{k:p.k,col:p.col,bg:p.bg,s:'단위과제 '+ts.map(t=>t.c).join(' · '),h:p.hb,li:ts.map(t=>'<b>'+t.c+'</b> '+t.n)}});
 
+const ART=(k,c)=>{c=c||'#fff';const S=(d,o)=>'<path d="'+d+'" fill="'+c+'" opacity="'+o+'"/>',L=(d,w,o)=>'<path d="'+d+'" fill="none" stroke="'+c+'" stroke-width="'+w+'" stroke-linecap="round" stroke-linejoin="round" opacity="'+o+'"/>';const g={
+ city:S('M0 320V230h40v-30h30v50h20v-80h40v80h25v-40h35v60h30v-110h45v110h20v-55h40v55h30v-90h35v90h25v-35h40v35h30v-70h45v70h40v-120h22v120h18v90z',.16)+'<circle cx="560" cy="90" r="52" fill="'+c+'" opacity=".18"/>'+S('M0 320q170-46 350 0t350 0v20H0z',.14)+L('M470 230v-60l40-30 40 30v60',6,.25)+L('M500 190h20M510 180v20',6,.35),
+ talent:S('M350 70 560 150 350 230 140 150z',.30)+L('M230 185v70c80 50 160 50 240 0v-70',16,.32)+L('M560 150v95',10,.32)+'<circle cx="560" cy="255" r="14" fill="'+c+'" opacity=".32"/>',
+ bridge:L('M40 250h620',12,.3)+L('M90 250q260-230 520 0',14,.32)+L('M170 250v-95M260 250v-150M350 250v-170M440 250v-150M530 250v-95',8,.24)+S('M40 270h620v20H40z',.15),
+ jump:L('M100 270h110v-55h110v-55h110v-55h110',16,.3)+L('M470 60l90 0 0 90',16,.34)+L('M560 60 400 220',12,.22),
+ care:S('M350 280s-160-95-160-185a85 85 0 0 1 160-40 85 85 0 0 1 160 40c0 90-160 185-160 185z',.26)+L('M350 120v90M305 165h90',22,.45),
+ greet:S('M150 280V150l200-90 200 90v130z',.18)+L('M220 280v-100M290 280v-100M410 280v-100M480 280v-100',14,.28)+S('M120 280h460v24H120z',.24)+'<circle cx="350" cy="130" r="20" fill="'+c+'" opacity=".35"/>'};
+ return '<svg class="art" viewBox="0 0 700 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true">'+(g[k]||'')+'</svg>'};
 const PARTNERS={
  '참여 협력기관':[['울산광역시','대학청년과 · 사업 총괄'],['울산테크노파크 울산앵커센터','성과관리·실무 점검'],['울산광역시교육청','늘봄·돌봄 협력'],['지역 의료·복지기관 9곳','통합 건강관리 협약'],['지역 산업체·기관 34곳','1차년도 산학협력 협약']],
  '동남권 6개 대학':[['김해대학교','보건의료 빅데이터 협의체'],['마산대학교','보건의료 빅데이터 협의체'],['부산보건대학교','보건의료 빅데이터 협의체'],['울산과학대학교','보건의료 빅데이터 협의체'],['진주보건대학교','보건의료 빅데이터 협의체'],['춘해보건대학교','보건의료 빅데이터 협의체 · 주관']],
@@ -387,6 +398,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return[m,c];return null}
 
 /* GNB / sitemap */
+$('#hd').style.setProperty('--mh',(Math.max(...MENU.map(m=>m.c.length))*46+56)+'px');
 $('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div class="dep2">${m.c.map(c=>`<a href="#/${c[0]}">${c[1]}</a>`).join('')}</div></li>`).join('');
 $('#smap').innerHTML=MENU.map(m=>`<div><h3>${m.t}</h3>${m.c.map(c=>`<a href="#/${c[0]}" onclick="closeMap()">${c[1]}</a>`).join('')}</div>`).join('');
 function openMap(s){$('#sitemap').classList.add('open');if(s)setTimeout(()=>$('#q').focus(),50)}
@@ -402,7 +414,7 @@ function home(){
  const slides=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
  return `
  <section class="hero">
-  ${slides.map((s,i)=>`<div class="slide s${i+1} ${i?'':'act'}"><span class="ring" style="width:700px;height:700px;right:-120px;top:-160px"></span><span class="ring" style="width:420px;height:420px;right:120px;top:260px"></span></div>`).join('')}
+  ${slides.map((s,i)=>`<div class="slide s${i+1} ${i?'':'act'}">${ART('city')}<span class="ring" style="width:700px;height:700px;right:-120px;top:-160px"></span><span class="ring" style="width:420px;height:420px;right:120px;top:260px"></span></div>`).join('')}
   <div class="hcopy"><p id="hp">${slides[0][0]}</p><h1 id="hh">${slides[0][1]}</h1>
    <div class="hbar" id="hbar">${slides.map((s,i)=>`<i class="${i?'':'act'}" onclick="goHero(${i})"></i>`).join('')}<button onclick="toggleHero(this)" aria-label="정지">❚❚</button></div></div>
   <div class="qtab"><div class="tabs">${Object.keys(QUICK).map((k,i)=>`<button class="${i?'':'act'}" onclick="qtab(this,'${k}')">${k}</button>`).join('')}</div><div class="qicons" id="qicons"></div></div>
@@ -444,7 +456,7 @@ function qtab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classLis
  $('#qicons').innerHTML=QUICK[k].map(q=>`<a href="${q[2]}" ${q[2].startsWith('http')?'target="_blank" rel="noopener"':''}>${ICON[q[1]]}<span>${q[0].replace('\n','<br>')}</span></a>`).join('')}
 function proj(i){document.querySelectorAll('#dtabs button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=DYN[i];document.querySelector('.dyn').style.setProperty('--dc',p.col);$('#dpic').style.background=p.bg;
  $('#dbody').innerHTML=`<h2>${p.h}</h2><p class="dbig">Dynamic <em>${p.k}</em></p><ol>${p.li.map((l,j)=>`<li><span>0${j+1}</span><p>${l}</p></li>`).join('')}</ol>`;
- $('#dpic').innerHTML=`<div class="dpin"><small>Dynamic</small><b>${p.k}</b><span>${p.s}</span></div>`}
+ $('#dpic').innerHTML=ART(['talent','bridge','jump','care'][i])+`<div class="dpin"><small>Dynamic</small><b>${p.k}</b><span>${p.s}</span></div>`}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
  const a=BOARD[k],lab=findMenu(k)[1][1];$('#nlist').innerHTML=a.length?a.slice(0,4).map((p,i)=>`<li><a href="#/${k}/${i}"><span class="tag">${lab}</span><span class="tt">${esc(p.t)}</span><span class="dt">${p.d}</span></a></li>`).join(''):'<li class="empty">등록된 게시물이 없습니다.</li>'}
 function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
@@ -455,7 +467,7 @@ function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></d
 const PAGES={
  greeting:()=>`
  <section>${stit('사업단장 인사말','Greeting')}
-  <div class="gban"><span>ANCHOR</span><small>사업단장 사진 영역</small></div>
+  <div class="gban">${ART('greet')}<span>ANCHOR</span><small>사업단장 사진 영역</small></div>
   <div class="gwrap">
    <h3 class="ghead">춘해보건대학교 앵커사업단<br>홈페이지를 방문해주신 여러분을<br><em>진심으로 환영합니다.</em></h3>
    <div class="gbody">
@@ -485,12 +497,7 @@ const PAGES={
  <section>${stit('사업 개요','Overview')}
   <table class="tbl"><tr><th style="width:22%">사업명</th><td class="l">지역성장 인재양성체계(ANCHOR·앵커) 사업 <span style="color:#888">— 2026. 4. RISE에서 명칭 전환</span></td></tr>
   <tr><th>사업기간</th><td class="l">2025년 ~ 2029년 (5개년)</td></tr>
-  <tr><th>총사업비</th><td class="l">약 268.5억 원</td></tr>
-  <tr><th>2026년(2차년도)</th><td class="l">48.2억 원 (국비 43.57억 · 시비 4.63억) + 1차년도 이월금 6.04억 원</td></tr>
   <tr><th>참여 단위과제</th><td class="l">4대 프로젝트 · 8개 단위과제 (A1 · A3 · B1 · B4 · C1 · C2 · D2 · D3)</td></tr></table>
- </section>
- <section>${stit('연차별 재정투자','Budget (단위: 억 원)')}
-  <div class="bars">${[['1차 (2025)',53.2],['2차 (2026)',48.2],['3차 (2027)',53],['4차 (2028)',55.7],['5차 (2029)',58.5]].map(x=>`<div class="${x[0].includes('2026')?'on':''}"><b>${x[1]}</b><i style="height:${Math.round(x[1]*3)}px"></i>${x[0]}</div>`).join('')}</div>
  </section>
  <section>${stit('추진체계','Governance')}
   <table class="tbl"><tr><th style="width:22%">사업단</th><td class="l">ANCHOR 사업단(총장 직속) · 단장 김기홍 · 부단장 김형수 · 참여 교직원 131명</td></tr>
@@ -499,7 +506,7 @@ const PAGES={
   <tr><th>거버넌스</th><td class="l">지자체 – 대학 – 혁신기관 – 산업체 – 지역사회</td></tr></table>
  </section>
  <section>${stit('1차년도 성과','2025 Performance')}
-  <div class="kgrid"><div>성과지표 달성<b>31 / 32개</b><small>100% 이상 달성 (96.9%)</small></div><div>평균 달성도<b>약 144%</b><small>자율성과지표 138% · 중점관리지표 162%</small></div><div>대표과제 인센티브<b>5억 원</b><small>D2 통합 건강관리</small></div><div>산업체·기관 협약<b>34곳</b><small>17개 학과 캡스톤디자인 전수 참여</small></div></div>
+  <div class="kgrid"><div>성과지표 달성<b>31 / 32개</b><small>100% 이상 달성 (96.9%)</small></div><div>평균 달성도<b>약 144%</b><small>자율성과지표 138% · 중점관리지표 162%</small></div><div>대표과제 선정<b>D2</b><small>통합 건강관리 우수성과</small></div><div>산업체·기관 협약<b>34곳</b><small>17개 학과 캡스톤디자인 전수 참여</small></div></div>
  </section>`,
  projects:()=>`
  <section>${stit('4대 프로젝트','Dynamic Moves')}
@@ -509,13 +516,11 @@ const PAGES={
   <p class="note">D단계의 현장 수요·건강·돌봄 데이터를 A단계 교육과정 개발에 환류하여 지역혁신 생태계의 선순환을 이끕니다.</p>
  </section>
  <section>${stit('2차년도 참여 단위과제','Unit Tasks 2026')}
-  <table class="tbl"><tr><th>프로젝트</th><th>과제</th><th>단위과제명</th><th>사업유형</th><th>2026 예산</th></tr>
-  ${TASKS.map(t=>`<tr><td>Dynamic ${pk(t.c)}</td><td><span class="badge">${t.c}</span></td><td class="l">${t.n}</td><td>${t.t}</td><td>${t.b}억</td></tr>`).join('')}
-  <tr class="hl"><td colspan="4"><b>2026년 합계 (공통운영비 6.64억 포함)</b></td><td><b>48.20억</b></td></tr></table>
-  <p class="note">국비 43.57억 · 시비 4.63억 / 이와 별도로 1차년도 이월금 6.04억 원(D2-4 AI·DX 헬스케어)을 집행합니다.</p>
+  <table class="tbl"><tr><th>프로젝트</th><th>과제</th><th>단위과제명</th><th>사업유형</th></tr>
+  ${TASKS.map(t=>`<tr><td>Dynamic ${pk(t.c)}</td><td><span class="badge">${t.c}</span></td><td class="l">${t.n}</td><td>${t.t}</td></tr>`).join('')}</table>
  </section>
  <section>${stit('단위과제별 추진계획','Action Plans')}
-  <div class="tcards">${TASKS.map(t=>`<div class="tcard"><div class="hd2"><span class="code" style="background:${PROJ.find(p=>p.c===t.c[0]).col};color:#10213f">${t.c}</span><span class="pj">Dynamic ${pk(t.c)}</span></div><h4>${t.n}</h4><p class="meta">${t.t} · 2026년 ${t.b}억 원</p><ul>${t.sub.map((x,i)=>`<li>${t.c}-${i+1} ${x}</li>`).join('')}</ul><div class="fx"><b>2차년도 중점</b><br>${t.f.join('<br>')}</div></div>`).join('')}</div>
+  <div class="tcards">${TASKS.map(t=>`<div class="tcard"><div class="hd2"><span class="code" style="background:${PROJ.find(p=>p.c===t.c[0]).col};color:#10213f">${t.c}</span><span class="pj">Dynamic ${pk(t.c)}</span></div><h4>${t.n}</h4><p class="meta">${t.t}</p><ul>${t.sub.map((x,i)=>`<li>${t.c}-${i+1} ${x}</li>`).join('')}</ul><div class="fx"><b>2차년도 중점</b><br>${t.f.join('<br>')}</div></div>`).join('')}</div>
  </section>`,
  staff:()=>{const tel=e=>'052-270-'+String(e).padStart(4,'0');
  const C=[['사업단 본부','사업단장 (김기홍)',232],['사업단 본부','본부장',331],['사업단 본부','부단장',160],['사업단 본부','선임연구원 (사업단 본부)',480],['사업단 본부','연구원 (사업단 본부)',516],['사업단 본부','연구원 (구매)',161],['사업단 본부','연구원 (지출)',494],['사업단 본부','연구원 (시설)',494],['사업단 본부','연구원',383],['사업단 본부','연구원',380],['사업단 본부','연구원',387],
@@ -532,7 +537,7 @@ const PAGES={
    <div class="ol"></div>
    <div class="orow"><div class="on sub">부단장</div><div class="on sub">본부장</div></div>
    <div class="ol"></div>
-   <div class="on hq">사업단 본부<small>기획 · 성과관리 · 예산(구매·지출) · 시설</small></div>
+   <div class="on hq">사업단 본부<small>기획 · 성과관리 · 구매·지출 · 시설</small></div>
    <div class="ol"></div>
    <div class="ogrid">${PROJ.map(p=>`<div class="ocol"><div class="oph" style="background:${p.col}">Dynamic ${p.k}</div>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<div class="otask"><b>${t.c}</b>${t.n}</div>`).join('')}</div>`).join('')}</div>
   </div>
