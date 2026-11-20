@@ -356,7 +356,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .banner h3{font-size:26px;letter-spacing:-.5px}
 .ptop h2,.box h4,.stit h3,#dbody h2,.dmid h2,.smap h3,.eqh,.tcard h4,.pcards h4{font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700}
 .logo b{white-space:nowrap}
-.slide .hbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;mix-blend-mode:luminosity;pointer-events:none}
+.slide .hbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;mix-blend-mode:luminosity;pointer-events:none}
 .eqd{background:linear-gradient(135deg,#1f5fd1,#0b1f45);color:#fff;border-radius:18px;padding:28px 32px;margin:26px 0}
 .eqd small{color:#9cc2ff;font-weight:700;font-size:15px}.eqd h4{font-size:28px;margin:6px 0 10px}.eqd p{font-size:17px;opacity:.92;line-height:1.6}
 .eqt th{width:180px;background:#f3f6fb}.eqt td{font-size:16px}
@@ -366,11 +366,24 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .eqfs{text-align:center;font-size:17px;line-height:1.7;margin:30px 0 16px}
 @media print{body.pf *{visibility:hidden}body.pf #eqform,body.pf #eqform *{visibility:visible}body.pf #eqform{position:absolute;left:0;top:0;width:100%;border:0}body.pf .eqfh .btn{display:none}}
 @media(max-width:680px){.eqt th{width:110px}.eqform{padding:16px}.eqft th,.eqft td{font-size:13px}}
-/* 서브 상단: 하늘색 배경 대신 사진(AI 생성 캠퍼스 이미지 sub-bg.jpg) */
+/* 서브 상단: 하늘색 배경 대신 캠퍼스 건물 사진 */
 .svis{background:linear-gradient(90deg,rgba(9,35,80,.55),rgba(9,35,80,.2)),#0e3f86 !important;position:relative}
-.svis::before{content:"";position:absolute;inset:0;background:url(sub-bg.jpg) center 40%/cover no-repeat;mix-blend-mode:luminosity;opacity:.55;pointer-events:none}
+.svis::before{content:"";position:absolute;inset:0;background:var(--sv,url(img/campus-dosaeng.jpg)) center 45%/cover no-repeat;mix-blend-mode:luminosity;opacity:.6;pointer-events:none}
 .svis .bc,.svis h2{position:relative;z-index:1}.svis .snav{z-index:2}
 .svis .bc{color:rgba(255,255,255,.85)}.svis .bc b{color:#9cc2ff}.svis h2{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+/* 사진 꾸밈 */
+.banner{background:linear-gradient(120deg,rgba(227,237,252,.96) 35%,rgba(212,227,251,.72)),url(img/campus-dosaeng2.jpg) right center/cover no-repeat}
+.vbox{background:linear-gradient(rgba(8,25,58,.25),rgba(8,25,58,.65)),url(img/act02.jpg) center/cover}
+.vbox:nth-child(2){background:linear-gradient(rgba(8,25,58,.25),rgba(8,25,58,.65)),url(img/act09.jpg) center/cover}
+.vbox:nth-child(3){background:linear-gradient(rgba(8,25,58,.25),rgba(8,25,58,.65)),url(img/act10.jpg) center/cover}
+.eqi{aspect-ratio:4/3;margin:-20px -20px 6px;border-radius:14px 14px 0 0;overflow:hidden;background:#f3f6fb}.eqi{background:#fff}.eqi img{width:100%;height:100%;object-fit:contain}
+.eqd{display:flex;gap:26px;align-items:center}.eqdi{flex:0 0 300px;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#fff}.eqdi img{width:100%;height:100%;object-fit:contain}
+.fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.fgrid figure{margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#0b1f45}
+.fgrid img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.fgrid figure:hover img{transform:scale(1.04)}
+.fgrid figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(5,15,35,.85));color:#fff;font-weight:700;font-size:16px}
+.fgrid small{display:block;font-weight:500;font-size:13px;opacity:.85}
+@media(max-width:680px){.fgrid{grid-template-columns:1fr 1fr;gap:8px}.fgrid figcaption{font-size:13px;padding:26px 10px 8px}.eqd{flex-direction:column;align-items:stretch}.eqdi{flex:none}}
 /* ===== 모바일 최적화 ===== */
 @media(max-width:680px){
 header,header.on,header.sub{height:64px}
@@ -533,8 +546,6 @@ const PRESS=[
 
 const PIMG={'1071681':'https://cdn.ksilbo.co.kr/news/photo/202611/1071681_649625_5430.jpg','635515':'https://cdn.veritas-a.com/news/photo/202611/635515_549597_4417.jpg','2026100115505689432':'https://www.busan.com/nas/wcms/wcms_data/photos/2026/10/01/2026100115415901587_m.jpg','630270':'https://cdn.veritas-a.com/news/photo/202610/630270_544232_1232.jpg','1067795':'https://cdn.iusm.co.kr/news/photo/202609/1067795_627971_5005.jpg','627488':'https://cdn.veritas-a.com/news/photo/202609/627488_541067_4642.jpg','626264':'https://cdn.veritas-a.com/news/photo/202609/626264_539383_2915.jpeg','613697':'https://cdn.veritas-a.com/news/photo/202606/613697_526771_2756.jpg','613452':'https://cdn.veritas-a.com/news/photo/202606/613452_526539_1125.jpg','612642':'https://cdn.veritas-a.com/news/photo/202605/612642_525735_5054.jpg','616020':'https://cdn.veritas-a.com/news/photo/202606/616020_529078_342.jpg','605410':'https://cdn.veritas-a.com/news/photo/202604/605410_518829_238.jpg','605398':'https://cdn.veritas-a.com/news/photo/202604/605398_518821_26.jpg','20260203500612':'https://cdn.emetro.co.kr/data2/content/image/2026/02/03/.cache/512/20260203500613.jpg','598781':'https://cdn.veritas-a.com/news/photo/202602/598781_512459_111.jpg','599476':'https://cdn.news.unn.net/news/photo/202610/599476_426082_428.jpg','146940':'https://cdn.tournews21.com/news/photo/202610/146940_273586_158.jpg','20251216500618':'https://cdn.emetro.co.kr/data2/content/image/2025/12/16/.cache/512/20251216500619.jpg','20251023500542':'https://cdn.emetro.co.kr/data2/content/image/2025/10/23/.cache/512/20251023500543.jpg','1033785':'https://cdn.ksilbo.co.kr/news/photo/202508/1033785_616402_2210.jpg','1053442':'https://cdn.iusm.co.kr/news/photo/202508/1053442_607724_80.jpg','20250728500605':'https://cdn.emetro.co.kr/data2/content/image/2025/07/28/.cache/512/20250728500606.jpg','20250704500272':'https://cdn.emetro.co.kr/data2/content/image/2025/07/04/.cache/512/20250704500273.jpg','2025062414393883828':'https://www.busan.com/nas/wcms/wcms_data/photos/2025/06/24/2025062414354150253_m.jpg','580397':'https://cdn.news.unn.net/news/photo/202506/580397_398433_2738.jpg','20250529500216':'https://cdn.emetro.co.kr/data2/content/image/2025/05/29/.cache/512/20250529500217.jpg','574563':'https://cdn.news.unn.net/news/photo/202502/574563_390099_3123.jpg'};
 PRESS.forEach(p=>{const k=Object.keys(PIMG).find(k=>p.u.includes(k));if(k)p.im=PIMG[k]});
-const RU='https://rise.ch.ac.kr/Upload/Board_Contents/';
-const ri=n=>RU+encodeURIComponent(n);
 const RNOT=[
  {d:'2026-09-11',t:'2026년도 지역성장 인재양성체계(앵커)사업 초광역권 대학 공동 R&D 지원사업 상시모집 재공고',files:['【별첨 1】 초광역권 기업참여형 공동 R&D 사업과제 계획서','【별첨 2】 중복성 검토 확인서'],b:`춘해보건대학교 앵커사업단은 초광역권 대학 간 공동 연구협력을 바탕으로 특성화 분야의 기술·지식을 나누고, 산업체와 연계한 공동 연구개발로 지역산업 혁신과 산학연 협력체계 구축을 지원하기 위해 「2026년도 초광역권 대학 공동 R&D 지원사업」 신규 과제를 상시 모집합니다.
 
@@ -747,21 +758,21 @@ const GALLERY=[
 ‘내면의 울림에서 위대한 공명으로’라는 주제 아래, 소리로 내면과 감정을 넓히는 요가 철학 ‘나다(NĀDA) 공명’을 오페라와 결합해 몸과 마음으로 체험하는 명상형 무대를 선보였습니다.
 
 김희진 총장은 “지역사회와 함께 호흡하는 수준 높은 문화예술 공연을 계속 기획해 지역 주민의 문화 향유 기회를 넓혀 가겠다”고 말했습니다.`},
- {d:'2026-04-15',t:'언어치료과 ‘장애영유아 및 언어재활 현장견학’',im:[ri('홍보기사 사진 1.jpg'),ri('홍보기사 사진 2.jpg')],b:`언어치료과는 4월 9일부터 10일까지 ‘장애영유아 및 언어재활 현장견학’ 프로그램을 운영했습니다.
+ {d:'2026-04-15',t:'언어치료과 ‘장애영유아 및 언어재활 현장견학’',im:['img/g2-1.jpg','img/g2-2.jpg'],b:`언어치료과는 4월 9일부터 10일까지 ‘장애영유아 및 언어재활 현장견학’ 프로그램을 운영했습니다.
 
 이 프로그램은 ‘정주형 보건의료·사회서비스 전문융합인재 양성’ 과제의 하나로, 언어치료과 학생 65명이 지역사회 기관 방문과 자체 워크숍을 통해 현장 실무를 익혔습니다.
 
 학생들은 양산시 행정복지허브타운과 허브타운 내 양산시 장애인복지관, 부산 북구 마인드마인드센터를 찾아 기관 운영 체계와 전공 관련 프로그램을 살펴보고, 언어치료와 장애영유아 보육 임상 사례를 관찰했습니다.
 
 신상인 학과장은 “학생들이 현장 실무 역량과 장애영유아 지원 역량을 기르는 의미 있는 기회였다”며 “현장 중심의 실습 교육을 계속 넓혀 가겠다”고 말했습니다.`},
- {d:'2026-04-15',t:'안경광학과, 대구국제안경전(DIOPS) 현장견학',im:[ri('안광 현장견학 사진 (14)(2).jpg'),ri('안광 현장견학 사진 (15)(2).jpg')],b:`안경광학과는 4월 1일 대구 엑스코(EXCO)에서 열린 대구국제안경전(DIOPS)을 찾아 현장견학을 진행했습니다.
+ {d:'2026-04-15',t:'안경광학과, 대구국제안경전(DIOPS) 현장견학',im:['img/g3-1.jpg','img/g3-2.jpg'],b:`안경광학과는 4월 1일 대구 엑스코(EXCO)에서 열린 대구국제안경전(DIOPS)을 찾아 현장견학을 진행했습니다.
 
 전공진로 현장교육 프로그램으로 마련한 이번 견학에서 재학생들은 안경·광학 산업의 최신 흐름을 살피고, 수업에서 배운 이론과 실습을 산업 현장과 연결해 보았습니다. 최신 안경테와 광학기기·장비를 직접 확인하며 안경사 직무에 필요한 실무 감각을 키웠습니다.
 
 한선희 학과장은 “다양한 국내외 안경 관련 상품을 접하며 실무 역량을 높이는 데 큰 도움이 되었다”며 “성인학습자 중심 2년제 교육과정의 장점을 살려 이론·실습·현장견학을 유기적으로 연계하겠다”고 말했습니다.
 
 학생대표 김영재 씨는 “안광학 산업의 최신 흐름을 한눈에 볼 수 있어 유익했고, 졸업 후 안경원 창업을 준비하는 데에도 도움이 될 것 같다”고 전했습니다.`},
- {d:'2026-04-15',t:'방사선과 현장견학 및 춘계학술대회 ‘우수상 수상’',im:[ri('2026년 춘계학술대회 참석 단체사진(2).jpg'),ri('우수구연상 임영선(5).jpg'),ri('우수포스터상 배찬혁(4).jpg'),ri('2026년 춘계학술대회 참석 단체사진(5).jpg')],b:`방사선과는 4월 10일부터 11일까지 전북대학교병원과 전북대학교 국제컨벤션센터에서 ‘학술활동 및 현장견학 프로그램’을 운영하고, 같은 기간 열린 춘계학술대회에서 우수구연상과 우수포스터상을 받았습니다.
+ {d:'2026-04-15',t:'방사선과 현장견학 및 춘계학술대회 ‘우수상 수상’',im:['img/g4-1.jpg','img/g4-2.jpg','img/g4-3.jpg','img/g4-4.jpg'],b:`방사선과는 4월 10일부터 11일까지 전북대학교병원과 전북대학교 국제컨벤션센터에서 ‘학술활동 및 현장견학 프로그램’을 운영하고, 같은 기간 열린 춘계학술대회에서 우수구연상과 우수포스터상을 받았습니다.
 
 ‘Brain대학 프로젝트’의 하나로 마련한 이번 프로그램에는 윤영우 학과장을 비롯한 교수진과 2·3학년, 전공심화 과정 재학생 등 40명이 참여했습니다.
 
@@ -772,7 +783,7 @@ const GALLERY=[
 윤영우 학과장은 “오랜 기간 열정적으로 준비한 학생들 덕분에 의미 있는 성과를 거뒀다”고 전했습니다.`}
 ];
 const NEWSLETTER=[
- {d:'2026-09-02',t:'춘해보건대학교 앵커사업단 2026년 뉴스레터 제1호',b:'2026년 춘해보건대학교 앵커사업단의 주요 소식을 담은 첫 번째 뉴스레터입니다. 아래에서 전체 9쪽을 보실 수 있습니다.',pages:[1,2,3,4,5,6,7,8,9].map(i=>ri('붙임. 춘해보건대학교 앵커사업단 2026년 뉴스레터 제1호_'+i+'.jpg'))}
+ {d:'2026-09-02',t:'춘해보건대학교 앵커사업단 2026년 뉴스레터 제1호',b:'2026년 춘해보건대학교 앵커사업단의 주요 소식을 담은 첫 번째 뉴스레터입니다. 아래에서 전체 9쪽을 보실 수 있습니다.',pages:[1,2,3,4,5,6,7,8,9].map(i=>'img/nl1-'+i+'.jpg')}
 ];
 /* 공용장비 — [장비명, 개요, 모델·규격, 보유 위치] */
 const EQUIP=[
@@ -802,7 +813,7 @@ const EQUIP=[
   ['토양경도계','토양이 얼마나 단단한지 수치로 측정합니다.','351-EN',''],
   ['GPS측량기','현재 위치(좌표)를 정확하게 측정합니다.','지오메이트 SG 1608','']]}
 ];
-const EQ=EQUIP.flatMap(g=>g.it.map(x=>({n:x[0],d:x[1],m:x[2],loc:x[3],c:g.c})));
+const EQ=EQUIP.flatMap(g=>g.it.map(x=>({n:x[0],d:x[1],m:x[2],loc:x[3],c:g.c}))).map((e,i)=>({...e,img:'img/eq'+String(i).padStart(2,'0')+'.jpg'}));
 const BOARD={
  notice:[
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
@@ -882,8 +893,8 @@ function doSearch(e){e.preventDefault();const q=$('#q').value.trim();if(!q)retur
  $('#sres').innerHTML='<div>'+(r.join('')||'<p style="color:#aaa">검색 결과가 없습니다.</p>')+'</div>';return false}
 
 /* ===== 메인 ===== */
-/* 메인 배경 사진(앵커사업 활동 사진) — 순서대로 슬라이드 1·2·3 */
-const HERO_BG=[ri('2026년 춘계학술대회 참석 단체사진(2).jpg'),ri('홍보기사 사진 1.jpg'),ri('안광 현장견학 사진 (14)(2).jpg')];
+/* 메인 배경 사진(앵커사업 활동 사진, img/) — 순서대로 슬라이드 1·2·3 */
+const HERO_BG=['img/act07.jpg','img/act08.jpg','img/act11.jpg'];
 let heroT,heroI=0,heroPlay=true;
 function home(){
  const slides=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
@@ -972,6 +983,9 @@ const PAGES={
   <p class="kt">핵심목표 : 인재가 지역에 닻을 내리고 머무는 ANCHOR</p>
   <div class="kgrid k3"><div>돌봄은 늘<b>건강·돌봄·안전 상시 지원</b><small>C2 늘돌봄 에듀케어 · D2 통합 건강관리 · B4 복합재난 안전</small></div><div>배움은 계속<b>생애 전 주기 배움의 지속</b><small>A1 전문융합인재 양성 · C1 평생·직업교육 · A3 글로벌화 지원</small></div><div>성공은 모두의 것<b>지역 정주·상생의 성공</b><small>B1 산학협력 R&amp;BD · D3 문화·관광 활성화 · 정주형 취업 지원</small></div></div>
  </section>
+ <section>${stit('앵커사업 현장','Field Activities')}
+  <div class="fgrid">${FIELD.map(f=>`<figure><img src="img/${f[0]}.jpg" alt="${f[1]}" loading="lazy"><figcaption>${f[1]}<small>${f[2]}</small></figcaption></figure>`).join('')}</div>
+ </section>
  <section>${stit('대학 현황','Why Choonhae')}
   <p class="para" style="margin-bottom:18px">춘해보건대학교는 울산 유일의 보건의료 특성화 전문대학으로, 보건의료·휴먼서비스 융합 특성화를 바탕으로 울산 앵커사업 8개 단위과제에 참여합니다.</p>
   <div class="kgrid"><div>졸업생 취업률<b>81.5%</b><small>지역 12년 연속 1위</small></div><div>국가시험 합격률<b>84.9%</b><small>전국 평균 76.7% 상회</small></div><div>학과<b>17개</b><small>보건계열 9개 학과</small></div><div>앵커 참여 단위과제<b>8개</b><small>시그니처 과제 2개 포함</small></div></div>
@@ -1055,7 +1069,7 @@ const PAGES={
  equip:(idx)=>{const tel='기업협업지원센터 052-270-0515';
  if(idx!=null&&EQ[idx]){const e=EQ[idx];return `
  <section>${stit('공용장비 신청','Shared Equipment')}
-  <div class="eqd"><small>${e.c}</small><h4>${esc(e.n)}</h4><p>${esc(e.d)}</p></div>
+  <div class="eqd"><div class="eqdi"><img src="${e.img}" alt="${esc(e.n)}" onerror="this.parentNode.remove()"></div><div><small>${e.c}</small><h4>${esc(e.n)}</h4><p>${esc(e.d)}</p></div></div>
   <table class="tbl eqt">
    <tr><th>장비명</th><td class="l">${esc(e.n)}</td></tr>
    <tr><th>분류</th><td class="l">${e.c}</td></tr>
@@ -1075,7 +1089,7 @@ const PAGES={
   <div class="eqcta"><div><b>공용장비활용 신청서</b><span>신청서를 작성해 담당자에게 제출하면 상담 후 예약이 확정됩니다.</span></div><a class="btn" href="javascript:void(0)" onclick="document.getElementById('eqform').scrollIntoView({behavior:'smooth'})">신청서 양식 보기 ↓</a></div>
   <ol class="eqflow">${['담당자 상담','장비 검색·예약','예약 신청','담당자 승인','공간·장비 대여'].map((x,i)=>`<li><em>${String(i+1).padStart(2,'0')}</em><b>${x}</b></li>`).join('')}</ol>
   <p class="eqnote">이용 대상: 타 기관 · 교내 · 개인 &nbsp;|&nbsp; 사용 방법·사용료 등은 담당자에게 문의해 주세요. (${tel})</p>
-  ${EQUIP.map(g=>`<h4 class="eqh">${g.c} <small>${g.it.length}종</small></h4><div class="eqgrid">${g.it.map(x=>{const i=EQ.findIndex(e=>e.n===x[0]);return `<a class="eqc" href="#/equip/${i}"><b>${x[0]}</b><p>${x[1]}</p>${x[2]?`<small>${x[2]}</small>`:''}<span>자세히 보기 ›</span></a>`}).join('')}</div>`).join('')}
+  ${EQUIP.map(g=>`<h4 class="eqh">${g.c} <small>${g.it.length}종</small></h4><div class="eqgrid">${g.it.map(x=>{const i=EQ.findIndex(e=>e.n===x[0]);return `<a class="eqc" href="#/equip/${i}"><div class="eqi"><img src="${EQ[i].img}" alt="${x[0]}" loading="lazy" onerror="this.remove()"></div><b>${x[0]}</b><p>${x[1]}</p>${x[2]?`<small>${x[2]}</small>`:''}<span>자세히 보기 ›</span></a>`}).join('')}</div>`).join('')}
   <div class="eqform" id="eqform">
    <div class="eqfh"><h4>공용장비활용 신청서</h4><button class="btn" onclick="printEqForm()">신청서 인쇄</button></div>
    <table class="tbl eqft">
@@ -1115,9 +1129,13 @@ function boardPage(k,idx){if(k==='gallery'||k==='newsletter')return mediaPage(k,
  <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">${k==='press'?'매체':'작성자'}</th><th style="width:120px">등록일</th></tr>
  ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>${esc(p.src||'앵커사업단')}</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
 
+/* 서브 상단 배경 — 대메뉴 순서대로(캠퍼스 갤러리 건물 사진) */
+/* 앵커사업 현장 사진 — [파일, 프로그램, 시기] */
+const FIELD=[['act04','CH와 함께하는 온동네 건강마실','2026. 8.'],['act08','울산119안전문화축제 안전체험부스','2026. 7.'],['act10','보훈가족 건강캠프','2026. 6.'],['act07','다문화 가정 복합재난 대응 교육','2026. 7.'],['act05','영유아 정서 지원 심리치유과정','2026. 8.'],['act03','찾아가는 은빛 요가 한걸음','2026. 9.']];
+const SVBG=['campus-dosaeng.jpg','campus-plaza.jpg','campus-myeongdeok.jpg','campus-view.jpg'];
 function sub(id,idx){const f=findMenu(id);if(!f)return null;const[m,c]=f;
  const body=PAGES[id]?PAGES[id](idx):boardPage(id,idx);
- return `<div class="svis"><p class="bc">HOME <b>›</b> ${m.t}</p><h2>${c[1]}</h2>
+ return `<div class="svis" style="--sv:url(img/${SVBG[MENU.indexOf(m)]||SVBG[0]})"><p class="bc">HOME <b>›</b> ${m.t}</p><h2>${c[1]}</h2>
  <div class="snav"><select onchange="location.hash='#/'+this.value">${MENU.map(x=>`<option value="${x.c[0][0]}" ${x===m?'selected':''}>${x.t}</option>`).join('')}</select><select onchange="location.hash='#/'+this.value">${m.c.map(x=>`<option value="${x[0]}" ${x===c?'selected':''}>${x[1]}</option>`).join('')}</select>
  <div class="tools"><button onclick="zoom(-1)" title="축소">−</button><button onclick="zoom(1)" title="확대">+</button><button onclick="location.hash='#/'" title="홈">⌂</button><button onclick="print()" title="인쇄">⎙</button><button onclick="share()" title="공유">⇪</button></div></div></div>
  <div class="cont">${body}</div>`}
