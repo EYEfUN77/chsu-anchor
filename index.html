@@ -50,6 +50,20 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .gbody .gintro{font-size:19px;font-weight:700;color:var(--t)}
 .gbody .gsign{text-align:right;margin-top:30px;color:#555}.gsign b{display:inline-block;margin-left:14px;font-size:22px;color:var(--t);letter-spacing:2px}
 @media(max-width:900px){.gwrap{grid-template-columns:1fr;gap:24px}.gban{height:220px}.gban span{font-size:40px}.ghead{font-size:24px}}
+.org{display:flex;flex-direction:column;align-items:center;padding:10px 0}
+.on{border-radius:10px;padding:14px 26px;text-align:center;font-weight:700;font-size:15px}
+.on.top{background:#0a1f44;color:#fff;min-width:200px}
+.on.main{background:var(--g);color:#fff;min-width:240px;font-size:17px;padding:18px 30px}
+.on.side{background:#fff;border:1.5px dashed #9fb6dc;color:#405070;font-weight:600;font-size:13.5px;min-width:180px}
+.on.sub{background:var(--gl);color:var(--g);border:1px solid #c7d9f7;min-width:160px}
+.on.hq{background:#fff;border:2px solid var(--g);color:var(--g);min-width:320px}.on.hq small{display:block;font-weight:500;color:#667;font-size:12.5px;margin-top:4px}
+.orow{display:flex;gap:40px;align-items:center;justify-content:center}
+.ol{width:2px;height:26px;background:#b8c8e4}
+.ogrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%}
+.ocol{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.oph{color:#10213f;font-weight:800;text-align:center;padding:10px;font-size:14px}
+.otask{padding:12px 14px;font-size:13.5px;line-height:1.5;border-top:1px solid var(--line)}.otask b{display:block;color:var(--g);font-size:14px}
+@media(max-width:900px){.ogrid{grid-template-columns:1fr 1fr}.orow{gap:10px;flex-wrap:wrap}.on.side{min-width:auto}}
 /* sitemap */
 #sitemap{position:fixed;inset:0;background:rgba(10,31,68,.97);z-index:100;display:none;color:#fff;overflow:auto}
 #sitemap.open{display:block}
@@ -280,7 +294,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:13px}
 <script>
 /* ===== 메뉴 구성 (울산대 앵커사업단과 동일한 4개 대메뉴·12개 소메뉴) ===== */
 const MENU=[
- {t:'춘해보건대 앵커사업',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','담당자 안내'],['location','오시는 길']]},
+ {t:'춘해보건대 앵커사업',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','조직 및 연락처'],['location','오시는 길']]},
  {t:'알림·소식',c:[['notice','공지사항'],['press','언론보도'],['call','과제공고'],['video','홍보영상']]},
  {t:'뉴스레터',c:[['newsletter','뉴스레터']]},
  {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]}
@@ -503,14 +517,33 @@ const PAGES={
  <section>${stit('단위과제별 추진계획','Action Plans')}
   <div class="tcards">${TASKS.map(t=>`<div class="tcard"><div class="hd2"><span class="code" style="background:${PROJ.find(p=>p.c===t.c[0]).col};color:#10213f">${t.c}</span><span class="pj">Dynamic ${pk(t.c)}</span></div><h4>${t.n}</h4><p class="meta">${t.t} · 2026년 ${t.b}억 원</p><ul>${t.sub.map((x,i)=>`<li>${t.c}-${i+1} ${x}</li>`).join('')}</ul><div class="fx"><b>2차년도 중점</b><br>${t.f.join('<br>')}</div></div>`).join('')}</div>
  </section>`,
- staff:()=>`
- <section>${stit('담당자 안내','Staff')}
-  <table class="tbl"><tr><th>직위</th><th>성명</th><th>담당업무</th><th>연락처</th></tr>
-  <tr><td>사업단장</td><td>김기홍</td><td class="l">ANCHOR 사업단 총괄</td><td>-</td></tr>
-  <tr><td>부단장</td><td>김형수</td><td class="l">사업 기획·운영 총괄</td><td>052-270-0331</td></tr>
-  <tr><td colspan="4" class="empty">단위과제 책임자와 담당 연구원 정보를 준비하고 있습니다.</td></tr></table>
+ staff:()=>{const tel=e=>'052-270-'+String(e).padStart(4,'0');
+ const C=[['사업단 본부','사업단장 (김기홍)',232],['사업단 본부','본부장',331],['사업단 본부','부단장',160],['사업단 본부','선임연구원 (사업단 본부)',480],['사업단 본부','연구원 (사업단 본부)',516],['사업단 본부','연구원 (구매)',161],['사업단 본부','연구원 (지출)',494],['사업단 본부','연구원 (시설)',494],['사업단 본부','연구원',383],['사업단 본부','연구원',380],['사업단 본부','연구원',387],
+ ['A1','연구원 (인재양성)',488],['A1','연구원 (교양교육)',541],['A3','연구원 (글로벌)',487],['A3','연구원 (글로벌)',440],['A3','연구원 (글로벌)',556],['B1','연구원 (기업협업)',515],['B4','연구원 (복합재난)',486],
+ ['C1','연구원 (평생교육)',475],['C1','연구원 (평생교육)',200],['C1','연구원 (평생교육)',472],['C1','연구원 (평생교육상담)',144],['C1','연구원 (사회복지)',141],['C1','연구원 (산림조경)',142],['C1','연구원 (웰니스)',143],['C1','연구원 (학습상담)',477],
+ ['C2','연구원 (늘돌봄)',461],['C2','연구원 (언어치료)',228],['D2','연구원 (건강관리)',490],['D2','연구원 (건강관리)',587],['D3','연구원 (수목·웰니스)',589]];
+ const gname=g=>{const t=TASKS.find(x=>x.c===g);return t?`<span class="badge" style="background:${PROJ.find(p=>p.c===g[0]).col};color:#10213f">${g}</span> ${t.n}`:'<b>'+g+'</b>'};
+ const groups=[...new Set(C.map(c=>c[0]))];
+ return `
+ <section>${stit('사업단 조직도','Organization')}
+  <div class="org">
+   <div class="on top">총장</div><div class="ol"></div>
+   <div class="orow"><div class="on side">사업추진위원회<br>사업운영위원회</div><div class="on main">ANCHOR 사업단장</div><div class="on side">자체평가위원회</div></div>
+   <div class="ol"></div>
+   <div class="orow"><div class="on sub">부단장</div><div class="on sub">본부장</div></div>
+   <div class="ol"></div>
+   <div class="on hq">사업단 본부<small>기획 · 성과관리 · 예산(구매·지출) · 시설</small></div>
+   <div class="ol"></div>
+   <div class="ogrid">${PROJ.map(p=>`<div class="ocol"><div class="oph" style="background:${p.col}">Dynamic ${p.k}</div>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<div class="otask"><b>${t.c}</b>${t.n}</div>`).join('')}</div>`).join('')}</div>
+  </div>
   <p class="note">ANCHOR 사업단은 총장 직속 조직으로, 참여 교직원 131명이 8개 과제팀으로 사업을 수행합니다.</p>
- </section>`,
+ </section>
+ <section>${stit('사업단 연락처','Contact')}
+  <table class="tbl"><tr><th style="width:42%">소속</th><th>담당</th><th style="width:22%">전화번호</th></tr>
+  ${groups.map(g=>{const rows=C.filter(c=>c[0]===g);return rows.map((c,i)=>`<tr>${i?'':`<td class="l" rowspan="${rows.length}">${gname(g)}</td>`}<td class="l">${c[1]}</td><td>${tel(c[2])}</td></tr>`).join('')}).join('')}
+  </table>
+  <p class="note">교직원 전화번호부(2026. 11. 20.) 기준입니다.</p>
+ </section>`},
  location:()=>`
  <section>${stit('오시는 길','Location')}
   <div class="mapbox"><iframe loading="lazy" title="춘해보건대학교 위치" src="https://maps.google.com/maps?q=%EC%B6%98%ED%95%B4%EB%B3%B4%EA%B1%B4%EB%8C%80%ED%95%99%EA%B5%90&z=15&output=embed"></iframe></div>
