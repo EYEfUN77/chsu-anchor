@@ -1,0 +1,45 @@
+# 홈페이지 배포: push 할 때마다 검색엔진 최적화(SEO) 빌드 후 GitHub Pages로 배포
+# - seo/build.mjs 가 페이지별 주소·미리 렌더링 본문·메타태그·sitemap/robots/rss 생성
+# - 빌드가 실패해도 원본 그대로 배포되므로 홈페이지는 멈추지 않음
+name: 홈페이지 배포(SEO 빌드)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Playwright 설치
+        run: npm i --no-save playwright@1 && npx playwright install --with-deps chromium
+      - name: SEO 빌드 (실패 시 원본 그대로 배포)
+        run: |
+          node seo/build.mjs _site || {
+            echo "::warning::SEO 빌드 실패 - 원본을 그대로 배포합니다"
+            rm -rf _site && mkdir _site
+            for f in *; do case "$f" in seo|_site|node_modules|package*.json) ;; *) cp -r "$f" _site/ ;; esac; done
+          }
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
