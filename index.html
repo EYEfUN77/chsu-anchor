@@ -277,10 +277,10 @@ const BOARD={
 };
 
 const PROJ=[
- {k:'TALENT',c:'A',col:'#f7c948',h:'울산에 뿌리내리는 정주형 실전 인재 양성',hb:'울산에 뿌리내리는<br>정주형 실전 인재 양성'},
- {k:'BRIDGE',c:'B',col:'#3dd6c6',h:'기업과 하나 되는 지·산·학·연 초연결 생태계',hb:'기업과 하나 되는<br>지·산·학·연 초연결 생태계'},
- {k:'JUMP',c:'C',col:'#ff8a5c',h:"다시 뛰게 만드는 생애 '직무 도약' 체계 구축",hb:"다시 뛰게 만드는<br>생애 '직무 도약' 체계 구축"},
- {k:'CARE',c:'D',col:'#8fe07a',h:'지역생활안전·의료·정주 협력체계 구축',hb:'지역생활안전·의료·정주<br>협력체계 구축'}
+ {k:'TALENT',c:'A',col:'#f7c948',bg:'linear-gradient(135deg,#6b4300,#c98a12 55%,#f7c948)',h:'울산에 뿌리내리는 정주형 실전 인재 양성',hb:'울산에 뿌리내리는<br>정주형 실전 인재 양성'},
+ {k:'BRIDGE',c:'B',col:'#3dd6c6',bg:'linear-gradient(135deg,#06474f,#138b8a 55%,#3dd6c6)',h:'기업과 하나 되는 지·산·학·연 초연결 생태계',hb:'기업과 하나 되는<br>지·산·학·연 초연결 생태계'},
+ {k:'JUMP',c:'C',col:'#ff8a5c',bg:'linear-gradient(135deg,#6e2410,#d0552f 55%,#ff8a5c)',h:"다시 뛰게 만드는 생애 '직무 도약' 체계 구축",hb:"다시 뛰게 만드는<br>생애 '직무 도약' 체계 구축"},
+ {k:'CARE',c:'D',col:'#8fe07a',bg:'linear-gradient(135deg,#17491f,#348f43 55%,#8fe07a)',h:'지역생활안전·의료·정주 협력체계 구축',hb:'지역생활안전·의료·정주<br>협력체계 구축'}
 ];
 
 const TASKS=[
@@ -294,7 +294,7 @@ const TASKS=[
  {c:'D3',n:'지역 공감형 문화·관광 힐링도시 활성화',t:'단독(주관)',b:'3.10',sub:['지역 녹색도시 조성 지원','문화·관광 인프라 조성 지원','문화·관광 활성화 지원'],f:['수목진단센터(U-Forest) 기반 보호수 진단·도시재생','「울산의 맛·멋·행복 4.0」 스마트 웰니스 콘텐츠','2028 울산국제정원박람회 연계 전문인력 양성']}
 ];
 const pk=c=>PROJ.find(p=>p.c===c[0]).k;
-const DYN=PROJ.map(p=>{const ts=TASKS.filter(t=>t.c[0]===p.c);return{k:p.k,col:p.col,s:'2026년 '+ts.map(t=>t.c).join(' · ')+' | '+ts.reduce((a,t)=>a+ +t.b,0).toFixed(2)+'억 원',h:p.hb,li:ts.map(t=>'<b>'+t.c+'</b> '+t.n)}});
+const DYN=PROJ.map(p=>{const ts=TASKS.filter(t=>t.c[0]===p.c);return{k:p.k,col:p.col,bg:p.bg,s:'2026년 '+ts.map(t=>t.c).join(' · ')+' | '+ts.reduce((a,t)=>a+ +t.b,0).toFixed(2)+'억 원',h:p.hb,li:ts.map(t=>'<b>'+t.c+'</b> '+t.n)}});
 
 const PARTNERS={
  '참여 협력기관':[['울산광역시','대학청년과 · 사업 총괄'],['울산테크노파크 울산앵커센터','성과관리·실무 점검'],['울산광역시교육청','늘봄·돌봄 협력'],['지역 의료·복지기관 9곳','통합 건강관리 협약'],['지역 산업체·기관 34곳','1차년도 산학협력 협약']],
@@ -377,7 +377,7 @@ function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)retu
 function toggleHero(b){heroPlay=!heroPlay;b.textContent=heroPlay?'❚❚':'▶';document.querySelectorAll('#hbar i').forEach(x=>x.style.setProperty('--p',heroPlay?'running':'paused'));heroTimer()}
 function qtab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
  $('#qicons').innerHTML=QUICK[k].map(q=>`<a href="${q[2]}" ${q[2].startsWith('http')?'target="_blank" rel="noopener"':''}>${ICON[q[1]]}<span>${q[0].replace('\n','<br>')}</span></a>`).join('')}
-function proj(i){document.querySelectorAll('#dtabs button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=DYN[i];document.querySelector('.dyn').style.setProperty('--dc',p.col);
+function proj(i){document.querySelectorAll('#dtabs button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=DYN[i];document.querySelector('.dyn').style.setProperty('--dc',p.col);$('#dpic').style.background=p.bg;
  $('#dbody').innerHTML=`<h2>${p.h}</h2><p class="dbig">Dynamic <em>${p.k}</em></p><ol>${p.li.map((l,j)=>`<li><span>0${j+1}</span><p>${l}</p></li>`).join('')}</ol>`;
  $('#dpic').innerHTML=`<div class="dpin"><small>Dynamic</small><b>${p.k}</b><span>${p.s}</span></div>`}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
