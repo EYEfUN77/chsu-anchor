@@ -1700,7 +1700,7 @@ route();
  const t=s=>{const k=s.trim();if(!k||!H.test(k))return null;const v=D[k]!=null?D[k]:rx(k);return v==null?null:s.replace(k,v)};
  const ATTR=['placeholder','alt','title','aria-label'];
  function apply(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const hit=new Set(),miss=new Set();
-  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest('script,style,.notranslate-keep'))continue;if(!H.test(n.nodeValue))continue;const v=t(n.nodeValue);if(v!=null){n.nodeValue=v;hit.add(p)}else miss.add(p)}
+  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest('script,style,.notranslate-keep'))continue;if(!H.test(n.nodeValue)){if(n.nodeValue.trim())hit.add(p);continue}const v=t(n.nodeValue);if(v!=null){n.nodeValue=v;hit.add(p)}else miss.add(p)}
   hit.forEach(p=>{if(!miss.has(p))p.classList.add('notranslate')});
   (root.querySelectorAll?root:document).querySelectorAll('*').forEach(e=>ATTR.forEach(a=>{const v=e.getAttribute&&e.getAttribute(a);if(v&&H.test(v)){const r=t(v);if(r!=null)e.setAttribute(a,r)}}));
   if(H.test(document.title))document.title=document.title.split(' | ').map(x=>t(x)||x).join(' | ')}
