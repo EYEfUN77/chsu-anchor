@@ -1242,7 +1242,7 @@ function doSearch(e){e.preventDefault();const q=$('#q').value.trim();if(!q)retur
 const HERO_BG=['img/hero05.jpg','img/act08.jpg','img/hero04.jpg'];
 let heroT,heroI=0,heroPlay=true;
 function home(){
- const slides=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
+ const slides=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['울산에 닻을 내려, 모두에게 닿는다','보건의료·휴먼서비스 인재 정주 거점'],['보건의료·휴먼서비스 융합 혁신으로','인재 정주의 표준 모델을 만듭니다']];
  return `
  <section class="hero">
   ${slides.map((s,i)=>`<div class="slide s${i+1} ${i?'':'act'}"><img class="hbg" src="${HERO_BG[i]}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">${ART('city')}<span class="ring" style="width:700px;height:700px;right:-120px;top:-160px"></span><span class="ring" style="width:420px;height:420px;right:120px;top:260px"></span></div>`).join('')}
@@ -1288,7 +1288,7 @@ let dynT,dynI=0,dynHold=false;
 function dynTimer(){clearInterval(dynT);dynT=setInterval(()=>{if(!dynHold&&document.getElementById('dtabs'))proj((dynI+1)%DYN.length,1)},2000)}
 function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer();progTimer()}
 function heroTimer(){clearInterval(heroT);if(heroPlay)heroT=setInterval(()=>goHero((heroI+1)%3),6000)}
-function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)return;heroI=i;const t=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
+function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)return;heroI=i;const t=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['울산에 닻을 내려, 모두에게 닿는다','보건의료·휴먼서비스 인재 정주 거점'],['보건의료·휴먼서비스 융합 혁신으로','인재 정주의 표준 모델을 만듭니다']];
  s.forEach((x,j)=>x.classList.toggle('act',j===i));$('#hp').textContent=t[i][0];$('#hh').textContent=t[i][1];
  document.querySelectorAll('#hbar i').forEach((x,j)=>{x.classList.remove('act');void x.offsetWidth;if(j===i)x.classList.add('act')});heroTimer()}
 function toggleHero(b){heroPlay=!heroPlay;b.textContent=heroPlay?'❚❚':'▶';document.querySelectorAll('#hbar i').forEach(x=>x.style.setProperty('--p',heroPlay?'running':'paused'));heroTimer()}
