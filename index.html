@@ -526,6 +526,43 @@ header:hover::after,header:hover .dep2{display:none}
 .aw-ul h5{font-size:17px;color:var(--b);margin-bottom:6px}.aw-ul p{font-size:16px;line-height:1.75;color:#333}.aw-ul b{color:var(--g)}
 @media(max-width:900px){.aw-ft{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.aw-flow{flex-direction:column}.aw-flow span{transform:rotate(90deg)}.aw-ft{grid-template-columns:1fr}.aw-lead p{font-size:16px}}
+/* 비전 및 핵심목표(2차 개편) */
+.vs-slogan{text-align:center;border:1px solid var(--line);border-radius:12px;padding:20px 16px;margin-bottom:10px;background:#fff}
+.vs-slogan i{display:inline-block;font-style:normal;font-size:13px;font-weight:700;background:#3c4a63;color:#fff;border-radius:4px;padding:3px 10px;margin-bottom:8px}
+.vs-slogan p{font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700;font-size:32px;color:#1d4f9a;letter-spacing:-.5px}
+.vs-slogan em{font-style:normal}.vs-slogan .c1{color:#c0392b}.vs-slogan .c2{color:#7b3fa0}.vs-slogan .c3{color:#c0392b}
+.vs-vg span{color:#ffe08a}.vs-vg div:nth-child(2) span{color:#c0392b}
+.vs-eco{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.vs-eco>div{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.vs-eco h5{display:flex;align-items:center;gap:8px;padding:12px 14px;font-size:17px;border-bottom:1px solid var(--line)}
+.vs-eco h5 b{display:inline-flex;width:26px;height:26px;border-radius:6px;align-items:center;justify-content:center;color:#fff;font-size:15px}
+.vs-eco>div:nth-child(1) h5 b{background:#e67e22}.vs-eco>div:nth-child(2) h5 b{background:#7f8c8d}.vs-eco>div:nth-child(3) h5 b{background:#5aa63c}
+.vs-eco h5 small{margin-left:auto;font-size:14px;font-weight:800;color:var(--g)}
+.vs-eco ul{padding:12px 16px}.vs-eco li{font-size:15px;color:#444;line-height:1.85;padding-left:14px;position:relative}
+.vs-eco li::before{content:"◆";position:absolute;left:0;font-size:9px;top:2px;color:#9aa6b8}
+.vs-eco>div:nth-child(1) ul{background:#fdf3ea}.vs-eco>div:nth-child(2) ul{background:#f3f4f6}.vs-eco>div:nth-child(3) ul{background:#eef6ea}
+.vs-core{margin-top:14px;border:1px solid #c7d9f7;border-radius:12px;background:linear-gradient(180deg,#fff,#f4f8fe);text-align:center;padding:20px 16px}
+.vs-core>i{display:inline-block;font-style:normal;font-size:13px;font-weight:700;background:#3c4a63;color:#fff;border-radius:4px;padding:3px 10px}
+.vs-wm{display:flex;justify-content:center;align-items:flex-end;gap:6px;margin:12px 0 8px}
+.vs-wm img{height:56px;width:auto}.vs-wm span{font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700;font-size:40px;color:#4a6fb5;line-height:1}
+.vs-acr{font-size:16px;color:#555;letter-spacing:-.2px;line-height:1.7}.vs-acr b{font-size:20px;color:#1d4f9a;font-weight:900}
+.vs-tag{margin-top:6px;font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700;font-size:22px;color:#1f5fd1}
+.vs-h{font-size:19px;margin:28px 0 12px;color:#222}
+.vs-st{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.vs-sc{border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.vs-sh{display:flex;align-items:stretch;background:#e8f0fc}.vs-sh>b{background:#1f5fd1;color:#fff;font-size:20px;width:40px;display:flex;align-items:center;justify-content:center}
+.vs-sh span{flex:1;text-align:center;padding:8px 6px;font-size:18px;font-weight:800;color:#c0392b;line-height:1.2}
+.vs-sh small{display:block;font-size:13px;color:#333;font-weight:700;margin-top:2px}.vs-sh u{text-decoration:none;color:#c0392b;font-size:15px}
+.vs-sc h6{background:#2f4f86;color:#fff;text-align:center;font-size:15px;padding:8px 4px}
+.vs-sub{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px;flex:1}
+.vs-sub>div{display:flex;flex-direction:column;align-items:stretch;text-align:center}
+.vs-sub p{border:1px solid #d8e2f1;border-radius:6px;background:#f6f9fe;font-size:13px;line-height:1.45;padding:6px 4px;color:#333;min-height:68px}
+.vs-sub p em{display:block;font-style:normal;font-weight:800;color:#1d4f9a;font-size:13px;margin-bottom:2px}
+.vs-sub i{font-style:normal;color:#4a7fe0;font-size:12px;margin:3px 0}
+.vs-ut{flex:1;border:1px solid #f0d58a;background:#fffbea;border-radius:6px;font-size:13px;line-height:1.45;padding:0 4px 8px;color:#222;font-weight:600}
+.vs-ut b{display:block;background:#1d2f52;color:#fff;border-radius:5px 5px 0 0;margin:0 -4px 6px;padding:4px;font-size:14px}
+@media(max-width:1100px){.vs-st{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.vs-eco,.vs-st{grid-template-columns:1fr}.vs-slogan p{font-size:22px}.vs-wm img{height:38px}.vs-wm span{font-size:28px}.vs-acr{font-size:14px}.vs-tag{font-size:18px}}
 .ov-kt span{display:inline-block;margin-left:10px;color:var(--g);font-weight:600}
 .ov-tg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .ov-tg div{border:1px solid var(--line);border-radius:8px;padding:18px 10px;text-align:center;font-size:16px;color:#555;background:#fff}
@@ -1145,11 +1182,14 @@ const PAGES={
   <div class="aw-ul"><h5>울산 앵커사업</h5><p>울산광역시가 총괄하고 울산테크노파크 울산앵커센터가 운영을 지원하며, <b>울산대학교 · 울산과학대학교 · 춘해보건대학교</b> 3개 대학이 함께 참여합니다. 춘해보건대학교는 울산 유일의 보건의료 특성화 대학으로서 <b>보건의료·휴먼서비스 분야</b>의 인재양성과 지역 돌봄·건강·정주를 맡고 있습니다.</p></div>
  </section>
  <section>${stit('비전 및 핵심목표','Vision &amp; Key Targets')}
-  <div class="vgrid"><div><i>VISION</i><br>지역과 대학의 동반혁신을 책임지는 글로컬 보건의료·휴먼서비스 선도대학</div><div><i>목표</i><br>CH-U-RISE 기반 지역맞춤형 보건의료·휴먼서비스 상생협력 혁신생태계 구축</div></div>
-  <p class="kt ov-kt">핵심목표 : 인재가 지역에 닻을 내리고 머무는 ANCHOR <span>돌봄은 늘, 배움은 계속, 성공은 모두의 것</span></p>
-  <div class="ov-tg">${[['평생·직업교육 거버넌스','27건'],['유연학사제도 참여자','216명'],['재난 안전강화활동','5건'],['자가건강관리 프로그램 참여자','90명'],['늘봄·돌봄 프로그램','10건'],['지역활성화 산학협력 체결','10건'],['글로벌 교류프로그램','6건'],['외국인 학생 공인언어능력 취득','18명']].map(x=>`<div>${x[0]}<b>${x[1]}</b></div>`).join('')}</div>
-  <div class="ov-pl">${[['R','지역가치','지역체감 도시변화 혁신','울산형 안전대응체계·도시재생체계 혁신으로 지역이 체감하는 변화 창출'],['I','국제가치','지역성장 국제협력 혁신','울산형 국제역량 강화와 외국인 인재의 지역 정주 지원'],['S','사회가치','지역맞춤 사회공헌 혁신','울산형 의료대응체계·늘봄지원체계 혁신으로 돌봄 사각지대 해소'],['E','교육가치','지역정주 인재양성 혁신','울산형 인재양성 교육모델과 평생·직업교육 모델 혁신']].map(x=>`<div><h5><em>${x[0]}</em>${x[1]} · ${x[2]}</h5><p>${x[3]}</p></div>`).join('')}</div>
-  <p class="ov-note">* 핵심목표 수치는 사업계획서의 대학 중점관리지표 2029년 목표치입니다. &nbsp;* CH-U-RISE : ChoonHae leads Ulsan’s Regional · International · Social · Educational-values (춘해가 이끄는 울산의 지역·국제·사회·교육 가치)</p>
+  <div class="vs-slogan"><i>SLOGAN</i><p><em class="c1">돌봄</em>은 늘, <em class="c2">배움</em>은 계속, <em class="c3">성공</em>은 모두의 것</p></div>
+  <div class="vgrid vs-vg"><div><i>VISION</i><br>돌봄·배움·성공이 머무는 <span>보건의료·휴먼서비스 인재 정주 거점</span></div><div><i>목표</i><br>보건의료·휴먼서비스 융합 혁신으로 <span>인재 정주의 표준</span> 모델 정립</div></div>
+  <div class="vs-eco">${[['1','지역변화 혁신생태계','of U',['복합재난 안전관리 변화활동 증가','녹색도시 경관조성 변화활동 강화','문화관광 힐링활성 변화활동 확대']],['2','지역협력 혁신생태계','with U',['지역인재 양성 협력활동 강화','기업애로 지원 협력활동 증가','글로벌화 지원 협력활동 확대']],['3','지역공헌 혁신생태계','for U',['건강관리 지원 공헌활동 확대','늘봄돌봄 지원 공헌활동 증가','평생교육 지원 공헌활동 강화']]].map(x=>`<div><h5><b>${x[0]}</b>${x[1]}<small>${x[2]}</small></h5><ul>${x[3].map(y=>`<li>${y}</li>`).join('')}</ul></div>`).join('')}</div>
+  <div class="vs-core"><i>핵심가치</i><div class="vs-wm"><img src="img/앵커_워드마크.svg" alt="ANCHOR"><span>-U</span></div>
+   <p class="vs-acr">${[['A','ll-inclusive'],['N','urturing'],['C','are'],['H','ealthcare &amp;'],['H','umanservice'],['O','pen-hub'],['R','ooted –'],['U','lsan &amp;'],['U','(You)']].map(x=>`<span><b>${x[0]}</b>${x[1]}</span>`).join(' ')}</p>
+   <p class="vs-tag">울산에 닻을 내려, 모두에게 닿는다</p></div>
+  <h4 class="vs-h">추진전략 및 울산 앵커 단위과제 연계</h4>
+  <div class="vs-st">${[['1','돌봄은 늘','Care','지역맞춤 사회공헌혁신',[['C-1','울산형 안전대응체계 혁신','D2','U-MedTown 지역 완결형 의료체계 구축'],['C-2','울산형 늘봄지원체계 혁신','C2','With-U 맞춤형 돌봄생태계 조성']]],['2','배움은 계속','Learn','지역정주 인재양성혁신',[['L-1','울산형 인재교육체계 혁신','A1','U-LEAD 지역혁신 융합인재 양성'],['L-2','울산형 평생교육체계 혁신','C1','U-RUN 울산형 평생·직업교육 체계 구축']]],['3','성공은 모두의 것','Succeed','지역성장 교류협력혁신',[['S-1','울산형 산학협력체계 혁신','B1','산학 공동 R&amp;BD 상생 플랫폼 구축'],['S-2','울산형 국제협력체계 혁신','A3','글로벌 협력 거점 대학 육성']]],['4','동남권 인재정주 허브','Hub','지역체감 도시변화혁신',[['H-1','울산형 안전대응체계 혁신','B4','지·산·학·연 복합재난 안전교육 플랫폼 구축'],['H-2','울산형 도시재생체계 혁신','D3','지역과 문화가 함께하는 매력있는 꿀잼도시 조성']]]].map(x=>`<div class="vs-sc"><div class="vs-sh"><b>${x[0]}</b><span>${x[1]}<small><u>${x[2][0]}</u>${x[2].slice(1)}</small></span></div><h6>${x[3]}</h6><div class="vs-sub">${x[4].map(y=>`<div><p><em>${y[0]}</em>${y[1]}</p><i>▼</i><div class="vs-ut"><b>${y[2]}</b>${y[3]}</div></div>`).join('')}</div></div>`).join('')}</div>
  </section>
  <section>${stit('핵심 추진전략','Strategic Initiatives')}
   <div class="ov-si">${PROJ.map(p=>`<div class="ov-sc"><div class="ov-sh" style="background:${p.col}"><b>${p.c}. ${p.h}</b><small>Dynamic ${p.k}</small></div><ul>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<li><span style="background:${p.col}">${t.c}</span>${t.n}</li>`).join('')}</ul></div>`).join('')}</div>
