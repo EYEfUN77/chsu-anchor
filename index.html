@@ -50,6 +50,26 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .topbar a:hover{text-decoration:underline}
 .topbar .nlbtn{background:#fff;color:#1d4f9a;padding:5px 16px;border-radius:14px;font-weight:700}
 .topbar .nlbtn:hover{text-decoration:none;background:#e8f0fc}
+.topbar .tr{display:flex;align-items:center;gap:10px}
+.lang{position:relative}.lang-btn{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:4px 12px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
+.lang-btn:hover{background:rgba(255,255,255,.25)}
+.lang-ul{display:none;position:absolute;right:0;top:calc(100% + 6px);background:#fff;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:6px;min-width:140px;z-index:300;list-style:none;margin:0}
+.lang.open .lang-ul{display:block}.lang-ul a{display:block;padding:8px 12px;border-radius:6px;color:#222;font-size:14px;white-space:nowrap}.lang-ul a:hover{background:#eef4fd;text-decoration:none}.lang-ul a.on{color:#1d4f9a;font-weight:700}
+html.i18n-wait body{visibility:hidden}
+.lang-m{display:none}.util .lang-m .lang-btn{width:auto;height:auto;line-height:1.3;white-space:nowrap;color:inherit;border-color:currentColor;background:transparent;font-size:13px;padding:3px 9px}
+@media(max-width:1100px){.util .lang-m{display:block;align-self:center}}
+@media(max-width:600px){html:not([lang=ko]) .qicons a{font-size:11px}html:not([lang=ko]) .hcopy h1{font-size:28px;word-break:break-word}html:not([lang=ko]) .hcopy p{font-size:16px}}
+.lang-m{color:#fff}header.on .lang-m,header.sub .lang-m,header:hover .lang-m{color:var(--t)}
+html:not([lang=ko]) .qicons a{font-size:12.5px;gap:6px;line-height:1.2;padding:0 4px;text-align:center}
+html:not([lang=ko]) .qicons svg{width:30px;height:30px}
+html:not([lang=ko]) .gnb>li>a{font-size:18px}
+html:not([lang=ko]) .topbar{font-size:13px}
+html:not([lang=ko]) .topbar .tl{display:none}html:not([lang=ko]) .topbar .tr{margin-left:auto}
+html:not([lang=ko]) .dep2 a{white-space:normal;font-size:15.5px;line-height:1.35;padding:7px 0}
+html:not([lang=ko]) .topbar .tc{font-size:12.5px;padding:5px 10px}html:not([lang=ko]) .topbar .calbtn{white-space:nowrap}
+@media(max-width:1600px){html:not([lang=ko]) .gnb>li{padding:0 12px}html:not([lang=ko]) .gnb>li>a{font-size:17px}html:not([lang=ko]) .sysm a{font-size:14px;padding-left:12px;padding-right:12px}}
+@media(max-width:1500px){html:not([lang=ko]) .topbar .tc{display:none}}
+.goog-te-banner-frame,iframe.skiptranslate,#goog-gt-tt,.goog-te-balloon-frame,.VIpgJd-ZVi9od-ORHb-OEVmcd{display:none!important}body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:none!important}
 .topbar .calbtn{position:relative;overflow:hidden;background:linear-gradient(90deg,#ffd54a,#fff3b0,#ffd54a);background-size:200% 100%;color:#0f3a7a;animation:calglow 1.6s ease-in-out infinite,calbg 3s linear infinite}
 .topbar .calbtn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.95),transparent);transform:skewX(-20deg);animation:calshine 2.2s ease-in-out infinite}
 .topbar .calbtn:hover{background:#fff;animation:none}
@@ -738,17 +758,18 @@ header:hover::after,header:hover .dep2{display:none}
 @media(max-width:1100px){.ov-cols{grid-template-columns:1fr}.ov-tg,.ov-pl{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.ov-si{grid-template-columns:1fr}.ov-tg,.ov-pl{grid-template-columns:1fr 1fr}.ov-tg b{font-size:20px}.ov-org{padding:12px}.ov-sh{flex-direction:column;align-items:flex-start}}
 </style>
+<script>(function(){try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang');if(l&&/^(en|ja|zh|vi)$/.test(l))document.documentElement.classList.add('i18n-wait')}catch(e){}})()</script>
 </head>
 <body>
 <header id="hd">
- <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
+ <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><div class="lang" id="langSel"></div><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
  <div class="hd">
   <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
    <div><b class="lg-line"><img class="lg-full lg-w" src="img/앵커_로고_흰색.svg" alt="춘해보건대학교 ANCHOR 사업단"><img class="lg-full lg-b" src="img/앵커_로고_파랑.svg" alt=""></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
   </a>
   <ul class="gnb" id="gnb"></ul>
   <div class="sysm" id="sysm"></div>
-  <div class="util">
+  <div class="util"><div class="lang lang-m"></div>
    <button onclick="openMap(1)" aria-label="검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
    <button onclick="openMap()" aria-label="전체메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M6 12h15M3 18h18"/></svg></button>
   </div>
@@ -1658,6 +1679,40 @@ addEventListener('hashchange',route);
 addEventListener('scroll',()=>{if(!location.hash.replace(/^#\/?/,''))$('#hd').classList.toggle('on',scrollY>60)});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMap()});
 route();
+</script>
+<script>
+/* ===== 다국어(한/영/일/중/베) ===== 번역 사전: lang/{en,ja,zh,vi}.json (한국어 원문 → 번역) */
+(function(){
+ const LANGS=[['ko','한국어'],['en','English'],['ja','日本語'],['zh','中文'],['vi','Tiếng Việt']];
+ const WD={en:{월:'Mon',화:'Tue',수:'Wed',목:'Thu',금:'Fri',토:'Sat',일:'Sun'},ja:{월:'月',화:'火',수:'水',목:'木',금:'金',토:'土',일:'日'},zh:{월:'周一',화:'周二',수:'周三',목:'周四',금:'周五',토:'周六',일:'周日'},vi:{월:'T2',화:'T3',수:'T4',목:'T5',금:'T6',토:'T7',일:'CN'}};
+ const POSTED={en:'Posted',ja:'登録日',zh:'发布日期',vi:'Ngày đăng'};
+ let L='ko';try{L=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||'ko'}catch(e){}
+ if(!LANGS.some(x=>x[0]===L))L='ko';
+ window.setLang=function(l){try{localStorage.setItem('lang',l)}catch(e){}const u=new URL(location.href);u.searchParams.delete('lang');if(l!=='ko')u.searchParams.set('lang',l);document.cookie='googtrans=;path=/;max-age=0';document.cookie='googtrans=;path=/;domain='+location.hostname+';max-age=0';location.replace(u.toString())};
+ document.querySelectorAll('#langSel,.lang-m').forEach(box=>{box.innerHTML=`<button type="button" class="lang-btn" aria-haspopup="true" aria-label="Language">🌐 ${box.classList.contains('lang-m')?L.toUpperCase():LANGS.find(x=>x[0]===L)[1]+' ▾'}</button><ul class="lang-ul">${LANGS.map(x=>`<li><a href="javascript:void 0" lang="${x[0]}" class="notranslate${x[0]===L?' on':''}" onclick="setLang('${x[0]}')">${x[1]}</a></li>`).join('')}</ul>`;
+  box.querySelector('.lang-btn').onclick=e=>{e.stopPropagation();box.classList.toggle('open')};document.addEventListener('click',()=>box.classList.remove('open'))});
+ const done=()=>document.documentElement.classList.remove('i18n-wait');
+ if(L==='ko'){done();return}
+ document.documentElement.lang=L;
+ const H=/[가-힣]/;let D=null;
+ const rx=k=>{let m=k.match(/^등록일 (\d{4}-\d\d-\d\d) · (.+)$/);if(m)return POSTED[L]+' '+m[1]+' · '+(D[m[2]]||m[2]);
+  const w=k.replace(/\((월|화|수|목|금|토|일)\)/g,(a,b)=>L==='en'||L==='vi'?' ('+WD[L][b]+')':'('+WD[L][b]+')');if(w!==k&&!H.test(w))return w;return null};
+ const t=s=>{const k=s.trim();if(!k||!H.test(k))return null;const v=D[k]!=null?D[k]:rx(k);return v==null?null:s.replace(k,v)};
+ const ATTR=['placeholder','alt','title','aria-label'];
+ function apply(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const hit=new Set(),miss=new Set();
+  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest('script,style,.notranslate-keep'))continue;if(!H.test(n.nodeValue))continue;const v=t(n.nodeValue);if(v!=null){n.nodeValue=v;hit.add(p)}else miss.add(p)}
+  hit.forEach(p=>{if(!miss.has(p))p.classList.add('notranslate')});
+  (root.querySelectorAll?root:document).querySelectorAll('*').forEach(e=>ATTR.forEach(a=>{const v=e.getAttribute&&e.getAttribute(a);if(v&&H.test(v)){const r=t(v);if(r!=null)e.setAttribute(a,r)}}));
+  if(H.test(document.title))document.title=document.title.split(' | ').map(x=>t(x)||x).join(' | ')}
+ let obs,pend=false;
+ function run(){pend=false;obs.disconnect();apply(document.body);obs.takeRecords();obs.observe(document.body,{childList:true,subtree:true,characterData:true})}
+ function gt(){if(document.getElementById('gtx'))return;const c=document.createElement('div');c.id='gtx';c.style.display='none';document.body.appendChild(c);
+  document.cookie='googtrans=/ko/'+(L==='zh'?'zh-CN':L)+';path=/';
+  window.gtInit=function(){try{new google.translate.TranslateElement({pageLanguage:'ko',autoDisplay:false},'gtx')}catch(e){}};
+  const s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=gtInit';s.async=true;document.body.appendChild(s)}
+ fetch('lang/'+L+'.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{D=d;obs=new MutationObserver(()=>{if(!pend){pend=true;requestAnimationFrame(run)}});run();done();gt()}).catch(done);
+ setTimeout(done,2500);
+})();
 </script>
 </body>
 </html>
