@@ -84,6 +84,37 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .dc-note{margin-top:22px;background:#f6f8fb;border-radius:12px;padding:18px 22px;color:#444;line-height:1.7;font-size:15px}.dc-note a{color:#1d4f9a;text-decoration:underline}
 @media(max-width:900px){.dc-hero,.dc-why{grid-template-columns:1fr}.dc-feat{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.dc-feat{grid-template-columns:1fr}.dc-dl,.dc-ms{width:100%;justify-content:center}}
+.jb-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:linear-gradient(120deg,#1d4f9a,#2f74c9);color:#fff;border-radius:16px;padding:26px 30px;margin-bottom:22px}.jb-top p{font-size:18px;font-weight:600}.jb-top span{background:rgba(255,255,255,.16);padding:8px 16px;border-radius:20px;font-size:15px}.jb-top b{color:#ffd54a}
+.jb-list{display:grid;gap:14px}
+.jb-card{display:flex;justify-content:space-between;align-items:center;gap:20px;border:1px solid var(--line);border-radius:14px;padding:24px 28px;background:#fff;transition:.2s}.jb-card:hover{border-color:#1d4f9a;box-shadow:0 10px 28px rgba(29,79,154,.12);transform:translateY(-2px)}
+.jb-card.end{background:#fafbfc}.jb-card.end h4{color:#666}
+.jb-card small{display:block;color:var(--m);font-size:14px;margin:10px 0 4px}.jb-card h4{font-size:21px;line-height:1.4}
+.jb-badge{display:inline-block;font-size:13px;font-weight:700;padding:4px 12px;border-radius:14px}.jb-badge.on{background:#e7f6ec;color:#138a43}.jb-badge.soon{background:#fff4d6;color:#a86b00}.jb-badge.end{background:#eceff3;color:#6b7280}
+.jb-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.jb-tags i{font-style:normal;font-size:13px;background:#f1f5fb;color:#38516f;padding:4px 10px;border-radius:6px}
+.jb-r{text-align:right;flex-shrink:0}.jb-r b{display:block;font-size:16px}.jb-r span{display:block;color:var(--m);font-size:13px;margin:2px 0 10px}.jb-r em{font-style:normal;color:#1d4f9a;font-weight:700;font-size:15px}
+.jb-note{margin-top:18px;color:var(--m);font-size:14px}
+.jb-back{display:inline-block;color:#1d4f9a;font-weight:600;margin-bottom:16px}
+.jb-hero{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:32px 34px;background:linear-gradient(135deg,#f5f9ff,#fff 60%)}
+.jb-hero small{display:block;color:var(--m);margin:12px 0 4px}.jb-hero h3{font-size:30px;line-height:1.35}.jb-hero p{margin-top:8px;color:#444;font-size:17px}
+.jb-dd{min-width:250px;border-radius:14px;padding:20px 22px;background:#1d4f9a;color:#fff;text-align:center}.jb-dd.end{background:#6b7280}.jb-dd.soon{background:#b7791f}
+.jb-dd span{display:block;font-size:13px;opacity:.85;margin-bottom:6px}.jb-dd b{display:block;font-size:16px}.jb-dd em{display:block;font-style:normal;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.3);font-weight:700}
+.jb-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 10px}.jb-sum div{background:#f6f8fb;border-radius:12px;padding:16px 20px}.jb-sum span{display:block;font-size:13px;color:var(--m);margin-bottom:4px}.jb-sum b{font-size:16px;line-height:1.5}
+.jb-h{font-size:20px;margin:38px 0 14px;padding-left:12px;border-left:4px solid #1d4f9a}
+.jb-work{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.jb-work div{border:1px solid var(--line);border-radius:12px;padding:20px 22px}.jb-work i{font-style:normal;font-size:26px}.jb-work b{display:block;font-size:17px;margin:8px 0 4px}.jb-work p{color:#555;line-height:1.6;font-size:15px}
+.jb-req{display:grid;grid-template-columns:1fr 1fr;gap:12px}.jb-req>div{border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+.jb-req b{display:inline-block;font-size:13px;padding:3px 10px;border-radius:6px;margin-bottom:10px}.jb-req .must{background:#fde8e8;color:#c0392b}.jb-req .pref{background:#e8f0fc;color:#1d4f9a}
+.jb-req li{position:relative;padding-left:20px;line-height:1.8}.jb-req li::before{content:"✓";position:absolute;left:0;color:#1d4f9a;font-weight:700}
+.jb-tb{width:100%;border-collapse:collapse;border-top:2px solid #1d4f9a}.jb-tb th{width:160px;background:#f6f8fb;text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);font-weight:600}.jb-tb td{padding:14px 18px;border-bottom:1px solid var(--line)}
+.jb-step{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:js;list-style:none;padding:0}.jb-step li{list-style:none;counter-increment:js;position:relative;text-align:center;padding:0 8px}
+.jb-step li::before{content:counter(js);display:flex;align-items:center;justify-content:center;width:46px;height:46px;margin:0 auto 10px;border-radius:50%;background:#1d4f9a;color:#fff;font-weight:700;font-size:18px;position:relative;z-index:1}
+.jb-step li+li::after{content:"";position:absolute;top:23px;left:-50%;width:100%;height:2px;background:#c9d6ea}.jb-step b{display:block;font-size:16px}.jb-step span{font-size:14px;color:var(--m)}
+.jb-doc{display:grid;gap:8px}.jb-doc li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:12px 16px}.jb-doc li span{font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;flex-shrink:0}.jb-doc .must{background:#1d4f9a;color:#fff}.jb-doc .opt{background:#eceff3;color:#555}
+.jb-small{margin-top:10px;font-size:14px;color:var(--m)}.jb-small a{color:#1d4f9a;text-decoration:underline}
+.jb-how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.jb-how div{border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column}.jb-how i{font-style:normal;font-size:24px}.jb-how b{font-size:17px;margin:8px 0 6px}.jb-how p{color:#555;line-height:1.65;font-size:15px;flex:1}.jb-how a{margin-top:12px;color:#1d4f9a;font-weight:700}.jb-tel{font-size:20px;font-weight:800;color:#1d4f9a}
+.jb-warn{margin-top:30px;background:#fff8e6;border:1px solid #f4dfa8;border-radius:12px;padding:20px 24px}.jb-warn b{display:block;margin-bottom:8px}.jb-warn li{position:relative;padding-left:14px;line-height:1.8;color:#5b4a1e}.jb-warn li::before{content:"·";position:absolute;left:2px;font-weight:700}
+.jb-btns{display:flex;justify-content:center;gap:12px;margin-top:34px}.jb-btns a{padding:14px 34px;border-radius:10px;font-weight:700;font-size:17px}.jb-list-btn{border:2px solid #1d4f9a;color:#1d4f9a}.jb-apply{background:#1d4f9a;color:#fff}
+@media(max-width:900px){.jb-hero{grid-template-columns:1fr}.jb-sum,.jb-work,.jb-how{grid-template-columns:1fr 1fr}.jb-req{grid-template-columns:1fr}.jb-card{flex-direction:column;align-items:flex-start}.jb-r{text-align:left}}
+@media(max-width:600px){.jb-sum,.jb-work,.jb-how{grid-template-columns:1fr}.jb-step{grid-template-columns:1fr 1fr;row-gap:20px}.jb-step li::after{display:none}.jb-hero h3{font-size:23px}.jb-tb th{width:100px}}
 .topbar .tl,.topbar .tc{white-space:nowrap}
 @media(max-width:1600px){.topbar{font-size:14px;padding:0 24px}.topbar .tl a+a::before,.topbar .tc a+a::before{margin:0 6px}.topbar .tc{padding:5px 12px}}
 @media(max-width:1100px){.topbar .tc{display:none}.topbar{padding:0 20px}}
@@ -754,7 +785,7 @@ header:hover::after,header:hover .dep2{display:none}
 /* ===== 메뉴 구성 (울산대 앵커사업단과 동일한 4개 대메뉴·12개 소메뉴) ===== */
 const MENU=[
  {t:'춘해보건대 앵커사업',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','조직 및 연락처'],['location','오시는 길']]},
- {t:'공지·신청',c:[['notice','공지사항'],['call','과제공고'],['equip','공용장비 신청']]},
+ {t:'공지·신청',c:[['notice','공지사항'],['call','과제공고'],['jobs','채용공고'],['equip','공용장비 신청']]},
  {t:'알림·소식',c:[['press','언론보도'],['gallery','포토갤러리'],['video','홍보영상'],['newsletter','뉴스레터']]},
  {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]}
 ];
@@ -1328,7 +1359,43 @@ function calPage(){return `<div class="svis" style="--sv:url(img/${SVBG[0]})"><p
  <p class="dc-note">일정은 내 구글 계정에만 저장되며 개발자 서버에는 저장하지 않습니다. 자세한 기능과 개인정보처리방침은 <a href="${DC.site}" target="_blank" rel="noopener">바탕화면 달력 공식 사이트</a>에서 확인할 수 있습니다.</p></section>
  </div>`}
 function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></div>`}
+const JOBS=[
+ {t:'앵커사업단 연구원(행정사무) 채용',org:'춘해보건대학교 산학협력단',dept:'앵커사업단',pos:'연구원(행정사무)',n:1,emp:'계약직(기간제)',career:'경력 무관 · 신입 가능',edu:'전문대학(2·3년제) 이상 졸업(예정)자',pay:'월 230만원 (주 40시간)',place:'울산 울주군 웅촌면',
+  open:'2026-11-10T00:00',close:'2026-11-16T15:00',term:'2026년 11월 ~ 사업 종료 시까지',start:'2026년 11월(예정)',
+  work:[['📋','프로그램 운영','앵커사업단 프로그램을 담당하고 운영합니다.'],['🗂️','사업단 행정','사업단 행정 업무와 문서 관리를 처리합니다.'],['🤝','사업 지원','산학협력단의 연구·개발 사업을 지원합니다.']],
+  req:['전문대학(2·3년제) 이상 졸업자 또는 졸업예정자','울산지역 근무 가능자'],pref:['국가프로젝트 수행 경험자'],major:'',apply:'',ch:'https://www.ch.ac.kr'},
+ {t:'산학협력단 앵커사업단 연구원 채용',org:'춘해보건대학교 산학협력단',dept:'앵커사업단',pos:'연구원(행정사무)',n:1,emp:'계약직(사업 종료 시까지)',career:'경력 무관',edu:'전문대학 이상 졸업자',pay:'월 230만원',place:'울산 울주군 웅촌면',
+  open:'2026-10-20T00:00',close:'2026-10-26T15:00',term:'2026년 10월 ~ 사업 종료 시까지',start:'2026년 10월(예정)',
+  work:[['📋','프로그램 운영','앵커사업단 프로그램을 담당하고 운영합니다.'],['🗂️','사업단 행정','사업단 행정 업무와 문서 관리를 처리합니다.'],['🤝','사업 지원','산학협력단의 연구·개발 사업을 지원합니다.']],
+  req:['전문대학 이상 졸업자','울산지역 근무 가능자'],pref:['국가프로젝트 수행 경험자'],major:'행정학 · 경영학 · 금융·회계·세무학',apply:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K131212610200051&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet',ch:'https://www.ch.ac.kr'}
+];
+const JOB_DOCS=[['이력서 (본교 소정양식)',1],['개인정보처리동의서 (본교 소정양식)',1],['자기소개서 (본교 소정양식)',1],['최종 성적증명서 및 졸업증명서',1],['경력·재직증명서, 자격증 사본',0]];
+function jobSt(j){const now=new Date(),o=new Date(j.open),c=new Date(j.close);if(now<o)return{k:'soon',l:'접수예정'};if(now>c)return{k:'end',l:'마감'};const d=Math.ceil((new Date(j.close.slice(0,10))-new Date(now.toDateString()))/864e5);return{k:'on',l:d<=0?'오늘 마감':'D-'+d}}
+const jd=s=>{const d=new Date(s),w='일월화수목금토'[d.getDay()];return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}(${w})`+(s.slice(11)!=='00:00'?' '+s.slice(11):'')};
+function jobsPage(idx){if(idx!=null&&JOBS[idx])return jobView(idx);
+ const on=JOBS.filter(j=>jobSt(j).k!=='end').length;
+ return `<section>${stit('채용공고','Recruitment')}
+ <div class="jb-top"><p>춘해보건대학교 앵커사업단과 함께 지역의 미래를 만들어 갈 인재를 찾습니다.</p><span>진행 중인 공고 <b>${on}</b>건 · 전체 <b>${JOBS.length}</b>건</span></div>
+ <div class="jb-list">${JOBS.map((j,i)=>{const st=jobSt(j);return `<a class="jb-card ${st.k}" href="#/jobs/${i}"><div class="jb-l"><span class="jb-badge ${st.k}">${st.l}</span><small>${j.org} · ${j.dept}</small><h4>${j.t}</h4><div class="jb-tags"><i>${j.emp.replace(/\(.*\)/,'')}</i><i>${j.career.split('·')[0].trim()}</i><i>${j.edu.replace(/ 이상.*/,' 이상')}</i><i>${j.place.split(' ').slice(0,2).join(' ')}</i></div></div><div class="jb-r"><b>${jd(j.open).slice(5,10)} ~ ${jd(j.close).slice(5)}</b><span>접수기간</span><em>자세히 보기 ›</em></div></a>`}).join('')}</div>
+ <p class="jb-note">※ 채용 관련 문의: 춘해보건대학교 산학협력단 052-270-0484</p></section>`}
+function jobView(i){const j=JOBS[i],st=jobSt(j);
+ return `<section class="jb-v">
+ <a class="jb-back" href="#/jobs">‹ 채용공고 목록</a>
+ <div class="jb-hero"><div><span class="jb-badge ${st.k}">${st.k==='end'?'접수 마감':st.k==='soon'?'접수 예정':'접수중 · '+st.l}</span><small>${j.org}</small><h3>${j.t}</h3><p>${j.dept} · ${j.pos} · ${j.n}명</p></div>
+  <div class="jb-dd ${st.k}"><span>접수기간</span><b>${jd(j.open).slice(0,14)}</b><b>~ ${jd(j.close)}</b>${st.k==='end'?'<em>본 공고는 마감되었습니다</em>':st.k==='on'?`<em>마감까지 ${st.l}</em>`:''}</div></div>
+ <div class="jb-sum">${[['고용형태',j.emp],['경력',j.career],['학력',j.edu],['급여',j.pay],['근무지',j.place],['임용예정',j.start]].map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b></div>`).join('')}</div>
+ <h4 class="jb-h">담당 업무</h4><div class="jb-work">${j.work.map(w=>`<div><i>${w[0]}</i><b>${w[1]}</b><p>${w[2]}</p></div>`).join('')}</div>
+ <h4 class="jb-h">자격 요건</h4><div class="jb-req"><div><b class="must">필수</b><ul>${j.req.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><b class="pref">우대</b><ul>${j.pref.map(x=>`<li>${x}</li>`).join('')}${j.major?`<li>모집 전공: ${j.major}</li>`:''}</ul></div></div>
+ <h4 class="jb-h">근무 조건</h4><table class="jb-tb"><tr><th>소속</th><td>${j.org} ${j.dept}</td></tr><tr><th>직책 · 직무</th><td>${j.pos}</td></tr><tr><th>계약 기간</th><td>${j.term}</td></tr><tr><th>보수</th><td>${j.pay}</td></tr><tr><th>기타 처우</th><td>산학협력단 기준에 따름</td></tr></table>
+ <h4 class="jb-h">전형 절차</h4><ol class="jb-step"><li><b>서류 접수</b><span>${jd(j.close).slice(5)}까지</span></li><li><b>서류 전형</b><span>제출 서류 심사</span></li><li><b>면접 전형</b><span>서류 합격자 대상</span></li><li><b>최종 합격</b><span>결과 개별 통지</span></li></ol>
+ <h4 class="jb-h">제출 서류</h4><ul class="jb-doc">${JOB_DOCS.map(d=>`<li><span class="${d[1]?'must':'opt'}">${d[1]?'필수':'해당자'}</span>${d[0]} 각 1부</li>`).join('')}</ul>
+ <p class="jb-small">※ 본교 소정양식은 <a href="${j.ch}" target="_blank" rel="noopener">춘해보건대학교 홈페이지</a> 채용 공고에서 내려받아 작성합니다.</p>
+ <h4 class="jb-h">접수 방법 및 문의</h4><div class="jb-how"><div><i>🏫</i><b>방문 · 우편 접수</b><p>(44965) 울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 도생관 211호 산학협력단</p><a href="${KMAP.map}" target="_blank" rel="noopener">지도 보기 ›</a></div><div><i>💻</i><b>온라인 접수</b><p>고용24 또는 홈페이지 접수<br>(공고별 접수처 확인)</p>${j.apply?`<a href="${j.apply}" target="_blank" rel="noopener">고용24 공고 보기 ›</a>`:''}</div><div><i>📞</i><b>채용 문의</b><p>산학협력단<br><span class="jb-tel">052-270-0484</span></p><a href="tel:0522700484">전화 걸기 ›</a></div></div>
+ <div class="jb-warn"><b>유의사항</b><ul><li>접수 기한까지 도착한 서류만 인정합니다.</li><li>심사 결과는 개별 통지하며, 계약제로 임용합니다.</li><li>해당 분야 적격자가 없을 경우 채용하지 않을 수 있습니다.</li></ul></div>
+ <div class="jb-btns"><a class="jb-list-btn" href="#/jobs">목록으로</a>${st.k==='on'&&j.apply?`<a class="jb-apply" href="${j.apply}" target="_blank" rel="noopener">지원하기</a>`:''}</div>
+ </section>`}
 const PAGES={
+ jobs:idx=>jobsPage(idx),
  greeting:()=>`
  <section>${stit('사업단장 인사말','Greeting')}
   <div class="gban">${ART('greet')}<span>ANCHOR</span><small>사업단장 사진 영역</small></div>
