@@ -263,6 +263,35 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .oside{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
 .olink{height:2px;background:#b8c8e4;border-top:2px dashed #b8c8e4;background:none}
 .ospace{grid-column:5}
+.oc{--ln:#9DB3D6;display:flex;flex-direction:column;align-items:center;padding:10px 0}
+.oc-top{padding:22px 56px;border-radius:20px;border:4px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#3B82F6,#0F3D7A) border-box;font-size:28px;font-weight:900;letter-spacing:-.5px;text-align:center}
+.oc-top em{font-style:normal;color:var(--g)}
+.oc-v{width:2px;height:34px;background:var(--ln);flex:none}
+.oc-vf{width:2px;flex:1;min-height:28px;background:var(--ln)}
+.oc-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);width:100%;max-width:1060px}
+.oc-mid{display:flex;flex-direction:column;align-items:center}
+.oc-side{display:flex;align-items:center;justify-content:flex-start}
+.oc-side.l{justify-content:flex-end}
+.oc-h{flex:1;height:2px;background:var(--ln);min-width:20px}
+.oc-grp{display:flex;flex-direction:column;gap:10px}
+.oc-br{align-self:stretch;width:16px;border:2px solid var(--ln);border-left:0;border-radius:0 6px 6px 0;margin:26px 0;flex:none}
+.oc-n{border-radius:14px;padding:15px 26px;font-weight:800;text-align:center;font-size:17px;line-height:1.35}
+.oc-n.pres{background:#0a1f44;color:#fff;min-width:200px;font-size:19px}
+.oc-n.main{background:var(--g);color:#fff;font-size:23px;padding:22px 52px;box-shadow:0 10px 24px rgba(31,95,209,.28)}
+.oc-n.cm{background:#2f4f86;color:#fff;font-size:16px;min-width:190px}
+.oc-n.cm.ev{background:#5b6f94}
+.oc-n.sub{background:#fff;color:var(--g);border:2px solid var(--g);font-size:19px;min-width:200px}
+.oc-n.hq{background:#eef3fb;color:#0a1f44;border:1px solid #c7d9f7;font-size:17px;min-width:240px}
+.oc-n.hq small{display:block;font-weight:500;font-size:14px;color:#55607a;margin-top:4px}
+.oc-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;width:100%}
+.oc-col{position:relative;padding-top:34px}
+.oc-col::before{content:"";position:absolute;top:0;left:-8px;right:-8px;height:2px;background:var(--ln)}
+.oc-col:first-child::before{left:50%}.oc-col:last-child::before{right:50%}
+.oc-col::after{content:"";position:absolute;top:0;left:calc(50% - 1px);width:2px;height:34px;background:var(--ln)}
+.oc-ph{border-radius:14px;padding:16px 10px;text-align:center;font-weight:900;font-size:18px;color:#10213f}
+.oc-t{margin-top:10px;background:#f4f7fc;border:1px solid #e3eaf5;border-radius:12px;padding:14px;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5}
+.oc-t b{flex:none;border-radius:6px;padding:2px 8px;font-size:13px;color:#10213f}
+@media(max-width:680px){.oc-top{font-size:20px;padding:16px 22px}.oc-n{padding:10px;font-size:13px}.oc-n.main{font-size:15px;padding:14px}.oc-n.cm{min-width:0;font-size:12px;padding:8px 6px}.oc-n.sub{min-width:0;font-size:15px;padding:10px 16px}.oc-n.hq{min-width:0;font-size:13px}.oc-n.hq small{font-size:11px}.oc-n.pres{min-width:0;font-size:15px;padding:10px 30px}.oc-br{width:8px;margin:18px 0}.oc-h{min-width:8px}.oc-cols{grid-template-columns:1fr 1fr;gap:10px}.oc-col{padding-top:0}.oc-col::before,.oc-col::after{display:none}.oc-t{font-size:13px;padding:10px}.oc-ph{font-size:15px}}
 /* ===== 모바일 최적화 ===== */
 @media(max-width:680px){
 header,header.on,header.sub{height:64px}
@@ -617,16 +646,24 @@ const PAGES={
  const groups=[...new Set(C.map(c=>c[0]))];
  return `
  <section>${stit('사업단 조직도','Organization')}
-  <div class="org">
-   <div class="on top">총장</div><div class="ol"></div>
-   <div class="orow2"><div class="oside"><div class="on side">사업추진위원회<br>사업운영위원회</div><div class="on side">자체평가위원회</div></div><div class="olink"></div><div class="on main">ANCHOR 사업단장</div><div class="ospace"></div></div>
-   <div class="ol"></div>
-   <div class="on sub">본부장</div><div class="ol"></div><div class="on sub">부단장</div>
-   <div class="ol"></div>
-   <div class="on hq">사업단 본부<small>기획 · 성과관리 · 구매·지출 · 시설</small></div>
-   <div class="ol"></div>
-   <div class="ogrid">${PROJ.map(p=>`<div class="ocol"><div class="oph" style="background:${p.col}">Dynamic ${p.k}</div>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<div class="otask"><b>${t.c}</b>${t.n}</div>`).join('')}</div>`).join('')}</div>
-  </div>
+  <div class="oc">
+ <div class="oc-top">춘해보건대학교 <em>ANCHOR 사업단</em></div>
+ <div class="oc-v"></div>
+ <div class="oc-n pres">총장</div>
+ <div class="oc-row">
+  <div class="oc-side l"><div class="oc-grp"><div class="oc-n cm">사업추진위원회</div><div class="oc-n cm">사업운영위원회</div><div class="oc-n cm ev">자체평가위원회</div></div><div class="oc-br"></div><div class="oc-h"></div></div>
+  <div class="oc-mid"><div class="oc-vf"></div><div class="oc-n main">ANCHOR 사업단장</div><div class="oc-vf"></div></div>
+  <div class="oc-side"></div>
+ </div>
+ <div class="oc-row">
+  <div class="oc-side"></div>
+  <div class="oc-mid"><div class="oc-vf"></div><div class="oc-n sub">본부장</div><div class="oc-vf"></div></div>
+  <div class="oc-side"><div class="oc-h"></div><div class="oc-n hq">사업단 본부<small>기획 · 성과관리 · 구매·지출 · 시설</small></div></div>
+ </div>
+ <div class="oc-n sub">부단장</div>
+ <div class="oc-v"></div>
+ <div class="oc-cols">${PROJ.map(p=>`<div class="oc-col"><div class="oc-ph" style="background:${p.col}">Dynamic ${p.k}</div>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<div class="oc-t"><b style="background:${p.col}">${t.c}</b><span>${t.n}</span></div>`).join('')}</div>`).join('')}</div>
+</div>
   <p class="note">ANCHOR 사업단은 총장 직속 조직으로, 참여 교직원 131명이 8개 과제팀으로 사업을 수행합니다.</p>
  </section>
  <section>${stit('사업단 연락처','Contact')}
