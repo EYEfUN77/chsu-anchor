@@ -355,6 +355,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .hcopy h1,.dbig,.banner h3,.svis h2{font-family:'S-Core Dream',Pretendard,sans-serif}
 .banner h3{font-size:26px;letter-spacing:-.5px}
 .ptop h2,.box h4,.stit h3,#dbody h2,.dmid h2,.smap h3,.eqh,.tcard h4,.pcards h4{font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700}
+.logo b{white-space:nowrap}
 /* ===== 모바일 최적화 ===== */
 @media(max-width:680px){
 header,header.on,header.sub{height:64px}
@@ -851,6 +852,13 @@ function route(){const h=location.hash.replace(/^#\/?/,'').split('/');const id=h
  document.querySelectorAll('.gnb>li').forEach((li,i)=>li.classList.toggle('cur',!!id&&MENU[i].c.some(c=>c[0]===id)));
  const t=findMenu(id);document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:'춘해보건대학교 앵커사업단';
  if(!id||!t)homeInit();else{clearInterval(heroT);clearInterval(dynT)}}
+/* 로고: 국문 큰 글자 폭을 영문 줄 폭에 맞춤(자간 자동 조정) */
+function fitLogo(){document.querySelectorAll('.logo').forEach(l=>{const b=l.querySelector('b'),m=l.querySelector('small');if(!b||!m)return;b.style.letterSpacing='';b.style.marginRight='';
+ if(!m.offsetWidth)return;const w=e=>{const r=document.createRange();r.selectNodeContents(e);return r.getBoundingClientRect().width};
+ const n=[...b.textContent].length;if(n<2)return;let ls=parseFloat(getComputedStyle(b).letterSpacing)||0;
+ const mt=parseFloat(getComputedStyle(m).letterSpacing)||0;for(let i=0;i<4;i++){const d=(w(m)-mt)-(w(b)-ls);if(Math.abs(d)<.2)break;ls+=d/(n-1);b.style.letterSpacing=ls+'px'}
+ b.style.marginRight=(-ls)+'px'})}
+addEventListener('resize',fitLogo);if(document.fonts)document.fonts.ready.then(fitLogo);addEventListener('load',fitLogo);fitLogo();
 addEventListener('hashchange',route);
 addEventListener('scroll',()=>{if(!location.hash.replace(/^#\/?/,''))$('#hd').classList.toggle('on',scrollY>60)});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMap()});
