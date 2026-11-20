@@ -41,6 +41,15 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .topbar .nlbtn{background:var(--g2);color:#fff;padding:5px 16px;border-radius:14px;font-weight:600}
 .topbar .nlbtn:hover{text-decoration:none;background:var(--g)}
 @media(max-width:1100px){.topbar .tc{display:none}.topbar{padding:0 20px}}
+.gban{height:340px;border-radius:24px;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 60%,#3b82f6);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;padding:36px 44px;color:#fff;margin-bottom:60px}
+.gban::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.08) 0 2px,transparent 2px 30px)}
+.gban span{position:relative;font-size:64px;font-weight:800;letter-spacing:2px;opacity:.9}.gban small{position:relative;font-size:13px;opacity:.75}
+.gwrap{display:grid;grid-template-columns:1fr 1.6fr;gap:60px}
+.ghead{font-size:30px;line-height:1.45;font-weight:800;letter-spacing:-.5px}.ghead em{font-style:normal;color:var(--g)}
+.gbody p{font-size:16px;line-height:1.95;color:#444;margin-bottom:18px}
+.gbody .gintro{font-size:19px;font-weight:700;color:var(--t)}
+.gbody .gsign{text-align:right;margin-top:30px;color:#555}.gsign b{display:inline-block;margin-left:14px;font-size:22px;color:var(--t);letter-spacing:2px}
+@media(max-width:900px){.gwrap{grid-template-columns:1fr;gap:24px}.gban{height:220px}.gban span{font-size:40px}.ghead{font-size:24px}}
 /* sitemap */
 #sitemap{position:fixed;inset:0;background:rgba(10,31,68,.97);z-index:100;display:none;color:#fff;overflow:auto}
 #sitemap.open{display:block}
@@ -271,7 +280,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:13px}
 <script>
 /* ===== 메뉴 구성 (울산대 앵커사업단과 동일한 4개 대메뉴·12개 소메뉴) ===== */
 const MENU=[
- {t:'춘해보건대 앵커사업',c:[['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','담당자 안내'],['location','오시는 길']]},
+ {t:'춘해보건대 앵커사업',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','담당자 안내'],['location','오시는 길']]},
  {t:'알림·소식',c:[['notice','공지사항'],['press','언론보도'],['call','과제공고'],['video','홍보영상']]},
  {t:'뉴스레터',c:[['newsletter','뉴스레터']]},
  {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]}
@@ -430,6 +439,25 @@ function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classLis
 /* ===== 서브페이지 ===== */
 function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></div>`}
 const PAGES={
+ greeting:()=>`
+ <section>${stit('사업단장 인사말','Greeting')}
+  <div class="gban"><span>ANCHOR</span><small>사업단장 사진 영역</small></div>
+  <div class="gwrap">
+   <h3 class="ghead">춘해보건대학교 앵커사업단<br>홈페이지를 방문해주신 여러분을<br><em>진심으로 환영합니다.</em></h3>
+   <div class="gbody">
+    <p class="gintro">춘해보건대학교 앵커사업단장 김기홍입니다.</p>
+    <p>울산은 대한민국 산업 발전을 이끌어 온 도시이자, 이제는 초고령사회 진입과 청년 인구 유출, 늘어나는 의료·돌봄 수요라는 새로운 과제와 마주하고 있습니다. 시민 누구나 살던 곳에서 건강하게 배우고 일하며 머물 수 있는 도시를 만드는 일은 이제 지역과 대학이 함께 풀어야 할 공동의 과제가 되었습니다.</p>
+    <p>춘해보건대학교는 1968년 개교 이래 보건의료 전문인력 양성에 힘써 온 울산 유일의 보건의료 특성화 대학입니다. 우리 대학은 'CH-U-RISE 기반 지역맞춤형 보건의료·휴먼서비스 상생협력 혁신생태계 구축'이라는 비전 아래, 울산광역시와 함께 지역성장 인재양성체계(ANCHOR·앵커) 사업을 힘차게 추진하고 있습니다.</p>
+    <p>앵커사업단은 "돌봄은 늘, 배움은 계속, 성공은 모두의 것"이라는 슬로건처럼, 인재가 지역에 닻을 내리고 머무는 울산을 만들고자 합니다. Dynamic TALENT·BRIDGE·JUMP·CARE 4대 프로젝트의 8개 단위과제를 통해 재학생부터 재직자, 성인학습자, 외국인 유학생, 아동과 어르신에 이르기까지 지역 구성원 모두의 성장을 지원하고 있습니다.</p>
+    <p>이를 위해 CH-U-RUN센터, 건강안전지원센터, AI헬스케어빅데이터센터, 수목진단센터, 기업협업지원센터, 한국어교육센터를 중심으로 지역 맞춤형 전문인재 양성, 기업과 상생하는 산학협력, 생애 전 주기 평생·직업교육, 그리고 지역의 건강·돌봄·안전 지원에 모든 역량을 모으고 있습니다.</p>
+    <p>그러나 앵커사업의 성과는 대학의 노력만으로 완성되지 않습니다. 울산광역시와 지역 의료·복지기관, 산업체, 동남권 협력대학, 그리고 시민 여러분의 관심과 참여가 함께할 때 비로소 지역의 변화로 이어집니다. 우리 사업단은 언제나 열린 자세로 소통하며, 지역과 함께 걷는 든든한 동반자가 되겠습니다.</p>
+    <p>춘해보건대학교가 지역과 함께 성장하는 보건의료·휴먼서비스 혁신대학으로 나아가는 길에 여러분의 따뜻한 격려와 응원을 부탁드립니다.</p>
+    <p>감사합니다.</p>
+    <p class="gsign">춘해보건대학교 앵커사업단장<b>김 기 홍</b></p>
+   </div>
+  </div>
+ </section>`,
+
  overview:()=>`
  <section>${stit('비전 및 핵심목표','Vision & Slogan')}
   <div class="vgrid"><div><i>VISION</i><br>CH-U-RISE 기반 지역맞춤형 보건의료·휴먼서비스 상생협력 혁신생태계 구축</div><div><i>SLOGAN</i><br>돌봄은 늘, 배움은 계속, 성공은 모두의 것</div></div>
