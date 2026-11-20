@@ -97,7 +97,7 @@ html,body{overflow-x:hidden}
 .s3{background:radial-gradient(circle at 70% 70%,rgba(59,130,246,.5),transparent 50%),linear-gradient(135deg,#123f80,#1f5fd1 50%,#4a8cf7)}
 .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 55%,rgba(0,0,0,.1)),linear-gradient(180deg,rgba(0,0,0,.25),transparent 30%,transparent 70%,rgba(0,0,0,.35))}
 .hero .slide.s1,.hero .slide.s2,.hero .slide.s3{background:#222}
-.hero .slide.s1 .hbg{object-position:62% 40%}
+.hero .slide.s1 .hbg{object-position:66% 45%}
 .hero .slide.s3 .hbg{object-position:60% 50%}
 .ring{position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%}
 .hcopy{position:absolute;left:8%;top:31%;z-index:2}
@@ -935,7 +935,7 @@ function doSearch(e){e.preventDefault();const q=$('#q').value.trim();if(!q)retur
 
 /* ===== 메인 ===== */
 /* 메인 배경 사진(앵커사업 활동 사진, img/) — 순서대로 슬라이드 1·2·3 */
-const HERO_BG=['img/hero01.jpg','img/act08.jpg','img/hero04.jpg'];
+const HERO_BG=['img/hero05.jpg','img/act08.jpg','img/hero04.jpg'];
 let heroT,heroI=0,heroPlay=true;
 function home(){
  const slides=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
