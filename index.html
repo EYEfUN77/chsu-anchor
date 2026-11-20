@@ -286,6 +286,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .oc-n{border-radius:14px;padding:15px 26px;font-weight:800;text-align:center;font-size:17px;line-height:1.35}
 .oc-n.pres{background:#0a1f44;color:#fff;min-width:200px;font-size:19px}
 .oc-n.main{background:var(--g);color:#fff;font-size:23px;padding:22px 52px;box-shadow:0 10px 24px rgba(31,95,209,.28)}
+.oc-n.main small{display:block;font-size:15px;font-weight:500;opacity:.88;margin-top:6px}
 .oc-n.cm{background:#2f4f86;color:#fff;font-size:16px;min-width:190px}
 .oc-n.cm.ev{background:#5b6f94}
 .oc-n.sub{background:#fff;color:var(--g);border:2px solid var(--g);font-size:19px;min-width:200px}
@@ -1098,21 +1099,12 @@ const PAGES={
  return `
  <section>${stit('사업단 조직도','Organization')}
   <div class="oc">
- <div class="oc-n pres">총장</div>
- <div class="oc-v"></div>
  <div class="oc-top">춘해보건대학교 <em>ANCHOR 사업단</em></div>
  <div class="oc-row">
   <div class="oc-side l"><div class="oc-grp"><div class="oc-n cm">사업추진위원회</div><div class="oc-n cm">사업운영위원회</div><div class="oc-n cm ev">자체평가위원회</div></div><div class="oc-br"></div><div class="oc-h"></div></div>
-  <div class="oc-mid"><div class="oc-vf"></div></div>
+  <div class="oc-mid"><div class="oc-vf"></div><div class="oc-n main">ANCHOR 사업단 본부<small>기획 · 성과관리 · 구매·지출 · 시설</small></div><div class="oc-vf"></div></div>
   <div class="oc-side"></div>
  </div>
- <div class="oc-n main">ANCHOR 사업단장</div>
- <div class="oc-row">
-  <div class="oc-side"></div>
-  <div class="oc-mid"><div class="oc-vf"></div><div class="oc-n sub">본부장</div><div class="oc-vf"></div></div>
-  <div class="oc-side"><div class="oc-h"></div><div class="oc-n hq">사업단 본부<small>기획 · 성과관리 · 구매·지출 · 시설</small></div></div>
- </div>
- <div class="oc-n sub">부단장</div>
  <div class="oc-v"></div>
  <div class="oc-cols">${PROJ.map(p=>`<div class="oc-col"><div class="oc-ph" style="background:${p.col}">Dynamic ${p.k}</div>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<div class="oc-t"><b style="background:${p.col}">${t.c}</b><span>${t.n}</span></div>`).join('')}</div>`).join('')}</div>
 </div>
