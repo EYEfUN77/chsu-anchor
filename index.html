@@ -921,7 +921,7 @@ function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return
 $('#hd').style.setProperty('--mh',(Math.max(...MENU.map(m=>m.c.length))*46+56)+'px');
 $('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div class="dep2">${m.c.map(c=>`<a href="#/${c[0]}">${c[1]}</a>`).join('')}</div></li>`).join('');
 /* 우측 강조 메뉴 — url에 시스템 주소를 넣으면 바로 연결됩니다 */
-const SYS=[{t:'예산/성과관리 시스템',i:'📊',url:''},{t:'평가 시스템',i:'📝',url:'https://script.google.com/macros/s/AKfycbzcyHEVsBlKplMqJCz9nj7ZImDHPb14ZpEr41SwSR88_CEqAXnDx0rEgPGt4fCSNi9R/exec'}];
+const SYS=[{t:'예산/성과관리 시스템',i:'📊',url:'https://claude.ai/artifact/PtoBdwBfaVEdKwNuvaurML'},{t:'평가 시스템',i:'📝',url:'https://script.google.com/macros/s/AKfycbzcyHEVsBlKplMqJCz9nj7ZImDHPb14ZpEr41SwSR88_CEqAXnDx0rEgPGt4fCSNi9R/exec'}];
 function sysHTML(){return SYS.map((x,j)=>x.url?`<a class="s${j}" href="${x.url}" target="_blank" rel="noopener">${x.t}</a>`:`<a class="s${j}" href="javascript:void(0)" onclick="sysToast('${x.t}')">${x.t}</a>`).join('')}
 function sysToast(t){let d=document.getElementById('systoast');if(!d){d=document.createElement('div');d.id='systoast';document.body.appendChild(d)}d.textContent=t+'은(는) 연결 준비 중입니다.';d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2200)}
 $('#sysm').innerHTML=sysHTML();$('#sysm2').innerHTML=sysHTML();
