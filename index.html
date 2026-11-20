@@ -524,6 +524,7 @@ header:hover::after,header:hover .dep2{display:none}
 .ov-sc li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:16px;color:#333;border-bottom:1px dashed #e6eaf0;line-height:1.5}
 .ov-sc li:last-child{border-bottom:0}
 .ov-sc li span{flex:none;border-radius:5px;padding:1px 8px;font-size:13px;font-weight:800;color:#10213f;margin-top:2px}
+.ov-oh{font-size:20px;margin:40px 0 14px;color:#222}
 .ov-org{border:1px solid var(--line);border-radius:12px;background:#f8fafd;padding:22px}
 .ov-top{text-align:center;margin-bottom:16px}
 .ov-top b{display:inline-block;background:#0a1f44;color:#fff;border-radius:10px;padding:10px 40px;font-size:17px}
@@ -545,6 +546,7 @@ header:hover::after,header:hover .dep2{display:none}
 .ov-mh{text-align:center;position:relative;padding-bottom:6px}
 .ov-bt{display:inline-block;background:var(--g);color:#fff;border-radius:8px;padding:10px 26px;font-size:18px}
 .ov-bk{display:block;width:max-content;margin:8px auto 0;background:#0a1f44;color:#fff;border-radius:6px;padding:6px 16px;font-size:14px}
+.ov-bks{display:block;font-size:13px;color:#0a1f44;font-weight:600;margin-top:6px}
 .ov-cm{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:10px}
 .ov-cm span{background:#f7c948;color:#10213f;font-size:12.5px;font-weight:800;border-radius:4px;padding:3px 8px}
 .ov-adm{border:1px solid #e3e8f0;border-radius:8px;padding:12px;text-align:center;margin:12px 0}
@@ -558,6 +560,9 @@ header:hover::after,header:hover .dep2{display:none}
 .ov-ir{background:#0a1f44;color:#fff;border-radius:8px;padding:12px;text-align:center;margin-bottom:10px}
 .ov-ir b{display:block;font-size:15px}.ov-ir small{display:block;font-size:12px;opacity:.8;margin-top:2px}
 .ov-cl li{border-bottom:1px dashed #e6eaf0;padding:8px 4px;text-align:center}
+.ov-hq>div:last-child{grid-column:1/-1}
+.ov-hq i{display:block;font-style:normal;font-size:11.5px;color:var(--b);line-height:1.5;margin-top:5px;padding-top:5px;border-top:1px dashed #d5deeb}
+.ov-sub{margin:12px 0 4px;text-align:center}.ov-sub b{display:inline-block;background:var(--b);color:#fff;border-radius:5px;padding:4px 14px;font-size:13.5px}
 .ov-cl li:last-child{border-bottom:0}
 .ov-cl b{display:block;font-size:14px;color:#222}.ov-cl small{display:block;font-size:12px;color:#777;margin-top:2px}
 @media(max-width:1100px){.ov-cols{grid-template-columns:1fr}.ov-tg,.ov-pl{grid-template-columns:repeat(2,1fr)}}
@@ -1120,28 +1125,6 @@ const PAGES={
  <section>${stit('핵심 추진전략','Strategic Initiatives')}
   <div class="ov-si">${PROJ.map(p=>`<div class="ov-sc"><div class="ov-sh" style="background:${p.col}"><b>${p.c}. ${p.h}</b><small>Dynamic ${p.k}</small></div><ul>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<li><span style="background:${p.col}">${t.c}</span>${t.n}</li>`).join('')}</ul></div>`).join('')}</div>
  </section>
- <section>${stit('조직도 및 협력 체계','Organization &amp; Governance')}
-  <div class="ov-org">
-   <div class="ov-cols">
-    <div class="ov-c"><p class="ov-tag">대학혁신 협력 / 공동수행</p><div class="ov-box">
-     <h5>대학본부</h5>
-     <div class="ov-g2">${[['기획처','기획·인사'],['교무처','학사제도·교육과정'],['입학처','학생지원'],['산학협력처','거버넌스·산학협력'],['행정처','인프라']].map(x=>`<div><b>${x[0]}</b><small>${x[1]}</small></div>`).join('')}</div>
-     <h6>참여 학사조직</h6>
-     <ul class="ov-li"><li><em>보건계열</em><b>보건의료계열 학과</b><small>간호학과 · 치위생과 · 물리치료과 · 작업치료과 · 언어치료과 · 방사선과 · 응급구조과 · 안경광학과 · 요가과</small></li><li><em>휴먼서비스</em><b>휴먼서비스 학과</b><small>유아교육과 · 사회복지케어과 · 산림조경비즈니스과 · 웰니스문화관광과 · 글로벌케어과 · 글로벌뷰티과 · 평생교육상담과</small></li></ul>
-    </div></div>
-    <div class="ov-c ov-mid"><div class="ov-box ov-main">
-     <div class="ov-mh"><b class="ov-bt">ANCHOR 사업단</b><b class="ov-bk">앵커사업 총괄기획본부</b><div class="ov-cm"><span>사업추진위원회</span><span>사업운영위원회</span><span>자체평가위원회</span></div></div>
-     <div class="ov-adm"><h6>총괄행정분야</h6><b>기획·성과관리 · 예산·구매·지출 · 시설</b><small>위원회 운영 · 대외 협력 · 홍보</small></div>
-     <div class="ov-g2 ov-pj">${PROJ.map(p=>`<div class="ov-pc"><h6 style="background:${p.col}">Dynamic ${p.k}</h6>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<p><b>${t.c} 과제팀</b><small>${t.n}</small></p>`).join('')}</div>`).join('')}</div>
-    </div></div>
-    <div class="ov-c"><p class="ov-tag">사업 운영 협업 / 성과관리</p><div class="ov-box">
-     <h5>대학 협력 조직</h5>
-     <div class="ov-ir"><b>IR성과관리센터</b><small>대학·앵커사업 통합 성과관리</small></div>
-     <ul class="ov-cl">${[['CH-U-RUN센터','평생·직업교육 거점 (C1)'],['건강안전지원센터','복합재난 안전교육 (B4)'],['늘돌봄지원센터','늘봄·돌봄 서비스 (C2)'],['기업협업지원센터','산학협력·기업지원 (B1)'],['AI헬스케어빅데이터센터','보건의료 데이터·통합 건강관리 (D2)'],['수목진단센터','녹색도시·보호수 진단 (D3)'],['웰니스문화관광센터','문화·관광 힐링도시 (D3)'],['글로벌센터 · 국제개발협력센터','글로벌 협력·유학생 지원 (A3)'],['교수학습지원센터 · 교육혁신지원센터','교육과정·교수법 혁신 (A1)'],['현장실습지원센터 · 취창업진로지원센터','현장실습·정주형 취업 (A1)'],['임상시뮬레이션센터','보건의료 실습 인프라'],['성인학습자지원센터','성인학습자 지원'],['학생상담센터 · 장애학생지원센터','학생 성장 지원']].map(x=>`<li><b>${x[0]}</b><small>${x[1]}</small></li>`).join('')}</ul>
-    </div></div>
-   </div>
-  </div>
- </section>
  <section>${stit('대학 현황','Why Choonhae')}
   <p class="para" style="margin-bottom:18px">춘해보건대학교는 울산 유일의 보건의료 특성화 전문대학으로, 보건의료·휴먼서비스 융합 특성화를 바탕으로 울산 앵커사업 8개 단위과제에 참여합니다.</p>
   <div class="kgrid"><div>졸업생 취업률<b>81.5%</b><small>지역 12년 연속 1위</small></div><div>국가시험 합격률<b>84.9%</b><small>전국 평균 76.7% 상회</small></div><div>학과<b>17개</b><small>보건계열 9개 학과</small></div><div>앵커 참여 단위과제<b>8개</b><small>시그니처 과제 2개 포함</small></div></div>
@@ -1191,6 +1174,29 @@ const PAGES={
  <div class="oc-cols">${PROJ.map(p=>`<div class="oc-col"><div class="oc-ph" style="background:${p.col}">Dynamic ${p.k}</div>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<div class="oc-t"><b style="background:${p.col}">${t.c}</b><span>${t.n}</span></div>`).join('')}</div>`).join('')}</div>
 </div>
   <p class="note">ANCHOR 사업단은 총장 직속 조직으로, 참여 교직원 131명이 8개 과제팀으로 사업을 수행합니다.</p>
+  <h4 class="ov-oh">대학 협력 체계</h4>
+  <div class="ov-org">
+   <div class="ov-cols">
+    <div class="ov-c"><p class="ov-tag">대학혁신 협력 / 공동수행</p><div class="ov-box">
+     <h5>대학본부</h5>
+     <div class="ov-g2 ov-hq">${[['교무처','학사제도·교육과정','교수학습지원센터 · 교육혁신지원센터 · 교양교육지원센터'],['입학처','학생 모집·입학 지원','진로입학지원센터'],['학생처','학생 생활·상담 지원','학생상담센터 · 사회공헌센터 · 장애학생지원센터 · 생활관'],['기획처','기획·인사·성과관리','IR성과관리센터'],['산학협력처','거버넌스·현장실습·취업','현장실습지원센터 · 취창업진로지원센터'],['국제교류처','글로벌 협력·외국인 유학생 지원','글로벌센터 · 국제개발협력센터 · 한국어교육센터 · 흥옌세종학당'],['행정처','교육 인프라·시설','']].map(x=>`<div><b>${x[0]}</b><small>${x[1]}</small>${x[2]?`<i>${x[2]}</i>`:''}</div>`).join('')}</div>
+     <h6>참여 학사조직</h6>
+     <ul class="ov-li"><li><em>간호</em><b>간호학부</b></li><li><em>보건</em><b>보건학부</b><small>치위생과 · 작업치료과 · 응급구조과 · 방사선과 · 물리치료과 · 언어치료과 · 보건행정과 · 안경광학과</small></li><li><em>휴먼서비스</em><b>사회실무학부</b><small>유아교육과 · 요가과 · 사회복지케어과 · 산림조경비즈니스과 · 웰니스문화관광과 · 글로벌케어과 · 평생교육상담과 · 글로벌뷰티과 · 글로벌비즈니스과</small></li></ul>
+    </div></div>
+    <div class="ov-c ov-mid"><div class="ov-box ov-main">
+     <div class="ov-mh"><b class="ov-bt">ANCHOR 사업단</b><b class="ov-bk">앵커사업 총괄기획본부</b><small class="ov-bks">기획·성과관리 · 위원회 운영</small><div class="ov-cm"><span>사업추진위원회</span><span>사업운영위원회</span><span>자체평가위원회</span></div></div>
+     <div class="ov-adm"><h6>총괄행정분야</h6><b>예산·구매·지출 · 시설</b><small>대외 협력 · 홍보</small></div>
+     <div class="ov-g2 ov-pj">${PROJ.map(p=>`<div class="ov-pc"><h6 style="background:${p.col}">Dynamic ${p.k}</h6>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<p><b>${t.c} 과제팀</b><small>${t.n}</small></p>`).join('')}</div>`).join('')}</div>
+    </div></div>
+    <div class="ov-c"><p class="ov-tag">사업 운영 협업 / 성과관리</p><div class="ov-box">
+     <h5>대학 협력 조직</h5>
+     <div class="ov-ir"><b>IR성과관리센터</b><small>기획처 · 대학·앵커사업 통합 성과관리</small></div>
+     <div class="ov-sub"><b>평생교육원</b></div><ul class="ov-cl"><li><b>평생학습지원(U-RUN)센터</b><small>평생·직업교육 거점 (C1)</small></li></ul>
+     <div class="ov-sub"><b>산학협력단</b></div>
+     <ul class="ov-cl">${[['기업협업지원센터','산학협력·기업지원 (B1)'],['건강안전지원센터','복합재난 안전교육 (B4)'],['늘돌봄지원센터','늘봄·돌봄 서비스 (C2)'],['AI헬스케어빅데이터센터','보건의료 데이터·통합 건강관리 (D2)'],['수목진단센터','녹색도시·보호수 진단 (D3)'],['웰니스문화관광센터','문화·관광 힐링도시 (D3)'],['임상시뮬레이션센터','보건의료 실습 인프라'],['AI·DX센터','AI·DX 교육 지원']].map(x=>`<li><b>${x[0]}</b><small>${x[1]}</small></li>`).join('')}</ul>
+    </div></div>
+   </div>
+  </div>
  </section>
  <section>${stit('사업단 연락처','Contact')}
   <table class="tbl"><tr><th style="width:42%">소속</th><th>담당</th><th style="width:22%">전화번호</th></tr>
