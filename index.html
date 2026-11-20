@@ -87,6 +87,23 @@ header:hover::after{content:"";position:absolute;top:80px;left:0;right:0;height:
 .dmid li{font-size:15px;color:#c9d6ec;padding:6px 0}.dmid li::before{content:"·";margin-right:10px;color:#8ab8ff}
 .circ{width:380px;height:380px;border-radius:50%;margin:auto;position:relative;background:radial-gradient(circle at 35% 30%,#3b82f6,#1f5fd1 55%,#0f3d7a);display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:0 0 0 30px rgba(255,255,255,.03),0 0 0 70px rgba(255,255,255,.02)}
 .circ b{font-size:120px;font-weight:800;line-height:1}.circ span{font-size:15px;margin-top:10px;opacity:.9}
+.dyn{padding:120px 0;background:radial-gradient(circle at 85% 20%,rgba(59,130,246,.25),transparent 40%),var(--dk)}
+.dwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;max-width:1400px;margin:0 auto;padding:0 40px}
+.dpic{height:460px;border-radius:30px;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 55%,#3b82f6);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:44px}
+.dpic::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.07) 0 2px,transparent 2px 28px)}
+.dpin{position:relative;animation:fade .6s}.dpin small{display:block;font-size:18px;opacity:.8}.dpin b{display:block;font-size:84px;font-weight:800;letter-spacing:-1px;line-height:1}.dpin span{display:block;margin-top:12px;font-size:16px;opacity:.85}
+.dtabs{display:flex;gap:26px;align-items:flex-end;margin-bottom:46px}
+.dtabs button{color:#7f93b8;font-size:19px;font-weight:700;padding-bottom:10px;border-bottom:2px solid transparent;letter-spacing:.3px}
+.dtabs button.act{color:#f7c948;border-color:#f7c948;font-size:23px}
+#dbody>*{animation:fade .6s}
+#dbody h2{font-size:36px;font-weight:800;line-height:1.25;letter-spacing:-.5px}
+.dbig{font-size:68px;font-weight:800;margin:6px 0 34px;letter-spacing:-1px;line-height:1.1}.dbig em{font-style:normal;color:#f7c948}
+#dbody ol{list-style:none}
+#dbody li{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px dashed rgba(255,255,255,.3);font-size:18px;font-weight:600}
+#dbody li span{flex:none;width:40px;height:40px;border:1.5px solid #f7c948;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+#dbody li b{color:#f7c948;font-weight:600}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.dwrap{grid-template-columns:1fr;gap:40px;padding:0 20px}.dpic{height:240px}.dbig{font-size:44px}#dbody h2{font-size:25px}#dbody li{font-size:16px}}
 /* news */
 .newszone{background:#eef3fa;padding:90px 0}
 .ngrid{display:grid;grid-template-columns:1.9fr 1fr;gap:20px}
@@ -247,6 +264,12 @@ const PROJ=[
  {k:'D',n:'지역사회 문제해결',h:'지역 완결형 돌봄·의료 안전망 구축',cards:['늘봄·돌봄 강사','고령친화 체험교육','의료케어 모니터링','리빙랩'],li:['늘봄·돌봄 강사 양성 체계 운영','고령친화체험교육관·사회적약자 의료케어','구·군 현안 해결형 리빙랩']}
 ];
 
+const DYN=[
+ {k:'TALENT',s:'학생 성장',h:'지역에서 배우고 성장하는<br>정주형 보건·돌봄 인재 양성',li:['<b>U-LEAD</b> 정주형 글로벌 융합인재 양성','<b>CHCam</b> 기반 현장실습 전 직무교육','재학생 <b>AI·DX</b> 역량 강화']},
+ {k:'BRIDGE',s:'기업·일자리',h:'기업과 하나 되는<br>지·산·학·연 협력 생태계 조성',li:['<b>산학 공동 R&amp;BD</b> 상생 플랫폼 참여','<b>보건의료 빅데이터</b> 분석 인력 양성','지·산·학·연 <b>복합재난 안전교육</b> 플랫폼']},
+ {k:'CARE',s:'생애 정주',h:'지역 완결형<br>돌봄·의료 안전망 구축',li:['<b>늘봄·돌봄</b> 강사 양성 체계 운영','<b>U-RUN</b> 평생·직업 전환교육(CH-U-RUN·Medi-Learn)','<b>고령친화체험교육관</b>·사회적약자 의료케어']}
+];
+
 const PARTNERS={
  '참여 협력기관':[['울산광역시','대학청년과 · 사업 총괄·승인'],['울산테크노파크 울산앵커센터','상시 모니터링·실무 점검'],['울산광역시교육청','늘봄·돌봄 협력'],['늘돌봄지원센터','돌봄 인력 양성 협력'],['지역 의료기관','의료 안전망·현장실습 협력']],
  '앵커 참여대학':[['울산대학교','연구·기술사업화'],['울산과학대학교','조선·자동차 현장인력'],['춘해보건대학교','보건·돌봄 인력, 성인학습자']],
@@ -295,10 +318,9 @@ function home(){
   <a class="scroll" href="#main2" onclick="document.querySelector('.dash').scrollIntoView({behavior:'smooth'});return false">Scroll<span>↓</span></a>
   <a class="vcard" href="#/video"><b>춘해보건대학교 앵커사업단</b><br><small>홍보영상</small><div class="th">▶</div></a>
  </section>
- <section class="dash"><div class="wrap">
-  <div class="plist" id="plist">${PROJ.map((p,i)=>`<button class="${i?'':'act'}" onclick="proj(${i})">${p.k}. ${p.n}</button>`).join('')}</div>
-  <div class="dmid" id="dmid"></div>
-  <div class="circ" id="circ"></div>
+ <section class="dash dyn"><div class="dwrap">
+  <div class="dpic" id="dpic"></div>
+  <div class="dtxt"><div class="dtabs" id="dtabs">${DYN.map((p,i)=>`<button class="${i?'':'act'}" onclick="proj(${i})">${p.k}</button>`).join('')}</div><div id="dbody"></div></div>
  </div></section>
  <section class="newszone"><div class="inner">
   <div class="ngrid">
@@ -329,9 +351,9 @@ function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)retu
 function toggleHero(b){heroPlay=!heroPlay;b.textContent=heroPlay?'❚❚':'▶';document.querySelectorAll('#hbar i').forEach(x=>x.style.setProperty('--p',heroPlay?'running':'paused'));heroTimer()}
 function qtab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
  $('#qicons').innerHTML=QUICK[k].map(q=>`<a href="${q[2]}" ${q[2].startsWith('http')?'target="_blank" rel="noopener"':''}>${ICON[q[1]]}<span>${q[0].replace('\n','<br>')}</span></a>`).join('')}
-function proj(i){document.querySelectorAll('#plist button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=PROJ[i];
- $('#dmid').innerHTML=`<div class="lab">프로젝트 ${p.k}</div><h2>${p.h}</h2><div class="dcards">${p.cards.map(c=>`<div>${ICON.dc}<span>${c}</span></div>`).join('')}</div><ul>${p.li.map(l=>`<li>${l}</li>`).join('')}</ul>`;
- $('#circ').innerHTML=`<b>${p.k}</b><span>${p.n}</span>`}
+function proj(i){document.querySelectorAll('#dtabs button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=DYN[i];
+ $('#dbody').innerHTML=`<h2>${p.h}</h2><p class="dbig">Dynamic <em>${p.k}</em></p><ol>${p.li.map((l,j)=>`<li><span>0${j+1}</span><p>${l}</p></li>`).join('')}</ol>`;
+ $('#dpic').innerHTML=`<div class="dpin"><small>Dynamic</small><b>${p.k}</b><span>${p.s}</span></div>`}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
  const a=BOARD[k],lab=findMenu(k)[1][1];$('#nlist').innerHTML=a.length?a.slice(0,4).map((p,i)=>`<li><a href="#/${k}/${i}"><span class="tag">${lab}</span><span class="tt">${esc(p.t)}</span><span class="dt">${p.d}</span></a></li>`).join(''):'<li class="empty">등록된 게시물이 없습니다.</li>'}
 function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
