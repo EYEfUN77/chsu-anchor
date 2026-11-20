@@ -120,7 +120,9 @@ html,body{overflow-x:hidden}
 .scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:16px;text-align:center;z-index:2}
 .scroll span{display:block;width:30px;height:30px;border:1px solid #fff;border-radius:50%;margin:8px auto 0;line-height:28px}
 .vcard{position:absolute;right:96px;bottom:30px;width:270px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border-radius:14px 0 0 14px;padding:16px;z-index:2;font-size:16px}
-.vcard .th{height:130px;border-radius:8px;margin-top:10px;background:linear-gradient(135deg,#3b82f6,#0f3d7a);display:flex;align-items:center;justify-content:center;font-size:33px}
+.vcard .th{height:130px;border-radius:8px;margin-top:10px;background:linear-gradient(135deg,#3b82f6,#0f3d7a);display:flex;align-items:center;justify-content:center;font-size:33px;position:relative;overflow:hidden;cursor:pointer}
+.vcard .th video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 21%;display:block}
+.vcard .vsnd{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;line-height:1;padding:5px 8px;border-radius:999px;font-weight:600}
 /* dash */
 .dash{background:var(--dk);color:#fff;padding:110px 0;position:relative;overflow:hidden}
 .dash .wrap{display:grid;grid-template-columns:200px 1fr 420px;gap:40px;align-items:center;max-width:1400px;margin:0 auto;padding:0 40px}
@@ -946,7 +948,7 @@ function home(){
    <div class="hbar" id="hbar">${slides.map((s,i)=>`<i class="${i?'':'act'}" onclick="goHero(${i})"></i>`).join('')}<button onclick="toggleHero(this)" aria-label="정지">❚❚</button></div></div>
   <div class="qtab"><div class="tabs">${Object.keys(QUICK).map((k,i)=>`<button class="${i?'':'act'}" onclick="qtab(this,'${k}')">${k}</button>`).join('')}</div><div class="qicons" id="qicons"></div></div>
   <a class="scroll" href="#main2" onclick="document.querySelector('.dash').scrollIntoView({behavior:'smooth'});return false">Scroll<span>↓</span></a>
-  <a class="vcard" href="#/video"><b>춘해보건대학교 앵커사업단</b><br><small>홍보영상</small><div class="th">▶</div></a>
+  <a class="vcard" href="#/video"><b>춘해보건대학교 앵커사업단</b><br><small>홍보영상</small><div class="th" onclick="vSnd(event,this)"><video src="video/promo.mp4" autoplay muted loop playsinline preload="auto" aria-label="춘해보건대학교 앵커사업단 홍보영상"></video><span class="vsnd">🔇 소리 켜기</span></div></a>
  </section>
  <section class="dash dyn"><div class="dwrap">
   <div class="dpic" id="dpic"></div>
@@ -974,6 +976,7 @@ function home(){
   <a class="vbox" href="#/video"><span>현장 스케치</span></a><a class="vbox" href="#/video"><span>춘해보건대학교 앵커사업단 홍보영상</span></a><a class="vbox" href="#/video"><span>프로그램 하이라이트</span></a>
  </div></div></section>`;
 }
+function vSnd(e,el){e.preventDefault();e.stopPropagation();const v=el.querySelector('video'),b=el.querySelector('.vsnd');if(!v)return;v.muted=!v.muted;if(!v.muted){v.volume=1;v.play().catch(()=>{});}b.textContent=v.muted?'🔇 소리 켜기':'🔊 소리 끄기';}
 function cards(k){const a=BOARD[k];if(!a.length)return [1,2,3].map(()=>`<div class="card"><div class="th">준비 중</div><p>게시물을 준비하고 있습니다</p></div>`).join('');
  return a.slice(0,3).map((p,i)=>`<a class="card pc" href="#/${k}/${i}"><div class="th">${p.im?`<img src="${p.im}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<span>${esc(p.t)}</span></div><p class="m2">${esc(p.src||'')} · ${p.d}</p><p>${esc(p.t)}</p></a>`).join('')}
 function nlCards(){const a=BOARD.newsletter;return [0,1,2].map(i=>a[i]?`<a class="card nl" href="#/newsletter/${i}"><div class="th">ANCHOR<br>NEWSLETTER</div><p>${esc(a[i].t)}</p></a>`:`<div class="card nl"><div class="th">ANCHOR<br>NEWSLETTER</div><p>발행 준비 중</p></div>`).join('')}
