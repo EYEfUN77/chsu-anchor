@@ -1,28 +1,431 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>춘해보건대학교 앵커사업단</title>
 <meta name="description" content="춘해보건대학교 지역성장 인재양성체계(앵커) 사업단 홈페이지">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
+:root{--g:#0b6b45;--g2:#1f8a5b;--gl:#e6f1ec;--dk:#03140d;--b:#1d4f9a;--t:#1b1f1d;--m:#6b736f;--line:#e3e7e5;--w:1240px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans KR',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 60%,#3b82f6);color:#fff;padding:24px;text-align:center}
-.box{max-width:640px}
-.tag{display:inline-block;padding:6px 16px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:14px;font-weight:700;letter-spacing:.5px}
-h1{font-size:clamp(30px,6vw,48px);font-weight:900;line-height:1.25;margin:22px 0 14px}
-p{font-size:clamp(15px,2.6vw,18px);line-height:1.7;opacity:.9}
-.soon{margin-top:34px;font-size:15px;opacity:.75}
+body{font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;color:var(--t);word-break:keep-all;background:#fff}
+a{color:inherit;text-decoration:none}ul{list-style:none}button{font:inherit;cursor:pointer;border:0;background:none}
+.inner{max-width:var(--w);margin:0 auto;padding:0 20px}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;height:80px;transition:.3s}
+header.on,header.sub,header:hover{background:#fff;box-shadow:0 1px 0 var(--line)}
+.hd{display:flex;align-items:center;height:80px;padding:0 40px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;min-width:260px}
+header.on .logo,header.sub .logo,header:hover .logo{color:var(--g)}
+.logo svg{width:38px;height:38px}.logo b{font-size:25px;font-weight:800;letter-spacing:-.5px}.logo b span{font-weight:700}
+.logo small{display:block;font-size:8.5px;letter-spacing:.2px;font-weight:600;opacity:.85;margin-top:-2px}
+.gnb{display:flex;flex:1;justify-content:center}
+.gnb>li{position:relative;width:180px;text-align:center}
+.gnb>li>a{display:block;line-height:80px;font-size:17px;font-weight:600;color:#fff}
+header.on .gnb>li>a,header.sub .gnb>li>a,header:hover .gnb>li>a{color:var(--t)}
+.gnb>li.cur>a{color:var(--g)!important}
+.gnb .dep2{display:none;position:absolute;top:80px;left:0;right:0;padding:18px 0 22px;background:#fff}
+header:hover .dep2{display:block}
+header:hover::after{content:"";position:absolute;top:80px;left:0;right:0;height:190px;background:#fff;border-top:1px solid var(--line);box-shadow:0 10px 20px rgba(0,0,0,.05);z-index:-1}
+.dep2 a{display:block;padding:7px 0;font-size:15px;color:#555}.dep2 a:hover{color:var(--g);font-weight:600}
+.util{display:flex;gap:18px;min-width:260px;justify-content:flex-end}
+.util button{width:32px;height:32px;color:#fff}header.on .util button,header.sub .util button,header:hover .util button{color:var(--t)}
+.util svg{width:28px;height:28px}
+/* sitemap */
+#sitemap{position:fixed;inset:0;background:rgba(3,20,13,.97);z-index:100;display:none;color:#fff;overflow:auto}
+#sitemap.open{display:block}
+#sitemap .close{position:absolute;right:40px;top:24px;color:#fff;font-size:40px;line-height:1}
+.smap{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:var(--w);margin:120px auto 60px;padding:0 20px}
+.smap h3{font-size:22px;padding-bottom:16px;border-bottom:2px solid var(--g2);margin-bottom:16px}
+.smap a{display:block;padding:8px 0;color:#cfd8d3}.smap a:hover{color:#fff}
+.srch{max-width:640px;margin:0 auto;padding:0 20px;display:flex;gap:8px}
+.srch input{flex:1;height:52px;border-radius:26px;border:0;padding:0 24px;font:inherit;font-size:16px}
+.srch button{height:52px;padding:0 26px;border-radius:26px;background:var(--g2);color:#fff;font-weight:600}
+/* hero */
+.hero{position:relative;height:100vh;min-height:720px;overflow:hidden;color:#fff}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s;background-size:cover;background-position:center}
+.slide.act{opacity:1}
+.s1{background:radial-gradient(circle at 75% 35%,rgba(31,138,91,.55),transparent 45%),radial-gradient(circle at 20% 80%,rgba(29,79,154,.55),transparent 45%),linear-gradient(135deg,#052a1b,#0b4a33 50%,#0e2f57)}
+.s2{background:radial-gradient(circle at 70% 60%,rgba(29,79,154,.6),transparent 50%),linear-gradient(135deg,#0d2440,#0b6b45)}
+.s3{background:radial-gradient(circle at 30% 30%,rgba(120,200,160,.35),transparent 45%),linear-gradient(135deg,#033322,#14593f 60%,#1d4f9a)}
+.slide::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 120px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 120px)}
+.ring{position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+.hcopy{position:absolute;left:8%;top:31%;z-index:2}
+.hcopy p{font-size:30px;font-weight:400;margin-bottom:16px}
+.hcopy h1{font-size:58px;font-weight:800;letter-spacing:-1px}
+.hbar{display:flex;gap:6px;margin-top:60px;align-items:center}
+.hbar i{display:block;width:74px;height:3px;background:rgba(255,255,255,.35);position:relative;cursor:pointer}
+.hbar i.act::after{content:"";position:absolute;left:0;top:0;bottom:0;background:#fff;animation:prog 6s linear forwards}
+@keyframes prog{from{width:0}to{width:100%}}
+.hbar button{width:28px;height:28px;border:1px solid #fff;border-radius:50%;color:#fff;font-size:10px;margin-left:8px}
+.qtab{position:absolute;left:8%;bottom:70px;z-index:2}
+.qtab .tabs{display:inline-flex;border:1.5px solid #fff;border-radius:22px;padding:2px;margin-bottom:22px}
+.qtab .tabs button{color:#fff;padding:9px 34px;border-radius:20px;font-size:15px;font-weight:600}
+.qtab .tabs button.act{background:var(--g);}
+.qicons{display:flex;gap:10px}
+.qicons a{width:98px;height:98px;border-radius:14px;background:#fff;color:var(--g);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:12.5px;font-weight:700;text-align:center;transition:.2s}
+.qicons a:nth-child(-n+2){background:var(--g);color:#fff}
+.qicons a:hover{transform:translateY(-4px)}
+.qicons svg{width:40px;height:40px}
+.scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:13px;text-align:center;z-index:2}
+.scroll span{display:block;width:30px;height:30px;border:1px solid #fff;border-radius:50%;margin:8px auto 0;line-height:28px}
+.vcard{position:absolute;right:0;bottom:30px;width:270px;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border-radius:14px 0 0 14px;padding:16px;z-index:2;font-size:13px}
+.vcard .th{height:130px;border-radius:8px;margin-top:10px;background:linear-gradient(135deg,#1f8a5b,#1d4f9a);display:flex;align-items:center;justify-content:center;font-size:30px}
+/* dash */
+.dash{background:var(--dk);color:#fff;padding:110px 0;position:relative;overflow:hidden}
+.dash .wrap{display:grid;grid-template-columns:200px 1fr 420px;gap:40px;align-items:center;max-width:1400px;margin:0 auto;padding:0 40px}
+.plist button{display:block;color:#7f8f88;font-size:14.5px;padding:9px 0;text-align:left}
+.plist button.act{color:#fff;font-weight:700}.plist button.act::after{content:" ›"}
+.dmid{text-align:center}
+.dmid .lab{color:#53d39a;font-size:14px;font-weight:700}
+.dmid h2{font-size:34px;margin:14px 0 40px;font-weight:700}
+.dcards{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.dcards div{width:128px;height:118px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(255,255,255,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:13px;padding:8px}
+.dcards svg{width:28px;height:28px;color:#53d39a}
+.dmid ul{display:inline-block;text-align:left;margin-top:40px}
+.dmid li{font-size:15px;color:#cfd8d3;padding:6px 0}.dmid li::before{content:"·";margin-right:10px;color:#53d39a}
+.circ{width:380px;height:380px;border-radius:50%;margin:auto;position:relative;background:radial-gradient(circle at 35% 30%,#2aa56f,#0b6b45 55%,#073d29);display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:0 0 0 30px rgba(255,255,255,.03),0 0 0 70px rgba(255,255,255,.02)}
+.circ b{font-size:120px;font-weight:800;line-height:1}.circ span{font-size:15px;margin-top:10px;opacity:.9}
+/* news */
+.newszone{background:#edf2f0;padding:90px 0}
+.ngrid{display:grid;grid-template-columns:1.9fr 1fr;gap:20px}
+.box{background:#fff;border-radius:10px;padding:26px 30px;box-shadow:0 2px 10px rgba(0,0,0,.03);position:relative}
+.box .more{position:absolute;right:24px;top:24px;width:26px;height:26px;border:1px solid #bbb;border-radius:50%;font-size:16px;line-height:23px;text-align:center}
+.btabs{display:flex;gap:6px;margin-bottom:18px}
+.btabs button{padding:7px 14px;font-size:16px;color:#888;font-weight:600}.btabs button.act{color:var(--t);font-weight:800;border-bottom:2px solid var(--g)}
+.blist li a{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:14.5px}
+.blist .tag{font-size:12px;background:var(--gl);color:var(--g);padding:3px 9px;border-radius:12px;white-space:nowrap}
+.blist .tt{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.blist .dt{color:#888;font-size:13px}
+.empty{color:#999;font-size:14px;padding:26px 0;text-align:center}
+.banner{background:linear-gradient(135deg,#e6f1ec,#dde8f6);border-radius:10px;display:flex;flex-direction:column;justify-content:center;padding:30px;min-height:200px}
+.banner small{color:var(--g);font-weight:700}.banner h3{font-size:26px;margin:8px 0 18px;line-height:1.35}
+.banner a{align-self:flex-start;background:#fff;color:var(--g);padding:9px 22px;border-radius:20px;font-size:14px;font-weight:700}
+.ngrid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.box h4{font-size:17px;margin-bottom:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card .th{height:110px;border-radius:8px;background:linear-gradient(135deg,#cfe3d9,#d6e1f2);display:flex;align-items:center;justify-content:center;color:var(--g);font-weight:800;font-size:13px;text-align:center;padding:8px}
+.card p{font-size:13px;margin-top:8px;color:#555;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.nl .th{background:linear-gradient(135deg,#6f8a5b,#4f6b3e);color:#fff;font-family:Georgia,serif;font-size:16px;line-height:1.1}
+.nl:nth-child(2) .th{background:linear-gradient(135deg,#d68a52,#b8692f)}.nl:nth-child(3) .th{background:linear-gradient(135deg,#c2a36a,#a3824a)}
+/* partners */
+.partners{background:#f5f7f6;padding:90px 0}
+.ptop{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px}
+.ptop h2{font-size:32px}.ptop p{color:#555;font-size:14px;margin-top:6px}
+.ptabs button{padding:10px 18px;font-size:14px;color:#666}.ptabs button.act{color:var(--g);font-weight:700;border-bottom:2px solid var(--g)}
+.pwrap{display:grid;grid-template-columns:1.85fr 1fr;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line);height:440px}
+.pwrap iframe{width:100%;height:100%;border:0}
+.plist2{overflow:auto;padding:10px 20px}
+.plist2 li{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0}
+.plist2 em{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.plist2 b{font-size:14px;display:block}.plist2 small{color:#888;font-size:12px}
+/* video */
+.vzone{background:linear-gradient(rgba(10,30,22,.85),rgba(10,30,22,.85)),linear-gradient(135deg,#0b6b45,#1d4f9a);padding:70px 0}
+.vrow{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:30px;align-items:center}
+.vbox{aspect-ratio:16/10;border-radius:10px;background:linear-gradient(135deg,#1f8a5b,#0e2f57);display:flex;align-items:center;justify-content:center;color:#fff;position:relative;font-weight:700;text-align:center;padding:20px}
+.vbox:nth-child(2){aspect-ratio:16/9}
+.vbox::before{content:"▶";position:absolute;width:58px;height:58px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;opacity:.9;top:50%;left:50%;transform:translate(-50%,-50%)}
+.vbox span{position:absolute;bottom:16px;left:0;right:0;font-size:14px}
+/* footer */
+footer{background:#2b2b2b;color:#aaa;font-size:13px}
+.flinks{border-bottom:1px solid #3a3a3a}
+.flinks .inner{display:flex;align-items:center;height:64px;gap:0}
+.flinks a{color:#ddd;padding:0 22px;position:relative}.flinks a:first-child{padding-left:0}
+.flinks a+a::before{content:"";position:absolute;left:0;top:50%;width:3px;height:3px;background:#777;border-radius:50%}
+.flinks select{margin-left:auto;background:transparent;border:1px solid #666;color:#ddd;height:40px;width:250px;padding:0 14px;border-radius:4px;font:inherit}
+.flinks option{color:#000}
+.fbot .inner{display:flex;align-items:center;gap:30px;padding-top:30px;padding-bottom:36px}
+.fbot .logo{color:#fff;min-width:auto}.fbot .sns{margin-left:auto;display:flex;gap:12px}
+.fbot .sns a{width:30px;height:30px;border-radius:50%;background:#444;color:#ddd;display:flex;align-items:center;justify-content:center;font-size:11px}
+/* quick */
+.quick{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;gap:10px}
+.quick a,.quick button{width:56px;height:56px;border-radius:50%;background:var(--g);color:#fff;font-size:10.5px;font-weight:700;line-height:1.1;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.quick button{background:#333;font-size:20px}
+/* sub */
+.svis{height:300px;margin-top:80px;background:radial-gradient(circle at 12% 40%,rgba(255,255,255,.6) 0 60px,transparent 61px),radial-gradient(circle at 88% 70%,rgba(255,255,255,.45) 0 110px,transparent 111px),linear-gradient(#e7f0ec,#eef4f1);position:relative;text-align:center;padding-top:80px}
+.svis .bc{font-size:12px;color:#555}.svis .bc b{color:var(--g);margin:0 6px}
+.svis h2{font-size:34px;margin-top:10px}
+.snav{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);width:calc(100% - 40px);max-width:var(--w);display:flex;align-items:flex-end}
+.snav select{width:205px;height:56px;border:1px solid var(--line);background:#fff;padding:0 18px;font:inherit;font-size:14px;color:#555}
+.snav .tools{margin-left:auto;display:flex;gap:8px;margin-bottom:38px}
+.snav .tools button{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:14px}
+.cont{max-width:var(--w);margin:0 auto;padding:110px 20px 100px;min-height:50vh}
+.stit{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--g);padding-bottom:16px;margin:0 0 30px}
+.stit h3{font-size:22px}.stit small{color:#555;font-size:13px}
+.cont section+section{margin-top:70px}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.vgrid div{border-radius:6px;padding:26px 18px;background:var(--gl);border:1px solid #cfe3d9;color:var(--g);font-weight:700;font-size:16px}
+.vgrid div:first-child{background:var(--g);color:#fff;box-shadow:0 6px 14px rgba(11,107,69,.25)}
+.vgrid i{display:inline-block;font-style:normal;font-size:11px;background:#fff;color:var(--g);padding:3px 9px;border-radius:3px;margin-bottom:10px}
+.vgrid div:nth-child(2) i{background:var(--g);color:#fff}
+.kt{margin:28px 0 14px;font-weight:700}.kt::before{content:"✔";display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--g);color:#fff;font-size:10px;align-items:center;justify-content:center;margin-right:8px}
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kgrid div{border:1px solid var(--line);border-radius:8px;padding:22px;text-align:center;font-size:14px;color:#555}
+.kgrid b{display:block;font-size:22px;color:var(--g);margin-top:8px}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px;border-top:2px solid var(--t)}
+.tbl th{background:#f6f8f7;font-weight:700;padding:14px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:14px 10px;border-bottom:1px solid var(--line);text-align:center}
+.tbl td.l{text-align:left}
+.tbl tr.hl td{background:#f2f8f5}
+.badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:10px;background:var(--g);color:#fff}
+.pcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pcards div{border:1px solid var(--line);border-top:4px solid var(--g);border-radius:8px;padding:22px}
+.pcards b{color:var(--g);font-size:13px}.pcards h4{font-size:18px;margin:6px 0 12px}.pcards p{font-size:14px;color:#555;line-height:1.6}
+.para{line-height:1.8;color:#444;font-size:15.5px}
+.blist2 .tbl td.l a:hover{color:var(--g);text-decoration:underline}
+.faq details{border-bottom:1px solid var(--line)}.faq summary{padding:20px 10px;font-weight:600;cursor:pointer;list-style:none}
+.faq summary::before{content:"Q";color:var(--g);font-weight:800;margin-right:14px}.faq details p{padding:0 10px 20px 36px;color:#555;line-height:1.7}
+.mapbox{height:420px;border:1px solid var(--line);border-radius:8px;overflow:hidden}.mapbox iframe{width:100%;height:100%;border:0}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.info div{background:#f6f8f7;border-radius:8px;padding:22px;font-size:14.5px;line-height:1.7}.info b{display:block;color:var(--g);margin-bottom:6px}
+.note{font-size:13px;color:#888;margin-top:14px}
+.btn{display:inline-block;background:var(--g);color:#fff;padding:12px 28px;border-radius:24px;font-weight:600;font-size:15px}
+@media(max-width:1100px){.gnb{display:none}.hd{padding:0 20px}.logo{min-width:auto}.util{min-width:auto;margin-left:auto}.dash .wrap{grid-template-columns:1fr}.circ{display:none}.ngrid,.ngrid2,.pwrap,.vrow{grid-template-columns:1fr}.pwrap{height:auto}.pwrap iframe{height:300px}.smap{grid-template-columns:1fr 1fr}.pcards,.kgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.hcopy h1{font-size:34px}.hcopy p{font-size:18px}.qicons a{width:62px;height:62px;font-size:10px}.qicons svg{width:24px;height:24px}.qtab .tabs button{padding:8px 16px}.vcard{display:none}.cards{grid-template-columns:1fr 1fr}.vgrid,.info,.pcards,.kgrid{grid-template-columns:1fr}.snav select{width:50%}.snav .tools{display:none}.flinks .inner{flex-wrap:wrap;height:auto;padding:14px 20px}.flinks select{margin:10px 0 0;width:100%}.fbot .inner{flex-wrap:wrap}.ptop{flex-direction:column;align-items:flex-start;gap:10px}.tbl{font-size:13px}}
 </style>
 </head>
 <body>
-<div class="box">
-  <span class="tag">CHOONHAE HEALTH SCIENCES UNIVERSITY · ANCHOR</span>
-  <h1>춘해보건대학교<br>앵커사업단</h1>
-  <p>지역성장 인재양성체계(앵커) 사업</p>
-  <p class="soon">홈페이지를 준비하고 있습니다.</p>
+<header id="hd">
+ <div class="hd">
+  <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
+   <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><circle cx="20" cy="8" r="4"/><path d="M20 12v24M10 18h20M6 24c0 8 6 12 14 12s14-4 14-12"/></svg>
+   <div><b>ANCHOR<span>사업단</span></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
+  </a>
+  <ul class="gnb" id="gnb"></ul>
+  <div class="util">
+   <button onclick="openMap(1)" aria-label="검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button>
+   <button onclick="openMap()" aria-label="전체메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M6 12h15M3 18h18"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<div id="sitemap">
+ <button class="close" onclick="closeMap()" aria-label="닫기">×</button>
+ <div class="smap" id="smap"></div>
+ <form class="srch" onsubmit="return doSearch(event)"><input id="q" placeholder="검색어를 입력하세요"><button>검색</button></form>
+ <div class="smap" id="sres" style="margin-top:30px;grid-template-columns:1fr"></div>
 </div>
+
+<main id="app"></main>
+
+<footer>
+ <div class="flinks"><div class="inner">
+  <a href="#/overview">앵커사업 개요</a><a href="#/projects">프로젝트 및 단위과제</a><a href="#/notice">공지사항</a><a href="#/location">오시는 길</a>
+  <select onchange="if(this.value)window.open(this.value)"><option value="">관련 사이트</option>
+   <option value="https://www.ch.ac.kr">춘해보건대학교</option>
+   <option value="https://www.ulsan.go.kr">울산광역시</option>
+   <option value="https://www.moe.go.kr">교육부</option>
+  </select>
+ </div></div>
+ <div class="fbot"><div class="inner">
+  <a href="#/" class="logo"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><circle cx="20" cy="8" r="4"/><path d="M20 12v24M10 18h20M6 24c0 8 6 12 14 12s14-4 14-12"/></svg><div><b>ANCHOR<span>사업단</span></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY</small></div></a>
+  <div>울산광역시 울주군 웅촌면 대학길 9 춘해보건대학교 앵커사업단 &nbsp; Tel : 052-270-0331<br>COPYRIGHT © 2026 춘해보건대학교 앵커사업단. ALL RIGHTS RESERVED.</div>
+  <div class="sns"><a href="#/video" title="유튜브">▶</a><a href="#/press" title="블로그">B</a><a href="#/notice" title="인스타그램">◎</a></div>
+ </div></div>
+</footer>
+
+<div class="quick"><a href="#/inquiry">Quick<br>Menu</a><button onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로">↑</button></div>
+
+<script>
+/* ===== 메뉴 구성 (울산대 앵커사업단과 동일한 4개 대메뉴·12개 소메뉴) ===== */
+const MENU=[
+ {t:'춘해보건대 앵커사업',c:[['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','담당자 안내'],['location','오시는 길']]},
+ {t:'알림·소식',c:[['notice','공지사항'],['press','언론보도'],['call','과제공고'],['video','홍보영상']]},
+ {t:'뉴스레터',c:[['newsletter','뉴스레터']]},
+ {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]}
+];
+
+/* ===== 게시판 데이터 — 여기만 고치면 게시물이 추가됩니다 ===== */
+const BOARD={
+ notice:[{d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'}],
+ call:[],press:[],video:[],newsletter:[],archive:[]
+};
+
+const PROJ=[
+ {k:'A',n:'인재양성',h:'지역 정주형 보건·돌봄 인재 양성',cards:['현장실습','직무교육(CHCam)','글로벌 트랙','AI·DX 교육'],li:['지역 수요 맞춤형 현장실습·직무 동기화','CHCam 기반 현장실습 전 직무교육','재학생 AI·DX 역량 강화']},
+ {k:'B',n:'지·산·학·연 협력',h:'지역 산업·기관과 함께하는 협력 생태계 조성',cards:['산학 공동 R&BD','헬스케어 데이터','복합재난 안전교육','협력기관 네트워크'],li:['지역 기관 현안 연계 공동 연구','보건의료 빅데이터 분석 인력 양성','지·산·학·연 복합재난 안전교육']},
+ {k:'C',n:'평생교육',h:'성인학습자 중심 평생·직업 전환교육',cards:['CH-U-RUN','Medi-Learn','재직자 직무교육','성인학습자 과정'],li:['울산형 평생·직업 전환교육(U-RUN) 참여','보건의료 평생학습(Medi-Learn) 운영','보건의료 재직자 직무 전환·재교육']},
+ {k:'D',n:'지역사회 문제해결',h:'지역 완결형 돌봄·의료 안전망 구축',cards:['늘봄·돌봄 강사','고령친화 체험교육','의료케어 모니터링','리빙랩'],li:['늘봄·돌봄 강사 양성 체계 운영','고령친화체험교육관·사회적약자 의료케어','구·군 현안 해결형 리빙랩']}
+];
+
+const PARTNERS={
+ '참여 협력기관':[['울산광역시','대학청년과 · 사업 총괄·승인'],['울산테크노파크 울산앵커센터','상시 모니터링·실무 점검'],['울산광역시교육청','늘봄·돌봄 협력'],['늘돌봄지원센터','돌봄 인력 양성 협력'],['지역 의료기관','의료 안전망·현장실습 협력']],
+ '앵커 참여대학':[['울산대학교','연구·기술사업화'],['울산과학대학교','조선·자동차 현장인력'],['춘해보건대학교','보건·돌봄 인력, 성인학습자']],
+ '동남권 협력':[['동남권 6개 대학 AI 헬스케어 컨소시엄','보건의료 데이터·의료 안전망 협력']]
+};
+
+const ICON={
+ a:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3zM9.5 19h5M10.5 21h3"/></svg>',
+ b:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4M6 8h6M6 11h9"/></svg>',
+ c:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4h7v4a2 2 0 1 1 0 4v4H4zM13 8h7v8h-4a2 2 0 1 0-3 0"/></svg>',
+ d:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/><path d="M8 12h2l1-2 2 4 1-2h2"/></svg>',
+ e:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c3 3 3 13 0 16M12 4c-3 3-3 13 0 16"/></svg>',
+ dc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5h6v2M4 12h16"/></svg>'
+};
+
+const QUICK={
+ '협력플랫폼':[['CHCam','a','#/projects'],['CH-U-RUN','b','#/projects'],['Medi-Learn','c','#/projects'],['AI헬스케어\n빅데이터센터','d','#/projects'],['늘봄·돌봄','e','#/projects']],
+ '앵커SNS':[['유튜브','b','#/video'],['뉴스레터','c','#/newsletter'],['언론보도','a','#/press']],
+ '춘해보건대학교':[['대학 홈페이지','e','https://www.ch.ac.kr'],['오시는 길','a','#/location'],['문의하기','d','#/inquiry']]
+};
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return[m,c];return null}
+
+/* GNB / sitemap */
+$('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div class="dep2">${m.c.map(c=>`<a href="#/${c[0]}">${c[1]}</a>`).join('')}</div></li>`).join('');
+$('#smap').innerHTML=MENU.map(m=>`<div><h3>${m.t}</h3>${m.c.map(c=>`<a href="#/${c[0]}" onclick="closeMap()">${c[1]}</a>`).join('')}</div>`).join('');
+function openMap(s){$('#sitemap').classList.add('open');if(s)setTimeout(()=>$('#q').focus(),50)}
+function closeMap(){$('#sitemap').classList.remove('open');$('#sres').innerHTML=''}
+function doSearch(e){e.preventDefault();const q=$('#q').value.trim();if(!q)return false;
+ const r=[];MENU.forEach(m=>m.c.forEach(c=>{if((m.t+c[1]).includes(q))r.push(`<a href="#/${c[0]}" onclick="closeMap()">[메뉴] ${m.t} › ${c[1]}</a>`)}));
+ Object.entries(BOARD).forEach(([k,a])=>a.forEach((p,i)=>{if((p.t+(p.b||'')).includes(q))r.push(`<a href="#/${k}/${i}" onclick="closeMap()">[${findMenu(k)[1][1]}] ${esc(p.t)}</a>`)}));
+ $('#sres').innerHTML='<div>'+(r.join('')||'<p style="color:#aaa">검색 결과가 없습니다.</p>')+'</div>';return false}
+
+/* ===== 메인 ===== */
+let heroT,heroI=0,heroPlay=true;
+function home(){
+ const slides=[['지역과 함께 성장하는 혁신의 시작','춘해보건대학교 ANCHOR사업단'],['지역의 건강한 미래를 잇는 교육혁신','보건·돌봄 인재양성 거점'],['대학과 지역이 함께 만드는 지속가능한 정주 생태계','울산과 함께하는 앵커사업']];
+ return `
+ <section class="hero">
+  ${slides.map((s,i)=>`<div class="slide s${i+1} ${i?'':'act'}"><span class="ring" style="width:700px;height:700px;right:-120px;top:-160px"></span><span class="ring" style="width:420px;height:420px;right:120px;top:260px"></span></div>`).join('')}
+  <div class="hcopy"><p id="hp">${slides[0][0]}</p><h1 id="hh">${slides[0][1]}</h1>
+   <div class="hbar" id="hbar">${slides.map((s,i)=>`<i class="${i?'':'act'}" onclick="goHero(${i})"></i>`).join('')}<button onclick="toggleHero(this)" aria-label="정지">❚❚</button></div></div>
+  <div class="qtab"><div class="tabs">${Object.keys(QUICK).map((k,i)=>`<button class="${i?'':'act'}" onclick="qtab(this,'${k}')">${k}</button>`).join('')}</div><div class="qicons" id="qicons"></div></div>
+  <a class="scroll" href="#main2" onclick="document.querySelector('.dash').scrollIntoView({behavior:'smooth'});return false">Scroll<span>↓</span></a>
+  <a class="vcard" href="#/video"><b>춘해보건대학교 앵커사업단</b><br><small>홍보영상</small><div class="th">▶</div></a>
+ </section>
+ <section class="dash"><div class="wrap">
+  <div class="plist" id="plist">${PROJ.map((p,i)=>`<button class="${i?'':'act'}" onclick="proj(${i})">${p.k}. ${p.n}</button>`).join('')}</div>
+  <div class="dmid" id="dmid"></div>
+  <div class="circ" id="circ"></div>
+ </div></section>
+ <section class="newszone"><div class="inner">
+  <div class="ngrid">
+   <div class="box"><div class="btabs"><button class="act" onclick="ntab(this,'notice')">공지사항</button><button onclick="ntab(this,'call')">과제공고</button></div><a class="more" id="nmore" href="#/notice">+</a><ul class="blist" id="nlist"></ul></div>
+   <div class="banner"><small>ANCHOR NOTICE</small><h3>춘해보건대학교<br>앵커사업단 홈페이지 개설</h3><a href="#/notice/0">자세히 보기 ›</a></div>
+  </div>
+  <div class="ngrid2">
+   <div class="box"><h4>언론보도</h4><a class="more" href="#/press">+</a><div class="cards">${cards('press')}</div></div>
+   <div class="box"><h4>뉴스레터</h4><a class="more" href="#/newsletter">+</a><div class="cards">${nlCards()}</div></div>
+  </div>
+ </div></section>
+ <section class="partners"><div class="inner">
+  <div class="ptop"><div><h2>협력기관</h2><p>춘해보건대학교 앵커사업 참여 현황</p></div><div class="ptabs">${Object.keys(PARTNERS).map((k,i)=>`<button class="${i?'':'act'}" onclick="ptab(this,'${k}')">${k}</button>`).join('')}</div></div>
+  <div class="pwrap"><iframe loading="lazy" title="춘해보건대학교 지도" src="https://maps.google.com/maps?q=%EC%B6%98%ED%95%B4%EB%B3%B4%EA%B1%B4%EB%8C%80%ED%95%99%EA%B5%90&z=11&output=embed"></iframe><ul class="plist2" id="plist2"></ul></div>
+ </div></section>
+ <section class="vzone"><div class="inner"><div class="vrow">
+  <a class="vbox" href="#/video"><span>현장 스케치</span></a><a class="vbox" href="#/video"><span>춘해보건대학교 앵커사업단 홍보영상</span></a><a class="vbox" href="#/video"><span>프로그램 하이라이트</span></a>
+ </div></div></section>`;
+}
+function cards(k){const a=BOARD[k];if(!a.length)return [1,2,3].map(()=>`<div class="card"><div class="th">준비 중</div><p>게시물을 준비하고 있습니다</p></div>`).join('');
+ return a.slice(0,3).map((p,i)=>`<a class="card" href="#/${k}/${i}"><div class="th">${esc(p.t)}</div><p>${esc(p.t)}</p></a>`).join('')}
+function nlCards(){const a=BOARD.newsletter;return [0,1,2].map(i=>a[i]?`<a class="card nl" href="#/newsletter/${i}"><div class="th">ANCHOR<br>NEWSLETTER</div><p>${esc(a[i].t)}</p></a>`:`<div class="card nl"><div class="th">ANCHOR<br>NEWSLETTER</div><p>발행 준비 중</p></div>`).join('')}
+function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer()}
+function heroTimer(){clearInterval(heroT);if(heroPlay)heroT=setInterval(()=>goHero((heroI+1)%3),6000)}
+function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)return;heroI=i;const t=[['지역과 함께 성장하는 혁신의 시작','춘해보건대학교 ANCHOR사업단'],['지역의 건강한 미래를 잇는 교육혁신','보건·돌봄 인재양성 거점'],['대학과 지역이 함께 만드는 지속가능한 정주 생태계','울산과 함께하는 앵커사업']];
+ s.forEach((x,j)=>x.classList.toggle('act',j===i));$('#hp').textContent=t[i][0];$('#hh').textContent=t[i][1];
+ document.querySelectorAll('#hbar i').forEach((x,j)=>{x.classList.remove('act');void x.offsetWidth;if(j===i)x.classList.add('act')});heroTimer()}
+function toggleHero(b){heroPlay=!heroPlay;b.textContent=heroPlay?'❚❚':'▶';document.querySelectorAll('#hbar i').forEach(x=>x.style.setProperty('--p',heroPlay?'running':'paused'));heroTimer()}
+function qtab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
+ $('#qicons').innerHTML=QUICK[k].map(q=>`<a href="${q[2]}" ${q[2].startsWith('http')?'target="_blank" rel="noopener"':''}>${ICON[q[1]]}<span>${q[0].replace('\n','<br>')}</span></a>`).join('')}
+function proj(i){document.querySelectorAll('#plist button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=PROJ[i];
+ $('#dmid').innerHTML=`<div class="lab">프로젝트 ${p.k}</div><h2>${p.h}</h2><div class="dcards">${p.cards.map(c=>`<div>${ICON.dc}<span>${c}</span></div>`).join('')}</div><ul>${p.li.map(l=>`<li>${l}</li>`).join('')}</ul>`;
+ $('#circ').innerHTML=`<b>${p.k}</b><span>${p.n}</span>`}
+function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
+ const a=BOARD[k],lab=findMenu(k)[1][1];$('#nlist').innerHTML=a.length?a.slice(0,4).map((p,i)=>`<li><a href="#/${k}/${i}"><span class="tag">${lab}</span><span class="tt">${esc(p.t)}</span><span class="dt">${p.d}</span></a></li>`).join(''):'<li class="empty">등록된 게시물이 없습니다.</li>'}
+function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
+ $('#plist2').innerHTML=PARTNERS[k].map((p,i)=>`<li><em>${String(i+1).padStart(2,'0')}</em><div><b>${p[0]}</b><small>${p[1]}</small></div></li>`).join('')}
+
+/* ===== 서브페이지 ===== */
+function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></div>`}
+const PAGES={
+ overview:()=>`
+ <section>${stit('비전 및 핵심목표','Vision & Key Targets')}
+  <div class="vgrid"><div><i>VISION</i><br>대학과 산업의 동반성장을 통한 미래산업 중심도시로의 새로운 도약</div><div><i>대학 역할</i><br>보건·돌봄 인력 양성과 성인학습자 평생·직업교육 거점</div></div>
+  <p class="kt">핵심목표 : 지역에서 배우고, 지역에서 일하고, 지역에 정주하는 보건·돌봄 인재 양성</p>
+  <div class="kgrid"><div>돌봄 인력 양성<b>늘봄·돌봄</b></div><div>의료 안전망<b>지역 완결형</b></div><div>평생·직업 전환교육<b>CH-U-RUN</b></div><div>보건의료 평생학습<b>Medi-Learn</b></div></div>
+ </section>
+ <section>${stit('사업 개요','Overview')}
+  <table class="tbl"><tr><th style="width:22%">사업명</th><td class="l">지역성장 인재양성체계(앵커) 사업</td></tr>
+  <tr><th>주관</th><td class="l">교육부 · 울산광역시 (총괄·승인: 울산광역시 대학청년과 / 실무 점검: 울산테크노파크 울산앵커센터)</td></tr>
+  <tr><th>참여대학</th><td class="l">울산대학교 · 울산과학대학교 · 춘해보건대학교</td></tr>
+  <tr><th>춘해보건대학교 강점 분야</th><td class="l">보건·돌봄 인력, 성인학습자 → Dynamic CARE(돌봄·의료 안전망, U-RUN 전환교육)</td></tr>
+  <tr><th>사업기간</th><td class="l">2026년 ~ 2029년</td></tr></table>
+ </section>
+ <section>${stit('추진 체계','Organization')}
+  <p class="para">춘해보건대학교 앵커사업단은 사업단장을 중심으로 본부와 단위과제 운영조직을 두고, 울산광역시·울산앵커센터 및 지역 협력기관과 연계하여 사업을 추진합니다. 세부 조직과 담당자는 <a href="#/staff" style="color:var(--g);font-weight:700">담당자 안내</a>에서 확인하실 수 있습니다.</p>
+ </section>`,
+ projects:()=>`
+ <section>${stit('프로젝트 구성','Projects')}
+  <div class="pcards">${PROJ.map(p=>`<div><b>프로젝트 ${p.k}</b><h4>${p.n}</h4><p>${p.h}</p></div>`).join('')}</div>
+ </section>
+ <section>${stit('2027년 재구조화 단위과제','Unit Tasks (2027~)')}
+  <p class="para" style="margin-bottom:18px">울산광역시 앵커 재구조화 로드맵(2026. 11.)에 따라 2027년부터 3개 프로젝트·8개 단위과제로 운영됩니다. 춘해보건대학교 참여 과제는 강조 표시하였습니다.</p>
+  <table class="tbl"><tr><th>프로젝트</th><th>단위과제</th><th>수행대학</th></tr>
+  <tr><td>Dynamic TALENT</td><td class="l">U-LEAD 정주형 글로벌 융합인재 양성</td><td>3개교</td></tr>
+  <tr><td>Dynamic TALENT</td><td class="l">자생형 청년 창업 인큐베이팅 거점 구축</td><td>울산대·울산과학대</td></tr>
+  <tr><td>Dynamic BRIDGE</td><td class="l">주력산업 AX·에너지 전환 지원체계 구축</td><td>울산대·울산과학대</td></tr>
+  <tr><td>Dynamic BRIDGE</td><td class="l">산학 공동 R&amp;BD 상생 플랫폼 구축</td><td>3개교</td></tr>
+  <tr><td>Dynamic BRIDGE</td><td class="l">지·산·학·연 복합재난 안전교육 플랫폼 구축</td><td>3개교</td></tr>
+  <tr class="hl"><td>Dynamic CARE</td><td class="l"><span class="badge">춘해</span> U-RUN 울산형 평생·직업 전환교육 체계 구축 (CH-U-RUN, Medi-Learn)</td><td>3개교</td></tr>
+  <tr class="hl"><td>Dynamic CARE</td><td class="l"><span class="badge">춘해</span> 지역 완결형 돌봄·의료 안전망 구축</td><td>울산과학대·춘해보건대</td></tr>
+  <tr><td>Dynamic CARE</td><td class="l">대학가·지역 현안 해결형 리빙랩 구축</td><td>3개교</td></tr></table>
+ </section>`,
+ staff:()=>`
+ <section>${stit('담당자 안내','Staff')}
+  <table class="tbl"><tr><th>직위</th><th>성명</th><th>담당업무</th><th>연락처</th></tr>
+  <tr><td>사업단장</td><td>김기홍</td><td class="l">앵커사업단 총괄</td><td>-</td></tr>
+  <tr><td>본부장(부단장)</td><td>김형수</td><td class="l">앵커사업 기획·운영 총괄</td><td>052-270-0331</td></tr>
+  <tr><td colspan="4" class="empty">담당 연구원 정보를 준비하고 있습니다.</td></tr></table>
+ </section>`,
+ location:()=>`
+ <section>${stit('오시는 길','Location')}
+  <div class="mapbox"><iframe loading="lazy" title="춘해보건대학교 위치" src="https://maps.google.com/maps?q=%EC%B6%98%ED%95%B4%EB%B3%B4%EA%B1%B4%EB%8C%80%ED%95%99%EA%B5%90&z=15&output=embed"></iframe></div>
+  <div class="info"><div><b>주소</b>울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 앵커사업단</div><div><b>연락처</b>Tel : 052-270-0331</div><div><b>대중교통</b>울산 시내버스 이용 시 춘해보건대학교 정류장 하차</div></div>
+ </section>`,
+ faq:()=>`
+ <section>${stit('FAQ','Frequently Asked Questions')}
+  <div class="faq">
+   <details><summary>앵커사업은 어떤 사업인가요?</summary><p>지역성장 인재양성체계(앵커) 사업은 지자체와 대학이 함께 지역에 필요한 인재를 양성하고, 대학이 지역 발전의 중심 역할을 하도록 지원하는 사업입니다.</p></details>
+   <details><summary>춘해보건대학교는 어떤 분야에 참여하나요?</summary><p>보건·돌봄 인력 양성과 성인학습자 평생·직업교육을 중심으로, 돌봄·의료 안전망 구축과 U-RUN 평생·직업 전환교육에 참여합니다.</p></details>
+   <details><summary>프로그램 참여 신청은 어떻게 하나요?</summary><p>프로그램별 모집 공지는 <a href="#/notice" style="color:var(--g)">공지사항</a>과 <a href="#/call" style="color:var(--g)">과제공고</a>에서 안내합니다.</p></details>
+  </div>
+ </section>`,
+ inquiry:()=>`
+ <section>${stit('문의하기','Contact')}
+  <p class="para">앵커사업 관련 문의는 아래 연락처로 해 주시기 바랍니다.</p>
+  <div class="info"><div><b>전화</b>052-270-0331</div><div><b>주소</b>울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 앵커사업단</div><div><b>운영시간</b>평일 09:00 ~ 18:00<br>(점심시간 12:00 ~ 13:00)</div></div>
+ </section>`
+};
+const BOARD_EN={notice:'Notice',press:'Press',call:'Project Announcement',video:'Promotional Video',newsletter:'Newsletter',archive:'Archive'};
+function boardPage(k,idx){const a=BOARD[k],lab=findMenu(k)[1][1];
+ if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · 춘해보건대학교 앵커사업단</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr></table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
+ return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
+ <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">작성자</th><th style="width:120px">등록일</th></tr>
+ ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>앵커사업단</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
+
+function sub(id,idx){const f=findMenu(id);if(!f)return null;const[m,c]=f;
+ const body=PAGES[id]?PAGES[id]():boardPage(id,idx);
+ return `<div class="svis"><p class="bc">HOME <b>›</b> ${m.t}</p><h2>${c[1]}</h2>
+ <div class="snav"><select onchange="location.hash='#/'+this.value">${MENU.map(x=>`<option value="${x.c[0][0]}" ${x===m?'selected':''}>${x.t}</option>`).join('')}</select><select onchange="location.hash='#/'+this.value">${m.c.map(x=>`<option value="${x[0]}" ${x===c?'selected':''}>${x[1]}</option>`).join('')}</select>
+ <div class="tools"><button onclick="zoom(-1)" title="축소">−</button><button onclick="zoom(1)" title="확대">+</button><button onclick="location.hash='#/'" title="홈">⌂</button><button onclick="print()" title="인쇄">⎙</button><button onclick="share()" title="공유">⇪</button></div></div></div>
+ <div class="cont">${body}</div>`}
+let z=1;function zoom(d){z=Math.min(1.3,Math.max(.9,z+d*.1));$('.cont').style.zoom=z}
+function share(){navigator.clipboard&&navigator.clipboard.writeText(location.href);alert('주소가 복사되었습니다.')}
+
+function route(){const h=location.hash.replace(/^#\/?/,'').split('/');const id=h[0]||'';
+ const hd=$('#hd');let html;
+ if(!id){html=home();hd.className=''}else{html=sub(id,h[1]!=null?+h[1]:null)||home();hd.className='sub'}
+ $('#app').innerHTML=html;scrollTo(0,0);
+ document.querySelectorAll('.gnb>li').forEach((li,i)=>li.classList.toggle('cur',!!id&&MENU[i].c.some(c=>c[0]===id)));
+ const t=findMenu(id);document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:'춘해보건대학교 앵커사업단';
+ if(!id||!t)homeInit();else clearInterval(heroT)}
+addEventListener('hashchange',route);
+addEventListener('scroll',()=>{if(!location.hash.replace(/^#\/?/,''))$('#hd').classList.toggle('on',scrollY>60)});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeMap()});
+route();
+</script>
 </body>
 </html>
