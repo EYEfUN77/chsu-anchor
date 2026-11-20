@@ -386,7 +386,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .fgrid figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(5,15,35,.85));color:#fff;font-weight:700;font-size:16px}
 .fgrid small{display:block;font-weight:500;font-size:13px;opacity:.85}
 @media(max-width:680px){.fgrid{grid-template-columns:1fr 1fr;gap:8px}.fgrid figcaption{font-size:13px;padding:26px 10px 8px}.eqd{flex-direction:column;align-items:stretch}.eqdi{flex:none}}
-/* 참여 프로그램 */
+/* 운영 프로그램 */
 .prog{padding:80px 0 30px;background:#fff}
 .prtop{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:26px}.prtop h2{font-size:38px;font-family:'GmarketSans',Pretendard,sans-serif}
 .prctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -940,7 +940,7 @@ function home(){
   <div class="dtxt"><div class="dtabs" id="dtabs">${DYN.map((p,i)=>`<button class="${i?'':'act'}" style="--tc:${p.col}" onclick="proj(${i})">${p.k}</button>`).join('')}</div><div id="dbody"></div></div>
  </div></section>
  <section class="prog"><div class="inner">
-  <div class="prtop"><h2>참여 프로그램</h2><div class="prctl"><div class="prtabs">${['전체','모집중','모집마감'].map((t,i)=>`<button class="${i?'':'act'}" onclick="progTab(this,'${t}')">${t}</button>`).join('')}</div><a class="prplus" href="#/notice" title="공지사항 전체">+</a><button class="prnav" onclick="progMove(-1)" aria-label="이전">‹</button><button class="prnav" id="prpause" onclick="progPause(this)" aria-label="일시정지">❚❚</button><button class="prnav" onclick="progMove(1)" aria-label="다음">›</button></div></div>
+  <div class="prtop"><h2>운영 프로그램</h2><div class="prctl"><div class="prtabs">${['전체','모집중','모집마감'].map((t,i)=>`<button class="${i?'':'act'}" onclick="progTab(this,'${t}')">${t}</button>`).join('')}</div><a class="prplus" href="#/notice" title="공지사항 전체">+</a><button class="prnav" onclick="progMove(-1)" aria-label="이전">‹</button><button class="prnav" id="prpause" onclick="progPause(this)" aria-label="일시정지">❚❚</button><button class="prnav" onclick="progMove(1)" aria-label="다음">›</button></div></div>
   <div class="prtrack" id="prtrack">${progCards('전체')}</div>
  </div></section>
  <section class="newszone"><div class="inner">
@@ -1171,7 +1171,7 @@ function boardPage(k,idx){if(k==='gallery'||k==='newsletter')return mediaPage(k,
  <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">${k==='press'?'매체':'작성자'}</th><th style="width:120px">등록일</th></tr>
  ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>${esc(p.src||'앵커사업단')}</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
 
-/* 참여 프로그램 — [제목, 접수 시작, 접수 마감(null=상시), 운영기간, 모집인원, 사진, 연결(공지 제목 일부 또는 #경로)] */
+/* 운영 프로그램 — [제목, 접수 시작, 접수 마감(null=상시), 운영기간, 모집인원, 사진, 연결(공지 제목 일부 또는 #경로)] */
 const PROGS=[
  ['2026 초광역권 대학 공동 R&D 지원사업(상시모집)','2026-09-11',null,'선정 후 ~ 2027. 1.','과제 단위','img/campus-panorama.jpg','상시모집 재공고'],
  ['2026 지역기업 애로기술 지원사업','2026-05-13','2026-11-30','2026. 7. 1. ~ 11. 30.','울산지역 기업','img/eq00.jpg','애로기술'],
