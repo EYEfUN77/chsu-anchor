@@ -67,6 +67,15 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .slide .art{position:absolute;right:4%;bottom:0;width:58%;max-width:900px;z-index:1}
 .dpic .art,.gban .art{position:absolute;right:-4%;top:6%;width:78%;z-index:0}
 .gban .art{right:2%;top:auto;bottom:0;width:48%}
+html,body{overflow-x:hidden}
+.ngrid>*,.ngrid2>*,.cards>*{min-width:0}
+.card.pc .th{position:relative;overflow:hidden;padding:12px}
+.card.pc .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card.pc .th span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;line-height:1.4}
+.card.pc .m2{color:var(--g);font-weight:700;font-size:14px;margin-top:10px}
+.card.pc p+p{margin-top:4px}
+.card.nl .th{font-size:15px;line-height:1.15;padding:6px}
+@media(max-width:680px){.logo b{font-size:18px}.logo small{display:none}.topbar .tl a:nth-child(n+3){display:none}}
 /* sitemap */
 #sitemap{position:fixed;inset:0;background:rgba(10,31,68,.97);z-index:100;display:none;color:#fff;overflow:auto}
 #sitemap.open{display:block}
@@ -336,6 +345,8 @@ const PRESS=[
  {d:'2025-02-04',src:'한국대학신문',t:'춘해보건대, RISE 체계 기반 교육혁신 방향 모색을 위한 교수 연수',u:'https://news.unn.net/news/articleView.html?idxno=574563',b:'RISE 전환에 대비한 사업별 운영 방안과 교육혁신 전략을 공유한 교수 연수를 열었습니다.'}
 ];
 
+const PIMG={'1071681':'https://cdn.ksilbo.co.kr/news/photo/202611/1071681_649625_5430.jpg','635515':'https://cdn.veritas-a.com/news/photo/202611/635515_549597_4417.jpg','2026100115505689432':'https://www.busan.com/nas/wcms/wcms_data/photos/2026/10/01/2026100115415901587_m.jpg','630270':'https://cdn.veritas-a.com/news/photo/202610/630270_544232_1232.jpg','1067795':'https://cdn.iusm.co.kr/news/photo/202609/1067795_627971_5005.jpg','627488':'https://cdn.veritas-a.com/news/photo/202609/627488_541067_4642.jpg','626264':'https://cdn.veritas-a.com/news/photo/202609/626264_539383_2915.jpeg','613697':'https://cdn.veritas-a.com/news/photo/202606/613697_526771_2756.jpg','613452':'https://cdn.veritas-a.com/news/photo/202606/613452_526539_1125.jpg','612642':'https://cdn.veritas-a.com/news/photo/202605/612642_525735_5054.jpg','616020':'https://cdn.veritas-a.com/news/photo/202606/616020_529078_342.jpg','605410':'https://cdn.veritas-a.com/news/photo/202604/605410_518829_238.jpg','605398':'https://cdn.veritas-a.com/news/photo/202604/605398_518821_26.jpg','20260203500612':'https://cdn.emetro.co.kr/data2/content/image/2026/02/03/.cache/512/20260203500613.jpg','598781':'https://cdn.veritas-a.com/news/photo/202602/598781_512459_111.jpg','599476':'https://cdn.news.unn.net/news/photo/202610/599476_426082_428.jpg','146940':'https://cdn.tournews21.com/news/photo/202610/146940_273586_158.jpg','20251216500618':'https://cdn.emetro.co.kr/data2/content/image/2025/12/16/.cache/512/20251216500619.jpg','20251023500542':'https://cdn.emetro.co.kr/data2/content/image/2025/10/23/.cache/512/20251023500543.jpg','1033785':'https://cdn.ksilbo.co.kr/news/photo/202508/1033785_616402_2210.jpg','1053442':'https://cdn.iusm.co.kr/news/photo/202508/1053442_607724_80.jpg','20250728500605':'https://cdn.emetro.co.kr/data2/content/image/2025/07/28/.cache/512/20250728500606.jpg','20250704500272':'https://cdn.emetro.co.kr/data2/content/image/2025/07/04/.cache/512/20250704500273.jpg','2025062414393883828':'https://www.busan.com/nas/wcms/wcms_data/photos/2025/06/24/2025062414354150253_m.jpg','580397':'https://cdn.news.unn.net/news/photo/202506/580397_398433_2738.jpg','20250529500216':'https://cdn.emetro.co.kr/data2/content/image/2025/05/29/.cache/512/20250529500217.jpg','574563':'https://cdn.news.unn.net/news/photo/202502/574563_390099_3123.jpg'};
+PRESS.forEach(p=>{const k=Object.keys(PIMG).find(k=>p.u.includes(k));if(k)p.im=PIMG[k]});
 const BOARD={
  notice:[
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
@@ -444,7 +455,7 @@ function home(){
  </div></div></section>`;
 }
 function cards(k){const a=BOARD[k];if(!a.length)return [1,2,3].map(()=>`<div class="card"><div class="th">준비 중</div><p>게시물을 준비하고 있습니다</p></div>`).join('');
- return a.slice(0,3).map((p,i)=>`<a class="card" href="#/${k}/${i}"><div class="th">${esc(p.src||'')}<br>${p.d}</div><p>${esc(p.t)}</p></a>`).join('')}
+ return a.slice(0,3).map((p,i)=>`<a class="card pc" href="#/${k}/${i}"><div class="th">${p.im?`<img src="${p.im}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<span>${esc(p.t)}</span></div><p class="m2">${esc(p.src||'')} · ${p.d}</p><p>${esc(p.t)}</p></a>`).join('')}
 function nlCards(){const a=BOARD.newsletter;return [0,1,2].map(i=>a[i]?`<a class="card nl" href="#/newsletter/${i}"><div class="th">ANCHOR<br>NEWSLETTER</div><p>${esc(a[i].t)}</p></a>`:`<div class="card nl"><div class="th">ANCHOR<br>NEWSLETTER</div><p>발행 준비 중</p></div>`).join('')}
 function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer()}
 function heroTimer(){clearInterval(heroT);if(heroPlay)heroT=setInterval(()=>goHero((heroI+1)%3),6000)}
