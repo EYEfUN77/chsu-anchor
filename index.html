@@ -402,6 +402,16 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .prtx ul{list-style:none;padding:0;margin:0}.prtx li{font-size:15px;color:#555;padding:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.prtx li::before{content:"· "}.prtx em{font-style:normal;font-weight:700;color:#333;margin-right:8px}
 @media(max-width:1100px){.prcard{flex-basis:calc((100% - 40px)/3)}}
 @media(max-width:680px){.prog{padding:44px 0 10px}.prtop h2{font-size:26px}.prtabs button{font-size:15px;padding:7px 14px}.prplus{width:36px;height:36px}.prnav{display:none}.prcard{flex-basis:78%;min-width:0}}
+/* 공용장비 신청서 입력 */
+.eqft td{padding:6px 10px}.eqft input:not([type=checkbox]):not([type=radio]),.eqft textarea{width:100%;font:inherit;font-size:15px;padding:9px 12px;border:1px solid #cdd6e3;border-radius:8px;background:#fbfcfe}
+.eqft input:focus,.eqft textarea:focus{outline:2px solid #9cc2ff;border-color:var(--g);background:#fff}
+.eqft th b,.eqreq b{color:#e0383e}.eqreq{font-size:14px;color:#666}
+.eqft .eqdt{width:auto !important;display:inline-block}
+.eqcks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px}.eqckg small{display:block;color:var(--g);font-weight:700;margin:4px 0 2px}.eqckg label,.eqrd{display:block;font-size:15px;padding:2px 0;cursor:pointer}.eqrd{display:inline-block;margin-right:18px}
+.eqsign{display:inline-block;min-width:120px;border-bottom:1px solid #999;padding:0 8px}
+.eqbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0 18px}.btn.ghost{background:#fff;color:var(--g);border:1.5px solid var(--g)}
+@media print{body.pf .eqbtns{display:none}body.pf .eqft input,body.pf .eqft textarea{border:0;background:none}}
+@media(max-width:680px){.eqcks{grid-template-columns:1fr}.eqft th{white-space:normal}}
 /* ===== 모바일 최적화 ===== */
 @media(max-width:680px){
 header,header.on,header.sub{height:64px}
@@ -970,6 +980,13 @@ function proj(i,auto){if(!document.getElementById('dtabs'))return;dynI=i;if(!aut
 function nrows(k){if(k==='equip')return EQUIP.flatMap(g=>g.it).slice(0,3).map(e=>`<a class="h2-nrow" href="#/equip"><span>${esc(e[0])} · ${esc(e[1])}</span><small>공용장비</small></a>`).join('')+`<a class="h2-eqgo" href="#/equip"><b>공용장비 활용 신청하기</b><span>장비 ${EQUIP.reduce((a,g)=>a+g.it.length,0)}종 · 신청서 내려받기 →</span></a>`;
  const a=BOARD[k];return a.length?a.slice(0,4).map((n,i)=>`<a class="h2-nrow" href="#/${k}/${i}"><span>${esc(n.t)}</span><small>${n.d}</small></a>`).join(''):'<p class="h2-empty">등록된 게시물이 없습니다.</p>'}
 function printEqForm(){document.body.classList.add('pf');print();setTimeout(()=>document.body.classList.remove('pf'),500)}
+function eqSubmit(e){e.preventDefault();const f=e.target,v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
+ const eqs=[...f.querySelectorAll('input[name=eq]:checked')].map(c=>EQ[+c.value].n);if(!eqs.length&&!v('etc')){alert('희망 공용장비를 하나 이상 선택해 주세요.');return false}
+ const um=(f.querySelector('input[name=useMat]:checked')||{}).value||'';
+ const body=['[공용장비활용 신청서]','','■ 신청인','기업체(기관)명: '+v('org'),'사업자 등록번호: '+v('bizno'),'대표자: '+v('ceo'),'주소: '+v('addr'),'','■ 담당자','이름: '+v('name'),'부서/직위: '+v('dept'),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'','■ 공용장비 활용 신청','희망 장비: '+eqs.concat(v('etc')?['기타('+v('etc')+')']:[]).join(', '),'재료: '+v('mat'),'장비 및 내용: '+v('desc'),'희망 사용기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'','■ 사용 내역','사용시간: '+v('hours'),'재료 사용: '+um,'기타: '+v('memo'),'','위와 같이 공용장비 활용을 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청인: '+v('name'),'','춘해보건대학교 앵커사업단장 귀하'].join('\n');
+ location.href='mailto:sugi1994@ch.ac.kr?subject='+encodeURIComponent('[공용장비활용 신청] '+v('org')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
+function eqFill(){const d=document.getElementById('eqdate');if(d){const t=new Date();d.textContent=t.getFullYear()+'년 '+(t.getMonth()+1)+'월 '+t.getDate()+'일'}const f=document.getElementById('eqf');if(f){f.elements.name.addEventListener('input',e=>{document.getElementById('eqsign').textContent=e.target.value||'\u2003\u2003\u2003\u2003'})}}
+addEventListener('hashchange',()=>setTimeout(eqFill,50));setTimeout(eqFill,300);
 function ntab2(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('act',x===b));$('#nmore2').href='#/'+k;$('#nlist2').innerHTML=nrows(k)}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
  if(k==='equip'){$('#nlist').innerHTML=EQ.slice(0,3).map((e,i)=>`<li><a href="#/equip/${i}"><span class="tag">공용장비</span><span class="tt">${esc(e.n)} · ${esc(e.d)}</span><span class="dt">신청 가능</span></a></li>`).join('')+`<li><a href="#/equip"><span class="tag">신청</span><span class="tt"><b>공용장비 활용 신청하기 (장비 ${EQUIP.reduce((a,g)=>a+g.it.length,0)}종)</b></span><span class="dt">바로가기 ›</span></a></li>`;return}
@@ -1103,7 +1120,7 @@ const PAGES={
   </table>
   <h4 class="eqh">이용 절차</h4>
   <ol class="eqflow">${['담당자 상담','장비 검색·예약','예약 신청','담당자 승인','공간·장비 대여'].map((x,i)=>`<li><em>${String(i+1).padStart(2,'0')}</em><b>${x}</b></li>`).join('')}</ol>
-  <p style="text-align:center;margin-top:34px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/equip" onclick="setTimeout(()=>{const f=document.getElementById('eqform');if(f)f.scrollIntoView({behavior:'smooth'})},250)">신청서 작성하기</a><a class="btn" href="#/equip">장비 목록</a></p>
+  <p style="text-align:center;margin-top:34px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><a class="btn" href="#/equip" onclick="setTimeout(()=>{const f=document.getElementById('eqform');if(f){f.scrollIntoView({behavior:'smooth'});const c=[...f.querySelectorAll('input[name=eq]')].find(x=>x.value==${idx});if(c)c.checked=true}},300)">이 장비 신청서 작성하기</a><a class="btn" href="#/equip">장비 목록</a></p>
  </section>`}
  return `
  <section>${stit('공용장비 신청','Shared Equipment')}
@@ -1113,26 +1130,29 @@ const PAGES={
   <p class="eqnote">이용 대상: 타 기관 · 교내 · 개인 &nbsp;|&nbsp; 사용 방법·사용료 등은 담당자에게 문의해 주세요. (${tel})</p>
   ${EQUIP.map(g=>`<h4 class="eqh">${g.c} <small>${g.it.length}종</small></h4><div class="eqgrid">${g.it.map(x=>{const i=EQ.findIndex(e=>e.n===x[0]);return `<a class="eqc" href="#/equip/${i}"><div class="eqi"><img src="${EQ[i].img}" alt="${x[0]}" loading="lazy" onerror="this.remove()"></div><b>${x[0]}</b><p>${x[1]}</p>${x[2]?`<small>${x[2]}</small>`:''}<span>자세히 보기 ›</span></a>`}).join('')}</div>`).join('')}
   <div class="eqform" id="eqform">
-   <div class="eqfh"><h4>공용장비활용 신청서</h4><button class="btn" onclick="printEqForm()">신청서 인쇄</button></div>
+   <div class="eqfh"><h4>공용장비활용 신청서</h4><span class="eqreq"><b>*</b> 필수 입력</span></div>
+   <form id="eqf" onsubmit="return eqSubmit(event)">
    <table class="tbl eqft">
-    <tr><th rowspan="4">신청인</th><th>기업체명</th><td></td></tr>
-    <tr><th>사업자 등록번호</th><td></td></tr>
-    <tr><th>기업체 대표자</th><td></td></tr>
-    <tr><th>주소</th><td></td></tr>
-    <tr><th rowspan="4">담당자</th><th>이름</th><td></td></tr>
-    <tr><th>부서/직위</th><td></td></tr>
-    <tr><th>휴대폰</th><td></td></tr>
-    <tr><th>E-mail</th><td></td></tr>
-    <tr><th rowspan="4">공용장비<br>활용 신청</th><th>희망 공용장비</th><td class="l">□ 음성분석기기 및 인공후두기 &nbsp; □ 골격·팔·둔부 모형 &nbsp; □ 수고측정기<br>□ 프린터 &nbsp; □ 커팅플로터 &nbsp; □ 아크릴절곡기 &nbsp; □ 기타(&emsp;&emsp;&emsp;&emsp;)</td></tr>
-    <tr><th>재료</th><td></td></tr>
-    <tr><th>장비 및 내용<br><small>(상세 작성)</small></th><td class="l" style="height:90px;vertical-align:bottom;color:#888;font-size:14px">※ 설계 모델링 파일(*.stl)이 있으면 함께 제출</td></tr>
-    <tr><th>희망 사용기간</th><td></td></tr>
-    <tr><th rowspan="3">사용 내역</th><th>사용시간</th><td></td></tr>
-    <tr><th>재료 사용</th><td class="l">□ 유 &nbsp; □ 무</td></tr>
-    <tr><th>기타</th><td></td></tr>
+    <tr><th rowspan="4">신청인</th><th>기업체(기관)명 <b>*</b></th><td><input name="org" required placeholder="예) ○○주식회사, ○○학과"></td></tr>
+    <tr><th>사업자 등록번호</th><td><input name="bizno" placeholder="000-00-00000 (개인·교내는 생략)"></td></tr>
+    <tr><th>기업체 대표자</th><td><input name="ceo"></td></tr>
+    <tr><th>주소</th><td><input name="addr"></td></tr>
+    <tr><th rowspan="4">담당자</th><th>이름 <b>*</b></th><td><input name="name" required></td></tr>
+    <tr><th>부서/직위</th><td><input name="dept"></td></tr>
+    <tr><th>휴대폰 <b>*</b></th><td><input name="tel" type="tel" required placeholder="010-0000-0000"></td></tr>
+    <tr><th>E-mail <b>*</b></th><td><input name="mail" type="email" required placeholder="name@example.com"></td></tr>
+    <tr><th rowspan="4">공용장비<br>활용 신청</th><th>희망 공용장비 <b>*</b></th><td class="l"><div class="eqcks">${EQUIP.map(g=>'<div class="eqckg"><small>'+g.c+'</small>'+g.it.map(x=>{const k=EQ.findIndex(e=>e.n===x[0]);return '<label><input type="checkbox" name="eq" value="'+k+'"> '+x[0]+'</label>'}).join('')+'</div>').join('')}</div><input name="etc" placeholder="기타 장비·공간(직접 입력)" style="margin-top:8px"></td></tr>
+    <tr><th>재료</th><td><input name="mat" placeholder="사용할 재료(예: 아크릴 3T, PLA 등)"></td></tr>
+    <tr><th>장비 및 내용<br><small>(상세 작성)</small></th><td><textarea name="desc" rows="4" placeholder="활용 목적과 작업 내용을 적어 주세요. 설계 모델링 파일(*.stl)이 있으면 이메일에 첨부해 주세요."></textarea></td></tr>
+    <tr><th>희망 사용기간 <b>*</b></th><td class="l"><input name="d1" type="date" required class="eqdt"> ~ <input name="d2" type="date" class="eqdt"></td></tr>
+    <tr><th rowspan="3">사용 내역</th><th>사용시간</th><td><input name="hours" placeholder="예) 10:00~12:00, 총 2시간"></td></tr>
+    <tr><th>재료 사용</th><td class="l"><label class="eqrd"><input type="radio" name="useMat" value="유"> 유</label><label class="eqrd"><input type="radio" name="useMat" value="무" checked> 무</label></td></tr>
+    <tr><th>기타</th><td><input name="memo"></td></tr>
    </table>
-   <p class="eqfs">위와 같이 공용장비 활용을 신청합니다.<br><br>2026년 &emsp;&emsp; 월 &emsp;&emsp; 일<br><br>신청인 성명: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; (서명)<br><br><b>춘해보건대학교 앵커사업단장 귀하</b></p>
-   <p class="eqnote">※ 사용비용은 기업협업지원센터에서 상담 후 안내합니다. &nbsp;|&nbsp; 제출·문의: ${tel}, 도생관 2층 213호</p>
+   <p class="eqfs">위와 같이 공용장비 활용을 신청합니다.<br><br><span id="eqdate"></span><br><br>신청인 성명: <span id="eqsign" class="eqsign">&emsp;&emsp;&emsp;&emsp;</span> (서명)<br><br><b>춘해보건대학교 앵커사업단장 귀하</b></p>
+   <div class="eqbtns"><button type="submit" class="btn">이메일로 신청하기</button><button type="button" class="btn ghost" onclick="printEqForm()">작성 내용 인쇄 · PDF 저장</button><button type="reset" class="btn ghost">다시 작성</button></div>
+   </form>
+   <p class="eqnote">※ ‘이메일로 신청하기’를 누르면 작성 내용이 담긴 메일 창이 열립니다. 내용을 확인한 뒤 보내 주세요(받는 곳: 기업협업지원센터 sugi1994@ch.ac.kr). 메일 프로그램이 없으면 ‘인쇄 · PDF 저장’으로 PDF를 만들어 이메일로 보내 주세요.<br>※ 사용비용은 기업협업지원센터에서 상담 후 안내합니다. &nbsp;|&nbsp; 문의: ${tel}, 도생관 2층 213호</p>
   </div>
  </section>`},
  inquiry:()=>`
@@ -1153,11 +1173,11 @@ function boardPage(k,idx){if(k==='gallery'||k==='newsletter')return mediaPage(k,
 
 /* 참여 프로그램 — [제목, 접수 시작, 접수 마감(null=상시), 운영기간, 모집인원, 사진, 연결(공지 제목 일부 또는 #경로)] */
 const PROGS=[
- ['2026 초광역권 대학 공동 R&D 지원사업(상시모집)','2026-09-11',null,'선정 후 ~ 2027. 1.','과제 단위','img/campus-view.jpg','상시모집 재공고'],
+ ['2026 초광역권 대학 공동 R&D 지원사업(상시모집)','2026-09-11',null,'선정 후 ~ 2027. 1.','과제 단위','img/campus-panorama.jpg','상시모집 재공고'],
  ['2026 지역기업 애로기술 지원사업','2026-05-13','2026-11-30','2026. 7. 1. ~ 11. 30.','울산지역 기업','img/eq00.jpg','애로기술'],
  ['공용장비 활용 신청','2026-05-08',null,'상시','타 기관·교내·개인','img/eq01.jpg','#/equip'],
  ['2026 울산 청년 AX리더십 프로젝트','2026-05-20','2026-06-16','2026. 6. ~ 11.','100명','img/n117-1.jpg','AX리더십'],
- ['2차년도 산학공동기술개발과제 (재)공고','2026-06-04','2026-06-19','2026. 7. ~ 12.','과제 단위','img/campus-plaza.jpg','(재)공고'],
+ ['2차년도 산학공동기술개발과제 (재)공고','2026-06-04','2026-06-19','2026. 7. ~ 12.','과제 단위','img/campus-leeys.jpg','(재)공고'],
  ['울주 일상문화 리더 양성교육','2026-04-17','2026-05-08','2026. 5. 27. ~ 8. 5.','20명 내외','img/n114-1.jpg','울주 일상문화'],
  ['오페라 갈라 콘서트 〈NĀDA 공명〉','2026-04-15','2026-05-02','2026. 5. 2.(토) 15:00','지역 주민 누구나','img/g5-1.jpg','NĀDA']
 ];
@@ -1174,7 +1194,7 @@ function progTab(b,f){b.parentNode.querySelectorAll('button').forEach(x=>x.class
 /* 서브 상단 배경 — 대메뉴 순서대로(캠퍼스 갤러리 건물 사진) */
 /* 앵커사업 현장 사진 — [파일, 프로그램, 시기] */
 const FIELD=[['act04','CH와 함께하는 온동네 건강마실','2026. 8.'],['act08','울산119안전문화축제 안전체험부스','2026. 7.'],['act10','보훈가족 건강캠프','2026. 6.'],['act07','다문화 가정 복합재난 대응 교육','2026. 7.'],['act05','영유아 정서 지원 심리치유과정','2026. 8.'],['act03','찾아가는 은빛 요가 한걸음','2026. 9.']];
-const SVBG=['campus-dosaeng.jpg','campus-plaza.jpg','campus-myeongdeok.jpg','campus-view.jpg'];
+const SVBG=['campus-dosaeng.jpg','campus-ihwa.jpg','campus-changui.jpg','campus-panorama.jpg'];
 function sub(id,idx){const f=findMenu(id);if(!f)return null;const[m,c]=f;
  const body=PAGES[id]?PAGES[id](idx):boardPage(id,idx);
  return `<div class="svis" style="--sv:url(img/${SVBG[MENU.indexOf(m)]||SVBG[0]})"><p class="bc">HOME <b>›</b> ${m.t}</p><h2>${c[1]}</h2>
