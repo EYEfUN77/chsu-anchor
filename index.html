@@ -210,6 +210,7 @@ html,body{overflow-x:hidden}
 .vbox:nth-child(2){aspect-ratio:16/9}
 .vbox::before{content:"▶";position:absolute;width:58px;height:58px;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;opacity:.9;top:50%;left:50%;transform:translate(-50%,-50%)}
 .vbox span{position:absolute;bottom:16px;left:0;right:0;font-size:17px}
+.vpost{max-width:960px;margin:0 auto 40px}.vpost video{width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;display:block}.vpost h3{font-size:21px;margin:18px 0 8px;color:#222}.vpost p{color:#666;font-size:16px;margin:4px 0}
 /* footer */
 footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .flinks{border-bottom:1px solid #3a3a3a}
@@ -862,7 +863,7 @@ const BOARD={
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
   {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성과 인정\n\n■ 2차년도 추진 체계\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
  ],
- call:[],press:PRESS.sort((a,b)=>b.d.localeCompare(a.d)),gallery:GALLERY,video:[],newsletter:NEWSLETTER,archive:[]
+ call:[],press:PRESS.sort((a,b)=>b.d.localeCompare(a.d)),gallery:GALLERY,video:[{d:'2026-11-21',t:'춘해보건대학교 앵커사업단 홍보영상 「성공은 모두의 것」',v:'video/promo2.mp4',b:'2026년 앵커사업 프로그램 현장 사진을 노래 「성공은 모두의 것」과 함께 담았습니다.'}],newsletter:NEWSLETTER,archive:[]
 };
 
 BOARD.notice=BOARD.notice.concat(RNOT).sort((a,b)=>b.d.localeCompare(a.d));
@@ -1193,7 +1194,8 @@ const BOARD_EN={notice:'Notice',gallery:'Photo Gallery',press:'Press',call:'Proj
 function mediaPage(k,idx){const a=BOARD[k],lab=findMenu(k)[1][1];const pics=p=>k==='gallery'?p.im:p.pages;
  if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:20px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · 춘해보건대학교 앵커사업단</td></tr>${p.b?`<tr><td class="l para" style="padding:30px 10px;white-space:pre-line">${esc(p.b)}</td></tr>`:''}<tr><td class="mview" style="padding:30px 0">${pics(p).map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy" referrerpolicy="no-referrer">`).join('')}</td></tr>${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">원문 보기 ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:15px;margin-bottom:16px">전체 <b style="color:var(--g)">${a.length}</b>건</p>${a.length?`<div class="mgrid">${a.map((p,i)=>`<a class="mcard${k==='newsletter'?' nlc':''}" href="#/${k}/${i}"><div class="ph">${pics(p)[0]?`<img src="${pics(p)[0]}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="tx"><small>${p.d}</small><b>${esc(p.t)}</b></div></a>`).join('')}</div>`:'<p class="empty">등록된 게시물이 없습니다.</p>'}</section>`}
-function boardPage(k,idx){if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
+function videoPage(k){const lab=findMenu(k)[1][1];return `<section>${stit(lab,BOARD_EN[k])}${BOARD.video.length?BOARD.video.map(p=>`<div class="vpost"><video src="${p.v}" controls playsinline preload="metadata"></video><h3>${esc(p.t)}</h3><p>등록일 ${p.d} · 춘해보건대학교 앵커사업단</p>${p.b?`<p>${esc(p.b)}</p>`:''}</div>`).join(''):'<p class="empty">등록된 게시물이 없습니다.</p>'}</section>`}
+function boardPage(k,idx){if(k==='video')return videoPage(k);if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
  if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.im&&p.im.length&&k!=='press'?`<tr><td class="mview" style="padding:24px 0">${p.im.map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy">`).join('')}</td></tr>`:''}${p.files&&p.files.length?`<tr><td class="l" style="padding:16px 10px"><b>첨부파일</b> <small style="color:#888">— 서식은 담당 부서에 요청해 주세요.</small><ul class="flist">${p.files.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></td></tr>`:''}${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">${k==='press'?'기사 원문 보기':'원문·첨부파일 보기'} ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
  <table class="tbl blt"><tr><th class="bn" style="width:80px">번호</th><th class="bt">제목</th><th class="bw" style="width:140px">${k==='press'?'매체':'작성자'}</th><th class="bd" style="width:120px">등록일</th></tr>
