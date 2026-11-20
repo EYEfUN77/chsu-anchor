@@ -6,6 +6,8 @@
 <title>춘해보건대학교 앵커사업단</title>
 <meta name="description" content="춘해보건대학교 지역성장 인재양성체계(앵커) 사업단 홈페이지">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
 :root{--g:#1f5fd1;--g2:#3b82f6;--gl:#e8f0fc;--dk:#0a1f44;--b:#1d4f9a;--t:#1b1f1d;--m:#6b736f;--line:#e3e7e5;--w:1240px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -355,7 +357,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .hcopy h1,.dbig,.banner h3,.svis h2{font-family:'S-Core Dream',Pretendard,sans-serif}
 .banner h3{font-size:26px;letter-spacing:-.5px}
 .ptop h2,.box h4,.stit h3,#dbody h2,.dmid h2,.smap h3,.eqh,.tcard h4,.pcards h4{font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700}
-.logo b{white-space:nowrap}
+.logo b,.logo small{white-space:nowrap}
 .slide .hbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;mix-blend-mode:luminosity;pointer-events:none}
 .eqd{background:linear-gradient(135deg,#1f5fd1,#0b1f45);color:#fff;border-radius:18px;padding:28px 32px;margin:26px 0}
 .eqd small{color:#9cc2ff;font-weight:700;font-size:15px}.eqd h4{font-size:28px;margin:6px 0 10px}.eqd p{font-size:17px;opacity:.92;line-height:1.6}
@@ -367,10 +369,10 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 @media print{body.pf *{visibility:hidden}body.pf #eqform,body.pf #eqform *{visibility:visible}body.pf #eqform{position:absolute;left:0;top:0;width:100%;border:0}body.pf .eqfh .btn{display:none}}
 @media(max-width:680px){.eqt th{width:110px}.eqform{padding:16px}.eqft th,.eqft td{font-size:13px}}
 /* 서브 상단: 하늘색 배경 대신 캠퍼스 건물 사진 */
-.svis{background:linear-gradient(90deg,rgba(9,35,80,.55),rgba(9,35,80,.2)),#0e3f86 !important;position:relative}
-.svis::before{content:"";position:absolute;inset:0;background:var(--sv,url(img/campus-dosaeng.jpg)) center 45%/cover no-repeat;mix-blend-mode:luminosity;opacity:.6;pointer-events:none}
+.svis{background:#1d2633 !important;position:relative}
+.svis::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.42)),var(--sv,url(img/campus-dosaeng.jpg)) center 45%/cover no-repeat;pointer-events:none}
 .svis .bc,.svis h2{position:relative;z-index:1}.svis .snav{z-index:2}
-.svis .bc{color:rgba(255,255,255,.85)}.svis .bc b{color:#9cc2ff}.svis h2{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.svis .bc{color:rgba(255,255,255,.85)}.svis .bc b{color:#9cc2ff}.svis h2{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}.svis .bc{text-shadow:0 1px 6px rgba(0,0,0,.5)}
 /* 사진 꾸밈 */
 .banner{background:linear-gradient(120deg,rgba(227,237,252,.96) 35%,rgba(212,227,251,.72)),url(img/campus-dosaeng2.jpg) right center/cover no-repeat}
 .vbox{background:linear-gradient(rgba(8,25,58,.25),rgba(8,25,58,.65)),url(img/act02.jpg) center/cover}
@@ -384,6 +386,22 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .fgrid figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(5,15,35,.85));color:#fff;font-weight:700;font-size:16px}
 .fgrid small{display:block;font-weight:500;font-size:13px;opacity:.85}
 @media(max-width:680px){.fgrid{grid-template-columns:1fr 1fr;gap:8px}.fgrid figcaption{font-size:13px;padding:26px 10px 8px}.eqd{flex-direction:column;align-items:stretch}.eqdi{flex:none}}
+/* 참여 프로그램 */
+.prog{padding:80px 0 30px;background:#fff}
+.prtop{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:26px}.prtop h2{font-size:38px;font-family:'GmarketSans',Pretendard,sans-serif}
+.prctl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.prtabs{display:flex;gap:4px;margin-right:8px}.prtabs button{font:inherit;font-size:18px;font-weight:700;padding:10px 22px;border-radius:24px;border:1.5px solid transparent;background:none;color:#333;cursor:pointer}.prtabs button.act{border-color:var(--g);color:var(--g)}
+.prplus{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--g);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:500}
+.prnav{width:44px;height:44px;border-radius:50%;border:0;background:#f0f2f5;font-size:22px;cursor:pointer;color:#333}
+.prtrack{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 26px;scrollbar-width:none}.prtrack::-webkit-scrollbar{display:none}
+.prcard{flex:0 0 calc((100% - 60px)/4);min-width:260px;scroll-snap-align:start;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(15,40,90,.1);display:flex;flex-direction:column;transition:transform .2s}
+.prcard:hover{transform:translateY(-4px)}
+.prph{aspect-ratio:16/9;background:linear-gradient(135deg,#1f5fd1,#0b1f45);overflow:hidden}.prph img{width:100%;height:100%;object-fit:cover}
+.prtx{padding:22px 24px 26px}.prtx b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:19px;line-height:1.4;min-height:2.8em;margin:10px 0 12px;color:#222;overflow:hidden}
+.prbadge{display:inline-block;background:#0aa3b5;color:#fff;font-size:14px;font-weight:700;padding:3px 12px;border-radius:14px}.prbadge.off{background:#777}
+.prtx ul{list-style:none;padding:0;margin:0}.prtx li{font-size:15px;color:#555;padding:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.prtx li::before{content:"· "}.prtx em{font-style:normal;font-weight:700;color:#333;margin-right:8px}
+@media(max-width:1100px){.prcard{flex-basis:calc((100% - 40px)/3)}}
+@media(max-width:680px){.prog{padding:44px 0 10px}.prtop h2{font-size:26px}.prtabs button{font-size:15px;padding:7px 14px}.prplus{width:36px;height:36px}.prnav{display:none}.prcard{flex-basis:78%;min-width:0}}
 /* ===== 모바일 최적화 ===== */
 @media(max-width:680px){
 header,header.on,header.sub{height:64px}
@@ -648,7 +666,7 @@ const RNOT=[
 
 ■ 문의
 - 기업협업지원센터 조경숙 연구원(052-270-0515, sugi1994@ch.ac.kr), 도생관 2층 213호`},
- {d:'2026-05-20',t:'2026년 「울산 청년 AX리더십 프로젝트」 모집 공고',files:['2026 울산 청년 AX리더십 프로젝트 참여자 모집 공고(PDF)'],b:`울산 청년이 생성형 AI와 데이터 역량을 갖춘 디지털 리더로 성장하도록 돕는 「2026년 울산 청년 AX리더십 프로젝트」 참여자를 모집합니다.
+ {d:'2026-05-20',t:'2026년 「울산 청년 AX리더십 프로젝트」 모집 공고',im:['img/n117-1.jpg'],files:['2026 울산 청년 AX리더십 프로젝트 참여자 모집 공고(PDF)'],b:`울산 청년이 생성형 AI와 데이터 역량을 갖춘 디지털 리더로 성장하도록 돕는 「2026년 울산 청년 AX리더십 프로젝트」 참여자를 모집합니다.
 
 ■ 사업 개요
 - 주관: 울산창조경제혁신센터(울산청년지원센터)
@@ -713,7 +731,7 @@ const RNOT=[
 
 ■ 문의
 - 기업협업지원센터 조경숙 연구원(052-270-0515, sugi1994@ch.ac.kr)`},
- {d:'2026-05-07',t:'「울주 일상문화 리더 양성교육」 참여자 모집',b:`울주문화재단과 춘해보건대학교가 지역 주민이 일상 속 문화의 주체로 성장하도록 「울주 일상문화 리더 양성교육」 참여자를 모집합니다.
+ {d:'2026-05-07',t:'「울주 일상문화 리더 양성교육」 참여자 모집',im:['img/n114-1.jpg','img/n114-2.jpg'],b:`울주문화재단과 춘해보건대학교가 지역 주민이 일상 속 문화의 주체로 성장하도록 「울주 일상문화 리더 양성교육」 참여자를 모집합니다.
 
 ■ 교육 개요
 - 교육기간: 2026. 5. 27.(수) ~ 8. 5.(수), 4시간 × 15회차(총 60시간)
@@ -740,7 +758,7 @@ const RNOT=[
 ■ 문의
 - 울주문화재단 생활문화팀(052-980-2224)
 ※ 교육 일정과 내용은 운영 상황에 따라 바뀔 수 있습니다.`},
- {d:'2026-04-15',t:'이탈리아 거장들이 전하는 울림, 오페라 갈라 콘서트 〈NĀDA 공명〉에 초대합니다',b:`봄이 깊어가는 5월의 주말, 이탈리아 정통 오페라의 진수를 만나 보세요.
+ {d:'2026-04-15',t:'이탈리아 거장들이 전하는 울림, 오페라 갈라 콘서트 〈NĀDA 공명〉에 초대합니다',im:[1,2,3,4].map(i=>'img/n112-'+i+'.jpg'),b:`봄이 깊어가는 5월의 주말, 이탈리아 정통 오페라의 진수를 만나 보세요.
 세계 무대에서 활약하는 3인의 테너와 피아니스트가 꾸미는 클래식 무대에 지역 주민 여러분을 초대합니다.
 
 ■ 일시: 2026년 5월 2일(토) 15:00 ~ 16:30
@@ -749,7 +767,7 @@ const RNOT=[
 ■ 관람료: 무료`}
 ];
 const GALLERY=[
- {d:'2026-05-11',t:'이탈리아 정통 3테너 오페라 갈라 콘서트 ‘NADA 공명’ 성료',im:[],b:`춘해보건대학교는 5월 2일 교내 명덕관 아트홀에서 이탈리아 정통 3테너 오페라 갈라 콘서트 ‘NADA 공명’을 열었습니다.
+ {d:'2026-05-11',t:'이탈리아 정통 3테너 오페라 갈라 콘서트 ‘NADA 공명’ 성료',im:[1,2,3,4,5,6,7].map(i=>'img/g5-'+i+'.jpg'),b:`춘해보건대학교는 5월 2일 교내 명덕관 아트홀에서 이탈리아 정통 3테너 오페라 갈라 콘서트 ‘NADA 공명’을 열었습니다.
 
 공연은 지역사회와 정서적 교류를 넓히고 문화·예술을 누릴 기회를 늘리기 위해 마련했습니다. RISE사업단이 주최하고 요가과가 주관했으며, 전석 무료로 지역 주민과 함께했습니다.
 
@@ -911,6 +929,10 @@ function home(){
   <div class="dpic" id="dpic"></div>
   <div class="dtxt"><div class="dtabs" id="dtabs">${DYN.map((p,i)=>`<button class="${i?'':'act'}" style="--tc:${p.col}" onclick="proj(${i})">${p.k}</button>`).join('')}</div><div id="dbody"></div></div>
  </div></section>
+ <section class="prog"><div class="inner">
+  <div class="prtop"><h2>참여 프로그램</h2><div class="prctl"><div class="prtabs">${['전체','모집중','모집마감'].map((t,i)=>`<button class="${i?'':'act'}" onclick="progTab(this,'${t}')">${t}</button>`).join('')}</div><a class="prplus" href="#/notice" title="공지사항 전체">+</a><button class="prnav" onclick="progMove(-1)" aria-label="이전">‹</button><button class="prnav" id="prpause" onclick="progPause(this)" aria-label="일시정지">❚❚</button><button class="prnav" onclick="progMove(1)" aria-label="다음">›</button></div></div>
+  <div class="prtrack" id="prtrack">${progCards('전체')}</div>
+ </div></section>
  <section class="newszone"><div class="inner">
   <div class="ngrid">
    <div class="box"><div class="btabs"><button class="act" onclick="ntab(this,'notice')">공지사항</button><button onclick="ntab(this,'call')">과제공고</button><button onclick="ntab(this,'equip')">공용장비 신청</button></div><a class="more" id="nmore" href="#/notice">+</a><ul class="blist" id="nlist"></ul></div>
@@ -934,7 +956,7 @@ function cards(k){const a=BOARD[k];if(!a.length)return [1,2,3].map(()=>`<div cla
 function nlCards(){const a=BOARD.newsletter;return [0,1,2].map(i=>a[i]?`<a class="card nl" href="#/newsletter/${i}"><div class="th">ANCHOR<br>NEWSLETTER</div><p>${esc(a[i].t)}</p></a>`:`<div class="card nl"><div class="th">ANCHOR<br>NEWSLETTER</div><p>발행 준비 중</p></div>`).join('')}
 let dynT,dynI=0,dynHold=false;
 function dynTimer(){clearInterval(dynT);dynT=setInterval(()=>{if(!dynHold&&document.getElementById('dtabs'))proj((dynI+1)%DYN.length,1)},2000)}
-function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);{const d=document.querySelector('.dyn');if(d){d.onmouseenter=()=>dynHold=true;d.onmouseleave=()=>dynHold=false}}ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer()}
+function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer();progTimer()}
 function heroTimer(){clearInterval(heroT);if(heroPlay)heroT=setInterval(()=>goHero((heroI+1)%3),6000)}
 function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)return;heroI=i;const t=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
  s.forEach((x,j)=>x.classList.toggle('act',j===i));$('#hp').textContent=t[i][0];$('#hh').textContent=t[i][1];
@@ -1124,11 +1146,31 @@ function mediaPage(k,idx){const a=BOARD[k],lab=findMenu(k)[1][1];const pics=p=>k
  if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:20px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · 춘해보건대학교 앵커사업단</td></tr>${p.b?`<tr><td class="l para" style="padding:30px 10px;white-space:pre-line">${esc(p.b)}</td></tr>`:''}<tr><td class="mview" style="padding:30px 0">${pics(p).map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy" referrerpolicy="no-referrer">`).join('')}</td></tr>${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">원문 보기 ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:15px;margin-bottom:16px">전체 <b style="color:var(--g)">${a.length}</b>건</p>${a.length?`<div class="mgrid">${a.map((p,i)=>`<a class="mcard${k==='newsletter'?' nlc':''}" href="#/${k}/${i}"><div class="ph">${pics(p)[0]?`<img src="${pics(p)[0]}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="tx"><small>${p.d}</small><b>${esc(p.t)}</b></div></a>`).join('')}</div>`:'<p class="empty">등록된 게시물이 없습니다.</p>'}</section>`}
 function boardPage(k,idx){if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
- if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.files&&p.files.length?`<tr><td class="l" style="padding:16px 10px"><b>첨부파일</b> <small style="color:#888">— 서식은 담당 부서에 요청해 주세요.</small><ul class="flist">${p.files.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></td></tr>`:''}${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">${k==='press'?'기사 원문 보기':'원문·첨부파일 보기'} ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
+ if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.im&&p.im.length&&k!=='press'?`<tr><td class="mview" style="padding:24px 0">${p.im.map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy">`).join('')}</td></tr>`:''}${p.files&&p.files.length?`<tr><td class="l" style="padding:16px 10px"><b>첨부파일</b> <small style="color:#888">— 서식은 담당 부서에 요청해 주세요.</small><ul class="flist">${p.files.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></td></tr>`:''}${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">${k==='press'?'기사 원문 보기':'원문·첨부파일 보기'} ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
  <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">${k==='press'?'매체':'작성자'}</th><th style="width:120px">등록일</th></tr>
  ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>${esc(p.src||'앵커사업단')}</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
 
+/* 참여 프로그램 — [제목, 접수 시작, 접수 마감(null=상시), 운영기간, 모집인원, 사진, 연결(공지 제목 일부 또는 #경로)] */
+const PROGS=[
+ ['2026 초광역권 대학 공동 R&D 지원사업(상시모집)','2026-09-11',null,'선정 후 ~ 2027. 1.','과제 단위','img/campus-view.jpg','상시모집 재공고'],
+ ['2026 지역기업 애로기술 지원사업','2026-05-13','2026-11-30','2026. 7. 1. ~ 11. 30.','울산지역 기업','img/eq00.jpg','애로기술'],
+ ['공용장비 활용 신청','2026-05-08',null,'상시','타 기관·교내·개인','img/eq01.jpg','#/equip'],
+ ['2026 울산 청년 AX리더십 프로젝트','2026-05-20','2026-06-16','2026. 6. ~ 11.','100명','img/n117-1.jpg','AX리더십'],
+ ['2차년도 산학공동기술개발과제 (재)공고','2026-06-04','2026-06-19','2026. 7. ~ 12.','과제 단위','img/campus-plaza.jpg','(재)공고'],
+ ['울주 일상문화 리더 양성교육','2026-04-17','2026-05-08','2026. 5. 27. ~ 8. 5.','20명 내외','img/n114-1.jpg','울주 일상문화'],
+ ['오페라 갈라 콘서트 〈NĀDA 공명〉','2026-04-15','2026-05-02','2026. 5. 2.(토) 15:00','지역 주민 누구나','img/g5-1.jpg','NĀDA']
+];
+function progOpen(p){const now=new Date().toISOString().slice(0,10);return !p[2]||p[2]>=now}
+function progLink(p){if(p[6].startsWith('#'))return p[6];const i=BOARD.notice.findIndex(n=>n.t.includes(p[6]));return i<0?'#/notice':'#/notice/'+i}
+const pd=d=>d?d.replace(/-/g,'.'):'';
+function progCards(f){const L=PROGS.map(p=>[p,progOpen(p)]).sort((a,b)=>b[1]-a[1]).filter(([p,o])=>f==='전체'||(f==='모집중')===o);
+ return L.map(([p,o])=>`<a class="prcard" href="${progLink(p)}"><div class="prph"><img src="${p[5]}" alt="" loading="lazy" onerror="this.remove()"></div><div class="prtx"><span class="prbadge${o?'':' off'}">${o?'모집중':'모집마감'}</span><b>${esc(p[0])}</b><ul><li><em>접수기간</em>${pd(p[1])} ~ ${p[2]?pd(p[2]):'상시'}</li><li><em>운영기간</em>${p[3]}</li><li><em>모집인원</em>${p[4]}</li></ul></div></a>`).join('')||'<p class="h2-empty">해당 프로그램이 없습니다.</p>'}
+let progT,progRun=true;
+function progMove(d){const t=document.getElementById('prtrack');if(!t)return;const c=t.querySelector('.prcard');const step=c?c.offsetWidth+20:300;if(d>0&&t.scrollLeft+t.clientWidth>=t.scrollWidth-5)t.scrollTo({left:0,behavior:'smooth'});else t.scrollBy({left:d*step,behavior:'smooth'})}
+function progTimer(){clearInterval(progT);if(progRun)progT=setInterval(()=>progMove(1),3000)}
+function progPause(b){progRun=!progRun;b.textContent=progRun?'❚❚':'▶';progTimer()}
+function progTab(b,f){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('act',x===b));const t=document.getElementById('prtrack');t.innerHTML=progCards(f);t.scrollLeft=0;progTimer()}
 /* 서브 상단 배경 — 대메뉴 순서대로(캠퍼스 갤러리 건물 사진) */
 /* 앵커사업 현장 사진 — [파일, 프로그램, 시기] */
 const FIELD=[['act04','CH와 함께하는 온동네 건강마실','2026. 8.'],['act08','울산119안전문화축제 안전체험부스','2026. 7.'],['act10','보훈가족 건강캠프','2026. 6.'],['act07','다문화 가정 복합재난 대응 교육','2026. 7.'],['act05','영유아 정서 지원 심리치유과정','2026. 8.'],['act03','찾아가는 은빛 요가 한걸음','2026. 9.']];
@@ -1148,13 +1190,13 @@ function route(){const h=location.hash.replace(/^#\/?/,'').split('/');const id=h
  $('#app').innerHTML=html;scrollTo(0,0);
  document.querySelectorAll('.gnb>li').forEach((li,i)=>li.classList.toggle('cur',!!id&&MENU[i].c.some(c=>c[0]===id)));
  const t=findMenu(id);document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:'춘해보건대학교 앵커사업단';
- if(!id||!t)homeInit();else{clearInterval(heroT);clearInterval(dynT)}}
-/* 로고: 국문 큰 글자 폭을 영문 줄 폭에 맞춤(자간 자동 조정) */
-function fitLogo(){document.querySelectorAll('.logo').forEach(l=>{const b=l.querySelector('b'),m=l.querySelector('small');if(!b||!m)return;b.style.letterSpacing='';b.style.marginRight='';
+ if(!id||!t)homeInit();else{clearInterval(heroT);clearInterval(dynT);clearInterval(progT)}}
+/* 로고: 영문 줄 자간을 줄여 국문 폭에 맞춤(자동 조정) */
+function fitLogo(){document.querySelectorAll('.logo').forEach(l=>{const b=l.querySelector('b'),m=l.querySelector('small');if(!b||!m)return;b.style.letterSpacing='';b.style.marginRight='';m.style.letterSpacing='';m.style.marginRight='';
  if(!m.offsetWidth)return;const w=e=>{const r=document.createRange();r.selectNodeContents(e);return r.getBoundingClientRect().width};
- const n=[...b.textContent].length;if(n<2)return;let ls=parseFloat(getComputedStyle(b).letterSpacing)||0;
- const mt=parseFloat(getComputedStyle(m).letterSpacing)||0;for(let i=0;i<4;i++){const d=(w(m)-mt)-(w(b)-ls);if(Math.abs(d)<.2)break;ls+=d/(n-1);b.style.letterSpacing=ls+'px'}
- b.style.marginRight=(-ls)+'px'})}
+ const n=[...m.textContent].length;if(n<2)return;const bt=parseFloat(getComputedStyle(b).letterSpacing)||0;let ls=parseFloat(getComputedStyle(m).letterSpacing)||0;
+ for(let i=0;i<4;i++){const d=(w(b)-bt)-(w(m)-ls);if(Math.abs(d)<.2)break;ls+=d/(n-1);m.style.letterSpacing=ls+'px'}
+ m.style.marginRight=(-ls)+'px'})}
 addEventListener('resize',fitLogo);if(document.fonts)document.fonts.ready.then(fitLogo);addEventListener('load',fitLogo);fitLogo();
 addEventListener('hashchange',route);
 addEventListener('scroll',()=>{if(!location.hash.replace(/^#\/?/,''))$('#hd').classList.toggle('on',scrollY>60)});
