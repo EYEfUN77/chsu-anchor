@@ -1145,6 +1145,7 @@ const TRANS=[
  {n:'태화강역',d:'일반열차 · 동해선 광역전철',ic:'🚆',lat:35.539408,lng:129.353788}
 ];
 const kway=(m,t)=>`https://map.kakao.com/link/by/${m}/${encodeURIComponent(t.n)},${t.lat},${t.lng}/${encodeURIComponent(CHSU.n)},${CHSU.lat},${CHSU.lng}`;
+function myRoute(e){if(!navigator.geolocation)return true;e.preventDefault();const w=window.open('','_blank');const go=u=>{if(w&&!w.closed)w.location.href=u;else location.href=u;};navigator.geolocation.getCurrentPosition(p=>go(kway('car',{n:'내 위치',lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6)})),()=>go(KMAP.to),{enableHighAccuracy:true,timeout:10000,maximumAge:60000});return false;}
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return[m,c];return null}
@@ -1380,7 +1381,7 @@ const PAGES={
  <section>${stit('오시는 길','Location')}
   <div class="mapbox"><iframe loading="lazy" title="춘해보건대학교 위치" src="https://maps.google.com/maps?q=%EC%B6%98%ED%95%B4%EB%B3%B4%EA%B1%B4%EB%8C%80%ED%95%99%EA%B5%90&z=15&output=embed"></iframe></div>
   <div class="info"><div><b>주소</b>울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 앵커사업단</div><div><b>연락처</b>Tel : 052-270-0480</div><div><b>대중교통</b>울산 시내버스 417번 이용, 춘해보건대학교 정류장 하차</div></div>
-  <div class="tr-my"><a href="${KMAP.map}" target="_blank" rel="noopener">📍 카카오맵에서 위치 보기</a><a href="${KMAP.to}" target="_blank" rel="noopener" class="go">🧭 내 위치에서 길찾기</a></div>
+  <div class="tr-my"><a href="${KMAP.map}" target="_blank" rel="noopener">📍 카카오맵에서 위치 보기</a><a href="${KMAP.to}" target="_blank" rel="noopener" class="go" onclick="return myRoute(event)">🧭 내 위치에서 길찾기</a></div>
  </section>
  <section>${stit('교통편 이용안내','Directions')}
   <p class="tr-lead">출발지를 고르고 <b>지도보기</b>를 누르면 카카오맵에서 춘해보건대학교까지의 길찾기가 바로 열립니다.</p>
