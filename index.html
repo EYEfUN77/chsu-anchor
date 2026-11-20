@@ -34,14 +34,14 @@ header:hover::after{content:"";position:absolute;top:120px;left:0;right:0;height
 .util{display:flex;gap:18px;min-width:120px;justify-content:flex-end}
 .util button{width:32px;height:32px;color:#fff}header.on .util button,header.sub .util button,header:hover .util button{color:var(--t)}
 .util svg{width:28px;height:28px}
-.topbar{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:16px;background:rgba(0,0,0,.2);color:#fff;transition:.3s}
-header.on .topbar,header.sub .topbar,header:hover .topbar{background:#eef3fb;color:#4a5568}
+.topbar{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:16px;background:#1d4f9a;color:#fff;transition:.3s}
+header.on .topbar,header.sub .topbar,header:hover .topbar{background:#1d4f9a;color:#fff}
 .topbar .tl a+a::before,.topbar .tc a+a::before{content:"·";margin:0 9px;opacity:.6}
 .topbar .tc{border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:5px 18px;background:rgba(255,255,255,.08)}
-header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-color:#cfdbee;background:#fff}
+header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
 .topbar a:hover{text-decoration:underline}
-.topbar .nlbtn{background:var(--g2);color:#fff;padding:5px 16px;border-radius:14px;font-weight:600}
-.topbar .nlbtn:hover{text-decoration:none;background:var(--g)}
+.topbar .nlbtn{background:#fff;color:#1d4f9a;padding:5px 16px;border-radius:14px;font-weight:700}
+.topbar .nlbtn:hover{text-decoration:none;background:#e8f0fc}
 @media(max-width:1100px){.topbar .tc{display:none}.topbar{padding:0 20px}}
 .gban{height:340px;border-radius:24px;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 60%,#3b82f6);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;padding:36px 44px;color:#fff;margin-bottom:60px}
 .gban::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.08) 0 2px,transparent 2px 30px)}
