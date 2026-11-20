@@ -89,21 +89,37 @@ header:hover::after{content:"";position:absolute;top:80px;left:0;right:0;height:
 .circ b{font-size:120px;font-weight:800;line-height:1}.circ span{font-size:15px;margin-top:10px;opacity:.9}
 .dyn{padding:120px 0;background:radial-gradient(circle at 85% 20%,rgba(59,130,246,.25),transparent 40%),var(--dk)}
 .dwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;max-width:1400px;margin:0 auto;padding:0 40px}
-.dpic{height:460px;border-radius:30px;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 55%,#3b82f6);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:44px}
+.dpic{height:460px;border-radius:30px;background:linear-gradient(135deg,#0c2a5c 0%,#1f5fd1 52%,var(--dc,#3b82f6) 135%);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:44px}
 .dpic::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.07) 0 2px,transparent 2px 28px)}
 .dpin{position:relative;animation:fade .6s}.dpin small{display:block;font-size:18px;opacity:.8}.dpin b{display:block;font-size:84px;font-weight:800;letter-spacing:-1px;line-height:1}.dpin span{display:block;margin-top:12px;font-size:16px;opacity:.85}
 .dtabs{display:flex;gap:26px;align-items:flex-end;margin-bottom:46px}
 .dtabs button{color:#7f93b8;font-size:19px;font-weight:700;padding-bottom:10px;border-bottom:2px solid transparent;letter-spacing:.3px}
-.dtabs button.act{color:#f7c948;border-color:#f7c948;font-size:23px}
+.dtabs button:hover{color:var(--tc)}
+.dtabs button.act{color:var(--dc,#f7c948);border-color:var(--dc,#f7c948);font-size:23px}
 #dbody>*{animation:fade .6s}
 #dbody h2{font-size:36px;font-weight:800;line-height:1.25;letter-spacing:-.5px}
-.dbig{font-size:68px;font-weight:800;margin:6px 0 34px;letter-spacing:-1px;line-height:1.1}.dbig em{font-style:normal;color:#f7c948}
+.dbig{font-size:68px;font-weight:800;margin:6px 0 34px;letter-spacing:-1px;line-height:1.1}.dbig em{font-style:normal;color:var(--dc,#f7c948)}
 #dbody ol{list-style:none}
 #dbody li{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px dashed rgba(255,255,255,.3);font-size:18px;font-weight:600}
-#dbody li span{flex:none;width:40px;height:40px;border:1.5px solid #f7c948;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
-#dbody li b{color:#f7c948;font-weight:600}
+#dbody li span{flex:none;width:40px;height:40px;border:1.5px solid var(--dc,#f7c948);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+#dbody li b{color:var(--dc,#f7c948);font-weight:600}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(max-width:1100px){.dwrap{grid-template-columns:1fr;gap:40px;padding:0 20px}.dpic{height:240px}.dbig{font-size:44px}#dbody h2{font-size:25px}#dbody li{font-size:16px}}
+.bars{display:flex;gap:24px;align-items:flex-end;height:260px;padding:20px 30px;border:1px solid var(--line);border-radius:8px}
+.bars div{flex:1;text-align:center;font-size:13px;color:#555;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bars i{display:block;background:#bcd3f7;border-radius:6px 6px 0 0;margin:6px 0 8px;width:60%}
+.bars div.on i{background:var(--g)}.bars b{color:var(--t);font-size:15px}.bars div.on b{color:var(--g)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.flow div{background:var(--gl);border-radius:8px;padding:20px;text-align:center}.flow b{display:block;color:var(--g);font-size:18px;margin-bottom:4px}.flow small{color:#555;font-size:13px}
+.tcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tcard{border:1px solid var(--line);border-radius:10px;padding:24px}
+.tcard .hd2{display:flex;gap:10px;align-items:center;margin-bottom:10px}.tcard .code{background:var(--g);color:#fff;font-weight:800;padding:4px 10px;border-radius:6px;font-size:14px}.tcard .pj{color:var(--g);font-size:13px;font-weight:700}
+.tcard h4{font-size:17px;margin-bottom:6px;line-height:1.4}.tcard .meta{font-size:13px;color:#777;margin-bottom:12px}
+.tcard ul{font-size:14px;color:#444;line-height:1.75}
+.tcard .fx{margin-top:12px;background:#f4f7fc;border-radius:8px;padding:12px 14px;font-size:13.5px;line-height:1.75}.tcard .fx b{color:var(--g)}
+.kgrid.k3{grid-template-columns:repeat(3,1fr)}
+.kgrid small{display:block;color:#888;font-size:12px;margin-top:6px;line-height:1.5}
+@media(max-width:680px){.flow,.tcards,.kgrid.k3{grid-template-columns:1fr}.bars{gap:8px;padding:14px}}
 /* news */
 .newszone{background:#eef3fa;padding:90px 0}
 .ngrid{display:grid;grid-template-columns:1.9fr 1fr;gap:20px}
@@ -253,27 +269,37 @@ const MENU=[
 
 /* ===== 게시판 데이터 — 여기만 고치면 게시물이 추가됩니다 ===== */
 const BOARD={
- notice:[{d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'}],
+ notice:[
+  {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
+  {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성 인정으로 인센티브 5억 원 추가 확보\n\n■ 2차년도 추진 규모\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n- 본예산 48.2억 원(국비 43.57억·시비 4.63억) + 1차년도 이월금 6.04억 원\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
+ ],
  call:[],press:[],video:[],newsletter:[],archive:[]
 };
 
 const PROJ=[
- {k:'A',n:'인재양성',h:'지역 정주형 보건·돌봄 인재 양성',cards:['현장실습','직무교육(CHCam)','글로벌 트랙','AI·DX 교육'],li:['지역 수요 맞춤형 현장실습·직무 동기화','CHCam 기반 현장실습 전 직무교육','재학생 AI·DX 역량 강화']},
- {k:'B',n:'지·산·학·연 협력',h:'지역 산업·기관과 함께하는 협력 생태계 조성',cards:['산학 공동 R&BD','헬스케어 데이터','복합재난 안전교육','협력기관 네트워크'],li:['지역 기관 현안 연계 공동 연구','보건의료 빅데이터 분석 인력 양성','지·산·학·연 복합재난 안전교육']},
- {k:'C',n:'평생교육',h:'성인학습자 중심 평생·직업 전환교육',cards:['CH-U-RUN','Medi-Learn','재직자 직무교육','성인학습자 과정'],li:['울산형 평생·직업 전환교육(U-RUN) 참여','보건의료 평생학습(Medi-Learn) 운영','보건의료 재직자 직무 전환·재교육']},
- {k:'D',n:'지역사회 문제해결',h:'지역 완결형 돌봄·의료 안전망 구축',cards:['늘봄·돌봄 강사','고령친화 체험교육','의료케어 모니터링','리빙랩'],li:['늘봄·돌봄 강사 양성 체계 운영','고령친화체험교육관·사회적약자 의료케어','구·군 현안 해결형 리빙랩']}
+ {k:'TALENT',c:'A',col:'#f7c948',h:'울산에 뿌리내리는 정주형 실전 인재 양성',hb:'울산에 뿌리내리는<br>정주형 실전 인재 양성'},
+ {k:'BRIDGE',c:'B',col:'#3dd6c6',h:'기업과 하나 되는 지·산·학·연 초연결 생태계',hb:'기업과 하나 되는<br>지·산·학·연 초연결 생태계'},
+ {k:'JUMP',c:'C',col:'#ff8a5c',h:"다시 뛰게 만드는 생애 '직무 도약' 체계 구축",hb:"다시 뛰게 만드는<br>생애 '직무 도약' 체계 구축"},
+ {k:'CARE',c:'D',col:'#8fe07a',h:'지역생활안전·의료·정주 협력체계 구축',hb:'지역생활안전·의료·정주<br>협력체계 구축'}
 ];
 
-const DYN=[
- {k:'TALENT',s:'학생 성장',h:'지역에서 배우고 성장하는<br>정주형 보건·돌봄 인재 양성',li:['<b>U-LEAD</b> 정주형 글로벌 융합인재 양성','<b>CHCam</b> 기반 현장실습 전 직무교육','재학생 <b>AI·DX</b> 역량 강화']},
- {k:'BRIDGE',s:'기업·일자리',h:'기업과 하나 되는<br>지·산·학·연 협력 생태계 조성',li:['<b>산학 공동 R&amp;BD</b> 상생 플랫폼 참여','<b>보건의료 빅데이터</b> 분석 인력 양성','지·산·학·연 <b>복합재난 안전교육</b> 플랫폼']},
- {k:'CARE',s:'생애 정주',h:'지역 완결형<br>돌봄·의료 안전망 구축',li:['<b>늘봄·돌봄</b> 강사 양성 체계 운영','<b>U-RUN</b> 평생·직업 전환교육(CH-U-RUN·Medi-Learn)','<b>고령친화체험교육관</b>·사회적약자 의료케어']}
+const TASKS=[
+ {c:'A1',n:'지역 정주형 보건의료·휴먼서비스 전문융합인재 양성',t:'단독(주관) · 시그니처',b:'12.59',sub:['전문융합 교육과정 혁신','지역대학 공유협력 생태계','기업 주도형 산학일체 현장실무교육','하이브리드 현장캠퍼스 인프라','정주형 취업지원 거버넌스'],f:['지역현안 해결형 리빙랩(Living-Lab) 실천학습 도입','채용연계형 실무트랙(간호·작업치료 등) 확대','아동재활융합 전문기술석사과정 운영']},
+ {c:'A3',n:'지역 특화형 글로벌화 지원체계 강화',t:'컨소시엄(참여)',b:'4.35',sub:['글로벌 보건의료 협력체계 구축','외국인 유학생 유치 강화','외국인 지역 정주 여건 강화'],f:['베트남 하노이보건대 방사선과 공동학위(2+2) 추진','외국인 요양보호사 양성 · 의료통역 실무교육']},
+ {c:'B1',n:'기업 상생형 보건의료·휴먼서비스 산학협력 지원체계 강화',t:'컨소시엄(참여)',b:'2.11',sub:['지산학관 공동기술개발 지원체계','지역 특화형 기업지원체계'],f:['「늘배움, 모두 UP」 동남권 초광역 재직자 교육 플랫폼','U-Nexus 기반 3개 대학 공동장비 활용 지원','보건의료 서비스 R&amp;BD · 기업참여형 공동연구']},
+ {c:'B4',n:'지역 체감형 복합재난 안전관리 지원체계 강화',t:'컨소시엄(참여) · 시그니처',b:'3.00',sub:['대학 특화 복합재난 안전지원 기반','복합재난 안전분야 전문가 양성','지산학관 연계 안전강화활동'],f:['춘해 울산형 건강안전지원센터 구축·운영','DMAT 장비 도입 · 방사선 안전 전문가 양성']},
+ {c:'C1',n:'지속 가능형 평생·직업교육 브랜드화',t:'컨소시엄(주관)',b:'10.89',sub:['울산형 평생·직업교육 기반 구축','울산형 평생·직업교육 혁신','생애주기 맞춤 평생·직업교육','지역산업 연계형 평생·직업교육'],f:['CH-U-RUN 센터 · 울산형 통합 평생학습 플랫폼','4대 아카데미 : Medi-Learn · Care+ · NextUp · Human Bridge']},
+ {c:'C2',n:'동반 성장형 늘돌봄 캠퍼스 에듀케어 지원체계 구축',t:'컨소시엄(참여)',b:'1.97',sub:['CH-U 늘봄서비스 운영','CH-U 늘돌봄 기반 구축','CH-U 돌봄서비스 운영'],f:['울산 늘봄허브 등록 · 초등학교 매칭 강사 파견','늘봄 전문강사 양성 · 부모-자녀 동반성장 지원']},
+ {c:'D2',n:'지역 친화형 통합 건강관리 지원체계 강화',t:'컨소시엄(주관)',b:'3.55',sub:['사회적 약자 통합 건강관리','지역사회 연계 건강관리','의료소외계층 건강관리 지원','AI·DX 기반 울산형 헬스케어'],f:['동남권 6개 대학 보건의료 빅데이터 네트워크','울산 보건의료 데이터 분석센터 · 디지털 백서']},
+ {c:'D3',n:'지역 공감형 문화·관광 힐링도시 활성화',t:'단독(주관)',b:'3.10',sub:['지역 녹색도시 조성 지원','문화·관광 인프라 조성 지원','문화·관광 활성화 지원'],f:['수목진단센터(U-Forest) 기반 보호수 진단·도시재생','「울산의 맛·멋·행복 4.0」 스마트 웰니스 콘텐츠','2028 울산국제정원박람회 연계 전문인력 양성']}
 ];
+const pk=c=>PROJ.find(p=>p.c===c[0]).k;
+const DYN=PROJ.map(p=>{const ts=TASKS.filter(t=>t.c[0]===p.c);return{k:p.k,col:p.col,s:'2026년 '+ts.map(t=>t.c).join(' · ')+' | '+ts.reduce((a,t)=>a+ +t.b,0).toFixed(2)+'억 원',h:p.hb,li:ts.map(t=>'<b>'+t.c+'</b> '+t.n)}});
 
 const PARTNERS={
- '참여 협력기관':[['울산광역시','대학청년과 · 사업 총괄·승인'],['울산테크노파크 울산앵커센터','상시 모니터링·실무 점검'],['울산광역시교육청','늘봄·돌봄 협력'],['늘돌봄지원센터','돌봄 인력 양성 협력'],['지역 의료기관','의료 안전망·현장실습 협력']],
- '앵커 참여대학':[['울산대학교','연구·기술사업화'],['울산과학대학교','조선·자동차 현장인력'],['춘해보건대학교','보건·돌봄 인력, 성인학습자']],
- '동남권 협력':[['동남권 6개 대학 AI 헬스케어 컨소시엄','보건의료 데이터·의료 안전망 협력']]
+ '참여 협력기관':[['울산광역시','대학청년과 · 사업 총괄'],['울산테크노파크 울산앵커센터','성과관리·실무 점검'],['울산광역시교육청','늘봄·돌봄 협력'],['지역 의료·복지기관 9곳','통합 건강관리 협약'],['지역 산업체·기관 34곳','1차년도 산학협력 협약']],
+ '동남권 6개 대학':[['김해대학교','보건의료 빅데이터 협의체'],['마산대학교','보건의료 빅데이터 협의체'],['부산보건대학교','보건의료 빅데이터 협의체'],['울산과학대학교','보건의료 빅데이터 협의체'],['진주보건대학교','보건의료 빅데이터 협의체'],['춘해보건대학교','보건의료 빅데이터 협의체 · 주관']],
+ '해외 협력':[['베트남 하노이보건대학교','방사선과 2+2 공동학위'],['일본 군마대학교 WHO협력센터','작업치료 글로벌 파트너십'],['호주 TAFE NSW','교직원 직무연수'],['몽골·인도네시아 협력기관','국제교류 협약']]
 };
 
 const ICON={
@@ -286,7 +312,7 @@ const ICON={
 };
 
 const QUICK={
- '협력플랫폼':[['CHCam','a','#/projects'],['CH-U-RUN','b','#/projects'],['Medi-Learn','c','#/projects'],['AI헬스케어\n빅데이터센터','d','#/projects'],['늘봄·돌봄','e','#/projects']],
+ '협력플랫폼':[['CH-U-RUN\n센터','b','#/projects'],['건강안전\n지원센터','e','#/projects'],['AI헬스케어\n빅데이터센터','d','#/projects'],['수목진단\n센터','a','#/projects'],['늘돌봄\n캠퍼스','c','#/projects']],
  '앵커SNS':[['유튜브','b','#/video'],['뉴스레터','c','#/newsletter'],['언론보도','a','#/press']],
  '춘해보건대학교':[['대학 홈페이지','e','https://www.ch.ac.kr'],['오시는 길','a','#/location'],['문의하기','d','#/inquiry']]
 };
@@ -308,7 +334,7 @@ function doSearch(e){e.preventDefault();const q=$('#q').value.trim();if(!q)retur
 /* ===== 메인 ===== */
 let heroT,heroI=0,heroPlay=true;
 function home(){
- const slides=[['지역과 함께 성장하는 혁신의 시작','춘해보건대학교 ANCHOR사업단'],['지역의 건강한 미래를 잇는 교육혁신','보건·돌봄 인재양성 거점'],['대학과 지역이 함께 만드는 지속가능한 정주 생태계','울산과 함께하는 앵커사업']];
+ const slides=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
  return `
  <section class="hero">
   ${slides.map((s,i)=>`<div class="slide s${i+1} ${i?'':'act'}"><span class="ring" style="width:700px;height:700px;right:-120px;top:-160px"></span><span class="ring" style="width:420px;height:420px;right:120px;top:260px"></span></div>`).join('')}
@@ -320,12 +346,12 @@ function home(){
  </section>
  <section class="dash dyn"><div class="dwrap">
   <div class="dpic" id="dpic"></div>
-  <div class="dtxt"><div class="dtabs" id="dtabs">${DYN.map((p,i)=>`<button class="${i?'':'act'}" onclick="proj(${i})">${p.k}</button>`).join('')}</div><div id="dbody"></div></div>
+  <div class="dtxt"><div class="dtabs" id="dtabs">${DYN.map((p,i)=>`<button class="${i?'':'act'}" style="--tc:${p.col}" onclick="proj(${i})">${p.k}</button>`).join('')}</div><div id="dbody"></div></div>
  </div></section>
  <section class="newszone"><div class="inner">
   <div class="ngrid">
    <div class="box"><div class="btabs"><button class="act" onclick="ntab(this,'notice')">공지사항</button><button onclick="ntab(this,'call')">과제공고</button></div><a class="more" id="nmore" href="#/notice">+</a><ul class="blist" id="nlist"></ul></div>
-   <div class="banner"><small>ANCHOR NOTICE</small><h3>춘해보건대학교<br>앵커사업단 홈페이지 개설</h3><a href="#/notice/0">자세히 보기 ›</a></div>
+   <div class="banner"><small>ANCHOR 2nd YEAR</small><h3>춘해보건대학교<br>앵커사업 2차년도 본격 가동</h3><a href="#/notice/1">자세히 보기 ›</a></div>
   </div>
   <div class="ngrid2">
    <div class="box"><h4>언론보도</h4><a class="more" href="#/press">+</a><div class="cards">${cards('press')}</div></div>
@@ -345,13 +371,13 @@ function cards(k){const a=BOARD[k];if(!a.length)return [1,2,3].map(()=>`<div cla
 function nlCards(){const a=BOARD.newsletter;return [0,1,2].map(i=>a[i]?`<a class="card nl" href="#/newsletter/${i}"><div class="th">ANCHOR<br>NEWSLETTER</div><p>${esc(a[i].t)}</p></a>`:`<div class="card nl"><div class="th">ANCHOR<br>NEWSLETTER</div><p>발행 준비 중</p></div>`).join('')}
 function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer()}
 function heroTimer(){clearInterval(heroT);if(heroPlay)heroT=setInterval(()=>goHero((heroI+1)%3),6000)}
-function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)return;heroI=i;const t=[['지역과 함께 성장하는 혁신의 시작','춘해보건대학교 ANCHOR사업단'],['지역의 건강한 미래를 잇는 교육혁신','보건·돌봄 인재양성 거점'],['대학과 지역이 함께 만드는 지속가능한 정주 생태계','울산과 함께하는 앵커사업']];
+function goHero(i){const s=document.querySelectorAll('.slide');if(!s.length)return;heroI=i;const t=[['돌봄은 늘, 배움은 계속, 성공은 모두의 것','춘해보건대학교 ANCHOR사업단'],['보건의료·휴먼서비스 상생협력 혁신생태계','CH-U-RISE'],['8개 단위과제로 함께 여는 지역 정주의 길','2026 앵커사업 2차년도']];
  s.forEach((x,j)=>x.classList.toggle('act',j===i));$('#hp').textContent=t[i][0];$('#hh').textContent=t[i][1];
  document.querySelectorAll('#hbar i').forEach((x,j)=>{x.classList.remove('act');void x.offsetWidth;if(j===i)x.classList.add('act')});heroTimer()}
 function toggleHero(b){heroPlay=!heroPlay;b.textContent=heroPlay?'❚❚':'▶';document.querySelectorAll('#hbar i').forEach(x=>x.style.setProperty('--p',heroPlay?'running':'paused'));heroTimer()}
 function qtab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
  $('#qicons').innerHTML=QUICK[k].map(q=>`<a href="${q[2]}" ${q[2].startsWith('http')?'target="_blank" rel="noopener"':''}>${ICON[q[1]]}<span>${q[0].replace('\n','<br>')}</span></a>`).join('')}
-function proj(i){document.querySelectorAll('#dtabs button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=DYN[i];
+function proj(i){document.querySelectorAll('#dtabs button').forEach((x,j)=>x.classList.toggle('act',j===i));const p=DYN[i];document.querySelector('.dyn').style.setProperty('--dc',p.col);
  $('#dbody').innerHTML=`<h2>${p.h}</h2><p class="dbig">Dynamic <em>${p.k}</em></p><ol>${p.li.map((l,j)=>`<li><span>0${j+1}</span><p>${l}</p></li>`).join('')}</ol>`;
  $('#dpic').innerHTML=`<div class="dpin"><small>Dynamic</small><b>${p.k}</b><span>${p.s}</span></div>`}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
@@ -363,43 +389,57 @@ function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classLis
 function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></div>`}
 const PAGES={
  overview:()=>`
- <section>${stit('비전 및 핵심목표','Vision & Key Targets')}
-  <div class="vgrid"><div><i>VISION</i><br>대학과 산업의 동반성장을 통한 미래산업 중심도시로의 새로운 도약</div><div><i>대학 역할</i><br>보건·돌봄 인력 양성과 성인학습자 평생·직업교육 거점</div></div>
-  <p class="kt">핵심목표 : 지역에서 배우고, 지역에서 일하고, 지역에 정주하는 보건·돌봄 인재 양성</p>
-  <div class="kgrid"><div>돌봄 인력 양성<b>늘봄·돌봄</b></div><div>의료 안전망<b>지역 완결형</b></div><div>평생·직업 전환교육<b>CH-U-RUN</b></div><div>보건의료 평생학습<b>Medi-Learn</b></div></div>
+ <section>${stit('비전 및 핵심목표','Vision & Slogan')}
+  <div class="vgrid"><div><i>VISION</i><br>CH-U-RISE 기반 지역맞춤형 보건의료·휴먼서비스 상생협력 혁신생태계 구축</div><div><i>SLOGAN</i><br>돌봄은 늘, 배움은 계속, 성공은 모두의 것</div></div>
+  <p class="kt">핵심목표 : 인재가 지역에 닻을 내리고 머무는 ANCHOR</p>
+  <div class="kgrid k3"><div>돌봄은 늘<b>건강·돌봄·안전 상시 지원</b><small>C2 늘돌봄 에듀케어 · D2 통합 건강관리 · B4 복합재난 안전</small></div><div>배움은 계속<b>생애 전 주기 배움의 지속</b><small>A1 전문융합인재 양성 · C1 평생·직업교육 · A3 글로벌화 지원</small></div><div>성공은 모두의 것<b>지역 정주·상생의 성공</b><small>B1 산학협력 R&amp;BD · D3 문화·관광 활성화 · 정주형 취업 지원</small></div></div>
+ </section>
+ <section>${stit('대학 현황','Why Choonhae')}
+  <p class="para" style="margin-bottom:18px">춘해보건대학교는 울산 유일의 보건의료 특성화 전문대학으로, 보건의료·휴먼서비스 융합 특성화를 바탕으로 울산 앵커사업 8개 단위과제에 참여합니다.</p>
+  <div class="kgrid"><div>졸업생 취업률<b>81.5%</b><small>지역 12년 연속 1위</small></div><div>국가시험 합격률<b>84.9%</b><small>전국 평균 76.7% 상회</small></div><div>학과<b>17개</b><small>보건계열 9개 학과</small></div><div>앵커 참여 단위과제<b>8개</b><small>시그니처 과제 2개 포함</small></div></div>
  </section>
  <section>${stit('사업 개요','Overview')}
-  <table class="tbl"><tr><th style="width:22%">사업명</th><td class="l">지역성장 인재양성체계(앵커) 사업</td></tr>
-  <tr><th>주관</th><td class="l">교육부 · 울산광역시 (총괄·승인: 울산광역시 대학청년과 / 실무 점검: 울산테크노파크 울산앵커센터)</td></tr>
-  <tr><th>참여대학</th><td class="l">울산대학교 · 울산과학대학교 · 춘해보건대학교</td></tr>
-  <tr><th>춘해보건대학교 강점 분야</th><td class="l">보건·돌봄 인력, 성인학습자 → Dynamic CARE(돌봄·의료 안전망, U-RUN 전환교육)</td></tr>
-  <tr><th>사업기간</th><td class="l">2026년 ~ 2029년</td></tr></table>
+  <table class="tbl"><tr><th style="width:22%">사업명</th><td class="l">지역성장 인재양성체계(ANCHOR·앵커) 사업 <span style="color:#888">— 2026. 4. RISE에서 명칭 전환</span></td></tr>
+  <tr><th>사업기간</th><td class="l">2025년 ~ 2029년 (5개년)</td></tr>
+  <tr><th>총사업비</th><td class="l">약 268.5억 원</td></tr>
+  <tr><th>2026년(2차년도)</th><td class="l">48.2억 원 (국비 43.57억 · 시비 4.63억) + 1차년도 이월금 6.04억 원</td></tr>
+  <tr><th>참여 단위과제</th><td class="l">4대 프로젝트 · 8개 단위과제 (A1 · A3 · B1 · B4 · C1 · C2 · D2 · D3)</td></tr></table>
  </section>
- <section>${stit('추진 체계','Organization')}
-  <p class="para">춘해보건대학교 앵커사업단은 사업단장을 중심으로 본부와 단위과제 운영조직을 두고, 울산광역시·울산앵커센터 및 지역 협력기관과 연계하여 사업을 추진합니다. 세부 조직과 담당자는 <a href="#/staff" style="color:var(--g);font-weight:700">담당자 안내</a>에서 확인하실 수 있습니다.</p>
+ <section>${stit('연차별 재정투자','Budget (단위: 억 원)')}
+  <div class="bars">${[['1차 (2025)',53.2],['2차 (2026)',48.2],['3차 (2027)',53],['4차 (2028)',55.7],['5차 (2029)',58.5]].map(x=>`<div class="${x[0].includes('2026')?'on':''}"><b>${x[1]}</b><i style="height:${Math.round(x[1]*3)}px"></i>${x[0]}</div>`).join('')}</div>
+ </section>
+ <section>${stit('추진체계','Governance')}
+  <table class="tbl"><tr><th style="width:22%">사업단</th><td class="l">ANCHOR 사업단(총장 직속) · 단장 김기홍 · 부단장 김형수 · 참여 교직원 131명</td></tr>
+  <tr><th>의사결정</th><td class="l">사업추진위원회 · 사업운영위원회</td></tr>
+  <tr><th>성과관리</th><td class="l">자체평가위원회 · 8개 과제팀 — PDCA 기반 분기·반기·연간 성과점검 및 환류</td></tr>
+  <tr><th>거버넌스</th><td class="l">지자체 – 대학 – 혁신기관 – 산업체 – 지역사회</td></tr></table>
+ </section>
+ <section>${stit('1차년도 성과','2025 Performance')}
+  <div class="kgrid"><div>성과지표 달성<b>31 / 32개</b><small>100% 이상 달성 (96.9%)</small></div><div>평균 달성도<b>약 144%</b><small>자율성과지표 138% · 중점관리지표 162%</small></div><div>대표과제 인센티브<b>5억 원</b><small>D2 통합 건강관리</small></div><div>산업체·기관 협약<b>34곳</b><small>17개 학과 캡스톤디자인 전수 참여</small></div></div>
  </section>`,
  projects:()=>`
- <section>${stit('프로젝트 구성','Projects')}
-  <div class="pcards">${PROJ.map(p=>`<div><b>프로젝트 ${p.k}</b><h4>${p.n}</h4><p>${p.h}</p></div>`).join('')}</div>
+ <section>${stit('4대 프로젝트','Dynamic Moves')}
+  <div class="pcards">${PROJ.map(p=>`<div style="border-top-color:${p.col}"><b>${p.c} · Dynamic ${p.k}</b><h4>${TASKS.filter(t=>t.c[0]===p.c).map(t=>t.c).join(' · ')}</h4><p>${p.h}</p></div>`).join('')}</div>
+  <p class="kt">인과·시너지 구조</p>
+  <div class="flow"><div><b>A 인재양성</b><small>투입 · A1 · A3</small></div><div><b>B 산학협력</b><small>전환 · B1 · B4</small></div><div><b>C 교육·돌봄</b><small>확산 · C1 · C2</small></div><div><b>D 지역서비스</b><small>성과 · D2 · D3</small></div></div>
+  <p class="note">D단계의 현장 수요·건강·돌봄 데이터를 A단계 교육과정 개발에 환류하여 지역혁신 생태계의 선순환을 이끕니다.</p>
  </section>
- <section>${stit('2027년 재구조화 단위과제','Unit Tasks (2027~)')}
-  <p class="para" style="margin-bottom:18px">울산광역시 앵커 재구조화 로드맵(2026. 11.)에 따라 2027년부터 3개 프로젝트·8개 단위과제로 운영됩니다. 춘해보건대학교 참여 과제는 강조 표시하였습니다.</p>
-  <table class="tbl"><tr><th>프로젝트</th><th>단위과제</th><th>수행대학</th></tr>
-  <tr><td>Dynamic TALENT</td><td class="l">U-LEAD 정주형 글로벌 융합인재 양성</td><td>3개교</td></tr>
-  <tr><td>Dynamic TALENT</td><td class="l">자생형 청년 창업 인큐베이팅 거점 구축</td><td>울산대·울산과학대</td></tr>
-  <tr><td>Dynamic BRIDGE</td><td class="l">주력산업 AX·에너지 전환 지원체계 구축</td><td>울산대·울산과학대</td></tr>
-  <tr><td>Dynamic BRIDGE</td><td class="l">산학 공동 R&amp;BD 상생 플랫폼 구축</td><td>3개교</td></tr>
-  <tr><td>Dynamic BRIDGE</td><td class="l">지·산·학·연 복합재난 안전교육 플랫폼 구축</td><td>3개교</td></tr>
-  <tr class="hl"><td>Dynamic CARE</td><td class="l"><span class="badge">춘해</span> U-RUN 울산형 평생·직업 전환교육 체계 구축 (CH-U-RUN, Medi-Learn)</td><td>3개교</td></tr>
-  <tr class="hl"><td>Dynamic CARE</td><td class="l"><span class="badge">춘해</span> 지역 완결형 돌봄·의료 안전망 구축</td><td>울산과학대·춘해보건대</td></tr>
-  <tr><td>Dynamic CARE</td><td class="l">대학가·지역 현안 해결형 리빙랩 구축</td><td>3개교</td></tr></table>
+ <section>${stit('2차년도 참여 단위과제','Unit Tasks 2026')}
+  <table class="tbl"><tr><th>프로젝트</th><th>과제</th><th>단위과제명</th><th>사업유형</th><th>2026 예산</th></tr>
+  ${TASKS.map(t=>`<tr><td>Dynamic ${pk(t.c)}</td><td><span class="badge">${t.c}</span></td><td class="l">${t.n}</td><td>${t.t}</td><td>${t.b}억</td></tr>`).join('')}
+  <tr class="hl"><td colspan="4"><b>2026년 합계 (공통운영비 6.64억 포함)</b></td><td><b>48.20억</b></td></tr></table>
+  <p class="note">국비 43.57억 · 시비 4.63억 / 이와 별도로 1차년도 이월금 6.04억 원(D2-4 AI·DX 헬스케어)을 집행합니다.</p>
+ </section>
+ <section>${stit('단위과제별 추진계획','Action Plans')}
+  <div class="tcards">${TASKS.map(t=>`<div class="tcard"><div class="hd2"><span class="code" style="background:${PROJ.find(p=>p.c===t.c[0]).col};color:#10213f">${t.c}</span><span class="pj">Dynamic ${pk(t.c)}</span></div><h4>${t.n}</h4><p class="meta">${t.t} · 2026년 ${t.b}억 원</p><ul>${t.sub.map((x,i)=>`<li>${t.c}-${i+1} ${x}</li>`).join('')}</ul><div class="fx"><b>2차년도 중점</b><br>${t.f.join('<br>')}</div></div>`).join('')}</div>
  </section>`,
  staff:()=>`
  <section>${stit('담당자 안내','Staff')}
   <table class="tbl"><tr><th>직위</th><th>성명</th><th>담당업무</th><th>연락처</th></tr>
-  <tr><td>사업단장</td><td>김기홍</td><td class="l">앵커사업단 총괄</td><td>-</td></tr>
-  <tr><td>본부장(부단장)</td><td>김형수</td><td class="l">앵커사업 기획·운영 총괄</td><td>052-270-0331</td></tr>
-  <tr><td colspan="4" class="empty">담당 연구원 정보를 준비하고 있습니다.</td></tr></table>
+  <tr><td>사업단장</td><td>김기홍</td><td class="l">ANCHOR 사업단 총괄</td><td>-</td></tr>
+  <tr><td>부단장</td><td>김형수</td><td class="l">사업 기획·운영 총괄</td><td>052-270-0331</td></tr>
+  <tr><td colspan="4" class="empty">단위과제 책임자와 담당 연구원 정보를 준비하고 있습니다.</td></tr></table>
+  <p class="note">ANCHOR 사업단은 총장 직속 조직으로, 참여 교직원 131명이 8개 과제팀으로 사업을 수행합니다.</p>
  </section>`,
  location:()=>`
  <section>${stit('오시는 길','Location')}
@@ -409,8 +449,8 @@ const PAGES={
  faq:()=>`
  <section>${stit('FAQ','Frequently Asked Questions')}
   <div class="faq">
-   <details><summary>앵커사업은 어떤 사업인가요?</summary><p>지역성장 인재양성체계(앵커) 사업은 지자체와 대학이 함께 지역에 필요한 인재를 양성하고, 대학이 지역 발전의 중심 역할을 하도록 지원하는 사업입니다.</p></details>
-   <details><summary>춘해보건대학교는 어떤 분야에 참여하나요?</summary><p>보건·돌봄 인력 양성과 성인학습자 평생·직업교육을 중심으로, 돌봄·의료 안전망 구축과 U-RUN 평생·직업 전환교육에 참여합니다.</p></details>
+   <details><summary>앵커(ANCHOR)사업은 어떤 사업인가요?</summary><p>지역성장 인재양성체계(ANCHOR·앵커) 사업은 지자체와 대학이 함께 지역에 필요한 인재를 양성하고 지역 정주를 지원하는 사업입니다. 2026년 4월 지역혁신중심 대학지원체계(RISE)에서 명칭이 바뀌었습니다.</p></details>
+   <details><summary>춘해보건대학교는 어떤 단위과제에 참여하나요?</summary><p>4대 프로젝트의 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)에 참여합니다. 자세한 내용은 <a href="#/projects" style="color:var(--g)">프로젝트 및 단위과제</a>에서 확인하실 수 있습니다.</p></details>
    <details><summary>프로그램 참여 신청은 어떻게 하나요?</summary><p>프로그램별 모집 공지는 <a href="#/notice" style="color:var(--g)">공지사항</a>과 <a href="#/call" style="color:var(--g)">과제공고</a>에서 안내합니다.</p></details>
   </div>
  </section>`,
