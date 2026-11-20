@@ -408,7 +408,17 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 .eqft th b,.eqreq b{color:#e0383e}.eqreq{font-size:14px;color:#666}
 .eqft .eqdt{width:auto !important;display:inline-block}
 .eqcks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px}.eqckg small{display:block;color:var(--g);font-weight:700;margin:4px 0 2px}.eqckg label,.eqrd{display:block;font-size:15px;padding:2px 0;cursor:pointer}.eqrd{display:inline-block;margin-right:18px}
-.eqsign{display:inline-block;min-width:120px;border-bottom:1px solid #999;padding:0 8px}
+.eqsl{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.eqsignin{width:150px;font:inherit;font-size:17px;text-align:center;padding:6px 8px;border:0;border-bottom:1.5px solid #888;background:#fbfcfe}.eqsignin:focus{outline:none;border-bottom-color:var(--g);background:#fff}
+.eqsigbox{position:relative;min-width:110px;height:56px;border:1.5px dashed #9aa9c2;border-radius:10px;background:#fff;cursor:pointer;font:inherit;color:#555;display:inline-flex;align-items:center;justify-content:center;padding:0 10px}
+.eqsigbox:hover{border-color:var(--g);color:var(--g)}.eqsigbox img{height:50px;max-width:180px;object-fit:contain}.eqsigbox.on{border-style:solid;border-color:#cfd8e6}.eqsigbox.on em{position:absolute;right:4px;bottom:2px;font-size:11px;color:#999}.eqsigbox em{font-style:normal}
+.eqsigtip{display:block;font-size:13px;color:#888;margin-top:6px}
+#sigm{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:99999;display:none;align-items:center;justify-content:center;padding:16px}#sigm.on{display:flex}
+.sigbox{background:#fff;border-radius:16px;padding:20px;width:min(560px,100%);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.sighd b{font-size:20px;margin-right:10px}.sighd span{font-size:14px;color:#666}
+#sigc{display:block;width:100%;height:220px;margin:14px 0;border:1.5px solid #cfd8e6;border-radius:10px;background:repeating-linear-gradient(transparent 0 169px,#e3e8f0 169px 170px,transparent 170px 220px),#fbfcfe;touch-action:none;cursor:crosshair}
+.sigbt{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+@media print{.eqsigtip{display:none}.eqsignin{border:0;background:none}.eqsigbox{border:0}.eqsigbox.on em{display:none}}
 .eqbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0 18px}.btn.ghost{background:#fff;color:var(--g);border:1.5px solid var(--g)}
 @media print{body.pf .eqbtns{display:none}body.pf .eqft input,body.pf .eqft textarea{border:0;background:none}}
 @media(max-width:680px){.eqcks{grid-template-columns:1fr}.eqft th{white-space:normal}}
@@ -469,7 +479,7 @@ header:hover::after,header:hover .dep2{display:none}
 .cont{padding:44px 16px 60px}
 .stit{margin-bottom:20px}.stit h3{font-size:22px}.stit small{font-size:12px}
 .para{font-size:16px}
-.tbl{font-size:14px}.tbl th,.tbl td{padding:10px 6px;overflow-wrap:anywhere}
+.tbl{font-size:14px}.tbl th,.tbl td{padding:10px 6px;overflow-wrap:break-word;word-break:keep-all}.blt .bw{display:none}.blt .bn{width:38px!important;padding-left:2px;padding-right:2px;color:#888;font-size:13px}.blt .bd{width:82px!important;font-size:12.5px;color:#777;white-space:nowrap;padding-left:2px;padding-right:2px}.blt th.bt{text-align:center}.blt td.bt{text-align:left;line-height:1.45}
 .vgrid,.kgrid,.kgrid.k3,.pcards,.tcards,.info,.gwrap{grid-template-columns:1fr}
 .flow{grid-template-columns:1fr 1fr}
 .gban{height:170px;padding:20px;margin-bottom:30px;border-radius:16px}.gban span{font-size:34px}
@@ -982,10 +992,22 @@ function nrows(k){if(k==='equip')return EQUIP.flatMap(g=>g.it).slice(0,3).map(e=
 function printEqForm(){document.body.classList.add('pf');print();setTimeout(()=>document.body.classList.remove('pf'),500)}
 function eqSubmit(e){e.preventDefault();const f=e.target,v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
  const eqs=[...f.querySelectorAll('input[name=eq]:checked')].map(c=>EQ[+c.value].n);if(!eqs.length&&!v('etc')){alert('희망 공용장비를 하나 이상 선택해 주세요.');return false}
- const um=(f.querySelector('input[name=useMat]:checked')||{}).value||'';
- const body=['[공용장비활용 신청서]','','■ 신청인','기업체(기관)명: '+v('org'),'사업자 등록번호: '+v('bizno'),'대표자: '+v('ceo'),'주소: '+v('addr'),'','■ 담당자','이름: '+v('name'),'부서/직위: '+v('dept'),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'','■ 공용장비 활용 신청','희망 장비: '+eqs.concat(v('etc')?['기타('+v('etc')+')']:[]).join(', '),'재료: '+v('mat'),'장비 및 내용: '+v('desc'),'희망 사용기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'','■ 사용 내역','사용시간: '+v('hours'),'재료 사용: '+um,'기타: '+v('memo'),'','위와 같이 공용장비 활용을 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청인: '+v('name'),'','춘해보건대학교 앵커사업단장 귀하'].join('\n');
+ const um=(f.querySelector('input[name=useMat]:checked')||{}).value||'';if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 신청할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;
+ const body=['[공용장비활용 신청서]','','■ 신청인','기업체(기관)명: '+v('org'),'사업자 등록번호: '+v('bizno'),'대표자: '+v('ceo'),'주소: '+v('addr'),'','■ 담당자','이름: '+v('name'),'부서/직위: '+v('dept'),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'','■ 공용장비 활용 신청','희망 장비: '+eqs.concat(v('etc')?['기타('+v('etc')+')']:[]).join(', '),'재료: '+v('mat'),'장비 및 내용: '+v('desc'),'희망 사용기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'','■ 사용 내역','사용시간: '+v('hours'),'재료 사용: '+um,'기타: '+v('memo'),'','위와 같이 공용장비 활용을 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청인 성명: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'※ 서명이 들어간 신청서는 ‘작성 내용 인쇄 · PDF 저장’으로 PDF를 만들어 이 메일에 첨부해 주세요.','','춘해보건대학교 앵커사업단장 귀하'].join('\n');
  location.href='mailto:sugi1994@ch.ac.kr?subject='+encodeURIComponent('[공용장비활용 신청] '+v('org')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
-function eqFill(){const d=document.getElementById('eqdate');if(d){const t=new Date();d.textContent=t.getFullYear()+'년 '+(t.getMonth()+1)+'월 '+t.getDate()+'일'}const f=document.getElementById('eqf');if(f){f.elements.name.addEventListener('input',e=>{document.getElementById('eqsign').textContent=e.target.value||'\u2003\u2003\u2003\u2003'})}}
+function eqFill(){const d=document.getElementById('eqdate');if(d){const t=new Date();d.textContent=t.getFullYear()+'년 '+(t.getMonth()+1)+'월 '+t.getDate()+'일'}const f=document.getElementById('eqf');if(!f||f._init)return;f._init=1;const sg=f.elements.signer;let auto=true;sg.addEventListener('input',()=>auto=!sg.value);f.elements.name.addEventListener('input',e=>{if(auto)sg.value=e.target.value});f.addEventListener('reset',()=>{auto=true;sigSet('')})}
+/* 서명 패드 */
+let sigData='';
+function sigSet(u){sigData=u;const im=document.getElementById('eqsigimg'),b=document.getElementById('eqsigbox');if(!im)return;if(u){im.src=u;im.hidden=false;b.classList.add('on')}else{im.removeAttribute('src');im.hidden=true;b.classList.remove('on')}}
+function sigOpen(){let m=document.getElementById('sigm');if(!m){m=document.createElement('div');m.id='sigm';m.innerHTML='<div class="sigbox"><div class="sighd"><b>서명</b><span>아래 칸에 마우스나 손가락으로 서명해 주세요.</span></div><canvas id="sigc"></canvas><div class="sigbt"><button type="button" class="btn ghost" onclick="sigClear()">지우기</button><button type="button" class="btn ghost" onclick="sigClose()">취소</button><button type="button" class="btn" onclick="sigDone()">서명 완료</button></div></div>';document.body.appendChild(m);m.addEventListener('click',e=>{if(e.target===m)sigClose()})}
+ m.classList.add('on');const c=document.getElementById('sigc'),r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=r.width*dpr;c.height=r.height*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);x.lineWidth=2.6;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';c._dirty=false;
+ let dn=false,lx=0,ly=0;const pt=e=>{const b=c.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+ c.onpointerdown=e=>{e.preventDefault();c.setPointerCapture(e.pointerId);dn=true;[lx,ly]=pt(e);x.beginPath();x.arc(lx,ly,1.2,0,7);x.fillStyle='#111';x.fill();c._dirty=true};
+ c.onpointermove=e=>{if(!dn)return;e.preventDefault();const[nx,ny]=pt(e);x.beginPath();x.moveTo(lx,ly);x.lineTo(nx,ny);x.stroke();lx=nx;ly=ny};
+ c.onpointerup=c.onpointercancel=()=>dn=false;document.body.style.overflow='hidden'}
+function sigClear(){const c=document.getElementById('sigc');c.getContext('2d').clearRect(0,0,c.width,c.height);c._dirty=false}
+function sigClose(){const m=document.getElementById('sigm');if(m)m.classList.remove('on');document.body.style.overflow=''}
+function sigDone(){const c=document.getElementById('sigc');if(!c._dirty){alert('서명을 입력해 주세요.');return}sigSet(c.toDataURL('image/png'));sigClose()}
 addEventListener('hashchange',()=>setTimeout(eqFill,50));setTimeout(eqFill,300);
 function ntab2(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('act',x===b));$('#nmore2').href='#/'+k;$('#nlist2').innerHTML=nrows(k)}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
@@ -1149,7 +1171,7 @@ const PAGES={
     <tr><th>재료 사용</th><td class="l"><label class="eqrd"><input type="radio" name="useMat" value="유"> 유</label><label class="eqrd"><input type="radio" name="useMat" value="무" checked> 무</label></td></tr>
     <tr><th>기타</th><td><input name="memo"></td></tr>
    </table>
-   <p class="eqfs">위와 같이 공용장비 활용을 신청합니다.<br><br><span id="eqdate"></span><br><br>신청인 성명: <span id="eqsign" class="eqsign">&emsp;&emsp;&emsp;&emsp;</span> (서명)<br><br><b>춘해보건대학교 앵커사업단장 귀하</b></p>
+   <p class="eqfs">위와 같이 공용장비 활용을 신청합니다.<br><br><span id="eqdate"></span><br><br><span class="eqsl">신청인 성명: <input id="eqsigner" name="signer" class="eqsignin" required placeholder="성명 입력" autocomplete="name"> <button type="button" class="eqsigbox" id="eqsigbox" onclick="sigOpen()" title="눌러서 서명하기"><img id="eqsigimg" alt="서명" hidden><em>(서명)</em></button></span><small class="eqsigtip">‘(서명)’을 누르면 마우스나 손가락으로 서명할 수 있습니다.</small><br><br><b>춘해보건대학교 앵커사업단장 귀하</b></p>
    <div class="eqbtns"><button type="submit" class="btn">이메일로 신청하기</button><button type="button" class="btn ghost" onclick="printEqForm()">작성 내용 인쇄 · PDF 저장</button><button type="reset" class="btn ghost">다시 작성</button></div>
    </form>
    <p class="eqnote">※ ‘이메일로 신청하기’를 누르면 작성 내용이 담긴 메일 창이 열립니다. 내용을 확인한 뒤 보내 주세요(받는 곳: 기업협업지원센터 sugi1994@ch.ac.kr). 메일 프로그램이 없으면 ‘인쇄 · PDF 저장’으로 PDF를 만들어 이메일로 보내 주세요.<br>※ 사용비용은 기업협업지원센터에서 상담 후 안내합니다. &nbsp;|&nbsp; 문의: ${tel}, 도생관 2층 213호</p>
@@ -1168,8 +1190,8 @@ function mediaPage(k,idx){const a=BOARD[k],lab=findMenu(k)[1][1];const pics=p=>k
 function boardPage(k,idx){if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
  if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.im&&p.im.length&&k!=='press'?`<tr><td class="mview" style="padding:24px 0">${p.im.map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy">`).join('')}</td></tr>`:''}${p.files&&p.files.length?`<tr><td class="l" style="padding:16px 10px"><b>첨부파일</b> <small style="color:#888">— 서식은 담당 부서에 요청해 주세요.</small><ul class="flist">${p.files.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></td></tr>`:''}${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">${k==='press'?'기사 원문 보기':'원문·첨부파일 보기'} ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
- <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">${k==='press'?'매체':'작성자'}</th><th style="width:120px">등록일</th></tr>
- ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>${esc(p.src||'앵커사업단')}</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
+ <table class="tbl blt"><tr><th class="bn" style="width:80px">번호</th><th class="bt">제목</th><th class="bw" style="width:140px">${k==='press'?'매체':'작성자'}</th><th class="bd" style="width:120px">등록일</th></tr>
+ ${a.length?a.map((p,i)=>`<tr><td class="bn">${a.length-i}</td><td class="l bt"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td class="bw">${esc(p.src||'앵커사업단')}</td><td class="bd">${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
 
 /* 운영 프로그램 — [제목, 접수 시작, 접수 마감(null=상시), 운영기간, 모집인원, 사진, 연결(공지 제목 일부 또는 #경로)] */
 const PROGS=[
