@@ -510,6 +510,22 @@ header:hover::after,header:hover .dep2{display:none}
 @media(max-width:360px){.logo b{font-size:15px}.hcopy h1{font-size:26px}.dbig{font-size:30px}.qicons a{font-size:9px}}
 @media(max-width:680px){.svis .snav{position:relative;left:auto;bottom:auto}}
 /* ===== 앵커사업 개요(울산대형 구성) ===== */
+/* 앵커사업이란 */
+.aw-lead p{font-size:18px;line-height:1.85;color:#333;margin-bottom:12px}
+.aw-lead b{color:var(--b)}.aw-lead em{font-style:normal;font-weight:700;color:var(--g);background:linear-gradient(transparent 62%,#dbe8ff 62%)}
+.aw-flow{display:flex;align-items:stretch;gap:10px;margin:22px 0 14px}
+.aw-flow div{flex:1;border-radius:12px;padding:18px 14px;text-align:center;background:linear-gradient(135deg,#1d4f9a,#1f5fd1);color:#fff}
+.aw-flow div:nth-child(3){background:linear-gradient(135deg,#1f5fd1,#3b82f6)}.aw-flow div:nth-child(5){background:linear-gradient(135deg,#2a8a4a,#5cb85c)}
+.aw-flow i{display:block;font-style:normal;font-size:13px;opacity:.75;font-weight:700}
+.aw-flow b{display:block;font-size:22px;margin:4px 0}.aw-flow small{font-size:14px;opacity:.9}
+.aw-flow span{align-self:center;font-size:24px;color:#9db3d6;font-weight:800}
+.aw-ft{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.aw-ft div{border:1px solid var(--line);border-top:3px solid var(--g);border-radius:8px;padding:16px;background:#fff}
+.aw-ft b{display:block;font-size:17px;color:#222;margin-bottom:6px}.aw-ft p{font-size:15px;color:#555;line-height:1.6}
+.aw-ul{margin-top:14px;background:#f4f8fe;border:1px solid #c7d9f7;border-radius:10px;padding:18px 20px}
+.aw-ul h5{font-size:17px;color:var(--b);margin-bottom:6px}.aw-ul p{font-size:16px;line-height:1.75;color:#333}.aw-ul b{color:var(--g)}
+@media(max-width:900px){.aw-ft{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.aw-flow{flex-direction:column}.aw-flow span{transform:rotate(90deg)}.aw-ft{grid-template-columns:1fr}.aw-lead p{font-size:16px}}
 .ov-kt span{display:inline-block;margin-left:10px;color:var(--g);font-weight:600}
 .ov-tg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .ov-tg div{border:1px solid var(--line);border-radius:8px;padding:18px 10px;text-align:center;font-size:16px;color:#555;background:#fff}
@@ -1121,6 +1137,13 @@ const PAGES={
  </section>`,
 
  overview:()=>`
+ <section>${stit('앵커사업이란','What is ANCHOR')}
+  <div class="aw-lead"><p><b>지역성장 인재양성체계(ANCHOR·앵커)</b>는 지역의 청년이 <em>지역에서 배우고, 지역에서 일하고, 지역에 머물 수 있도록</em> 지방정부와 대학이 함께 만드는 지역 인재양성 체계입니다.</p>
+  <p>2025년 시작된 「지역혁신중심 대학지원체계(RISE·라이즈)」를 교육부가 2026년 4월 학생·인재 중심으로 재구조화하면서 지금의 이름이 되었습니다. 광역 지방정부가 지역 발전전략에 맞춰 대학을 직접 육성하고, 교육부는 사업 점검과 성과에 따라 지원을 달리합니다.</p></div>
+  <div class="aw-flow"><div><i>01</i><b>인재양성</b><small>지역 산업·사회 수요에 맞춘 교육</small></div><span>→</span><div><i>02</i><b>취·창업</b><small>지역 기업·기관과 연계한 일자리</small></div><span>→</span><div><i>03</i><b>지역정주</b><small>청년이 머무는 지역 생태계</small></div></div>
+  <div class="aw-ft">${[['학생 체감형 사업','계약학과·장기 인턴십 등 취업과 바로 이어지는 교육을 넓힙니다.'],['지역 주도 대학 육성','시·도가 지역 발전전략과 연계해 대학을 직접 지원합니다.'],['초광역 협력','5극3특 권역별 공유대학과 지역·기업·대학 협업을 추진합니다.'],['성과 중심 운영','자체평가와 교육부 점검 결과를 다음 해 사업에 반영합니다.']].map(x=>`<div><b>${x[0]}</b><p>${x[1]}</p></div>`).join('')}</div>
+  <div class="aw-ul"><h5>울산 앵커사업</h5><p>울산광역시가 총괄하고 울산테크노파크 울산앵커센터가 운영을 지원하며, <b>울산대학교 · 울산과학대학교 · 춘해보건대학교</b> 3개 대학이 함께 참여합니다. 춘해보건대학교는 울산 유일의 보건의료 특성화 대학으로서 <b>보건의료·휴먼서비스 분야</b>의 인재양성과 지역 돌봄·건강·정주를 맡고 있습니다.</p></div>
+ </section>
  <section>${stit('비전 및 핵심목표','Vision &amp; Key Targets')}
   <div class="vgrid"><div><i>VISION</i><br>지역과 대학의 동반혁신을 책임지는 글로컬 보건의료·휴먼서비스 선도대학</div><div><i>목표</i><br>CH-U-RISE 기반 지역맞춤형 보건의료·휴먼서비스 상생협력 혁신생태계 구축</div></div>
   <p class="kt ov-kt">핵심목표 : 인재가 지역에 닻을 내리고 머무는 ANCHOR <span>돌봄은 늘, 배움은 계속, 성공은 모두의 것</span></p>
