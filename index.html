@@ -563,6 +563,30 @@ header:hover::after,header:hover .dep2{display:none}
 .vs-ut b{display:block;background:#1d2f52;color:#fff;border-radius:5px 5px 0 0;margin:0 -4px 6px;padding:4px;font-size:14px}
 @media(max-width:1100px){.vs-st{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.vs-eco,.vs-st{grid-template-columns:1fr}.vs-slogan p{font-size:22px}.vs-wm img{height:38px}.vs-wm span{font-size:28px}.vs-acr{font-size:14px}.vs-tag{font-size:18px}}
+/* 협력 센터 소개 */
+.ct-hero{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.ct-tx small{display:inline-block;color:var(--g);font-weight:800;letter-spacing:.5px;font-size:14px;margin-bottom:10px}
+.ct-tx h3{font-family:'GmarketSans',Pretendard,sans-serif;font-weight:700;font-size:36px;line-height:1.35;color:#1d4f9a;letter-spacing:-1px}
+.ct-tx h3 b{color:#111}
+.ct-tx ol{margin-top:26px}.ct-tx li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:18px;color:#444}
+.ct-tx li i{font-style:normal;width:34px;height:34px;border-radius:50%;border:1px solid #c7d9f7;color:var(--g);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none}
+.ct-img{position:relative}.ct-img img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;display:block;box-shadow:0 16px 36px rgba(15,40,90,.15)}
+.ct-img span{position:absolute;right:12px;bottom:10px;font-size:11px;color:#fff;background:rgba(0,0,0,.45);padding:2px 8px;border-radius:10px}
+.ct-story{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:start}
+.ct-story p{font-size:18px;line-height:1.9;color:#333}
+.ct-story ul{border:1px solid var(--line);border-radius:12px;background:#f8fafd;padding:8px 20px}
+.ct-story li{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed #dfe5ee;font-size:16px;color:#333;align-items:center;flex-wrap:wrap}
+.ct-story li:last-child{border-bottom:0}.ct-story li b{width:96px;color:var(--b);flex:none}
+.ct-tk{background:var(--g);color:#fff;border-radius:5px;padding:1px 8px;font-size:13px;font-weight:800}
+.ct-pg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ct-pg div{border:1px solid var(--line);border-radius:14px;padding:26px 22px;background:#fff;transition:.2s}
+.ct-pg div:hover{border-color:var(--g);box-shadow:0 10px 24px rgba(31,95,209,.12);transform:translateY(-3px)}
+.ct-pg small{color:var(--g);font-weight:800;font-size:13px;letter-spacing:.4px}.ct-pg h5{font-size:20px;margin:6px 0 10px;color:#111}.ct-pg p{font-size:16px;line-height:1.7;color:#555}
+.ct-fx li{position:relative;padding:14px 16px 14px 46px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:17px;color:#333;background:#fff}
+.ct-fx li::before{content:"✓";position:absolute;left:16px;top:13px;width:20px;height:20px;border-radius:50%;background:var(--g);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ct-oth h6{font-size:16px;color:#555;margin-bottom:10px}.ct-oth div{display:flex;flex-wrap:wrap;gap:8px}
+.ct-oth a{border:1px solid #c7d9f7;background:#f4f8fe;color:var(--b);border-radius:20px;padding:7px 16px;font-size:15px;font-weight:600}.ct-oth a:hover{background:var(--g);color:#fff}
+@media(max-width:900px){.ct-hero,.ct-story{grid-template-columns:1fr}.ct-pg{grid-template-columns:1fr}.ct-tx h3{font-size:26px}}
 .ov-kt span{display:inline-block;margin-left:10px;color:var(--g);font-weight:600}
 .ov-tg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .ov-tg div{border:1px solid var(--line);border-radius:8px;padding:18px 10px;text-align:center;font-size:16px;color:#555;background:#fff}
@@ -630,7 +654,7 @@ header:hover::after,header:hover .dep2{display:none}
 </head>
 <body>
 <header id="hd">
- <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/projects">CH-U-RUN센터</a><a href="#/projects">건강안전지원센터</a><a href="#/projects">늘돌봄지원센터</a><a href="#/projects">수목진단센터</a><a href="#/projects">기업협업지원센터</a><a href="#/projects">웰니스문화관광센터</a><a href="#/projects">글로벌센터</a></div><div class="tr"><a class="nlbtn" href="#/newsletter">뉴스레터</a></div></div>
+ <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><a class="nlbtn" href="#/newsletter">뉴스레터</a></div></div>
  <div class="hd">
   <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
    <div><b class="lg-line"><img class="lg-full lg-w" src="img/앵커_로고_흰색.svg" alt="춘해보건대학교 ANCHOR 사업단"><img class="lg-full lg-b" src="img/앵커_로고_파랑.svg" alt=""></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
@@ -1037,11 +1061,61 @@ const ICON={
 };
 
 const QUICK={
- '협력플랫폼':[['CH-U-RUN\n센터','b','#/projects'],['건강안전\n지원센터','e','#/projects'],['AI헬스케어\n빅데이터센터','d','#/projects'],['수목진단\n센터','a','#/projects'],['늘돌봄\n캠퍼스','c','#/projects']],
+ '협력플랫폼':[['CH-U-RUN\n센터','b','#/center/urun'],['건강안전\n지원센터','e','#/center/safety'],['AI헬스케어\n빅데이터센터','d','#/projects'],['수목진단\n센터','a','#/center/tree'],['늘돌봄\n캠퍼스','c','#/center/care']],
  '앵커SNS':[['유튜브','b','#/video'],['뉴스레터','c','#/newsletter'],['언론보도','a','#/press']],
  '춘해보건대학교':[['대학 홈페이지','e','https://www.ch.ac.kr'],['오시는 길','a','#/location'],['문의하기','d','#/inquiry']]
 };
 
+
+/* ===== 협력 센터 소개 ===== */
+const CENTERS=[
+ {k:'urun',n:'CH-U-RUN센터',full:'평생학습지원(U-RUN)센터',en:'CH-U-RUN Center',img:'센터_CH-U-RUN.jpg',task:'C1',org:'평생교육원',tel:475,
+  h:['배움이 계속되는','울산형 평생·직업교육 거점'],pts:['생애주기에 맞춘 평생·직업교육','지역 산업과 연결된 재직자·전환 교육','울산형 통합 평생학습 플랫폼'],
+  story:'CH-U-RUN센터는 춘해보건대학교의 평생·직업교육 브랜드 「CH-U-RUN」을 운영하는 울산형 평생·직업교육 거점입니다. 성인학습자와 재직자, 직무를 바꾸려는 지역 주민 누구나 보건의료·휴먼서비스 분야의 교육을 받고 다시 일자리로 이어질 수 있도록 생애주기별 과정을 설계·운영합니다.',
+  progs:[['Academy','4대 아카데미','Medi-Learn · Care+ · NextUp · Human Bridge 아카데미로 보건의료·돌봄·전환 교육을 운영합니다.'],['Platform','통합 평생학습 플랫폼','울산 지역의 평생·직업교육 정보를 한곳에서 찾고 신청할 수 있도록 지원합니다.'],['Career','지역산업 연계 교육','지역 산업체 수요를 반영한 재직자 직무교육과 재취업 과정을 운영합니다.']],
+  focus:['CH-U-RUN 센터 · 울산형 통합 평생학습 플랫폼 구축','4대 아카데미(Medi-Learn · Care+ · NextUp · Human Bridge) 운영','유연학사제도와 연계한 성인학습자 학위·비학위 과정']},
+ {k:'safety',n:'건강안전지원센터',full:'건강안전지원센터',en:'Health & Safety Center',img:'센터_건강안전지원.jpg',task:'B4',org:'산학협력단',tel:486,
+  h:['재난에 강한 울산을 위한','지역 건강·안전 지원 거점'],pts:['대학 특화 복합재난 안전지원 기반','분야·대상별 재난 안전교육','지·산·학·관 연계 안전강화활동'],
+  story:'건강안전지원센터는 산업단지가 밀집한 울산의 복합재난에 대비해 대학의 보건의료 역량을 지역 안전망으로 연결하는 거점입니다. 간호·응급구조·방사선 등 보건 전공의 전문성을 바탕으로 재난 대응 인력을 기르고, 시민과 산업체를 위한 안전교육과 현장 지원 활동을 펼칩니다.',
+  progs:[['Training','복합재난 안전교육','학생·시민·산업체 종사자를 대상으로 분야별 재난 대응 교육을 운영합니다.'],['Expert','안전 전문가 양성','DMAT 장비를 활용한 현장 대응 훈련과 방사선 안전 전문가 양성 과정을 운영합니다.'],['Network','지역 안전강화활동','지자체·산업체·유관기관과 함께 합동훈련과 안전 캠페인에 참여합니다.']],
+  focus:['춘해 울산형 건강안전지원센터 구축·운영','DMAT 장비 도입 · 방사선 안전 전문가 양성','지역 방사능방재 합동훈련 등 지·산·학·관 협력 훈련 참여']},
+ {k:'care',n:'늘돌봄지원센터',full:'늘돌봄지원센터',en:'Neul-Dolbom Care Center',img:'센터_늘돌봄지원.jpg',task:'C2',org:'산학협력단',tel:461,
+  h:['돌봄은 늘,','아이와 가족이 함께 자라는 캠퍼스'],pts:['초등학교 연계 늘봄 프로그램','늘봄·돌봄 전문강사 양성','부모-자녀 동반성장 지원'],
+  story:'늘돌봄지원센터는 대학의 유아교육·사회복지·보건 전공 자원을 활용해 지역 초등학생과 가족에게 질 높은 늘봄·돌봄 서비스를 제공하는 센터입니다. 울산 늘봄허브와 연계해 초등학교에 전문 강사를 파견하고, 캠퍼스를 아이와 부모가 함께 배우고 성장하는 열린 공간으로 운영합니다.',
+  progs:[['Neulbom','CH-U 늘봄서비스','울산 늘봄허브에 등록된 프로그램으로 초등학교와 매칭해 강사를 파견합니다.'],['Teacher','늘봄 전문강사 양성','재학생과 지역 주민을 늘봄·방과후 전문강사로 양성합니다.'],['Family','동반성장 돌봄','부모-자녀가 함께하는 체험·교육 프로그램으로 가족의 성장을 돕습니다.']],
+  focus:['울산 늘봄허브 등록 · 초등학교 매칭 강사 파견','늘봄 전문강사 양성 과정 운영','부모-자녀 동반성장 지원 프로그램']},
+ {k:'tree',n:'수목진단센터',full:'수목진단센터 (U-Forest)',en:'Tree Diagnosis Center',img:'센터_수목진단.jpg',task:'D3',org:'산학협력단',tel:589,
+  h:['푸른 울산을 지키는','녹색도시 수목진단 거점'],pts:['보호수·가로수 건강 진단','AI 기반 수목 안전진단','정원·녹지 전문인력 양성'],
+  story:'수목진단센터(U-Forest)는 울산의 보호수와 가로수, 도시 녹지의 건강 상태를 과학적으로 진단하고 관리 방안을 제시하는 녹색도시 거점입니다. 진단 장비와 AI 분석을 함께 활용해 도시 수목의 안전을 지키고, 2028 울산국제정원박람회를 대비한 정원·녹지 전문인력을 양성합니다.',
+  progs:[['Diagnosis','수목 정밀진단','음파단층촬영 등 진단 장비로 보호수·가로수의 내부 상태를 진단합니다.'],['AI Safety','가로수 안전진단','AI 분석을 활용해 위험 수목을 빠르게 찾아 도시 안전을 지킵니다.'],['Garden','정원 전문인력 양성','2028 울산국제정원박람회와 연계한 정원·조경 전문인력을 기릅니다.']],
+  focus:['U-Forest 기반 보호수 진단 · 도시재생 지원','AI 활용 가로수 안전진단','2028 울산국제정원박람회 연계 전문인력 양성']},
+ {k:'icc',n:'기업협업지원센터',full:'기업협업지원센터 (ICC)',en:'Industry Collaboration Center',img:'센터_기업협업지원.jpg',task:'B1',org:'산학협력단',tel:515,
+  h:['기업과 함께 성장하는','보건의료 산학협력 플랫폼'],pts:['기업 현안 공동연구(R&BD)','공동장비 활용 지원','재직자 교육 플랫폼'],
+  story:'기업협업지원센터는 지역 보건의료·휴먼서비스 기업과 대학이 함께 문제를 풀고 성장하는 산학협력 플랫폼입니다. 기업의 기술 애로를 공동연구로 해결하고, 3개 대학의 공동장비와 재직자 교육을 연계해 지역 기업의 경쟁력을 높입니다.',
+  progs:[['R&BD','기업참여형 공동연구','보건의료 서비스 분야의 기업 현안을 교수·학생과 함께 해결합니다.'],['Equipment','공동장비 활용','U-Nexus 기반으로 울산 3개 대학의 공동장비 활용을 지원합니다.'],['Upskill','재직자 교육','「늘배움, 모두 UP」 동남권 초광역 재직자 교육 플랫폼을 운영합니다.']],
+  focus:['「늘배움, 모두 UP」 동남권 초광역 재직자 교육 플랫폼','U-Nexus 기반 3개 대학 공동장비 활용 지원','보건의료 서비스 R&amp;BD · 기업참여형 공동연구']},
+ {k:'wellness',n:'웰니스문화관광센터',full:'웰니스문화관광센터',en:'Wellness Culture & Tourism Center',img:'센터_웰니스문화관광.jpg',task:'D3',org:'산학협력단',tel:589,
+  h:['쉼과 즐거움이 있는','울산 힐링도시 만들기'],pts:['스마트 웰니스 관광 콘텐츠','지역 문화·관광 인프라 연구','울산 문화·관광 홍보'],
+  story:'웰니스문화관광센터는 울산의 자연과 문화, 음식을 건강과 쉼의 콘텐츠로 엮어 머물고 싶은 힐링도시를 만드는 센터입니다. 웰니스·관광 전공 역량을 바탕으로 지역 맞춤형 관광 콘텐츠를 개발하고, 시민과 방문객이 함께 즐기는 프로그램을 운영합니다.',
+  progs:[['Contents','스마트 웰니스 콘텐츠','「울산의 맛·멋·행복 4.0」 웰니스 관광 콘텐츠를 개발합니다.'],['Research','문화·관광 기반 연구','울산형 문화·관광 기반 구축을 위한 조사·연구를 수행합니다.'],['Promotion','지역 홍보 활성화','지역 문화·관광 자원을 알리는 홍보와 체험 프로그램을 운영합니다.']],
+  focus:['「울산의 맛·멋·행복 4.0」 스마트 웰니스 콘텐츠','울산형 문화·관광 기반 구축 및 연구','지역 문화·관광 홍보 활성화']},
+ {k:'global',n:'글로벌센터',full:'글로벌센터',en:'Global Center',img:'센터_글로벌.jpg',task:'A3',org:'국제교류처',tel:487,
+  h:['세계 인재가 울산에','머물도록 돕는 글로벌 거점'],pts:['글로벌 보건의료 협력','외국인 유학생 유치·지원','외국인 지역 정주 지원'],
+  story:'글로벌센터는 해외 대학·기관과의 보건의료 협력을 넓히고, 외국인 유학생이 울산에서 배우고 일하며 정착할 수 있도록 돕는 글로벌 거점입니다. 한국어 교육부터 전공 교육, 취업과 생활 정착까지 단계별로 지원합니다.',
+  progs:[['Partnership','글로벌 보건의료 협력','베트남 하노이보건대 방사선과 공동학위(2+2) 등 해외 협력을 추진합니다.'],['Students','유학생 유치·육성','외국인 유학생과 한국어 교육생의 유치·학업·생활을 지원합니다.'],['Settlement','지역 정주 지원','외국인 요양보호사 양성과 의료통역 실무교육으로 지역 정착을 돕습니다.']],
+  focus:['베트남 하노이보건대 방사선과 공동학위(2+2) 추진','외국인 요양보호사 양성 · 의료통역 실무교육','외국인 유학생·근로자 지역 정주 지원']}
+];
+function centerSub(k){const c=CENTERS.find(x=>x.k===k)||CENTERS[0];const t=TASKS.find(x=>x.c===c.task);
+ return `<div class="svis" style="--sv:url(img/${SVBG[0]})"><p class="bc">HOME <b>›</b> 협력 센터</p><h2>${c.n}</h2>
+ <div class="snav"><select onchange="location.hash='#/center/'+this.value">${CENTERS.map(x=>`<option value="${x.k}" ${x===c?'selected':''}>${x.n}</option>`).join('')}</select>
+ <div class="tools"><button onclick="zoom(-1)" title="축소">−</button><button onclick="zoom(1)" title="확대">+</button><button onclick="location.hash='#/'" title="홈">⌂</button><button onclick="print()" title="인쇄">⎙</button><button onclick="share()" title="공유">⇪</button></div></div></div>
+ <div class="cont">
+ <section class="ct-hero"><div class="ct-tx"><small>${c.en}</small><h3>${c.h[0]}<br><b>${c.h[1]}</b></h3><ol>${c.pts.map((p,i)=>`<li><i>0${i+1}</i>${p}</li>`).join('')}</ol></div><div class="ct-img"><img src="img/${c.img}" alt="${c.n} 활동 이미지" loading="lazy"><span>※ 이해를 돕기 위한 AI 생성 이미지입니다.</span></div></section>
+ <section>${stit('센터 소개','Our Story')}<div class="ct-story"><p>${c.story}</p><ul><li><b>센터명</b>${c.full}</li><li><b>소속</b>${c.org} · 앵커사업단 협력 센터</li><li><b>연계 단위과제</b><span class="ct-tk">${c.task}</span>${t?t.n:''}</li><li><b>문의</b>052-270-${String(c.tel).padStart(4,'0')}</li></ul></div></section>
+ <section>${stit('주요 사업','Programs')}<div class="ct-pg">${c.progs.map(p=>`<div><small>${p[0]}</small><h5>${p[1]}</h5><p>${p[2]}</p></div>`).join('')}</div></section>
+ <section>${stit('2차년도 중점 추진','Focus 2026')}<ul class="ct-fx">${c.focus.map(f=>`<li>${f}</li>`).join('')}</ul></section>
+ <section class="ct-oth"><h6>다른 협력 센터 보기</h6><div>${CENTERS.filter(x=>x!==c).map(x=>`<a href="#/center/${x.k}">${x.n}</a>`).join('')}</div></section>
+ </div>`}
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return[m,c];return null}
@@ -1388,11 +1462,11 @@ function share(){navigator.clipboard&&navigator.clipboard.writeText(location.hre
 
 function route(){const h=location.hash.replace(/^#\/?/,'').split('/');const id=h[0]||'';
  const hd=$('#hd');let html;
- if(!id){html=home();hd.className=''}else{html=sub(id,h[1]!=null?+h[1]:null)||home();hd.className='sub'}
+ if(!id){html=home();hd.className=''}else if(id==='center'){html=centerSub(h[1]);hd.className='sub'}else{html=sub(id,h[1]!=null?+h[1]:null)||home();hd.className='sub'}
  $('#app').innerHTML=html;scrollTo(0,0);
  document.querySelectorAll('.gnb>li').forEach((li,i)=>li.classList.toggle('cur',!!id&&MENU[i].c.some(c=>c[0]===id)));
- const t=findMenu(id);document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:'춘해보건대학교 앵커사업단';
- if(!id||!t)homeInit();else{clearInterval(heroT);clearInterval(dynT);clearInterval(progT)}}
+ const t=findMenu(id);const ctr=id==='center'?(CENTERS.find(x=>x.k===h[1])||CENTERS[0]):null;document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:ctr?`${ctr.n} | 춘해보건대학교 앵커사업단`:'춘해보건대학교 앵커사업단';
+ if(!id||(!t&&!ctr))homeInit();else{clearInterval(heroT);clearInterval(dynT);clearInterval(progT)}}
 /* 로고: 영문 줄 자간을 줄여 국문 폭에 맞춤(자동 조정) */
 function fitLogo(){document.querySelectorAll('.logo').forEach(l=>{const b=l.querySelector('b'),m=l.querySelector('small');if(!b||!m)return;b.style.letterSpacing='';b.style.marginRight='';m.style.letterSpacing='';m.style.marginRight='';
  if(!m.offsetWidth)return;const w=e=>{const r=document.createRange();r.selectNodeContents(e);return r.getBoundingClientRect().width};
