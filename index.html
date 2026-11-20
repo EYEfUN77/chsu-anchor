@@ -13,7 +13,7 @@ body{font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;color:var(--t);word
 a{color:inherit;text-decoration:none}ul{list-style:none}button{font:inherit;cursor:pointer;border:0;background:none}
 .inner{max-width:var(--w);margin:0 auto;padding:0 20px}
 /* header */
-header{position:fixed;top:0;left:0;right:0;z-index:50;height:80px;transition:.3s}
+header{position:fixed;top:0;left:0;right:0;z-index:50;height:120px;transition:.3s}
 header.on,header.sub,header:hover{background:#fff;box-shadow:0 1px 0 var(--line)}
 .hd{display:flex;align-items:center;height:80px;padding:0 40px}
 .logo{display:flex;align-items:center;gap:10px;color:#fff;min-width:330px}
@@ -27,11 +27,20 @@ header.on .gnb>li>a,header.sub .gnb>li>a,header:hover .gnb>li>a{color:var(--t)}
 .gnb>li.cur>a{color:var(--g)!important}
 .gnb .dep2{display:none;position:absolute;top:80px;left:0;right:0;padding:18px 0 22px;background:#fff}
 header:hover .dep2{display:block}
-header:hover::after{content:"";position:absolute;top:80px;left:0;right:0;height:190px;background:#fff;border-top:1px solid var(--line);box-shadow:0 10px 20px rgba(0,0,0,.05);z-index:-1}
+header:hover::after{content:"";position:absolute;top:120px;left:0;right:0;height:190px;background:#fff;border-top:1px solid var(--line);box-shadow:0 10px 20px rgba(0,0,0,.05);z-index:-1}
 .dep2 a{display:block;padding:7px 0;font-size:15px;color:#555}.dep2 a:hover{color:var(--g);font-weight:600}
 .util{display:flex;gap:18px;min-width:330px;justify-content:flex-end}
 .util button{width:32px;height:32px;color:#fff}header.on .util button,header.sub .util button,header:hover .util button{color:var(--t)}
 .util svg{width:28px;height:28px}
+.topbar{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;font-size:13px;background:rgba(0,0,0,.2);color:#fff;transition:.3s}
+header.on .topbar,header.sub .topbar,header:hover .topbar{background:#eef3fb;color:#4a5568}
+.topbar .tl a+a::before,.topbar .tc a+a::before{content:"·";margin:0 9px;opacity:.6}
+.topbar .tc{border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:5px 18px;background:rgba(255,255,255,.08)}
+header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-color:#cfdbee;background:#fff}
+.topbar a:hover{text-decoration:underline}
+.topbar .nlbtn{background:var(--g2);color:#fff;padding:5px 16px;border-radius:14px;font-weight:600}
+.topbar .nlbtn:hover{text-decoration:none;background:var(--g)}
+@media(max-width:1100px){.topbar .tc{display:none}.topbar{padding:0 20px}}
 /* sitemap */
 #sitemap{position:fixed;inset:0;background:rgba(10,31,68,.97);z-index:100;display:none;color:#fff;overflow:auto}
 #sitemap.open{display:block}
@@ -175,7 +184,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:13px}
 .quick a,.quick button{width:56px;height:56px;border-radius:50%;background:var(--g);color:#fff;font-size:10.5px;font-weight:700;line-height:1.1;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.2)}
 .quick button{background:#333;font-size:20px}
 /* sub */
-.svis{height:300px;margin-top:80px;background:radial-gradient(circle at 12% 40%,rgba(255,255,255,.6) 0 60px,transparent 61px),radial-gradient(circle at 88% 70%,rgba(255,255,255,.45) 0 110px,transparent 111px),linear-gradient(#e6eefb,#eff4fc);position:relative;text-align:center;padding-top:80px}
+.svis{height:300px;margin-top:120px;background:radial-gradient(circle at 12% 40%,rgba(255,255,255,.6) 0 60px,transparent 61px),radial-gradient(circle at 88% 70%,rgba(255,255,255,.45) 0 110px,transparent 111px),linear-gradient(#e6eefb,#eff4fc);position:relative;text-align:center;padding-top:80px}
 .svis .bc{font-size:12px;color:#555}.svis .bc b{color:var(--g);margin:0 6px}
 .svis h2{font-size:34px;margin-top:10px}
 .snav{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);width:calc(100% - 40px);max-width:var(--w);display:flex;align-items:flex-end}
@@ -219,6 +228,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:13px}
 </head>
 <body>
 <header id="hd">
+ <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/projects">CH-U-RUN센터</a><a href="#/projects">건강안전지원센터</a><a href="#/projects">AI헬스케어빅데이터센터</a><a href="#/projects">수목진단센터</a><a href="#/projects">기업협업지원센터</a><a href="#/projects">한국어교육센터</a></div><div class="tr"><a class="nlbtn" href="#/newsletter">뉴스레터</a></div></div>
  <div class="hd">
   <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
    <div><b>춘해보건대학교 ANCHOR<span>사업단</span></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
@@ -268,12 +278,44 @@ const MENU=[
 ];
 
 /* ===== 게시판 데이터 — 여기만 고치면 게시물이 추가됩니다 ===== */
+const PRESS=[
+ {d:'2026-11-05',src:'경상일보',t:'춘해보건대 앵커사업단, 2026년 새울원전 방사능방재 합동훈련 참여',u:'https://www.ksilbo.co.kr/news/articleView.html?idxno=1071681',b:'울산시 주관 새울원전 방사능방재 합동훈련에서 안전체험부스를 운영하고 방사선비상진료 훈련을 지원했습니다. 간호학부·방사선과 학생과 모의환자 40명이 참여했습니다.'},
+ {d:'2026-11-05',src:'베리타스알파',t:'춘해보건대 앵커사업단 2026년 새울원전 방사능방재 합동훈련 참여',u:'https://www.veritas-a.com/news/articleView.html?idxno=635515',b:'복합재난 대응 역량 강화를 위해 방사능방재 합동훈련에 참여해 보호복 착용 안내, 기자재 체험, 비상진료 절차를 지원했습니다.'},
+ {d:'2026-10-01',src:'부산일보',t:"춘해보건대, '산학연협력 EXPO'서 AI·DX 기반 헬스케어 성과 소개",u:'https://www.busan.com/view/busan/view.php?code=2026100115505689432',b:'교육부 주최 2026 산학연협력 EXPO(킨텍스)에서 AI·DX 기반 울산형 헬스케어 혁신체계, 노인·재활케어 콘텐츠, MRI 유방 QA 팬텀 등 앵커사업 성과를 선보였습니다.'},
+ {d:'2026-09-30',src:'베리타스알파',t:"춘해보건대 '2026 산학연협력 EXPO'서 AI/DX 기반 헬스케어 성과 선보여",u:'https://www.veritas-a.com/news/articleView.html?idxno=630270',b:'지역 보건의료·휴먼서비스 분야 실무인재 양성 모델과 지·산·학·연 협력 성과를 소개했습니다.'},
+ {d:'2026-09-13',src:'울산매일',t:'춘해보건대, WAVE 2026서 미래 보건의료 교육·기술 역량 소개',u:'https://www.iusm.co.kr/news/articleView.html?idxno=1067795',b:'2026 울산세계미래산업박람회에서 AI 기반 노인·재활케어 VR 콘텐츠와 MRI 유방 QA 팬텀을 전시했습니다.'},
+ {d:'2026-09-11',src:'베리타스알파',t:'춘해보건대 WAVE 2026 참가...첨단 보건의료 콘텐츠 체험부스 운영',u:'https://www.veritas-a.com/news/articleView.html?idxno=627488',b:'앵커사업단 주관으로 울산전시컨벤션센터에서 첨단 보건의료 콘텐츠 체험부스를 운영했습니다.'},
+ {d:'2026-09-04',src:'베리타스알파',t:"춘해보건대 앵커사업단 '맞춤형 건강관리 의료/보건 인력 양성 교육' 실시",u:'https://www.veritas-a.com/news/articleView.html?idxno=626264',b:'건강안전지원센터 주관으로 울산 방문건강관리사업 전문인력을 대상으로 간호·치위생·물리치료·언어치료 교수진이 실무 교육을 진행했습니다.'},
+ {d:'2026-06-17',src:'뉴시스',t:'[울산소식] 춘해보건대, 외국인 유학생 건강교육 등',u:'https://news.nate.com/view/20260617n27325',b:'외국인 유학생·한국어 연수생의 지역 정착을 돕기 위해 건강검진 결과를 바탕으로 한 맞춤 건강교육을 운영했습니다.'},
+ {d:'2026-06-05',src:'베리타스알파',t:'춘해보건대 RISE사업단 노인 맞춤형 수면요가 프로그램 운영',u:'https://www.veritas-a.com/news/articleView.html?idxno=613697',b:'울산지역 경로당 20개소를 찾아가 고령층 건강 증진과 재난 대응 기초 역량 강화를 위한 수면요가 프로그램을 운영합니다.'},
+ {d:'2026-06-04',src:'베리타스알파',t:'춘해보건대 RISE사업단 신라스테이 울산과 지역혁신 기반 문화/관광 협력 업무협약 체결',u:'https://www.veritas-a.com/news/articleView.html?idxno=613452',b:'울산 문화·관광 거버넌스 구축과 재학생 실무교육, 지역 특화 관광 콘텐츠 공동 개발을 위해 협약했습니다.'},
+ {d:'2026-06',src:'베리타스알파',t:'춘해보건대 지역대학 연합 한국어 경시대회 개최',u:'https://www.veritas-a.com/news/articleView.html?idxno=612642',b:'울산대·울산과학대·동의과학대 등 4개 대학 외국인 유학생 50명이 참가한 연합 한국어 경시대회를 열었습니다.'},
+ {d:'2026-06',src:'베리타스알파',t:'춘해보건대 앵커사업단 방사선사 재직자 대상 보수교육 실시',u:'https://www.veritas-a.com/news/articleView.html?idxno=616020',b:'부산·울산·경남 의료기관 재직 방사선사 272명을 대상으로 최신 의료방사선 기술 보수교육을 열었습니다.'},
+ {d:'2026-04-10',src:'베리타스알파',t:'춘해보건대 언어치료과 RISE사업 연계 현장견학 실시',u:'https://www.veritas-a.com/news/articleView.html?idxno=605410',b:'언어치료과 학생 65명이 장애영유아·언어재활 기관을 방문해 현장 실무를 익혔습니다.'},
+ {d:'2026-04-10',src:'베리타스알파',t:'춘해보건대 RISE사업단-직업건강협회 울산지회, 복합재난 안전관리 업무협약 체결',u:'https://www.veritas-a.com/news/articleView.html?idxno=605398',b:'산업단지 맞춤형 안전교육 기반 구축과 복합재난 안전관리 지원체계 강화를 위해 협약했습니다.'},
+ {d:'2026-02-03',src:'메트로신문',t:'동남권 6개대, AI 헬스케어 빅데이터 협의 체계 구축',u:'https://www.metroseoul.co.kr/article/20260203500612',b:'춘해보건대 AI헬스케어빅데이터센터가 김해대·마산대·부산보건대·울산과학대·진주보건대와 동남권 보건의료 빅데이터 협의체 협약을 맺었습니다.'},
+ {d:'2026',src:'베리타스알파',t:"춘해보건대 RISE사업단–삼오시스, '유방 MRI QA 팬텀' 기술이전 협약 체결",u:'https://www.veritas-a.com/news/articleView.html?idxno=598781',b:'방사선과 윤영우 교수가 산학공동기술과제로 개발한 MRI 유방 QA 팬텀 기술을 기업에 이전했습니다.'},
+ {d:'2026',src:'한국대학신문',t:'[앵커 선도대학을 가다/춘해보건대학교] 보건의료 인재양성부터 시민 돌봄까지… 울산형 지역혁신 선순환 구축',u:'https://news.unn.net/news/articleView.html?idxno=599476',b:'4대 프로젝트 8개 단위과제를 통해 교육·취업·정주·돌봄을 잇는 춘해보건대 앵커사업을 소개한 기획 기사입니다.'},
+ {d:'2026',src:'투어코리아',t:'춘해보건대, 유아크헤어와 손잡고 외국인 유학생 헤어디자이너 취업 지원',u:'https://www.tournews21.com/news/articleView.html?idxno=146940',b:'글로벌뷰티과가 앵커사업과 연계해 외국인 유학생 대상 K-뷰티 진로·취업 멘토링을 열었습니다.'},
+ {d:'2025-12-17',src:'메트로신문',t:'춘해보건대 RISE사업단, 산림조합과 녹색도시 조성 협력 체결',u:'https://www.metroseoul.co.kr/article/20251216500618',b:'산림조합중앙회 양산교육원과 현장실습, 국가기술자격 취득, 스마트 가로수 관리 모델 개발 등에 협력하기로 했습니다.'},
+ {d:'2025-10-23',src:'메트로신문',t:'춘해보건대 등 4개 기관, 늘봄학교 맞춤형 프로그램 MOU 체결',u:'https://www.metroseoul.co.kr/article/20251023500542',b:'울산여성인력개발센터·울산과학대·울산대와 늘봄학교 강사 인력 풀, 커리큘럼 공동 설계 등에 협력합니다.'},
+ {d:'2025-08-06',src:'경상일보',t:'울산과학대·울산대·춘해보건대 RISE사업 협약 통한 교육과정 개발',u:'https://www.ksilbo.co.kr/news/articleView.html?idxno=1033785',b:'울산 3개 대학이 공동 교육과정과 모듈형 교과목 개발 등 융합인재 양성 협약을 맺었습니다.'},
+ {d:'2025-08-06',src:'울산매일',t:"지역 정주형 인재 양성 협력체계 구축 '맞손'",u:'https://www.iusm.co.kr/news/articleView.html?idxno=1053442',b:'춘해보건대 도생관에서 울산 3개 대학 RISE사업 융합인재 양성 협약식이 열렸습니다.'},
+ {d:'2025-07-28',src:'메트로신문',t:'춘해보건대, RISE 사업 맞춤형 디지털 인재 양성 협약 체결',u:'https://www.metroseoul.co.kr/article/20250728500605',b:'울산시청자미디어센터와 지역 맞춤형 디지털·미디어 인재 양성을 위해 협약했습니다.'},
+ {d:'2025-07-04',src:'메트로신문',t:'춘해보건대, RISE 글로벌 사회공헌으로 국제협력 선도',u:'https://www.metroseoul.co.kr/article/20250704500272',b:'간호학과·치위생과 학생 12명이 베트남 하띤성에서 보건·문화·교육 융합 사회공헌 활동을 펼쳤습니다.'},
+ {d:'2025-06-24',src:'부산일보',t:'춘해보건대학교 RISE 사업단, 울산광역시 광역치매센터와 업무 협약',u:'https://www.busan.com/view/busan/view.php?code=2025062414393883828',b:'지역 친화형 통합 건강관리 지원체계 강화를 위해 울산광역시 광역치매센터와 협약했습니다.'},
+ {d:'2025-06-24',src:'한국대학신문',t:'춘해보건대, 울산광역시 광역치매센터와 지역 건강관리 협력 체계 구축',u:'https://news.unn.net/news/articleView.html?idxno=580397',b:'치매 인식 개선 캠페인 참여 등 의료소외계층 지원과 건강증진 활동을 함께 추진합니다.'},
+ {d:'2025-05-28',src:'CNB뉴스',t:'춘해보건대, RISE사업 본격 추진 위한 첫 사업추진위원회 개최',u:'https://www.cnbnews.com/news/article.html?no=728638',b:'1차년도 사업계획의 타당성과 실행력을 심의한 제1차 사업추진위원회를 열었습니다.'},
+ {d:'2025-05-29',src:'메트로신문',t:'춘해보건대, 제1차 RISE 사업 추진위원회 개최',u:'https://www.metroseoul.co.kr/article/20250529500216',b:'8개 단위과제, 26개 세부과제, 60여 개 실천 프로그램을 수행하는 1차년도 사업계획을 심의했습니다.'},
+ {d:'2025-02-04',src:'한국대학신문',t:'춘해보건대, RISE 체계 기반 교육혁신 방향 모색을 위한 교수 연수',u:'https://news.unn.net/news/articleView.html?idxno=574563',b:'RISE 전환에 대비한 사업별 운영 방안과 교육혁신 전략을 공유한 교수 연수를 열었습니다.'}
+];
+
 const BOARD={
  notice:[
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
   {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성 인정으로 인센티브 5억 원 추가 확보\n\n■ 2차년도 추진 규모\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n- 본예산 48.2억 원(국비 43.57억·시비 4.63억) + 1차년도 이월금 6.04억 원\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
  ],
- call:[],press:[],video:[],newsletter:[],archive:[]
+ call:[],press:PRESS,video:[],newsletter:[],archive:[]
 };
 
 const PROJ=[
@@ -367,7 +409,7 @@ function home(){
  </div></div></section>`;
 }
 function cards(k){const a=BOARD[k];if(!a.length)return [1,2,3].map(()=>`<div class="card"><div class="th">준비 중</div><p>게시물을 준비하고 있습니다</p></div>`).join('');
- return a.slice(0,3).map((p,i)=>`<a class="card" href="#/${k}/${i}"><div class="th">${esc(p.t)}</div><p>${esc(p.t)}</p></a>`).join('')}
+ return a.slice(0,3).map((p,i)=>`<a class="card" href="#/${k}/${i}"><div class="th">${esc(p.src||'')}<br>${p.d}</div><p>${esc(p.t)}</p></a>`).join('')}
 function nlCards(){const a=BOARD.newsletter;return [0,1,2].map(i=>a[i]?`<a class="card nl" href="#/newsletter/${i}"><div class="th">ANCHOR<br>NEWSLETTER</div><p>${esc(a[i].t)}</p></a>`:`<div class="card nl"><div class="th">ANCHOR<br>NEWSLETTER</div><p>발행 준비 중</p></div>`).join('')}
 function homeInit(){qtab(document.querySelector('.qtab .tabs button'),'협력플랫폼');proj(0);ntab(document.querySelector('.btabs button'),'notice');ptab(document.querySelector('.ptabs button'),'참여 협력기관');heroTimer()}
 function heroTimer(){clearInterval(heroT);if(heroPlay)heroT=setInterval(()=>goHero((heroI+1)%3),6000)}
@@ -462,10 +504,10 @@ const PAGES={
 };
 const BOARD_EN={notice:'Notice',press:'Press',call:'Project Announcement',video:'Promotional Video',newsletter:'Newsletter',archive:'Archive'};
 function boardPage(k,idx){const a=BOARD[k],lab=findMenu(k)[1][1];
- if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · 춘해보건대학교 앵커사업단</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr></table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
+ if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">기사 원문 보기 ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
- <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">작성자</th><th style="width:120px">등록일</th></tr>
- ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>앵커사업단</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
+ <table class="tbl"><tr><th style="width:80px">번호</th><th>제목</th><th style="width:140px">${k==='press'?'매체':'작성자'}</th><th style="width:120px">등록일</th></tr>
+ ${a.length?a.map((p,i)=>`<tr><td>${a.length-i}</td><td class="l"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td>${esc(p.src||'앵커사업단')}</td><td>${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
 
 function sub(id,idx){const f=findMenu(id);if(!f)return null;const[m,c]=f;
  const body=PAGES[id]?PAGES[id]():boardPage(id,idx);
