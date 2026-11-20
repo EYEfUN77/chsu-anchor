@@ -546,7 +546,8 @@ header:hover::after,header:hover .dep2{display:none}
 .ov-mh{text-align:center;position:relative;padding-bottom:6px}
 .ov-bt{display:inline-block;background:var(--g);color:#fff;border-radius:8px;padding:10px 26px;font-size:18px}
 .ov-bk{display:block;width:max-content;margin:8px auto 0;background:#0a1f44;color:#fff;border-radius:6px;padding:6px 16px;font-size:14px}
-.ov-bks{display:block;font-size:13px;color:#0a1f44;font-weight:600;margin-top:6px}
+.ov-bkb{display:block;color:var(--g);font-size:16px;margin-top:10px}
+.ov-bks{display:block;font-size:12.5px;color:#777;font-weight:400;margin-top:3px}
 .ov-cm{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:10px}
 .ov-cm span{background:#f7c948;color:#10213f;font-size:12.5px;font-weight:800;border-radius:4px;padding:3px 8px}
 .ov-adm{border:1px solid #e3e8f0;border-radius:8px;padding:12px;text-align:center;margin:12px 0}
@@ -1167,7 +1168,7 @@ const PAGES={
  <div class="oc-top">춘해보건대학교 <em>ANCHOR 사업단</em></div>
  <div class="oc-row">
   <div class="oc-side l"><div class="oc-grp"><div class="oc-n cm">사업추진위원회</div><div class="oc-n cm">사업운영위원회</div><div class="oc-n cm ev">자체평가위원회</div></div><div class="oc-br"></div><div class="oc-h"></div></div>
-  <div class="oc-mid"><div class="oc-vf"></div><div class="oc-n main">앵커사업 총괄기획본부<small>기획 · 성과관리 · 구매·지출 · 시설</small></div><div class="oc-vf"></div></div>
+  <div class="oc-mid"><div class="oc-vf"></div><div class="oc-n main">앵커사업 총괄기획본부<small>기획·성과관리 · 위원회 운영 · 대외 협력·홍보</small></div><div class="oc-vf"></div></div>
   <div class="oc-side"></div>
  </div>
  <div class="oc-v"></div>
@@ -1184,8 +1185,8 @@ const PAGES={
      <ul class="ov-li"><li><em>간호</em><b>간호학부</b></li><li><em>보건</em><b>보건학부</b><small>치위생과 · 작업치료과 · 응급구조과 · 방사선과 · 물리치료과 · 언어치료과 · 보건행정과 · 안경광학과</small></li><li><em>휴먼서비스</em><b>사회실무학부</b><small>유아교육과 · 요가과 · 사회복지케어과 · 산림조경비즈니스과 · 웰니스문화관광과 · 글로벌케어과 · 평생교육상담과 · 글로벌뷰티과 · 글로벌비즈니스과</small></li></ul>
     </div></div>
     <div class="ov-c ov-mid"><div class="ov-box ov-main">
-     <div class="ov-mh"><b class="ov-bt">ANCHOR 사업단</b><b class="ov-bk">앵커사업 총괄기획본부</b><small class="ov-bks">기획·성과관리 · 위원회 운영</small><div class="ov-cm"><span>사업추진위원회</span><span>사업운영위원회</span><span>자체평가위원회</span></div></div>
-     <div class="ov-adm"><h6>총괄행정분야</h6><b>예산·구매·지출 · 시설</b><small>대외 협력 · 홍보</small></div>
+     <div class="ov-mh"><b class="ov-bt">ANCHOR 사업단</b><b class="ov-bk">앵커사업 총괄기획본부</b><b class="ov-bkb">기획·성과관리 · 위원회 운영</b><small class="ov-bks">대외 협력 · 홍보</small><div class="ov-cm"><span>사업추진위원회</span><span>사업운영위원회</span><span>자체평가위원회</span></div></div>
+     <div class="ov-adm"><h6>총괄행정분야</h6><b>예산·구매·지출 · 시설</b><small>회계·정산 · 행정 지원</small></div>
      <div class="ov-g2 ov-pj">${PROJ.map(p=>`<div class="ov-pc"><h6 style="background:${p.col}">Dynamic ${p.k}</h6>${TASKS.filter(t=>t.c[0]===p.c).map(t=>`<p><b>${t.c} 과제팀</b><small>${t.n}</small></p>`).join('')}</div>`).join('')}</div>
     </div></div>
     <div class="ov-c"><p class="ov-tag">사업 운영 협업 / 성과관리</p><div class="ov-box">
