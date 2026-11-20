@@ -50,6 +50,38 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .topbar a:hover{text-decoration:underline}
 .topbar .nlbtn{background:#fff;color:#1d4f9a;padding:5px 16px;border-radius:14px;font-weight:700}
 .topbar .nlbtn:hover{text-decoration:none;background:#e8f0fc}
+.topbar .calbtn{position:relative;overflow:hidden;background:linear-gradient(90deg,#ffd54a,#fff3b0,#ffd54a);background-size:200% 100%;color:#0f3a7a;animation:calglow 1.6s ease-in-out infinite,calbg 3s linear infinite}
+.topbar .calbtn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.95),transparent);transform:skewX(-20deg);animation:calshine 2.2s ease-in-out infinite}
+.topbar .calbtn:hover{background:#fff;animation:none}
+@keyframes calglow{0%,100%{box-shadow:0 0 0 0 rgba(255,213,74,.85)}50%{box-shadow:0 0 14px 4px rgba(255,213,74,.9)}}
+@keyframes calbg{to{background-position:200% 0}}
+@keyframes calshine{0%{left:-60%}60%,100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.topbar .calbtn,.topbar .calbtn::after{animation:none}}
+.dc-hero{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center}
+.dc-app{display:flex;align-items:center;gap:16px;margin-bottom:18px}.dc-app img{width:72px;height:72px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.dc-app h3{font-size:30px;line-height:1.25}.dc-app small{display:block;color:var(--m);font-size:15px;font-weight:500}
+.dc-lead{font-size:18px;line-height:1.75;color:#333;margin-bottom:22px}
+.dc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}.dc-tags span{background:#eef4fd;color:#1d4f9a;border-radius:20px;padding:6px 14px;font-size:14px;font-weight:600}
+.dc-btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.dc-dl{display:inline-flex;align-items:center;gap:10px;background:#1d4f9a;color:#fff;padding:16px 30px;border-radius:12px;font-size:19px;font-weight:700;box-shadow:0 8px 20px rgba(29,79,154,.3);transition:.2s}
+.dc-dl:hover{background:#163d78;transform:translateY(-2px)}
+.dc-ms{display:inline-flex;align-items:center;gap:8px;border:2px solid #1d4f9a;color:#1d4f9a;padding:14px 24px;border-radius:12px;font-size:17px;font-weight:700}.dc-ms:hover{background:#eef4fd}
+.dc-sub{margin-top:14px;font-size:14px;color:var(--m)}.dc-sub a{color:#1d4f9a;text-decoration:underline}
+.dc-shot img{width:100%;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.dc-why{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.dc-why div{border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:#fff}
+.dc-why i{font-style:normal;color:#1d4f9a;font-weight:800;font-size:15px}.dc-why h4{font-size:19px;margin:6px 0 8px}.dc-why p{color:#444;line-height:1.7}
+.dc-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dc-feat div{background:#f6f8fb;border-radius:12px;padding:20px 22px}.dc-feat b{display:block;font-size:17px;margin-bottom:6px}.dc-feat p{color:#555;line-height:1.65;font-size:15px}
+.dc-step{counter-reset:st;display:grid;gap:14px}
+.dc-step li{counter-increment:st;position:relative;padding:20px 24px 20px 74px;border:1px solid var(--line);border-radius:12px;line-height:1.7}
+.dc-step li::before{content:counter(st);position:absolute;left:22px;top:20px;width:36px;height:36px;border-radius:50%;background:#1d4f9a;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.dc-step b{display:block;font-size:17px}
+.dc-note{margin-top:22px;background:#f6f8fb;border-radius:12px;padding:18px 22px;color:#444;line-height:1.7;font-size:15px}.dc-note a{color:#1d4f9a;text-decoration:underline}
+@media(max-width:900px){.dc-hero,.dc-why{grid-template-columns:1fr}.dc-feat{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.dc-feat{grid-template-columns:1fr}.dc-dl,.dc-ms{width:100%;justify-content:center}}
+.topbar .tl,.topbar .tc{white-space:nowrap}
+@media(max-width:1600px){.topbar{font-size:14px;padding:0 24px}.topbar .tl a+a::before,.topbar .tc a+a::before{margin:0 6px}.topbar .tc{padding:5px 12px}}
 @media(max-width:1100px){.topbar .tc{display:none}.topbar{padding:0 20px}}
 .gban{height:340px;border-radius:24px;background:linear-gradient(135deg,#0f3d7a,#1f5fd1 60%,#3b82f6);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;padding:36px 44px;color:#fff;margin-bottom:60px}
 .gban::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 110% -10%,rgba(255,255,255,.08) 0 2px,transparent 2px 30px)}
@@ -671,7 +703,7 @@ header:hover::after,header:hover .dep2{display:none}
 </head>
 <body>
 <header id="hd">
- <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><a class="nlbtn" href="#/newsletter">뉴스레터</a></div></div>
+ <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
  <div class="hd">
   <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
    <div><b class="lg-line"><img class="lg-full lg-w" src="img/앵커_로고_흰색.svg" alt="춘해보건대학교 ANCHOR 사업단"><img class="lg-full lg-b" src="img/앵커_로고_파랑.svg" alt=""></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
@@ -1142,10 +1174,11 @@ const TRANS=[
  {n:'울산공항',d:'국내선 항공',ic:'✈️',lat:35.5934465,lng:129.3570302},
  {n:'울산시외버스터미널',d:'시외버스',ic:'🚌',lat:35.5365477,lng:129.3396948},
  {n:'울산고속버스터미널',d:'고속버스',ic:'🚍',lat:35.536949,lng:129.338756},
- {n:'태화강역',d:'일반열차 · 동해선 광역전철',ic:'🚆',lat:35.539408,lng:129.353788}
+ {n:'태화강역',d:'일반열차 · 동해선 광역전철',ic:'🚆',lat:35.539408,lng:129.353788},
+ {n:'김해국제공항',d:'국내선 · 국제선 항공',ic:'🛫',lat:35.1731,lng:128.9468}
 ];
 const kway=(m,t)=>`https://map.kakao.com/link/by/${m}/${encodeURIComponent(t.n)},${t.lat},${t.lng}/${encodeURIComponent(CHSU.n)},${CHSU.lat},${CHSU.lng}`;
-function myRoute(e){if(!navigator.geolocation)return true;e.preventDefault();const w=window.open('','_blank');const go=u=>{if(w&&!w.closed)w.location.href=u;else location.href=u;};navigator.geolocation.getCurrentPosition(p=>go(kway('car',{n:'내 위치',lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6)})),()=>go(KMAP.to),{enableHighAccuracy:true,timeout:10000,maximumAge:60000});return false;}
+function myRoute(e){if(!navigator.geolocation)return true;e.preventDefault();const a=e.currentTarget,l=a.innerHTML;a.innerHTML='📡 현재 위치 확인 중…';const go=u=>{a.innerHTML=l;location.href=u};navigator.geolocation.getCurrentPosition(p=>go(kway('car',{n:'내 위치',lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6)})),()=>go(KMAP.to),{enableHighAccuracy:true,timeout:10000,maximumAge:60000});return false;}
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return[m,c];return null}
@@ -1256,6 +1289,38 @@ function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classLis
  $('#plist2').innerHTML=PARTNERS[k].map((p,i)=>`<li><em>${String(i+1).padStart(2,'0')}</em><div><b>${p[0]}</b><small>${p[1]}</small></div></li>`).join('')}
 
 /* ===== 서브페이지 ===== */
+const DC={exe:'https://github.com/EYEfUN77/EYEfUN77.github.io/releases/latest/download/DesktopCalendar-Setup.exe',arm:'https://github.com/EYEfUN77/EYEfUN77.github.io/releases/latest/download/DesktopCalendar-Setup-arm64.exe',ms:'https://apps.microsoft.com/detail/9pb5gg6g7w3l?hl=ko-KR&gl=KR',site:'https://calendar.eyefun.org/'};
+function calPage(){return `<div class="svis" style="--sv:url(img/${SVBG[0]})"><p class="bc">HOME <b>›</b> 바탕화면 달력</p><h2>바탕화면 달력 다운로드</h2>
+ <div class="snav"><div class="tools"><button onclick="zoom(-1)" title="축소">−</button><button onclick="zoom(1)" title="확대">+</button><button onclick="location.hash='#/'" title="홈">⌂</button><button onclick="print()" title="인쇄">⎙</button><button onclick="share()" title="공유">⇪</button></div></div></div>
+ <div class="cont">
+ <section class="dc-hero"><div>
+  <div class="dc-app"><img src="https://calendar.eyefun.org/icon.png" alt="바탕화면 달력 아이콘"><h3>바탕화면 달력<small>iCalendar · 구글 캘린더 바탕화면 달력</small></h3></div>
+  <p class="dc-lead">내 구글 캘린더를 Windows 바탕화면에 늘 띄워 두고, 휴대폰에서도 같은 달력을 그대로 쓰는 무료 앱입니다.</p>
+  <div class="dc-tags"><span>Windows 10 / 11</span><span>구글 캘린더 · 할 일 연동</span><span>무료 · 광고 없음</span><span>한국어 · English</span></div>
+  <div class="dc-btns"><a class="dc-dl" href="${DC.exe}" download>⬇ 설치 파일 다운로드</a><a class="dc-ms" href="${DC.ms}" target="_blank" rel="noopener">Microsoft Store에서 받기</a></div>
+  <p class="dc-sub">DesktopCalendar-Setup.exe · 약 90MB · Arm64 PC(Snapdragon 등)는 <a href="${DC.arm}" download>Arm64용 설치 파일</a>을 받으세요.</p>
+ </div><div class="dc-shot"><img src="https://calendar.eyefun.org/screenshot.png" alt="바탕화면 달력 실행 화면: 월간 달력과 오늘·다가오는 일정 목록" loading="lazy"></div></section>
+ <section>${stit('바탕화면 달력이 다른 점','Why Desktop Calendar')}<div class="dc-why">
+  <div><i>01</i><h4>🖥️ PC 바탕화면 + 📱 휴대폰, 한 달력</h4><p>PC에서는 바탕화면에 늘 떠 있어 창을 열지 않아도 일정이 보이고, 휴대폰에서도 같은 구글 캘린더를 씁니다. 어디서 고쳐도 바로 함께 바뀝니다.</p></div>
+  <div><i>02</i><h4>🚗 일정 안에 출발 시각까지</h4><p>장소와 출발지만 고르면 카카오 길찾기 교통 예측으로 이동 시간을 계산해, 여유 시간을 더한 출발 시각에 알려 줍니다.</p></div>
+  <div><i>03</i><h4>🇰🇷 우리 생활에 맞춘 기능</h4><p>카카오맵 장소 검색, 카카오맵·네이버 지도·티맵 길안내, 한글(HWP) 파일 첨부, 음력·기념일, 대체공휴일, 학기 주차 표시를 지원합니다.</p></div>
+  <div><i>04</i><h4>🎓 학사일정을 내 일정처럼</h4><p>학교 학사일정 같은 웹 달력을 구독해 함께 보고, 내 캘린더로 가져와 바뀐 날짜도 직접 고칠 수 있습니다.</p></div>
+ </div></section>
+ <section>${stit('주요 기능','Features')}<div class="dc-feat">
+  <div><b>🎓 수업 시간표 한 번에 넣기</b><p>과목·요일·시간·강의실을 적으면 학기 동안 매주 반복 일정으로 넣고 공휴일은 자동으로 뺍니다.</p></div>
+  <div><b>🔍 빈 시간 찾기</b><p>이번 주·다음 주에서 원하는 길이의 빈 시간을 찾아 바로 일정을 만들 수 있습니다.</p></div>
+  <div><b>📊 일정 통계</b><p>주·월·학기·연 단위로 분류별 일정 시간을 막대그래프로 보여 줍니다.</p></div>
+  <div><b>⚠️ 겹침 경고 · 🌅 아침 요약</b><p>시간이 겹치는 일정을 미리 알리고, 매일 아침 오늘 일정과 출발 시각을 정리해 보여 줍니다.</p></div>
+  <div><b>✅ 준비 항목 · 공유 · 복제</b><p>일정별 준비물 체크, 카카오톡 공유, 날짜만 바꾼 일정 복제를 지원합니다.</p></div>
+  <div><b>🔢 주차 표시</b><p>시작일과 종료일을 넣으면 1주차, 2주차…가 달력에 자동 표시됩니다.</p></div>
+ </div></section>
+ <section>${stit('설치 방법','How to Install')}<ol class="dc-step">
+  <li><b>내려받기</b>위의 [설치 파일 다운로드]를 누르거나, Microsoft Store에서 설치합니다. 스토어로 설치하면 경고 없이 설치되고 업데이트도 자동으로 됩니다.</li>
+  <li><b>설치</b>설치 파일을 실행합니다. "Windows의 PC 보호" 창이 뜨면 [추가 정보] → [실행]을 누르세요.</li>
+  <li><b>구글 계정 연결</b>달력의 [Google로 로그인]을 눌러 쓰던 구글 계정을 연결하면 내 구글 캘린더 일정이 바탕화면에 나타납니다.</li>
+ </ol>
+ <p class="dc-note">일정은 내 구글 계정에만 저장되며 개발자 서버에는 저장하지 않습니다. 자세한 기능과 개인정보처리방침은 <a href="${DC.site}" target="_blank" rel="noopener">바탕화면 달력 공식 사이트</a>에서 확인할 수 있습니다.</p></section>
+ </div>`}
 function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></div>`}
 const PAGES={
  greeting:()=>`
@@ -1500,11 +1565,11 @@ function share(){navigator.clipboard&&navigator.clipboard.writeText(location.hre
 
 function route(){const h=location.hash.replace(/^#\/?/,'').split('/');const id=h[0]||'';
  const hd=$('#hd');let html;
- if(!id){html=home();hd.className=''}else if(id==='center'){html=centerSub(h[1]);hd.className='sub'}else{html=sub(id,h[1]!=null?+h[1]:null)||home();hd.className='sub'}
+ if(!id){html=home();hd.className=''}else if(id==='calendar'){html=calPage();hd.className='sub'}else if(id==='center'){html=centerSub(h[1]);hd.className='sub'}else{html=sub(id,h[1]!=null?+h[1]:null)||home();hd.className='sub'}
  $('#app').innerHTML=html;scrollTo(0,0);
  document.querySelectorAll('.gnb>li').forEach((li,i)=>li.classList.toggle('cur',!!id&&MENU[i].c.some(c=>c[0]===id)));
- const t=findMenu(id);const ctr=id==='center'?(CENTERS.find(x=>x.k===h[1])||CENTERS[0]):null;document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:ctr?`${ctr.n} | 춘해보건대학교 앵커사업단`:'춘해보건대학교 앵커사업단';
- if(!id||(!t&&!ctr))homeInit();else{clearInterval(heroT);clearInterval(dynT);clearInterval(progT)}}
+ const t=findMenu(id);const ctr=id==='center'?(CENTERS.find(x=>x.k===h[1])||CENTERS[0]):null;document.title=t?`${t[1][1]} | 춘해보건대학교 앵커사업단`:ctr?`${ctr.n} | 춘해보건대학교 앵커사업단`:id==='calendar'?'바탕화면 달력 | 춘해보건대학교 앵커사업단':'춘해보건대학교 앵커사업단';
+ if(!id||(!t&&!ctr&&id!=='calendar'))homeInit();else{clearInterval(heroT);clearInterval(dynT);clearInterval(progT)}}
 /* 로고: 영문 줄 자간을 줄여 국문 폭에 맞춤(자동 조정) */
 function fitLogo(){document.querySelectorAll('.logo').forEach(l=>{const b=l.querySelector('b'),m=l.querySelector('small');if(!b||!m)return;b.style.letterSpacing='';b.style.marginRight='';m.style.letterSpacing='';m.style.marginRight='';
  if(!m.offsetWidth)return;const w=e=>{const r=document.createRange();r.selectNodeContents(e);return r.getBoundingClientRect().width};
