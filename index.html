@@ -422,6 +422,7 @@ footer{background:#2b2b2b;color:#aaa;font-size:16px}
 /* 서브 상단: 하늘색 배경 대신 캠퍼스 건물 사진 */
 .svis{background:#1d2633 !important;position:relative}
 .svis::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.42)),var(--sv,url(img/campus-dosaeng.jpg)) center 45%/cover no-repeat;pointer-events:none}
+.svis[style*="campus-panorama"]::before{background-position:center,center 72%}
 .svis .bc,.svis h2{position:relative;z-index:1}.svis .snav{z-index:2}
 .svis .bc{color:rgba(255,255,255,.85)}.svis .bc b{color:#9cc2ff}.svis h2{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}.svis .bc{text-shadow:0 1px 6px rgba(0,0,0,.5)}
 /* 사진 꾸밈 */
