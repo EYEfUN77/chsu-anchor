@@ -57,7 +57,7 @@ header.on .topbar .tc,header.sub .topbar .tc,header:hover .topbar .tc{border-col
 .lang.open .lang-ul{display:block}.lang-ul a{display:block;padding:8px 12px;border-radius:6px;color:#222;font-size:14px;white-space:nowrap}.lang-ul a:hover{background:#eef4fd;text-decoration:none}.lang-ul a.on{color:#1d4f9a;font-weight:700}
 html.i18n-wait body{visibility:hidden}
 .lang-m{display:none}.util .lang-m .lang-btn{width:auto;height:auto;line-height:1.3;white-space:nowrap;color:inherit;border-color:currentColor;background:transparent;font-size:13px;padding:3px 9px}
-@media(max-width:1100px){.util .lang-m{display:block;align-self:center}}
+@media(max-width:680px){.util .lang-m{display:block;align-self:center}}
 @media(max-width:600px){html:not([lang=ko]) .qicons a{font-size:11px}html:not([lang=ko]) .hcopy h1{font-size:28px;word-break:break-word}html:not([lang=ko]) .hcopy p{font-size:16px}}
 .lang-m{color:#fff}header.on .lang-m,header.sub .lang-m,header:hover .lang-m{color:var(--t)}
 html:not([lang=ko]) .qicons a{font-size:12.5px;gap:6px;line-height:1.2;padding:0 4px;text-align:center}
@@ -758,12 +758,29 @@ header:hover::after,header:hover .dep2{display:none}
 .ov-cl b{display:block;font-size:14px;color:#222}.ov-cl small{display:block;font-size:12px;color:#777;margin-top:2px}
 @media(max-width:1100px){.ov-cols{grid-template-columns:1fr}.ov-tg,.ov-pl{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.ov-si{grid-template-columns:1fr}.ov-tg,.ov-pl{grid-template-columns:1fr 1fr}.ov-tg b{font-size:20px}.ov-org{padding:12px}.ov-sh{flex-direction:column;align-items:flex-start}}
+
+/* 모바일·태블릿: 예산/성과관리·평가 시스템 바로가기, 홍보영상 카드 */
+.msys,.tsys{display:none}.msys a span,.tsys a span{margin-right:5px}
+.tsys a,.msys a{display:inline-flex;align-items:center;justify-content:center;border-radius:14px;font-weight:700;white-space:nowrap;color:#fff;background:linear-gradient(135deg,#1f5fd1,#0f3d9a)}
+.tsys a.s1,.msys a.s1{background:linear-gradient(135deg,#f0a20b,#d9730d)}
+@media(max-width:1180px) and (min-width:681px){.tsys{display:flex;gap:6px}.tsys a{font-size:13px;padding:4px 12px}}
+@media(max-width:1280px){.hero .vcard{display:block;right:16px;top:140px;bottom:auto;width:210px;padding:10px;border-radius:12px}.hero .vcard .th{height:110px}}
+@media(max-width:680px){
+header,header.on,header.sub{height:108px}
+.msys{display:flex;gap:8px;padding:0 12px 8px;height:44px}
+.msys a{flex:1;height:34px;font-size:13px;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+.svis{margin-top:108px}
+.hero .vcard{top:auto;bottom:215px;right:12px;width:148px;padding:7px;font-size:11px;border-radius:10px;background:rgba(0,0,0,.35)}
+.hero .vcard b,.hero .vcard br{display:none}.hero .vcard small{font-weight:600}.hero .vcard small{font-size:10.5px}
+.hero .vcard .th{height:80px;margin-top:5px}
+.hero .vcard .vsnd{font-size:11px;padding:4px 7px;right:4px;bottom:4px}
+}
 </style>
 <script>(function(){try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang');if(l&&/^(en|ja|zh|vi)$/.test(l))document.documentElement.classList.add('i18n-wait')}catch(e){}})()</script>
 </head>
 <body>
 <header id="hd">
- <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><div class="lang" id="langSel"></div><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
+ <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><span class="tsys" id="sysm4"></span><div class="lang" id="langSel"></div><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
  <div class="hd">
   <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
    <div><b class="lg-line"><img class="lg-full lg-w" src="img/앵커_로고_흰색.svg" alt="춘해보건대학교 ANCHOR 사업단"><img class="lg-full lg-b" src="img/앵커_로고_파랑.svg" alt=""></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
@@ -775,6 +792,7 @@ header:hover::after,header:hover .dep2{display:none}
    <button onclick="openMap()" aria-label="전체메뉴"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M6 12h15M3 18h18"/></svg></button>
   </div>
  </div>
+ <div class="msys" id="sysm3"></div>
 </header>
 
 <div id="sitemap">
@@ -1255,7 +1273,7 @@ $('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div cla
 const SYS=[{t:'예산/성과관리 시스템',i:'📊',url:'https://script.google.com/macros/s/AKfycbx4UG4KuxUcxWIH1nsGY5j5BAILDhd85cfIcELO8rZR9Zgnenpb2tyM0wfnZp8UnQ6M/exec'},{t:'평가 시스템',i:'📝',url:'https://script.google.com/macros/s/AKfycbzcyHEVsBlKplMqJCz9nj7ZImDHPb14ZpEr41SwSR88_CEqAXnDx0rEgPGt4fCSNi9R/exec'}];
 function sysHTML(){return SYS.map((x,j)=>x.url?`<a class="s${j}" href="${x.url}" target="_blank" rel="noopener">${x.t}</a>`:`<a class="s${j}" href="javascript:void(0)" onclick="sysToast('${x.t}')">${x.t}</a>`).join('')}
 function sysToast(t){let d=document.getElementById('systoast');if(!d){d=document.createElement('div');d.id='systoast';document.body.appendChild(d)}d.textContent=t+'은(는) 연결 준비 중입니다.';d.classList.add('on');clearTimeout(d._t);d._t=setTimeout(()=>d.classList.remove('on'),2200)}
-$('#sysm').innerHTML=sysHTML();$('#sysm2').innerHTML=sysHTML();
+$('#sysm').innerHTML=sysHTML();$('#sysm2').innerHTML=sysHTML();{const h3=SYS.map((x,j)=>`<a class="s${j}" href="${x.url}" target="_blank" rel="noopener"><span>${x.i}</span> ${x.t}</a>`).join('');$('#sysm3').innerHTML=h3;$('#sysm4').innerHTML=h3;}
 $('#smap').innerHTML=MENU.map(m=>`<div><h3>${m.t}</h3>${m.c.map(c=>`<a href="#/${c[0]}" onclick="closeMap()">${c[1]}</a>`).join('')}</div>`).join('');
 function openMap(s){$('#sitemap').classList.add('open');if(s)setTimeout(()=>$('#q').focus(),50)}
 function closeMap(){$('#sitemap').classList.remove('open');$('#sres').innerHTML=''}
