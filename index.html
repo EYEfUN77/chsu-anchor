@@ -778,6 +778,9 @@ header,header.on,header.sub{height:108px}
 }
 </style>
 <script>(function(){try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang');if(l&&/^(en|ja|zh|vi)$/.test(l))document.documentElement.classList.add('i18n-wait')}catch(e){}})()</script>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#1d4f9a">
+<meta name="application-name" content="앵커사업단">
 </head>
 <body>
 <header id="hd">
@@ -1741,5 +1744,6 @@ route();
  setTimeout(done,2500);
 })();
 </script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
 </body>
 </html>
