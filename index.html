@@ -1649,9 +1649,9 @@ const BOARD_EN={notice:'Notice',gallery:'Photo Gallery',press:'Press',call:'Proj
 function mediaPage(k,idx){const a=BOARD[k],lab=findMenu(k)[1][1];const pics=p=>k==='gallery'?p.im:p.pages;
  if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:20px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · 춘해보건대학교 앵커사업단</td></tr>${p.b?`<tr><td class="l para" style="padding:30px 10px;white-space:pre-line">${esc(p.b)}</td></tr>`:''}<tr><td class="mview" style="padding:30px 0">${pics(p).map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy" referrerpolicy="no-referrer">`).join('')}</td></tr>${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">원문 보기 ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:15px;margin-bottom:16px">전체 <b style="color:var(--g)">${a.length}</b>건</p>${a.length?`<div class="mgrid">${a.map((p,i)=>`<a class="mcard${k==='newsletter'?' nlc':''}" href="#/${k}/${i}"><div class="ph">${pics(p)[0]?`<img src="${pics(p)[0]}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}</div><div class="tx"><small>${p.d}</small><b>${esc(p.t)}</b></div></a>`).join('')}</div>`:'<p class="empty">등록된 게시물이 없습니다.</p>'}</section>`}
-function videoPage(k){const lab=findMenu(k)[1][1];return `<section>${stit(lab,BOARD_EN[k])}${BOARD.video.length?BOARD.video.map(p=>`<div class="vpost"><video src="${p.v}" controls playsinline preload="metadata" onplay="this.volume=1"></video><h3>${esc(p.t)}</h3><p>등록일 ${p.d} · 춘해보건대학교 앵커사업단</p>${p.b?`<p>${esc(p.b)}</p>`:''}</div>`).join(''):'<p class="empty">등록된 게시물이 없습니다.</p>'}</section>`}
+function videoPage(k){const lab=findMenu(k)[1][1];return `<section>${stit(lab,BOARD_EN[k])}${BOARD.video.length?BOARD.video.map(p=>`<div class="vpost">${/youtu\.?be/.test(p.v)?`<div style="position:relative;padding-top:56.25%"><iframe src="https://www.youtube.com/embed/${(p.v.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/)||[])[1]}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe></div>`:`<video src="${p.v}" controls playsinline preload="metadata" onplay="this.volume=1"></video>`}<h3>${esc(p.t)}</h3><p>등록일 ${p.d} · 춘해보건대학교 앵커사업단</p>${p.b?`<p>${esc(p.b)}</p>`:''}</div>`).join(''):'<p class="empty">등록된 게시물이 없습니다.</p>'}</section>`}
 function boardPage(k,idx){if(k==='video')return videoPage(k);if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
- if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.im&&p.im.length&&k!=='press'?`<tr><td class="mview" style="padding:24px 0">${p.im.map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy">`).join('')}</td></tr>`:''}${p.files&&p.files.length?`<tr><td class="l" style="padding:16px 10px"><b>첨부파일</b> <small style="color:#888">— 서식은 담당 부서에 요청해 주세요.</small><ul class="flist">${p.files.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></td></tr>`:''}${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">${k==='press'?'기사 원문 보기':'원문·첨부파일 보기'} ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
+ if(idx!=null&&a[idx]){const p=a[idx];return `<section>${stit(lab,BOARD_EN[k])}<table class="tbl"><tr><th class="l" style="text-align:left;font-size:18px">${esc(p.t)}</th></tr><tr><td class="l" style="color:#888">등록일 ${p.d} · ${esc(p.src||'춘해보건대학교 앵커사업단')}</td></tr><tr><td class="l para" style="padding:40px 10px;white-space:pre-line">${esc(p.b||'')}</td></tr>${p.im&&p.im.length&&k!=='press'?`<tr><td class="mview" style="padding:24px 0">${p.im.map(x=>`<img src="${x}" alt="${esc(p.t)}" loading="lazy">`).join('')}</td></tr>`:''}${p.files&&p.files.length?`<tr><td class="l" style="padding:16px 10px"><b>첨부파일</b> ${p.files.some(f=>typeof f==='string')?'<small style="color:#888">— 서식은 담당 부서에 요청해 주세요.</small>':''}<ul class="flist">${p.files.map(f=>typeof f==='string'?`<li>${esc(f)}</li>`:`<li><a href="${esc(f.u)}" target="_blank" rel="noopener" style="color:var(--g);text-decoration:underline">📎 ${esc(f.n)}</a></li>`).join('')}</ul></td></tr>`:''}${p.u?`<tr><td class="l" style="padding:20px 10px"><a class="btn" href="${p.u}" target="_blank" rel="noopener">${k==='press'?'기사 원문 보기':'원문·첨부파일 보기'} ↗</a></td></tr>`:''}</table><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
  return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
  <table class="tbl blt"><tr><th class="bn" style="width:80px">번호</th><th class="bt">제목</th><th class="bw" style="width:140px">${k==='press'?'매체':'작성자'}</th><th class="bd" style="width:120px">등록일</th></tr>
  ${a.length?a.map((p,i)=>`<tr><td class="bn">${a.length-i}</td><td class="l bt"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td class="bw">${esc(p.src||'앵커사업단')}</td><td class="bd">${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
@@ -1745,5 +1745,199 @@ route();
 })();
 </script>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
+<script>
+/* ===== 관리자 모드 — 로그인 후 게시판 글쓰기·수정·삭제, 화면 문구·사진 편집 =====
+ * 서버: 구글 Apps Script 웹 앱(ADM_API). 비밀번호는 서버에만 해시로 저장되며 이 파일에는 없습니다. */
+(function(){
+const ADM_API='https://script.google.com/macros/s/AKfycbwpnqMuMDG4rp0Tiiy1OVLMXqD_VNMxMsXlCvUvYtd_HHk7dRPUtJyC9Shp_2GoKzIL/exec';
+const BOARDS={notice:'공지사항',call:'과제공고',jobs:'채용공고',press:'언론보도',gallery:'포토갤러리',video:'홍보영상',newsletter:'뉴스레터',archive:'자료실'};
+const LIST_FIELDS={im:1,pages:1,files:1,req:1,pref:1,work:1};
+const SCHEMA={
+ _post:[['t','제목'],['d','등록일','date'],['b','본문','area'],['files','첨부파일','files'],['u','관련 링크(선택)','url']],
+ press:[['t','기사 제목'],['d','보도일','date'],['src','매체명'],['u','기사 원문 주소','url'],['b','요약','area']],
+ gallery:[['t','제목'],['d','등록일','date'],['b','본문','area'],['im','사진','images']],
+ newsletter:[['t','제목'],['d','발행일','date'],['b','소개','area'],['pages','뉴스레터 쪽 이미지','images']],
+ video:[['t','제목'],['d','등록일','date'],['v','영상 주소(mp4 주소 또는 유튜브 주소)','url'],['b','설명','area']],
+ jobs:[['t','공고 제목'],['org','기관','text','춘해보건대학교 산학협력단'],['dept','부서','text','앵커사업단'],['pos','직책·직무'],['n','채용 인원','num','1'],['emp','고용형태'],['career','경력'],['edu','학력'],['pay','급여'],['place','근무지','text','울산 울주군 웅촌면'],['open','접수 시작','dt'],['close','접수 마감','dt'],['term','계약 기간'],['start','임용 예정'],['work','담당 업무 (한 줄에 하나: 아이콘|업무명|설명)','lines'],['req','필수 자격 (한 줄에 하나)','lines'],['pref','우대 사항 (한 줄에 하나)','lines'],['major','모집 전공(선택)'],['apply','원문·접수 주소(선택)','url']]
+};
+const sch=k=>SCHEMA[k]||SCHEMA._post;
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const escA=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const hs=s=>{let h=0;for(const c of s)h=(h*31+c.codePointAt(0))>>>0;return h.toString(36)};
+const arr=k=>k==='jobs'?JOBS:BOARD[k];
+const bid=(k,p)=>'b:'+k+':'+hs((p.d||p.open||'')+'|'+p.t);
+const ORIG={};
+Object.keys(BOARDS).forEach(k=>{const a=arr(k);if(!a)return;a.forEach(p=>{p._id=bid(k,p)});ORIG[k]=a.slice()});
+let DATA={posts:[],ov:{}},tk=null;try{tk=sessionStorage.getItem('adm_tk')}catch(e){}
+const isAdm=()=>!!tk;
+
+/* ---------- 데이터 합치기 ---------- */
+function merge(){
+ Object.keys(ORIG).forEach(k=>{
+  const sv=DATA.posts.filter(p=>p.board===k),byId={};sv.forEach(p=>byId[p.id]=p);
+  const add=sv.filter(p=>!p.del).map(p=>{const o=Object.assign({},p);o._id=p.id;delete o.id;delete o.board;delete o.del;return o});
+  let res=ORIG[k].filter(p=>!byId[p._id]).concat(add);
+  if(k==='jobs')res.sort((a,b)=>String(b.open||'').localeCompare(String(a.open||'')));
+  else res.sort((a,b)=>String(b.d||'').localeCompare(String(a.d||'')));
+  const a=arr(k);a.splice(0,a.length,...res);
+ });
+}
+function rerender(){try{route()}catch(e){console.warn(e)}}
+async function load(force){
+ try{const r=await fetch(ADM_API+'?t='+(force?Date.now():Math.floor(Date.now()/60000)));const j=await r.json();if(!j.ok)return;
+  const prev=JSON.stringify(DATA);DATA={posts:j.posts||[],ov:j.ov||{}};try{localStorage.setItem('adm_data',JSON.stringify(DATA))}catch(e){}
+  if(force||prev!==JSON.stringify(DATA)){merge();rerender()}}catch(e){console.warn('관리 데이터 불러오기 실패',e)}
+}
+try{const c=localStorage.getItem('adm_data');if(c){DATA=JSON.parse(c);if(DATA.posts.length||Object.keys(DATA.ov).length){merge();rerender()}}}catch(e){}
+
+/* ---------- 화면 편집 내용(덮어쓰기) ---------- */
+const app=document.getElementById('app');
+const rkey=()=>(location.hash||'#/').replace(/^#?\/?/,'#/');
+function pathOf(el){const a=[];while(el&&el!==app){a.unshift([...el.parentElement.children].indexOf(el));el=el.parentElement}return a.join('.')}
+function byPath(p){let el=app;for(const i of p.split('.')){el=el&&el.children[+i];if(!el)return null}return el}
+function applyOv(){const r=rkey()+'|';Object.keys(DATA.ov||{}).forEach(k=>{if(k.indexOf(r)!==0)return;const v=DATA.ov[k],el=byPath(k.slice(r.length));if(!el||el.tagName!==v.t)return;if(v.t==='IMG'){if(v.s)el.src=v.s}else if(v.h!=null)el.innerHTML=v.h})}
+
+/* ---------- 서버 요청 ---------- */
+async function api(q){
+ q.tk=tk;const r=await fetch(ADM_API,{method:'POST',body:JSON.stringify(q)});const j=await r.json();
+ if(j.auth===false){logoutLocal();alert(j.msg);openLogin();throw new Error('auth')}
+ if(!j.ok){alert(j.msg||'처리하지 못했습니다.');throw new Error(j.msg)}return j}
+function fileB64(f){return new Promise((ok,no)=>{const fr=new FileReader();fr.onload=()=>ok(String(fr.result).split(',')[1]);fr.onerror=no;fr.readAsDataURL(f)})}
+async function shrink(f){if(!/^image\/(jpeg|png|webp)$/.test(f.type))return f;
+ const bm=await createImageBitmap(f);const mx=2000,s=Math.min(1,mx/Math.max(bm.width,bm.height));if(s===1&&f.size<1.5e6)return f;
+ const c=document.createElement('canvas');c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(bm,0,0,c.width,c.height);
+ const b=await new Promise(r=>c.toBlob(r,'image/jpeg',.86));return new File([b],f.name.replace(/\.\w+$/,'')+'.jpg',{type:'image/jpeg'})}
+async function upload(f){f=await shrink(f);if(f.size>30e6){alert(f.name+' — 30MB가 넘는 파일은 올릴 수 없습니다.');throw new Error('big')}
+ const j=await api({a:'up',name:f.name,mime:f.type||'application/octet-stream',b64:await fileB64(f)});return {n:f.name,u:j.url}}
+
+/* ---------- 공통 UI ---------- */
+const css=document.createElement('style');css.textContent=`
+.adm-x,.adm-x *{font-family:Pretendard,'Apple SD Gothic Neo',sans-serif;box-sizing:border-box}
+.adm-dock{position:fixed;left:16px;bottom:16px;z-index:9998;display:flex;gap:6px;align-items:center;background:#0a1f44;color:#fff;padding:8px 10px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:13px}
+.adm-dock b{padding:0 6px}.adm-dock button{background:rgba(255,255,255,.14);color:#fff;border-radius:9px;padding:7px 11px;font-size:13px}.adm-dock button:hover{background:rgba(255,255,255,.26)}
+.adm-dock button.on{background:#ffd54a;color:#0a1f44;font-weight:700}
+.adm-bar{display:flex;gap:8px;justify-content:flex-end;margin:0 0 14px}
+.adm-bar button,.adm-mini button{background:#1d4f9a;color:#fff;border-radius:8px;padding:9px 16px;font-size:14px;font-weight:600}
+.adm-bar button.del,.adm-mini button.del{background:#c62828}
+.adm-mini{display:flex;gap:6px;margin:8px 0}.adm-mini button{padding:6px 12px;font-size:13px}
+.adm-bg{position:fixed;inset:0;z-index:9999;background:rgba(10,20,40,.55);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:40px 12px}
+.adm-box{background:#fff;border-radius:16px;width:100%;max-width:720px;padding:26px 26px 20px;box-shadow:0 20px 60px rgba(0,0,0,.3);color:#1b1f1d}
+.adm-box.sm{max-width:380px;margin-top:10vh}
+.adm-box h3{font-size:20px;margin:0 0 18px;color:#1d4f9a}
+.adm-f{display:block;margin-bottom:14px}.adm-f>span{display:block;font-size:13px;font-weight:600;color:#445;margin-bottom:6px}
+.adm-f input[type=text],.adm-f input[type=password],.adm-f input[type=date],.adm-f input[type=datetime-local],.adm-f input[type=number],.adm-f input[type=url],.adm-f textarea{width:100%;border:1px solid #cfd6e0;border-radius:9px;padding:10px 12px;font-size:15px;font-family:inherit}
+.adm-f textarea{min-height:180px;line-height:1.6;resize:vertical}.adm-f textarea.ln{min-height:90px}
+.adm-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.adm-btns button{border-radius:9px;padding:10px 20px;font-size:15px;font-weight:600;background:#eef1f5;color:#333}.adm-btns button.pri{background:#1d4f9a;color:#fff}
+.adm-thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.adm-thumbs div{position:relative;width:96px;height:72px;border-radius:8px;overflow:hidden;background:#eef1f5}
+.adm-thumbs img{width:100%;height:100%;object-fit:cover}.adm-thumbs button{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:13px;line-height:22px;padding:0}
+.adm-files li{display:flex;gap:8px;align-items:center;font-size:14px;padding:4px 0}.adm-files button{color:#c62828;font-size:13px}
+.adm-note{font-size:12px;color:#778;margin-top:4px}
+.adm-busy{opacity:.6;pointer-events:none}
+body.adm-edit #app [data-ae]{outline:1px dashed rgba(29,79,154,.55);outline-offset:2px;cursor:text}
+body.adm-edit #app [data-ae]:focus{outline:2px solid #1d4f9a;background:rgba(255,248,200,.35)}
+body.adm-edit #app img{outline:2px dashed #ffb300;outline-offset:-2px;cursor:pointer}
+body.adm-edit #app [data-ae].chg{outline:2px solid #2e7d32}
+.adm-flink{opacity:.7;font-size:13px;margin-left:14px;color:inherit;text-decoration:underline;cursor:pointer;background:none}
+`;document.head.appendChild(css);
+function modal(html,cls){const bg=document.createElement('div');bg.className='adm-bg adm-x notranslate';bg.setAttribute('translate','no');bg.setAttribute('data-adm','');bg.innerHTML=`<div class="adm-box ${cls||''}">${html}</div>`;document.body.appendChild(bg);return bg}
+
+/* ---------- 로그인 ---------- */
+function openLogin(){const m=modal(`<h3>🔐 관리자 로그인</h3>
+ <label class="adm-f"><span>아이디</span><input type="text" id="admId" autocomplete="username"></label>
+ <label class="adm-f"><span>비밀번호</span><input type="password" id="admPw" autocomplete="current-password"></label>
+ <div class="adm-btns"><button data-x>취소</button><button class="pri" data-ok>로그인</button></div>`,'sm');
+ const go=async()=>{const box=m.firstChild;box.classList.add('adm-busy');try{const r=await fetch(ADM_API,{method:'POST',body:JSON.stringify({a:'login',id:m.querySelector('#admId').value.trim(),pw:m.querySelector('#admPw').value})});const j=await r.json();
+  if(!j.ok){alert(j.msg);box.classList.remove('adm-busy');return}tk=j.tk;try{sessionStorage.setItem('adm_tk',tk)}catch(e){}m.remove();dock();load(true)}catch(e){alert('서버에 연결하지 못했습니다.');box.classList.remove('adm-busy')}};
+ m.querySelector('[data-x]').onclick=()=>m.remove();m.querySelector('[data-ok]').onclick=go;m.querySelector('#admPw').onkeydown=e=>{if(e.key==='Enter')go()};m.querySelector('#admId').focus()}
+function logoutLocal(){tk=null;try{sessionStorage.removeItem('adm_tk')}catch(e){}editOff(true);const d=document.querySelector('.adm-dock');d&&d.remove();rerender()}
+function openPw(){const m=modal(`<h3>비밀번호 변경</h3>
+ <label class="adm-f"><span>현재 비밀번호</span><input type="password" id="pw0" autocomplete="current-password"></label>
+ <label class="adm-f"><span>새 비밀번호 (8자 이상)</span><input type="password" id="pw1" autocomplete="new-password"></label>
+ <label class="adm-f"><span>새 비밀번호 확인</span><input type="password" id="pw2" autocomplete="new-password"></label>
+ <div class="adm-btns"><button data-x>취소</button><button class="pri" data-ok>변경</button></div>`,'sm');
+ m.querySelector('[data-x]').onclick=()=>m.remove();
+ m.querySelector('[data-ok]').onclick=async()=>{const a=m.querySelector('#pw1').value;if(a!==m.querySelector('#pw2').value){alert('새 비밀번호가 서로 다릅니다.');return}
+  try{await api({a:'pw',old:m.querySelector('#pw0').value,nw:a});alert('비밀번호를 변경했습니다.');m.remove()}catch(e){}}}
+function dock(){if(document.querySelector('.adm-dock'))return;const d=document.createElement('div');d.className='adm-dock adm-x notranslate';d.setAttribute('translate','no');d.setAttribute('data-adm','');
+ d.innerHTML=`<b>🔐 관리자</b><button data-e>✏️ 화면 편집</button><button data-p>비밀번호 변경</button><button data-o>로그아웃</button>`;document.body.appendChild(d);
+ d.querySelector('[data-e]').onclick=()=>editing?editOff():editOn();d.querySelector('[data-p]').onclick=openPw;
+ d.querySelector('[data-o]').onclick=async()=>{if(pend.size&&!confirm('저장하지 않은 화면 편집이 있습니다. 로그아웃할까요?'))return;try{await api({a:'logout'})}catch(e){}logoutLocal()};
+ decorate()}
+function footLink(){const f=document.querySelector('footer .fbot .inner>div:last-child')||document.querySelector('footer');if(!f||f.querySelector('.adm-flink'))return;const b=document.createElement('button');b.className='adm-flink notranslate';b.setAttribute('translate','no');b.textContent='관리자';b.onclick=()=>isAdm()?alert('이미 관리자로 로그인되어 있습니다.'):openLogin();f.appendChild(b)}
+
+/* ---------- 게시판 버튼 ---------- */
+function decorate(){if(!isAdm())return;const h=location.hash.replace(/^#\/?/,'').split('/');const k=h[0],idx=h[1]!=null&&h[1]!==''?+h[1]:null;
+ if(!BOARDS[k])return;const sec=document.querySelector('#app .cont section');if(!sec||sec.querySelector('[data-adm]'))return;
+ const bar=document.createElement('div');bar.className='adm-bar adm-x notranslate';bar.setAttribute('translate','no');bar.setAttribute('data-adm','');
+ const a=arr(k);
+ if(k==='video'){bar.innerHTML='<button data-n>✏️ 새 영상 등록</button>';$$('.vpost',sec).forEach((el,i)=>{const mb=document.createElement('div');mb.className='adm-mini adm-x notranslate';mb.setAttribute('data-adm','');mb.innerHTML='<button data-ed>수정</button><button class="del" data-dl>삭제</button>';mb.querySelector('[data-ed]').onclick=()=>editor(k,a[i]);mb.querySelector('[data-dl]').onclick=()=>delPost(k,a[i]);el.appendChild(mb)})}
+ else if(idx!=null&&a[idx]){bar.innerHTML='<button data-ed>수정</button><button class="del" data-dl>삭제</button>';bar.querySelector('[data-ed]').onclick=()=>editor(k,a[idx]);bar.querySelector('[data-dl]').onclick=()=>delPost(k,a[idx])}
+ else bar.innerHTML=`<button data-n>✏️ 새 글쓰기</button>`;
+ const n=bar.querySelector('[data-n]');if(n)n.onclick=()=>editor(k,null);
+ const ref=sec.firstElementChild;ref?ref.after(bar):sec.prepend(bar)}
+
+async function delPost(k,p){if(!confirm(`「${p.t}」을(를) 삭제할까요?`))return;
+ try{await api({a:'del',id:p._id,board:k});await load(true);location.hash='#/'+k}catch(e){}}
+
+/* ---------- 글쓰기·수정 창 ---------- */
+function dtv(v){return v?String(v).slice(0,16):''}
+function editor(k,p){const isNew=!p;p=p||{};const F=sch(k);
+ const state={};F.forEach(([f,,ty])=>{if(ty==='images')state[f]=(p[f]||[]).slice();if(ty==='files')state[f]=(p[f]||[]).map(x=>typeof x==='string'?{n:x}:x)});
+ const fld=([f,lab,ty,def])=>{const v=p[f]!=null?p[f]:(isNew&&def!=null?def:(ty==='date'&&isNew?new Date(Date.now()+324e5).toISOString().slice(0,10):''));
+  if(ty==='area')return `<label class="adm-f"><span>${lab}</span><textarea data-f="${f}">${escA(v)}</textarea></label>`;
+  if(ty==='lines')return `<label class="adm-f"><span>${lab}</span><textarea class="ln" data-f="${f}">${escA((v||[]).map(x=>Array.isArray(x)?x.join('|'):x).join('\n'))}</textarea></label>`;
+  if(ty==='images')return `<div class="adm-f"><span>${lab}</span><div class="adm-thumbs" data-th="${f}"></div><input type="file" accept="image/*" multiple data-up="${f}"><p class="adm-note">사진은 자동으로 알맞은 크기로 줄여서 올립니다. 얼굴이 드러난 사진은 초상권에 유의하세요.</p></div>`;
+  if(ty==='files')return `<div class="adm-f"><span>${lab}</span><ul class="adm-files" data-fl="${f}"></ul><input type="file" multiple data-up="${f}"><p class="adm-note">한글(HWP)·PDF 등 서식 파일을 올리면 내려받기 링크가 만들어집니다.</p></div>`;
+  const it=ty==='date'?'date':ty==='dt'?'datetime-local':ty==='num'?'number':ty==='url'?'url':'text';
+  return `<label class="adm-f"><span>${lab}</span><input type="${it}" data-f="${f}" value="${escA(ty==='dt'?dtv(v):v)}"></label>`};
+ const m=modal(`<h3>${BOARDS[k]} · ${isNew?'새 글쓰기':'글 수정'}</h3>${F.map(fld).join('')}<div class="adm-btns"><button data-x>취소</button><button class="pri" data-ok>저장</button></div>`);
+ const paint=()=>{F.forEach(([f,,ty])=>{if(ty==='images'){const th=m.querySelector(`[data-th="${f}"]`);th.innerHTML=state[f].map((u,i)=>`<div><img src="${escA(u)}"><button data-rm="${i}" title="빼기">×</button></div>`).join('');th.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{state[f].splice(+b.dataset.rm,1);paint()})}
+  if(ty==='files'){const ul=m.querySelector(`[data-fl="${f}"]`);ul.innerHTML=state[f].map((x,i)=>`<li>📎 ${x.u?`<a href="${escA(x.u)}" target="_blank">${escA(x.n)}</a>`:escA(x.n)+' <small>(파일 없음·이름만)</small>'} <button data-rm="${i}">삭제</button></li>`).join('');ul.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{state[f].splice(+b.dataset.rm,1);paint()})}})};paint();
+ m.querySelectorAll('[data-up]').forEach(inp=>inp.onchange=async()=>{const f=inp.dataset.up,ty=F.find(x=>x[0]===f)[2];const box=m.firstChild;box.classList.add('adm-busy');
+  try{for(const file of inp.files){const r=await upload(file);if(ty==='images')state[f].push(r.u);else state[f].push(r)}}catch(e){}box.classList.remove('adm-busy');inp.value='';paint()});
+ m.querySelector('[data-x]').onclick=()=>{if(confirm('작성 중인 내용을 닫을까요?'))m.remove()};
+ m.querySelector('[data-ok]').onclick=async()=>{const o={};F.forEach(([f,,ty])=>{if(ty==='images'||ty==='files'){o[f]=state[f].map(x=>ty==='files'?(x.u?{n:x.n,u:x.u}:x.n):x);return}
+   const el=m.querySelector(`[data-f="${f}"]`);let v=el.value;if(ty==='lines'){v=v.split('\n').map(s=>s.trim()).filter(Boolean);if(f==='work')v=v.map(s=>{const a=s.split('|').map(x=>x.trim());return a.length>=3?a.slice(0,3):['📌',a[0],a[1]||'']})}
+   else if(ty==='num')v=+v||1;else v=v.trim();o[f]=v});
+  if(!o.t){alert('제목을 입력해 주세요.');return}
+  if(k==='jobs'){o.ch=p.ch||'https://www.ch.ac.kr';if(!o.open||!o.close){alert('접수 시작·마감 일시를 입력해 주세요.');return}}
+  Object.keys(p).forEach(x=>{if(o[x]===undefined&&x!=='_id'&&!LIST_FIELDS[x])o[x]=p[x]});
+  o.board=k;if(!isNew)o.id=p._id;const box=m.firstChild;box.classList.add('adm-busy');
+  try{const j=await api({a:'save',post:o});await load(true);m.remove();const i=arr(k).findIndex(x=>x._id===j.id);const h=k==='video'||i<0?'#/'+k:'#/'+k+'/'+i;if(location.hash===h)rerender();else location.hash=h}catch(e){box.classList.remove('adm-busy')}};
+}
+
+/* ---------- 화면 편집 ---------- */
+let editing=false;const pend=new Map();
+const SKIP='script,style,svg,video,iframe,select,option,input,textarea,button,[data-adm]';
+function editOn(){if((document.documentElement.lang||'ko')!=='ko'){alert('화면 편집은 한국어 화면에서만 할 수 있습니다. 언어를 한국어로 바꾼 뒤 다시 눌러 주세요.');return}
+ editing=true;document.body.classList.add('adm-edit');if(BOARDS[location.hash.replace(/^#\/?/,'').split('/')[0]])setTimeout(()=>alert('게시판 글은 화면 편집 대신 글의 [수정] 버튼으로 고쳐 주세요. 이 화면에서는 상단 제목 영역만 편집됩니다.'),50);const b=document.querySelector('.adm-dock [data-e]');b.classList.add('on');b.textContent='편집 끝내기';
+ let sv=document.querySelector('.adm-dock [data-s]');if(!sv){sv=document.createElement('button');sv.setAttribute('data-s','');sv.onclick=saveEdits;b.after(sv);
+  const rs=document.createElement('button');rs.setAttribute('data-r','');rs.textContent='이 화면 원래대로';rs.onclick=resetPage;sv.after(rs)}
+ sv.textContent='💾 저장';markEditable()}
+function editOff(force){if(!editing)return;if(!force&&pend.size&&!confirm('저장하지 않은 편집이 있습니다. 버리고 끝낼까요?'))return;
+ editing=false;pend.clear();document.body.classList.remove('adm-edit');$$('[data-ae]',app).forEach(el=>{el.removeAttribute('contenteditable');el.removeAttribute('data-ae')});
+ const d=document.querySelector('.adm-dock');if(d){const b=d.querySelector('[data-e]');b.classList.remove('on');b.textContent='✏️ 화면 편집';['[data-s]','[data-r]'].forEach(s=>{const x=d.querySelector(s);x&&x.remove()})}if(!force)rerender()}
+function markEditable(){const bk=BOARDS[location.hash.replace(/^#\/?/,'').split('/')[0]];const root=bk?app.querySelector('.svis'):app;if(!root)return;const cand=$$('h1,h2,h3,h4,h5,h6,p,li,td,th,dt,dd,summary,figcaption,blockquote,label,span,b,strong,em,small,a,i,div',root).filter(el=>!el.closest(SKIP)&&[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim()));
+ const set=new Set(cand);cand.filter(el=>{let p=el.parentElement;while(p&&p!==app){if(set.has(p))return false;p=p.parentElement}return true}).forEach(el=>{el.setAttribute('contenteditable','true');el.setAttribute('data-ae','');el.dataset.o=el.innerHTML})}
+app.addEventListener('focusout',e=>{const el=e.target;if(!editing||!el.hasAttribute||!el.hasAttribute('data-ae'))return;if(el.innerHTML!==el.dataset.o){pend.set(rkey()+'|'+pathOf(el),{t:el.tagName,h:el.innerHTML});el.classList.add('chg')}cnt()});
+app.addEventListener('click',e=>{if(!editing)return;const a=e.target.closest('a');if(a&&!a.closest('[data-adm]'))e.preventDefault();
+ const im=e.target.closest('img');if(im&&!im.closest('[data-adm]')){e.preventDefault();const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=async()=>{if(!inp.files[0])return;document.body.style.cursor='wait';try{const r=await upload(inp.files[0]);im.src=r.u;pend.set(rkey()+'|'+pathOf(im),{t:'IMG',s:r.u});cnt()}catch(x){}document.body.style.cursor=''};inp.click()}},true);
+function cnt(){const sv=document.querySelector('.adm-dock [data-s]');if(sv)sv.textContent='💾 저장'+(pend.size?` (${pend.size})`:'')}
+async function saveEdits(){if(!pend.size){alert('바뀐 내용이 없습니다.');return}const items=[...pend].map(([k,v])=>({k,v}));
+ try{await api({a:'ov',items});items.forEach(it=>DATA.ov[it.k]=it.v);pend.clear();$$('.chg',app).forEach(el=>{el.classList.remove('chg');el.dataset.o=el.innerHTML});cnt();alert('저장했습니다. 방문자 화면에도 바로 반영됩니다.')}catch(e){}}
+async function resetPage(){const r=rkey()+'|';const ks=Object.keys(DATA.ov).filter(k=>k.indexOf(r)===0);if(!ks.length&&!pend.size){alert('이 화면에는 편집한 내용이 없습니다.');return}
+ if(!confirm('이 화면에서 편집한 문구·사진을 모두 처음 상태로 되돌릴까요?'))return;
+ try{if(ks.length)await api({a:'ov',items:ks.map(k=>({k,v:null}))});ks.forEach(k=>delete DATA.ov[k]);editOff(true);rerender()}catch(e){}}
+
+/* ---------- 화면이 바뀔 때마다 ---------- */
+new MutationObserver(()=>{if(editing)pend.clear();applyOv();decorate();if(editing){markEditable();cnt()}footLink()}).observe(app,{childList:true});
+document.addEventListener('click',e=>{if(!editing||!pend.size)return;const a=e.target.closest('a[href]');if(!a||a.closest('[data-adm]')||app.contains(a))return;if(!confirm('저장하지 않은 화면 편집이 있습니다. 저장하지 않고 다른 화면으로 이동할까요?')){e.preventDefault();e.stopPropagation()}},true);
+applyOv();footLink();if(isAdm())dock();
+load(false);
+window.ANCHOR_ADMIN={open:openLogin};
+})();
+
+</script>
 </body>
 </html>
