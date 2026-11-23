@@ -784,7 +784,7 @@ header,header.on,header.sub{height:108px}
 </head>
 <body>
 <header id="hd">
- <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/location">오시는 길</a><a href="#/inquiry">문의하기</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><span class="tsys" id="sysm4"></span><div class="lang" id="langSel"></div><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
+ <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">춘해GW</a><a href="#/" id="admTop" onclick="event.preventDefault();window.ANCHOR_ADMIN&&ANCHOR_ADMIN.top()">관리자</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><span class="tsys" id="sysm4"></span><div class="lang" id="langSel"></div><a class="nlbtn calbtn" href="#/calendar">📅 바탕화면 달력</a></div></div>
  <div class="hd">
   <a href="#/" class="logo" aria-label="춘해보건대학교 앵커사업단 홈">
    <div><b class="lg-line"><img class="lg-full lg-w" src="img/앵커_로고_흰색.svg" alt="춘해보건대학교 ANCHOR 사업단"><img class="lg-full lg-b" src="img/앵커_로고_파랑.svg" alt=""></b><small>CHOONHAE HEALTH SCIENCES UNIVERSITY ANCHOR PROJECT GROUP</small></div>
@@ -1840,6 +1840,7 @@ body.adm-edit #app img{outline:2px dashed #ffb300;outline-offset:-2px;cursor:poi
 body.adm-edit #app [data-ae].chg{outline:2px solid #2e7d32}
 .adm-bgb{position:absolute;top:10px;right:10px;z-index:30;background:#ffb300;color:#0a1f44;border-radius:9px;padding:7px 12px;font-size:13px;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 body:not(.adm-edit) .adm-bgb{display:none}
+.adm-flink{display:none}@media(max-width:1024px){.adm-flink{display:inline}}
 .adm-flink{opacity:.7;font-size:13px;margin-left:14px;color:inherit;text-decoration:underline;cursor:pointer;background:none}
 `;document.head.appendChild(css);
 function modal(html,cls){const bg=document.createElement('div');bg.className='adm-bg adm-x notranslate';bg.setAttribute('translate','no');bg.setAttribute('data-adm','');bg.innerHTML=`<div class="adm-box ${cls||''}">${html}</div>`;document.body.appendChild(bg);return bg}
@@ -1944,7 +1945,7 @@ new MutationObserver(()=>{if(editing)pend.clear();applyOv();decorate();if(editin
 document.addEventListener('click',e=>{if(!editing||!pend.size)return;const a=e.target.closest('a[href]');if(!a||a.closest('[data-adm]')||app.contains(a))return;if(!confirm('저장하지 않은 화면 편집이 있습니다. 저장하지 않고 다른 화면으로 이동할까요?')){e.preventDefault();e.stopPropagation()}},true);
 applyOv();footLink();if(isAdm())dock();
 load(false);
-window.ANCHOR_ADMIN={open:openLogin};
+window.ANCHOR_ADMIN={open:openLogin,top:()=>isAdm()?alert('관리자로 로그인되어 있습니다. 왼쪽 아래 관리자 막대를 이용해 주세요.'):openLogin()};
 })();
 
 </script>
