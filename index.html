@@ -130,7 +130,7 @@ html:not([lang=ko]) .topbar .tc{font-size:12.5px;padding:5px 10px}html:not([lang
 .jb-step li+li::after{content:"";position:absolute;top:23px;left:-50%;width:100%;height:2px;background:#c9d6ea}.jb-step b{display:block;font-size:16px}.jb-step span{font-size:14px;color:var(--m)}
 .jb-doc{display:grid;gap:8px}.jb-doc li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:12px 16px}.jb-doc li span{font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;flex-shrink:0}.jb-doc .must{background:#1d4f9a;color:#fff}.jb-doc .opt{background:#eceff3;color:#555}
 .jb-form{display:flex;align-items:center;gap:16px;margin-top:12px;border:2px dashed #9db8e0;background:#f5f9ff;border-radius:12px;padding:18px 22px;transition:.2s}.jb-form:hover{background:#eaf2ff;border-color:#1d4f9a}.jb-form i{font-style:normal;font-size:30px}.jb-form div{flex:1}.jb-form b{display:block;font-size:17px}.jb-form span{font-size:14px;color:var(--m)}.jb-form em{font-style:normal;background:#1d4f9a;color:#fff;padding:10px 18px;border-radius:8px;font-weight:700;white-space:nowrap}
-.jb-topdl{background:#fff;color:#1d4f9a;font-weight:700;padding:8px 16px;border-radius:20px;font-size:15px;margin-left:auto}.jb-topdl:hover{background:#ffd54a}
+.jb-topdl{background:#fff;color:#1d4f9a;font-weight:700;padding:8px 16px;border-radius:20px;font-size:15px;margin-left:auto}.jb-topdl:hover{background:#ffd54a}.jb-topdl.jb-online{background:#ffd54a;color:#0a1f44}.jb-topdl.jb-online:hover{background:#fff}
 .jb-small{margin-top:10px;font-size:14px;color:var(--m)}.jb-small a{color:#1d4f9a;text-decoration:underline}
 .jb-how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.jb-how div{border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column}.jb-how i{font-style:normal;font-size:24px}.jb-how b{font-size:17px;margin:8px 0 6px}.jb-how p{color:#555;line-height:1.65;font-size:15px;flex:1}.jb-how a{margin-top:12px;color:#1d4f9a;font-weight:700}.jb-tel{font-size:20px;font-weight:800;color:#1d4f9a}
 .jb-warn{margin-top:30px;background:#fff8e6;border:1px solid #f4dfa8;border-radius:12px;padding:20px 24px}.jb-warn b{display:block;margin-bottom:8px}.jb-warn li{position:relative;padding-left:14px;line-height:1.8;color:#5b4a1e}.jb-warn li::before{content:"·";position:absolute;left:2px;font-weight:700}
@@ -1434,14 +1434,14 @@ const JOBS=[
   work:[['📋','프로그램 운영','앵커사업단 프로그램을 담당하고 운영합니다.'],['🗂️','사업단 행정','사업단 행정 업무와 문서 관리를 처리합니다.'],['🤝','사업 지원','산학협력단의 연구·개발 사업을 지원합니다.']],
   req:['전문대학 이상 졸업자','울산지역 근무 가능자'],pref:['국가프로젝트 수행 경험자'],major:'행정학 · 경영학 · 금융·회계·세무학',apply:'https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K131212610200051&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet',ch:'https://www.ch.ac.kr'}
 ];
-const JOB_FORM='files/춘해보건대학교_채용지원서.hwp',JOB_URL='https://www.ch.ac.kr/board/board.php?site_id=main&TREE_NO=16087&DEPTH=2&category=%EC%B1%84%EC%9A%A9%EA%B3%B5%EA%B3%A0';
+const JOB_ONLINE='https://www.ch.ac.kr/recruit4/',JOB_FORM='files/춘해보건대학교_채용지원서.hwp',JOB_URL='https://www.ch.ac.kr/board/board.php?site_id=main&TREE_NO=16087&DEPTH=2&category=%EC%B1%84%EC%9A%A9%EA%B3%B5%EA%B3%A0';
 const JOB_DOCS=[['이력서 (본교 소정양식)',1],['개인정보처리동의서 (본교 소정양식)',1],['자기소개서 (본교 소정양식)',1],['최종 성적증명서 및 졸업증명서',1],['경력·재직증명서, 자격증 사본',0]];
-function jobSt(j){const now=new Date(),o=new Date(j.open),c=new Date(j.close);if(now<o)return{k:'soon',l:'접수예정'};if(now>c)return{k:'end',l:'마감'};const d=Math.ceil((new Date(j.close.slice(0,10))-new Date(now.toDateString()))/864e5);return{k:'on',l:d<=0?'오늘 마감':'D-'+d}}
+function jobSt(j){const now=new Date(),o=new Date(j.open),c=new Date(j.close);if(now<o)return{k:'soon',l:'접수예정'};if(now>c)return{k:'end',l:'마감'};const d=Math.round((new Date(j.close.slice(0,10)+'T00:00')-new Date(now.toDateString()))/864e5);return{k:'on',l:d<=0?'오늘 마감':'D-'+d}}
 const jd=s=>{const d=new Date(s),w='일월화수목금토'[d.getDay()];return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}(${w})`+(s.slice(11)!=='00:00'?' '+s.slice(11):'')};
 function jobsPage(idx){if(idx!=null&&JOBS[idx])return jobView(idx);
  const on=JOBS.filter(j=>jobSt(j).k!=='end').length;
  return `<section>${stit('채용공고','Recruitment')}
- <div class="jb-top"><p>춘해보건대학교 앵커사업단과 함께 지역의 미래를 만들어 갈 인재를 찾습니다.</p><a class="jb-topdl" href="${JOB_FORM}" download="춘해보건대학교_채용지원서.hwp">📄 채용지원서 양식 받기</a><span>진행 중인 공고 <b>${on}</b>건 · 전체 <b>${JOBS.length}</b>건</span></div>
+ <div class="jb-top"><p>춘해보건대학교 앵커사업단과 함께 지역의 미래를 만들어 갈 인재를 찾습니다.</p><a class="jb-topdl jb-online" href="${JOB_ONLINE}" target="_blank" rel="noopener">✍️ 온라인 지원서 작성</a><a class="jb-topdl" style="margin-left:8px" href="${JOB_FORM}" download="춘해보건대학교_채용지원서.hwp">📄 채용지원서 양식 받기</a><span>진행 중인 공고 <b>${on}</b>건 · 전체 <b>${JOBS.length}</b>건</span></div>
  <div class="jb-list">${JOBS.map((j,i)=>{const st=jobSt(j);return `<a class="jb-card ${st.k}" href="#/jobs/${i}"><div class="jb-l"><span class="jb-badge ${st.k}">${st.l}</span><small>${j.org} · ${j.dept}</small><h4>${j.t}</h4><div class="jb-tags"><i>${j.emp.replace(/\(.*\)/,'')}</i><i>${j.career.split('·')[0].trim()}</i><i>${j.edu.replace(/ 이상.*/,' 이상')}</i><i>${j.place.split(' ').slice(0,2).join(' ')}</i></div></div><div class="jb-r"><b>${jd(j.open).slice(5,10)} ~ ${jd(j.close).slice(5)}</b><span>접수기간</span><em>자세히 보기 ›</em></div></a>`}).join('')}</div>
  <p class="jb-note">※ 채용 관련 문의: 춘해보건대학교 산학협력단 052-270-0484</p></section>`}
 function jobView(i){const j=JOBS[i],st=jobSt(j);
@@ -1456,16 +1456,16 @@ function jobView(i){const j=JOBS[i],st=jobSt(j);
  <h4 class="jb-h">전형 절차</h4><ol class="jb-step"><li><b>서류 접수</b><span>${jd(j.close).slice(5)}까지</span></li><li><b>서류 전형</b><span>제출 서류 심사</span></li><li><b>면접 전형</b><span>서류 합격자 대상</span></li><li><b>최종 합격</b><span>결과 개별 통지</span></li></ol>
  <h4 class="jb-h">제출 서류</h4><ul class="jb-doc">${JOB_DOCS.map(d=>`<li><span class="${d[1]?'must':'opt'}">${d[1]?'필수':'해당자'}</span>${d[0]} 각 1부</li>`).join('')}</ul>
  <a class="jb-form" href="${JOB_FORM}" download="춘해보건대학교_채용지원서.hwp"><i>📄</i><div><b>춘해보건대학교 채용지원서 (본교 소정양식)</b><span>이력서 · 개인정보처리동의서 · 자기소개서 · 한글(HWP) 파일</span></div><em>⬇ 다운로드</em></a>
- <p class="jb-small">※ 본교 소정양식은 <a href="${JOB_URL}" target="_blank" rel="noopener">춘해보건대학교 채용공고 홈페이지</a> 채용 공고에서 내려받아 작성합니다.</p>
- <h4 class="jb-h">접수 방법 및 문의</h4><div class="jb-how"><div><i>🏫</i><b>방문 · 우편 접수</b><p>(44965) 울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 도생관 211호 산학협력단</p><a href="${KMAP.map}" target="_blank" rel="noopener">지도 보기 ›</a></div><div><i>💻</i><b>온라인 접수</b><p>고용24 또는 홈페이지 접수<br>(공고별 접수처 확인)</p>${j.apply?`<a href="${j.apply}" target="_blank" rel="noopener">고용24 공고 보기 ›</a>`:''}</div><div><i>📞</i><b>채용 문의</b><p>산학협력단<br><span class="jb-tel">052-270-0484</span></p><a href="tel:0522700484">전화 걸기 ›</a></div></div>
+ <p class="jb-small">※ <a href="${JOB_ONLINE}" target="_blank" rel="noopener">춘해보건대학교 채용 홈페이지</a>에서 온라인으로 바로 지원서를 작성할 수 있습니다. 서면 제출 시에는 위 본교 소정양식(또는 <a href="${JOB_URL}" target="_blank" rel="noopener">채용공고 게시판</a>의 첨부 서식)을 내려받아 작성합니다.</p>
+ <h4 class="jb-h">접수 방법 및 문의</h4><div class="jb-how"><div><i>🏫</i><b>방문 · 우편 접수</b><p>(44965) 울산광역시 울주군 웅촌면 대학길 9<br>춘해보건대학교 도생관 211호 산학협력단</p><a href="${KMAP.map}" target="_blank" rel="noopener">지도 보기 ›</a></div><div><i>💻</i><b>온라인 접수</b><p>춘해보건대학교 채용 홈페이지에서<br>지원서를 바로 작성·제출</p><a href="${JOB_ONLINE}" target="_blank" rel="noopener">온라인 지원서 작성 ›</a>${j.apply?`<a href="${j.apply}" target="_blank" rel="noopener" style="margin-left:10px">고용24 공고 보기 ›</a>`:''}</div><div><i>📞</i><b>채용 문의</b><p>산학협력단<br><span class="jb-tel">052-270-0484</span></p><a href="tel:0522700484">전화 걸기 ›</a></div></div>
  <div class="jb-warn"><b>유의사항</b><ul><li>접수 기한까지 도착한 서류만 인정합니다.</li><li>심사 결과는 개별 통지하며, 계약제로 임용합니다.</li><li>해당 분야 적격자가 없을 경우 채용하지 않을 수 있습니다.</li></ul></div>
- <div class="jb-btns"><a class="jb-list-btn" href="#/jobs">목록으로</a>${st.k==='on'&&j.apply?`<a class="jb-apply" href="${j.apply}" target="_blank" rel="noopener">지원하기</a>`:''}</div>
+ <div class="jb-btns"><a class="jb-list-btn" href="#/jobs">목록으로</a>${st.k!=='end'?`<a class="jb-apply" href="${JOB_ONLINE}" target="_blank" rel="noopener">✍️ 온라인 지원서 작성</a>`:''}${st.k==='on'&&j.apply?`<a class="jb-list-btn" href="${j.apply}" target="_blank" rel="noopener">고용24에서 지원</a>`:''}</div>
  </section>`}
 const PAGES={
  jobs:idx=>jobsPage(idx),
  greeting:()=>`
  <section>${stit('사업단장 인사말','Greeting')}
-  <div class="gban">${ART('greet')}<span>ANCHOR</span><small>사업단장 사진 영역</small></div>
+  <div class="gban">${ART('greet')}<span>ANCHOR</span></div>
   <div class="gwrap">
    <h3 class="ghead">춘해보건대학교 앵커사업단<br>홈페이지를 방문해주신 여러분을<br><em>진심으로 환영합니다.</em></h3>
    <div class="gbody">
