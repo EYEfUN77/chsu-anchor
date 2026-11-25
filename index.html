@@ -790,6 +790,12 @@ header,header.on,header.sub{height:108px}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"춘해 앵커사업단","alternateName":"춘해보건대학교 앵커사업단 앱","operatingSystem":"Windows 10, Windows 11","applicationCategory":"EducationalApplication","description":"춘해보건대학교 지역성장 인재양성체계(앵커) 사업단 공식 앱 — 공지·신청, 채용공고, 협력 센터, 오시는 길 안내","url":"https://chsu-anchor.eyefun.org/","downloadUrl":"https://apps.microsoft.com/detail/9P43KJDQJ83V","installUrl":"https://apps.microsoft.com/detail/9P43KJDQJ83V","image":"https://chsu-anchor.eyefun.org/img/app/icon-512.png","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"publisher":{"@type":"Organization","name":"춘해보건대학교 앵커사업단","url":"https://chsu-anchor.eyefun.org/"}}</script>
 <meta name="msapplication-TileImage" content="/img/app/icon-192.png">
+<style>
+.gban .gfade{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 72% 120% at 0% 100%,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 45%,rgba(255,255,255,.55) 68%,rgba(255,255,255,0) 88%);pointer-events:none}
+.gban .gwm{position:relative;z-index:2;height:88px;width:auto;filter:drop-shadow(0 2px 6px rgba(255,255,255,.6))}
+@media(max-width:1024px){.gban .gwm{height:60px}}
+@media(max-width:640px){.gban .gwm{height:40px}.gban .gfade{background:radial-gradient(ellipse 100% 120% at 0% 100%,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 50%,rgba(255,255,255,.5) 72%,rgba(255,255,255,0) 92%)}}
+</style>
 </head>
 <body>
 <header id="hd">
@@ -1465,7 +1471,7 @@ const PAGES={
  jobs:idx=>jobsPage(idx),
  greeting:()=>`
  <section>${stit('사업단장 인사말','Greeting')}
-  <div class="gban">${ART('greet')}<span>ANCHOR</span></div>
+  <div class="gban">${ART('greet')}<div class="gfade"></div><img class="gwm" src="img/앵커_워드마크.svg" alt="ANCHOR"></div>
   <div class="gwrap">
    <h3 class="ghead">춘해보건대학교 앵커사업단<br>홈페이지를 방문해주신 여러분을<br><em>진심으로 환영합니다.</em></h3>
    <div class="gbody">
