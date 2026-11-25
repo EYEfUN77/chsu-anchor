@@ -9,7 +9,6 @@
   "scope": "/",
   "display": "standalone",
   "display_override": [
-    "window-controls-overlay",
     "standalone"
   ],
   "orientation": "any",
@@ -70,5 +69,13 @@
         }
       ]
     }
-  ]
+  ],
+  "related_applications": [
+    {
+      "platform": "windows",
+      "url": "https://apps.microsoft.com/detail/9P43KJDQJ83V",
+      "id": "9P43KJDQJ83V"
+    }
+  ],
+  "prefer_related_applications": false
 }

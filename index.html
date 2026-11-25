@@ -780,7 +780,16 @@ header,header.on,header.sub{height:108px}
 <script>(function(){try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang');if(l&&/^(en|ja|zh|vi)$/.test(l))document.documentElement.classList.add('i18n-wait')}catch(e){}})()</script>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#1d4f9a">
-<meta name="application-name" content="앵커사업단">
+<meta name="application-name" content="춘해 앵커사업단">
+<style>
+/* 앱(제목 표시줄 겹침 모드)에서 창 버튼 자리 비우기 */
+@media (display-mode: window-controls-overlay){
+ .topbar{padding-right:calc(100vw - env(titlebar-area-x,0px) - env(titlebar-area-width,100vw) + 8px);-webkit-app-region:drag;app-region:drag}
+ .topbar a,.topbar button,.topbar select,.topbar .lang,.topbar input{-webkit-app-region:no-drag;app-region:no-drag}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"춘해 앵커사업단","alternateName":"춘해보건대학교 앵커사업단 앱","operatingSystem":"Windows 10, Windows 11","applicationCategory":"EducationalApplication","description":"춘해보건대학교 지역성장 인재양성체계(앵커) 사업단 공식 앱 — 공지·신청, 채용공고, 협력 센터, 오시는 길 안내","url":"https://chsu-anchor.eyefun.org/","downloadUrl":"https://apps.microsoft.com/detail/9P43KJDQJ83V","installUrl":"https://apps.microsoft.com/detail/9P43KJDQJ83V","image":"https://chsu-anchor.eyefun.org/img/app/icon-512.png","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},"publisher":{"@type":"Organization","name":"춘해보건대학교 앵커사업단","url":"https://chsu-anchor.eyefun.org/"}}</script>
+<meta name="msapplication-TileImage" content="/img/app/icon-192.png">
 </head>
 <body>
 <header id="hd">
@@ -1311,7 +1320,7 @@ function home(){
  </div></section>
  <section class="newszone"><div class="inner">
   <div class="ngrid">
-   <div class="box"><div class="btabs"><button class="act" onclick="ntab(this,'notice')">공지사항</button><button onclick="ntab(this,'call')">과제공고</button><button onclick="ntab(this,'equip')">공용장비 신청</button></div><a class="more" id="nmore" href="#/notice">+</a><ul class="blist" id="nlist"></ul></div>
+   <div class="box"><div class="btabs"><button class="act" onclick="ntab(this,'notice')">공지사항</button><button onclick="ntab(this,'call')">과제공고</button><button onclick="ntab(this,'equip')">공용장비 신청</button><button onclick="ntab(this,'jobs')">채용공고</button></div><a class="more" id="nmore" href="#/notice">+</a><ul class="blist" id="nlist"></ul></div>
    <div class="banner"><small>ANCHOR 2nd YEAR</small><h3>춘해보건대학교<br>앵커사업 2차년도 본격 가동</h3><a href="#/notice/${BOARD.notice.findIndex(n=>n.t.includes('본격 가동'))}">자세히 보기 ›</a></div>
   </div>
   <div class="ngrid2">
@@ -1371,6 +1380,7 @@ addEventListener('hashchange',()=>setTimeout(eqFill,50));setTimeout(eqFill,300);
 function ntab2(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('act',x===b));$('#nmore2').href='#/'+k;$('#nlist2').innerHTML=nrows(k)}
 function ntab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');$('#nmore').href='#/'+k;
  if(k==='equip'){$('#nlist').innerHTML=EQ.slice(0,3).map((e,i)=>`<li><a href="#/equip/${i}"><span class="tag">공용장비</span><span class="tt">${esc(e.n)} · ${esc(e.d)}</span><span class="dt">신청 가능</span></a></li>`).join('')+`<li><a href="#/equip"><span class="tag">신청</span><span class="tt"><b>공용장비 활용 신청하기 (장비 ${EQUIP.reduce((a,g)=>a+g.it.length,0)}종)</b></span><span class="dt">바로가기 ›</span></a></li>`;return}
+ if(k==='jobs'){$('#nlist').innerHTML=JOBS.length?JOBS.slice(0,4).map((j,i)=>{const st=jobSt(j);return `<li><a href="#/jobs/${i}"><span class="tag">채용공고</span><span class="tt">${esc(j.t)}</span><span class="dt">${st.k==='on'?'접수중 '+st.l:st.k==='soon'?'접수예정':'마감 '+j.close.slice(5,10).replace('-','.')}</span></a></li>`}).join(''):'<li class="empty">등록된 채용공고가 없습니다.</li>';return}
  const a=BOARD[k],lab=findMenu(k)[1][1];$('#nlist').innerHTML=a.length?a.slice(0,4).map((p,i)=>`<li><a href="#/${k}/${i}"><span class="tag">${lab}</span><span class="tt">${esc(p.t)}</span><span class="dt">${p.d}</span></a></li>`).join(''):'<li class="empty">등록된 게시물이 없습니다.</li>'}
 function ptab(b,k){b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('act'));b.classList.add('act');
  $('#plist2').innerHTML=PARTNERS[k].map((p,i)=>`<li><em>${String(i+1).padStart(2,'0')}</em><div><b>${p[0]}</b><small>${p[1]}</small></div></li>`).join('')}
