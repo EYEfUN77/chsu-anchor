@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="robots" content="noindex">
+<title>휴대폰 서명 | 춘해보건대학교 앵커사업단</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:#eef3fa;color:#1d2430;display:flex;flex-direction:column;overscroll-behavior:none}
+header{background:#1d4f9a;color:#fff;padding:14px 18px}
+header b{font-size:18px}header small{display:block;font-size:13px;opacity:.85;margin-top:2px}
+main{flex:1;display:flex;flex-direction:column;padding:14px;gap:12px;min-height:0}
+.tip{font-size:15px;color:#33415a}
+#c{flex:1;width:100%;min-height:200px;background:repeating-linear-gradient(transparent 0 calc(100% - 50px),#d5dceb calc(100% - 50px) calc(100% - 49px),transparent calc(100% - 49px)),#fff;border:2px solid #b9c7de;border-radius:14px;touch-action:none}
+.bt{display:flex;gap:10px}
+button{flex:1;font:inherit;font-size:18px;font-weight:700;border:0;border-radius:12px;padding:16px 0}
+.g{background:#dfe6f1;color:#1d2430}.p{background:#1d4f9a;color:#fff}
+button:disabled{opacity:.5}
+#msg{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;font-size:17px;line-height:1.6}
+#msg i{font-style:normal;font-size:56px}
+#msg b{font-size:22px}
+</style>
+</head>
+<body>
+<header><b>✍️ 휴대폰 서명</b><small>춘해보건대학교 앵커사업단 · 공용장비 활용 신청서</small></header>
+<main id="pad">
+ <p class="tip">아래 칸에 손가락으로 서명한 뒤 <b>[서명 보내기]</b>를 누르세요. 휴대폰을 가로로 돌리면 더 넓게 쓸 수 있습니다.</p>
+ <canvas id="c"></canvas>
+ <div class="bt"><button class="g" id="clr" type="button">지우기</button><button class="p" id="ok" type="button">서명 보내기</button></div>
+</main>
+<div id="msg"></div>
+<script>
+const API='https://script.google.com/macros/s/AKfycbwpnqMuMDG4rp0Tiiy1OVLMXqD_VNMxMsXlCvUvYtd_HHk7dRPUtJyC9Shp_2GoKzIL/exec';
+const id=(new URLSearchParams(location.search).get('s')||'').replace(/[^A-Za-z0-9]/g,'');
+const c=document.getElementById('c'),x=c.getContext('2d');let dirty=false,strokes=[],cur=null;
+function msg(icon,title,text){document.getElementById('pad').style.display='none';const m=document.getElementById('msg');m.style.display='flex';m.innerHTML='<i>'+icon+'</i><b>'+title+'</b><p>'+text+'</p>'}
+if(id.length<16)msg('⚠️','잘못된 주소입니다','PC 화면의 QR코드를 다시 찍어 주세요.');
+function size(){const r=c.getBoundingClientRect(),d=devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;x.setTransform(d,0,0,d,0,0);x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';x.lineWidth=3;redraw()}
+function redraw(){x.clearRect(0,0,c.width,c.height);for(const s of strokes){x.beginPath();s.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));if(s.length===1)x.lineTo(s[0][0]+.1,s[0][1]);x.stroke()}}
+const pt=e=>{const b=c.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+c.onpointerdown=e=>{e.preventDefault();c.setPointerCapture(e.pointerId);cur=[pt(e)];strokes.push(cur);dirty=true;redraw()};
+c.onpointermove=e=>{if(!cur)return;e.preventDefault();cur.push(pt(e));redraw()};
+c.onpointerup=c.onpointercancel=()=>cur=null;
+addEventListener('resize',()=>setTimeout(size,120));size();
+document.getElementById('clr').onclick=()=>{strokes=[];dirty=false;redraw()};
+document.getElementById('ok').onclick=async()=>{
+ if(!dirty){alert('서명을 먼저 해 주세요.');return}
+ // 서명 부분만 잘라 PC 서명 칸 비율(가로 긴 모양)로 축소
+ let a=1e9,b=1e9,cc=-1e9,d=-1e9;for(const s of strokes)for(const p of s){a=Math.min(a,p[0]);b=Math.min(b,p[1]);cc=Math.max(cc,p[0]);d=Math.max(d,p[1])}
+ const pad=12;a-=pad;b-=pad;cc+=pad;d+=pad;const w=cc-a,h=d-b;const W=520,H=220,k=Math.min(W/w,H/h,2);
+ const o=document.createElement('canvas');o.width=W;o.height=H;const ox=o.getContext('2d');ox.lineCap='round';ox.lineJoin='round';ox.strokeStyle='#111';ox.lineWidth=Math.max(2.2,3*k*.8);
+ const dx=(W-w*k)/2-a*k,dy=(H-h*k)/2-b*k;for(const s of strokes){ox.beginPath();s.forEach((p,i)=>{const X=p[0]*k+dx,Y=p[1]*k+dy;i?ox.lineTo(X,Y):ox.moveTo(X,Y)});if(s.length===1)ox.lineTo(s[0][0]*k+dx+.1,s[0][1]*k+dy);ox.stroke()}
+ const data=o.toDataURL('image/png');const btn=document.getElementById('ok');btn.disabled=true;btn.textContent='보내는 중…';
+ try{const r=await (await fetch(API,{method:'POST',body:JSON.stringify({a:'sigput',s:id,d:data})})).json();
+  if(r.ok)msg('✅','서명을 보냈습니다','PC 화면의 서명 칸에 곧 표시됩니다.<br>이 창은 닫으셔도 됩니다.');else throw new Error(r.msg||'실패')}
+ catch(e){btn.disabled=false;btn.textContent='서명 보내기';alert('보내지 못했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요.\n('+e.message+')')}
+};
+</script>
+</body>
+</html>
