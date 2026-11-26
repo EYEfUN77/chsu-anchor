@@ -826,6 +826,7 @@ header,header.on,header.sub{height:108px}
 .topbar .maskbtn{background:linear-gradient(135deg,#1fa463,#0e7a45);color:#fff;white-space:nowrap}.topbar .maskbtn:hover{background:#0e7a45;color:#fff}@media(max-width:1180px){.topbar .maskbtn{display:none}}.topbar .calbtn{white-space:nowrap}@media(max-width:1600px){.topbar .maskbtn,.topbar .calbtn{padding:5px 11px}.topbar .tr{gap:6px}}@media(max-width:1480px) and (min-width:1381px){.topbar .tl,.topbar .tc{font-size:13px}}.sysm a.s2,.tsys a.s2,.msys a.s2{background:linear-gradient(135deg,#1fa463,#0e7a45);box-shadow:0 4px 12px rgba(14,122,69,.28)}</style>
 <style>.sigbox:has(.sigqr:not([hidden])){width:min(800px,100%)}.sigrow{display:flex;gap:16px;align-items:stretch}.sigrow #sigc{flex:1;min-width:0}.sigqr{width:190px;flex-shrink:0;margin:14px 0;border:1.5px dashed #9fb4d6;border-radius:10px;padding:12px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#f6f9fe}.sigqr[hidden]{display:none}.sigqri{width:150px;height:150px;background:#fff}.sigqri svg{width:100%;height:100%;display:block}.sigqr b{font-size:15px;color:#0b2a5b}.sigqr span{font-size:12.5px;color:#555;line-height:1.5}.eqsigtip2{display:block}.dc-step{list-style:none;padding-left:0}</style>
 <style>.pggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.pggrid .prcard{min-width:0}.pgtabs{margin:0 0 22px}.pgd{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:start}.pgph img{width:100%;border-radius:14px;margin-bottom:12px;display:block;box-shadow:0 6px 20px rgba(0,0,0,.1)}.pgin h3{font-size:26px;line-height:1.4;margin:12px 0 18px}.pgin .tbl th{width:130px}.pgb{margin-top:30px;background:#f6f8fb;border-radius:14px;padding:26px 28px;line-height:1.85;white-space:pre-line;color:#333}@media(max-width:1000px){.pggrid{grid-template-columns:1fr 1fr}.pgd{grid-template-columns:1fr}}@media(max-width:620px){.pggrid{grid-template-columns:1fr}}</style>
+<style>.pgart{position:relative;width:100%;height:100%;min-height:100%;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden}.pgart::before{content:'';position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.08)}.pgart::after{content:'';position:absolute;left:-30px;bottom:-60px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.06)}.pgart small{font-size:12.5px;opacity:.85;font-weight:600;position:relative}.pgart strong{font-size:20px;line-height:1.35;font-weight:800;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all;position:relative}.pgart span{font-size:13px;opacity:.9;position:relative}.pgart img{position:absolute;right:14px;bottom:12px;height:16px;width:auto!important;opacity:.85;box-shadow:none!important;margin:0!important;border-radius:0!important}.pgart.big{aspect-ratio:16/9;border-radius:14px;padding:34px 36px;gap:14px}.pgart.big small{font-size:16px}.pgart.big strong{font-size:32px}.pgart.big span{font-size:17px}.pgart.big img{height:24px;right:24px;bottom:20px}</style>
 </head>
 <body>
 <header id="hd">
@@ -1784,15 +1785,19 @@ const PROGS=[
 /* 운영 프로그램 게시판(관리자 모드에서 등록·수정) — 기본 자료는 위 PROGS */
 BOARD.programs=PROGS.map(p=>({t:p[0],d:p[1],close:p[2]||'',term:p[3],n:p[4],im:[p[5]],kw:p[6],b:''}));
 const PROG_DEF='img/campus-panorama.jpg';
+/* 사진이 없는 프로그램은 제목·기간으로 만든 디자인 카드로 표시(관리자 모드에서 사진을 올리면 사진으로 바뀜) */
+function progArt(p,big){let h=0;for(const ch of p.t||'')h=(h*31+ch.codePointAt(0))>>>0;const th=['#1d4f9a,#0b2a5b','#0e7a45,#0a4f3a','#2563c9,#5aae3c','#7a3fb5,#1d4f9a','#c2620a,#8a2f12'][h%5];
+ return `<div class="pgart${big?' big':''}" style="--g1:${th.split(',')[0]};--g2:${th.split(',')[1]}"><small>${esc(p.org||'춘해보건대학교 앵커사업단')}</small><strong>${esc(p.t)}</strong><span>${esc(p.term||'')}</span><img src="img/앵커_로고_흰색.svg" alt=""></div>`}
+function progImg(p,big){return p.im&&p.im.length?`<img src="${esc(p.im[0])}" alt="" loading="lazy" onerror="this.remove()">`:progArt(p,big)}
 function progOpen(p){const now=new Date(Date.now()+324e5).toISOString().slice(0,10);return !p.close||p.close>=now}
 function progRel(p){const k=p.kw||'';if(p.u)return p.u;if(k.startsWith('#'))return k;if(!k)return '';const i=BOARD.notice.findIndex(n=>n.t.includes(k));return i<0?'':'#/notice/'+i}
 function progSorted(f){return BOARD.programs.map((p,i)=>[p,progOpen(p),i]).sort((a,b)=>b[1]-a[1]).filter(([p,o])=>f==='전체'||(f==='모집중')===o)}
 const pd=d=>d?d.replace(/-/g,'.'):'';
-function progCard(p,o,i){return `<a class="prcard" href="#/programs/${i}"><div class="prph"><img src="${esc((p.im&&p.im[0])||PROG_DEF)}" alt="" loading="lazy" onerror="this.remove()"></div><div class="prtx"><span class="prbadge${o?'':' off'}">${o?'모집중':'모집마감'}</span><b>${esc(p.t)}</b><ul><li><em>접수기간</em>${pd(p.d)} ~ ${p.close?pd(p.close):'상시'}</li><li><em>운영기간</em>${esc(p.term||'')}</li><li><em>모집인원</em>${esc(p.n||'')}</li></ul></div></a>`}
+function progCard(p,o,i){return `<a class="prcard" href="#/programs/${i}"><div class="prph">${progImg(p)}</div><div class="prtx"><span class="prbadge${o?'':' off'}">${o?'모집중':'모집마감'}</span><b>${esc(p.t)}</b><ul><li><em>접수기간</em>${pd(p.d)} ~ ${p.close?pd(p.close):'상시'}</li><li><em>운영기간</em>${esc(p.term||'')}</li><li><em>모집인원</em>${esc(p.n||'')}</li></ul></div></a>`}
 function progCards(f){return progSorted(f).map(([p,o,i])=>progCard(p,o,i)).join('')||'<p class="h2-empty">해당 프로그램이 없습니다.</p>'}
 function progPage(idx){const a=BOARD.programs;
  if(idx!=null&&a[idx]){const p=a[idx],o=progOpen(p),rel=progRel(p);return `<section>${stit('운영 프로그램','Programs')}
-  <div class="pgd"><div class="pgph">${(p.im&&p.im.length?p.im:[PROG_DEF]).map(x=>`<img src="${esc(x)}" alt="${esc(p.t)}" loading="lazy">`).join('')}</div>
+  <div class="pgd"><div class="pgph">${p.im&&p.im.length?p.im.map(x=>`<img src="${esc(x)}" alt="${esc(p.t)}" loading="lazy">`).join(''):progArt(p,1)}</div>
   <div class="pgin"><span class="prbadge${o?'':' off'}">${o?'모집중':'모집마감'}</span><h3>${esc(p.t)}</h3>
    <table class="tbl"><tr><th>접수기간</th><td class="l">${pd(p.d)} ~ ${p.close?pd(p.close):'상시'}</td></tr><tr><th>운영기간</th><td class="l">${esc(p.term||'')}</td></tr><tr><th>모집 대상·인원</th><td class="l">${esc(p.n||'')}</td></tr>${p.place?`<tr><th>장소</th><td class="l">${esc(p.place)}</td></tr>`:''}${p.org?`<tr><th>주관</th><td class="l">${esc(p.org)}</td></tr>`:''}</table>
    ${rel?`<p style="margin-top:18px"><a class="btn" href="${esc(rel)}" ${rel.startsWith('http')?'target="_blank" rel="noopener"':''}>신청·자세한 공지 보기 ${rel.startsWith('http')?'↗':'›'}</a></p>`:''}</div></div>
@@ -2036,6 +2041,7 @@ function editor(k,p){const isNew=!p;p=p||{};const F=sch(k);
   if(!o.t){alert('제목을 입력해 주세요.');return}
   if(k==='jobs'){o.ch=p.ch||'https://www.ch.ac.kr';if(!o.open||!o.close){alert('접수 시작·마감 일시를 입력해 주세요.');return}}
   Object.keys(p).forEach(x=>{if(o[x]===undefined&&x!=='_id'&&!LIST_FIELDS[x])o[x]=p[x]});
+  if(k==='programs')o.ed=1;
   o.board=k;if(!isNew)o.id=p._id;const box=m.firstChild;box.classList.add('adm-busy');
   try{const j=await api({a:'save',post:o});await load(true);m.remove();const i=arr(k).findIndex(x=>x._id===j.id);const h=k==='video'||i<0?'#/'+k:'#/'+k+'/'+i;if(location.hash===h)rerender();else location.hash=h}catch(e){box.classList.remove('adm-busy')}};
 }
