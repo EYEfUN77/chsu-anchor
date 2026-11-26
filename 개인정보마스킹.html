@@ -54,7 +54,11 @@
   #edbar button{padding:6px 10px;background:#e8ecf2;font-size:13px}
   #edbar .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
   #edbar label{font-size:13px;display:flex;gap:4px;align-items:center;cursor:pointer}
-  #edbar .hint{font-size:12px;color:#6b7686;margin-left:auto}
+  #edbar .hint{font-size:12px;color:#6b7686;cursor:help;border-bottom:1px dotted #9aa3b0}
+  #edstatus{margin-left:auto}
+  #edstatus{font-size:12px;color:#1f6f3a;font-weight:600;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #edbar button.save2{background:var(--red);color:#fff}
+  @media (max-width:1400px){#edstatus{display:none}#edbar #btnSave2{margin-left:auto}}
   #zoomVal{font-size:13px;min-width:42px;text-align:center}
   .pghead{position:absolute;left:0;top:-26px;font-size:12px;color:#5b6575;display:flex;gap:6px;align-items:center}
   .pghead button{font-size:11px;padding:3px 8px;border-radius:6px;background:#e8ecf2;font-weight:500}
@@ -134,7 +138,10 @@
     <button id="zoomOut" title="축소">－</button><span id="zoomVal">100%</span><button id="zoomIn" title="확대">＋</button>
     <span class="sep"></span>
     <label><input type="checkbox" id="o_preview"> 검은 상자로 미리보기</label>
-    <span class="hint">상자 클릭: 선택 · 끌기: 이동 · 모서리: 크기 · Delete: 삭제 · 빈 곳 끌기: 새 상자</span>
+    <span class="hint" title="상자 클릭: 선택 · 끌기: 이동 · 모서리 점: 크기 조절 · Delete: 삭제 · 더블클릭/H: 가림↔해제 · 빈 곳 끌기: 새 상자 · Ctrl+Z/Ctrl+Y: 되돌리기/다시 실행">ⓘ 사용법</span>
+    <span id="edstatus"></span>
+    <button id="btnSave2" class="save2" title="가림을 확정하고 PDF로 저장">마스킹 확정·PDF 저장</button>
+    <button id="btnReset2" title="열린 PDF를 메모리에서 지우고 처음 화면으로">닫기(메모리 삭제)</button>
   </div>
   <div id="pages"></div>
 </section>
@@ -194,7 +201,7 @@ async function loadOCR(){
 // ---------- 상태 ----------
 const DPI = 200, SCALE = DPI/72;
 let doc = null, fileName = '', pages = [];   // pages: {wPt,hPt,canvas,lines,boxes,mode}
-function status(t){ $('status').textContent = t; }
+function status(t){ $('status').textContent = t; const e=$('edstatus'); if (e){ e.textContent = t.split('\n')[0]; e.classList.toggle('show', !!t); } }
 function prog(v){ const p=$('prog'); if (v==null){p.hidden=true;} else {p.hidden=false;p.value=v;} }
 
 // ---------- 파일 열기 ----------
@@ -914,7 +921,9 @@ function resetAll(){
   ['btnSave','btnReset','btnRedetect'].forEach(id=>$(id).disabled=true); $('edbar').hidden=true; $('pagenav').innerHTML=''; hist=[]; fut=[]; sel=null; saved=true;
   $('summary').textContent='PDF를 열면 검출 결과가 표시됩니다.'; status(''); prog(null);
 }
-$('btnReset').addEventListener('click', ()=>{ resetAll(); status('파일을 메모리에서 지웠습니다.'); });
+$('btnReset').addEventListener('click', ()=>{ if (pages.length && !saved && !confirm('저장하지 않은 작업이 있습니다. 닫으면 가림 작업이 모두 사라집니다. 닫을까요?')) return; resetAll(); status('파일을 메모리에서 지웠습니다.'); });
+$('btnSave2').addEventListener('click', ()=>$('btnSave').click());
+$('btnReset2').addEventListener('click', ()=>$('btnReset').click());
 
 window.__ready = true;
 </script>
