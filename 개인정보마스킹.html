@@ -32,6 +32,8 @@
   #drop{margin:28px auto;max-width:720px;border:2px dashed #9fb0c7;border-radius:14px;background:#fff;padding:48px 24px;text-align:center;cursor:pointer}
   #drop.over{border-color:var(--navy);background:#eef3fa}
   #drop b{font-size:18px;color:var(--navy)}
+  #drop .mo{display:none}
+  @media (max-width:820px){#drop .pc{display:none}#drop .mo{display:inline}}
   #status{font-size:13px;color:#33415a;margin-top:10px;min-height:18px;white-space:pre-line}
   progress{width:100%}
   #pages{padding:18px 24px;display:flex;flex-direction:column;align-items:center;gap:22px}
@@ -81,13 +83,43 @@
   #pagenav{display:flex;flex-wrap:wrap;gap:4px}
   .chip{font-size:12px;padding:3px 8px;border-radius:12px;background:#eef1f5;font-weight:500}
   .chip.has{background:#fde3e3;color:#9b1c1c}.chip.ex{text-decoration:line-through;opacity:.6}
+  .ov{touch-action:pan-x pan-y pinch-zoom}
+  .drawmode .ov,.box{touch-action:none}
+  .touchonly{display:none}
+  #btnDraw.on{background:#7b2ff2!important;color:#fff}
+  @media (pointer:coarse){.touchonly{display:inline-block}.hd{width:18px;height:18px}.hd.nw{left:-10px;top:-10px}.hd.n{left:calc(50% - 9px);top:-10px}.hd.ne{right:-10px;top:-10px}.hd.e{right:-10px;top:calc(50% - 9px)}.hd.se{right:-10px;bottom:-10px}.hd.s{left:calc(50% - 9px);bottom:-10px}.hd.sw{left:-10px;bottom:-10px}.hd.w{left:-10px;top:calc(50% - 9px)}.mini button{font-size:14px;padding:7px 12px}}
+  @media (max-width:820px){
+    html,body{height:auto}
+    body{display:block;overflow:auto}
+    header{padding:10px 14px;gap:8px}
+    header h1{font-size:17px}
+    header .note{display:none}
+    .badge{font-size:12px;padding:3px 10px}
+    main{display:flex;flex-direction:column}
+    main>section{order:1;overflow:visible}
+    aside{order:2;border-right:0;border-top:1px solid var(--line);padding:14px}
+    #drop{margin:12px;padding:26px 14px}
+    #drop b{font-size:16px}
+    #pages{padding:10px 10px 30px;align-items:flex-start;overflow-x:auto}
+    #edbar{padding:6px 8px;gap:4px}
+    #edbar button{padding:6px 8px;font-size:12px}
+    #edbar label{font-size:12px}
+    #edbar .hint,#edbar .sep,#edstatus{display:none}
+    #edbar #btnSave2{margin-left:0}
+    .pghead{flex-wrap:wrap}
+    .box .tag{display:none}.box.sel .tag{display:block}
+  }
+  #drop.loaded{padding:10px 14px;margin:10px auto}
+  #drop.loaded .note,#drop.loaded b{display:none}
+  #drop.loaded #status{font-size:12px;margin-top:4px;white-space:normal}
+  #drop.loaded::before{content:'📂 다른 PDF 열기 (여기를 누르거나 끌어다 놓기)';font-size:13px;color:var(--navy);font-weight:600}
   .summary{font-size:13px;background:#f6f8fb;border:1px solid var(--line);border-radius:8px;padding:8px 10px;line-height:1.6}
 </style>
 </head>
 <body>
 <header>
   <h1>개인정보 마스킹 도구</h1>
-  <span class="badge" id="netBadge">서버 전송 없음 · 내 PC에서만 처리</span>
+  <span class="badge" id="netBadge">서버 전송 없음 · 내 기기에서만 처리</span>
   <span class="note" style="color:#cfe0f5">파일은 이 브라우저 창의 메모리에서만 처리되며 어디로도 전송되지 않습니다.</span>
 </header>
 <main>
@@ -125,7 +157,7 @@
 </aside>
 <section>
   <div id="drop">
-    <b>여기에 PDF 파일을 끌어다 놓거나 클릭하여 선택</b>
+    <b class="pc">여기에 PDF 파일을 끌어다 놓거나 클릭하여 선택</b><b class="mo">여기를 눌러 PDF 파일 선택</b>
     <p class="note">PDF는 이 컴퓨터의 브라우저 안에서만 처리되며 서버로 전송되지 않습니다.</p>
     <input type="file" id="file" accept="application/pdf,.pdf" hidden>
     <progress id="prog" value="0" max="1" hidden></progress>
@@ -138,6 +170,7 @@
     <button id="zoomOut" title="축소">－</button><span id="zoomVal">100%</span><button id="zoomIn" title="확대">＋</button>
     <span class="sep"></span>
     <label><input type="checkbox" id="o_preview"> 검은 상자로 미리보기</label>
+    <button id="btnDraw" class="touchonly" title="켜면 손가락으로 끌어서 새 가림 상자를 그립니다">✏️ 상자 그리기</button>
     <span class="hint" title="상자 클릭: 선택 · 끌기: 이동 · 모서리 점: 크기 조절 · Delete: 삭제 · 더블클릭/H: 가림↔해제 · 빈 곳 끌기: 새 상자 · Ctrl+Z/Ctrl+Y: 되돌리기/다시 실행">ⓘ 사용법</span>
     <span id="edstatus"></span>
     <button id="btnSave2" class="save2" title="가림을 확정하고 PDF로 저장">마스킹 확정·PDF 저장</button>
@@ -270,7 +303,7 @@ async function processAll(){
   prog(null);
   status(`완료: 전체 ${n}쪽. 오른쪽 화면에서 검출 결과를 확인·수정한 뒤 저장하십시오.`);
   ['btnSave','btnReset','btnRedetect'].forEach(id=>$(id).disabled=false);
-  $('edbar').hidden=false; updUndo();
+  $('edbar').hidden=false; $('drop').classList.add('loaded'); updUndo();
   updateSummary();
 }
 
@@ -725,7 +758,10 @@ function detectCore(pg){
 // ---------- 화면·편집 ----------
 let sel = null;                 // 선택된 상자 {pg, b}
 let hist = [], fut = [], saved = true, zoom = 1;
-const baseW = () => Math.min(900, window.innerWidth-380);
+const isMobile = () => window.innerWidth <= 820;
+const baseW = () => isMobile() ? Math.max(260, window.innerWidth-20) : Math.min(900, window.innerWidth-380);
+window.addEventListener('resize', ()=>{ if (pages.length) setZoom(zoom); });
+let drawMode = false;
 const snap = () => pages.map(p=>({boxes:p.boxes.map(b=>({...b})), removed:p.removed.map(r=>({...r})), excluded:p.excluded}));
 function restore(s){ s.forEach((st,i)=>{ const p=pages[i]; p.boxes=st.boxes.map(b=>({...b})); p.removed=st.removed.map(r=>({...r})); p.excluded=st.excluded; }); sel=null; redrawAll(); }
 function commit(){ hist.push(snap()); if (hist.length>300) hist.shift(); fut=[]; saved=false; updUndo(); }   // 변경 직전에 호출
@@ -764,7 +800,9 @@ function renderPage(pg, num){
     if (e.target.closest('.mini')) return;
     if (hd && sel && sel.pg===pg){ act={mode:'resize', dir:hd.dataset.d, b:sel.b, o:{...sel.b}, p0:p, moved:false}; }
     else if (bx){ const b=pg.boxes[+bx.dataset.i]; selectBox(pg,b); act={mode:'move', b, o:{...b}, p0:p, moved:false}; }
-    else { if (sel){ const old=sel.pg; sel=null; drawBoxes(old); } act={mode:'draw', p0:p, ghost:Object.assign(document.createElement('div'),{className:'draw'})}; ov.appendChild(act.ghost); }
+    else { if (sel){ const old=sel.pg; sel=null; drawBoxes(old); }
+      if (e.pointerType==='touch' && !drawMode) return;   // 휴대폰: 빈 곳을 밀면 화면 스크롤
+      act={mode:'draw', p0:p, ghost:Object.assign(document.createElement('div'),{className:'draw'})}; ov.appendChild(act.ghost); }
     ov.setPointerCapture(e.pointerId); e.preventDefault();
   });
   ov.addEventListener('pointermove', e=>{
@@ -831,6 +869,7 @@ document.addEventListener('keydown', e=>{
 });
 function setZoom(z){ zoom=Math.min(2.5,Math.max(0.5,z)); $('zoomVal').textContent=Math.round(zoom*100)+'%'; pages.forEach(p=>p.wrap.style.width=(baseW()*zoom)+'px'); }
 $('btnUndo').onclick=undo; $('btnRedo').onclick=redo;
+$('btnDraw').onclick=()=>{ drawMode=!drawMode; $('btnDraw').classList.toggle('on', drawMode); $('btnDraw').textContent = drawMode ? '✏️ 그리기 켜짐 (끄려면 누름)' : '✏️ 상자 그리기'; $('pages').classList.toggle('drawmode', drawMode); };
 $('zoomOut').onclick=()=>setZoom(zoom-0.25); $('zoomIn').onclick=()=>setZoom(zoom+0.25);
 $('o_preview').addEventListener('change', e=>$('pages').classList.toggle('preview', e.target.checked));
 window.addEventListener('beforeunload', e=>{ if (pages.length && !saved){ e.preventDefault(); e.returnValue=''; } });
@@ -918,7 +957,7 @@ function buildPDF(imgs){
 function resetAll(){
   pages.forEach(p=>{ if (p.disp) URL.revokeObjectURL(p.disp); }); pages=[]; $('pages').innerHTML='';
   if (doc){ doc.destroy(); doc=null; }
-  ['btnSave','btnReset','btnRedetect'].forEach(id=>$(id).disabled=true); $('edbar').hidden=true; $('pagenav').innerHTML=''; hist=[]; fut=[]; sel=null; saved=true;
+  ['btnSave','btnReset','btnRedetect'].forEach(id=>$(id).disabled=true); $('edbar').hidden=true; $('drop').classList.remove('loaded'); $('pagenav').innerHTML=''; hist=[]; fut=[]; sel=null; saved=true;
   $('summary').textContent='PDF를 열면 검출 결과가 표시됩니다.'; status(''); prog(null);
 }
 $('btnReset').addEventListener('click', ()=>{ if (pages.length && !saved && !confirm('저장하지 않은 작업이 있습니다. 닫으면 가림 작업이 모두 사라집니다. 닫을까요?')) return; resetAll(); status('파일을 메모리에서 지웠습니다.'); });
