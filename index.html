@@ -1288,7 +1288,7 @@ const BOARD={
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
   {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성과 인정\n\n■ 2차년도 추진 체계\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
  ],
- call:[],press:PRESS.sort((a,b)=>b.d.localeCompare(a.d)),gallery:GALLERY,video:[{d:'2026-11-21',t:'춘해보건대학교 앵커사업단 홍보영상 「성공은 모두의 것」',v:'video/promo3.mp4',b:'2026년 앵커사업 프로그램 현장 사진을 노래 「성공은 모두의 것」과 함께 담았습니다.'}],newsletter:NEWSLETTER,archive:[]
+ call:[],press:PRESS.sort((a,b)=>b.d.localeCompare(a.d)),gallery:GALLERY,video:[{d:'2026-11-21',t:'춘해보건대학교 앵커사업단 홍보영상 「성공은 모두의 것」',v:'video/promo3.mp4',b:'2026년 앵커사업 프로그램 현장 사진을 노래 「성공은 모두의 것」과 함께 담았습니다.'},{d:'2026-11-28',t:'춘해보건대학교 앵커사업단 뮤직비디오 「성공은 모두의 것」',v:'video/promo4.mp4',b:'간호·치위생·응급구조·방사선·물리치료·작업치료·언어치료·안경광학·보건행정·산림조경·웰니스·글로벌 학과 등 여러 학과의 전공 실습 장면을 노래 「성공은 모두의 것」과 가사 자막으로 담았습니다.'}],newsletter:NEWSLETTER,archive:[]
 };
 
 BOARD.notice=BOARD.notice.concat(RNOT).sort((a,b)=>b.d.localeCompare(a.d));
@@ -2163,7 +2163,7 @@ function merge(){
   {const nt=x=>String(x||'').replace(/^\[[^\]]*\]\s*/,'').replace(/[\s'"‘’“”·…,.\-\[\]()<>「」『』]/g,'');const seen=new Set(Object.values(ORIG).flat().map(p=>nt(p.t)));add=add.filter(p=>{if(!p.auto)return true;const n=nt(p.t);if(!n||seen.has(n))return false;seen.add(n);return true})}
   let res=ORIG[k].filter(p=>!byId[p._id]).concat(add);
   if(k==='jobs')res.sort((a,b)=>String(b.open||'').localeCompare(String(a.open||'')));
-  else res.sort((a,b)=>String(b.d||'').localeCompare(String(a.d||'')));
+  else if(k!=='video')res.sort((a,b)=>String(b.d||'').localeCompare(String(a.d||'')));
   const a=arr(k);a.splice(0,a.length,...res);
  });
 }
