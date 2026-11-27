@@ -886,6 +886,30 @@ header,header.on,header.sub{height:108px}
 
 @media(min-width:681px){.hd .logo b{font-size:20px}.hd .logo small{font-size:8px}}
 @media(min-width:1281px){.hd .logo{margin-right:clamp(30px,4.4vw,67px)}}
+/* 기업 애로기술 지원 신청 */
+.ts-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:28px 0 8px}
+.ts-card{background:#fff;border:1px solid #e3e8f0;border-radius:14px;padding:22px 20px;transition:.18s}
+.ts-card:hover{box-shadow:0 10px 24px rgba(16,33,63,.07);transform:translateY(-2px)}
+.ts-ic{display:inline-flex;width:44px;height:44px;border-radius:12px;background:#eef3fb;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.ts-card b{display:block;font-size:17px;color:#1c2330;margin-bottom:8px}
+.ts-card p{font-size:15px;color:#333;line-height:1.55;margin:0 0 8px;word-break:keep-all}
+.ts-card small{display:block;font-size:13px;color:#7a8394;line-height:1.55;word-break:keep-all}
+.ts-dl{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:26px 0 0;padding:16px 20px;background:#f6f8fb;border:1px solid #e3e8f0;border-radius:12px}
+.ts-dl b{font-size:15px;color:#1d4f9a;margin-right:8px}
+.ts-dl a{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border:1px solid #dfe5ee;border-radius:10px;font-size:14.5px;color:#222;transition:.15s}
+.ts-dl a:hover{border-color:var(--g);color:var(--g)}
+.ts-type{display:flex;gap:10px;margin:0 0 14px}
+.ts-type label{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border:1.5px solid #dfe5ee;border-radius:12px;font-weight:700;font-size:16px;cursor:pointer;transition:.15s}
+.ts-type label:has(input:checked){border-color:var(--g);background:#eef3fb;color:var(--g)}
+.eqfh h4 small{font-size:.7em;font-weight:600;color:#667;margin-left:6px}
+.tsf[hidden]{display:none!important}
+.tsf{display:flex;flex-wrap:wrap;gap:8px 18px}.tsf label{display:inline-flex;align-items:center;gap:6px;font-size:15px}
+.ts-hint{display:block;font-size:13px;color:#7a8394;margin-top:6px}.ts-hint.bad{color:#d33}
+.ts-sel{width:auto!important;min-width:100px;padding:9px 12px;border:1px solid #dfe5ee;border-radius:8px;font-size:15px;background:#fff}
+.ts-fee{font-weight:700;color:var(--g);margin-left:10px}
+.ts-agree{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;line-height:1.55}
+@media(max-width:1000px){.ts-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.ts-cards{grid-template-columns:1fr}.ts-type{flex-direction:column}}
 /* 섹션 제목·게시판 목록 */
 .stit{display:block;border:0;padding:0;margin:0 0 34px}
 .stit .st-en{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--g);margin-bottom:10px}
@@ -893,15 +917,15 @@ header,header.on,header.sub{height:108px}
 .stit h3{font-size:32px;font-weight:800;letter-spacing:-1px;color:#111;line-height:1.25}
 .lbar{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}
 .lcnt{font-size:14.5px;color:#6b7483}.lcnt b{color:var(--g);font-weight:800;margin:0 1px}
-.tbl{border-top:0;border-collapse:separate;border-spacing:0;font-size:16px}
-.tbl th{background:#f3f6fb;color:#5b6576;font-size:14.5px;font-weight:600;padding:14px 10px;border:0;border-top:1px solid #e3e8f0;border-bottom:1px solid #e3e8f0}
-.tbl th:first-child{border-left:1px solid #e3e8f0;border-radius:10px 0 0 10px}
-.tbl th:last-child{border-right:1px solid #e3e8f0;border-radius:0 10px 10px 0}
-.tbl td{padding:16px 10px;border-bottom:1px solid #eef1f5;color:#2b3340;font-size:15.5px}
+.tbl:not(.eqft):not(.eqt){border-top:0;border-collapse:separate;border-spacing:0;font-size:16px}
+.tbl:not(.eqft):not(.eqt) th{background:#f3f6fb;color:#5b6576;font-size:14.5px;font-weight:600;padding:14px 10px;border:0;border-top:1px solid #e3e8f0;border-bottom:1px solid #e3e8f0}
+.tbl:not(.eqft):not(.eqt) th:first-child{border-left:1px solid #e3e8f0;border-radius:10px 0 0 10px}
+.tbl:not(.eqft):not(.eqt) th:last-child{border-right:1px solid #e3e8f0;border-radius:0 10px 10px 0}
+.tbl:not(.eqft):not(.eqt) td{padding:16px 10px;border-bottom:1px solid #eef1f5;color:#2b3340;font-size:15.5px}
 .tbl.blt td{color:#6b7483;font-size:15px;padding:17px 10px}
 .tbl.blt td.bn{color:#a0a8b6;font-size:14px}
 .tbl.blt td.bt a{color:#1c2330;font-size:16.5px;font-weight:500;transition:.15s}
-.tbl tr:hover td{background:#f8fafd}
+.tbl:not(.eqft):not(.eqt) tr:hover td{background:#f8fafd}
 .tbl.blt tr:hover td.bt a{color:var(--g)}
 @media(max-width:680px){.tbl.blt td{padding:13px 6px}.tbl.blt td.bt a{font-size:15px}.tbl.blt th{font-size:13px;padding:11px 6px}.stit{margin-bottom:24px}.stit h3{font-size:24px}.stit .st-en{font-size:11.5px;letter-spacing:1.8px}}
 
@@ -921,7 +945,7 @@ header,header.on,header.sub{height:108px}
 .ct-tel:hover{background:var(--g);color:#fff}
 @media(max-width:900px){.ct-grid{grid-template-columns:1fr}.ct-wide .ct-list{grid-template-columns:1fr}.ct-wide .ct-list li:nth-last-child(2):nth-child(odd){border-bottom:1px dashed #e6eaf0}}
 </style>
-<script>window.I18N_EXTRA={"en": {"춘해보건대학교 앵커사업단": "Choonhae Anchor Project Group", "지역과 함께 성장하는": "A regional hub for", "보건의료 인재양성 거점": "healthcare talent", "사업단의 공지와 공고를": "All notices and calls", "한곳에서 확인하세요": "in one place", "프로그램과 공용장비를": "Apply online for", "온라인으로 신청하세요": "programs and equipment", "앵커사업단의 활동과": "News of our activities", "성과 소식을 전합니다": "and achievements", "궁금한 점을 묻고": "Ask questions and", "자료를 함께 나눕니다": "share resources", "업무에 필요한 도구를": "Tools you need", "바로 사용하세요": "for your work"}, "ja": {"춘해보건대학교 앵커사업단": "春海保健大学 アンカー事業団", "지역과 함께 성장하는": "地域とともに成長する", "보건의료 인재양성 거점": "保健医療人材育成の拠点", "사업단의 공지와 공고를": "事業団のお知らせと公募を", "한곳에서 확인하세요": "一か所でご確認ください", "프로그램과 공용장비를": "プログラムと共用機器を", "온라인으로 신청하세요": "オンラインでお申し込みください", "앵커사업단의 활동과": "アンカー事業団の活動と", "성과 소식을 전합니다": "成果をお伝えします", "궁금한 점을 묻고": "ご質問をお寄せいただき", "자료를 함께 나눕니다": "資料を共有します", "업무에 필요한 도구를": "業務に必要なツールを", "바로 사용하세요": "すぐにご利用ください"}, "zh": {"춘해보건대학교 앵커사업단": "春海保健大学 锚定事业团", "지역과 함께 성장하는": "与地区共同成长的", "보건의료 인재양성 거점": "保健医疗人才培养基地", "사업단의 공지와 공고를": "事业团的通知与公告", "한곳에서 확인하세요": "在此一站查看", "프로그램과 공용장비를": "项目与共用设备", "온라인으로 신청하세요": "均可在线申请", "앵커사업단의 활동과": "传递锚定事业团的", "성과 소식을 전합니다": "活动与成果消息", "궁금한 점을 묻고": "提出疑问", "자료를 함께 나눕니다": "共享资料", "업무에 필요한 도구를": "工作所需的工具", "바로 사용하세요": "即刻使用"}, "vi": {"춘해보건대학교 앵커사업단": "Ban Dự án ANCHOR Đại học Choonhae", "지역과 함께 성장하는": "Trung tâm đào tạo nhân lực", "보건의료 인재양성 거점": "y tế cùng phát triển với địa phương", "사업단의 공지와 공고를": "Xem mọi thông báo", "한곳에서 확인하세요": "và công bố tại một nơi", "프로그램과 공용장비를": "Đăng ký trực tuyến", "온라인으로 신청하세요": "chương trình và thiết bị", "앵커사업단의 활동과": "Tin tức về hoạt động", "성과 소식을 전합니다": "và thành quả của Ban", "궁금한 점을 묻고": "Đặt câu hỏi và", "자료를 함께 나눕니다": "chia sẻ tài liệu", "업무에 필요한 도구를": "Công cụ cần thiết", "바로 사용하세요": "cho công việc"}}</script></head>
+<script>window.I18N_EXTRA={"en": {"춘해보건대학교 앵커사업단": "Choonhae Anchor Project Group", "지역과 함께 성장하는": "A regional hub for", "보건의료 인재양성 거점": "healthcare talent", "사업단의 공지와 공고를": "All notices and calls", "한곳에서 확인하세요": "in one place", "프로그램·장비·기술지원을": "Apply online for programs,", "온라인으로 신청하세요": "equipment and tech support", "앵커사업단의 활동과": "News of our activities", "성과 소식을 전합니다": "and achievements", "궁금한 점을 묻고": "Ask questions and", "자료를 함께 나눕니다": "share resources", "업무에 필요한 도구를": "Tools you need", "바로 사용하세요": "for your work"}, "ja": {"춘해보건대학교 앵커사업단": "春海保健大学 アンカー事業団", "지역과 함께 성장하는": "地域とともに成長する", "보건의료 인재양성 거점": "保健医療人材育成の拠点", "사업단의 공지와 공고를": "事業団のお知らせと公募を", "한곳에서 확인하세요": "一か所でご確認ください", "프로그램·장비·기술지원을": "プログラム・機器・技術支援を", "온라인으로 신청하세요": "オンラインでお申し込みください", "앵커사업단의 활동과": "アンカー事業団の活動と", "성과 소식을 전합니다": "成果をお伝えします", "궁금한 점을 묻고": "ご質問をお寄せいただき", "자료를 함께 나눕니다": "資料を共有します", "업무에 필요한 도구를": "業務に必要なツールを", "바로 사용하세요": "すぐにご利用ください"}, "zh": {"춘해보건대학교 앵커사업단": "春海保健大学 锚定事业团", "지역과 함께 성장하는": "与地区共同成长的", "보건의료 인재양성 거점": "保健医疗人才培养基地", "사업단의 공지와 공고를": "事业团的通知与公告", "한곳에서 확인하세요": "在此一站查看", "프로그램·장비·기술지원을": "项目、设备与技术支持", "온라인으로 신청하세요": "均可在线申请", "앵커사업단의 활동과": "传递锚定事业团的", "성과 소식을 전합니다": "活动与成果消息", "궁금한 점을 묻고": "提出疑问", "자료를 함께 나눕니다": "共享资料", "업무에 필요한 도구를": "工作所需的工具", "바로 사용하세요": "即刻使用"}, "vi": {"춘해보건대학교 앵커사업단": "Ban Dự án ANCHOR Đại học Choonhae", "지역과 함께 성장하는": "Trung tâm đào tạo nhân lực", "보건의료 인재양성 거점": "y tế cùng phát triển với địa phương", "사업단의 공지와 공고를": "Xem mọi thông báo", "한곳에서 확인하세요": "và công bố tại một nơi", "프로그램·장비·기술지원을": "Đăng ký trực tuyến", "온라인으로 신청하세요": "chương trình, thiết bị, hỗ trợ kỹ thuật", "앵커사업단의 활동과": "Tin tức về hoạt động", "성과 소식을 전합니다": "và thành quả của Ban", "궁금한 점을 묻고": "Đặt câu hỏi và", "자료를 함께 나눕니다": "chia sẻ tài liệu", "업무에 필요한 도구를": "Công cụ cần thiết", "바로 사용하세요": "cho công việc"}}</script></head>
 <body>
 <header id="hd">
  <div class="topbar"><div class="tl"><a href="#/">홈</a><a href="https://www.ch.ac.kr" target="_blank" rel="noopener">춘해보건대학교</a><a href="https://chgw.ch.ac.kr" target="_blank" rel="noopener">전자결재</a><a href="#/" id="admTop" onclick="event.preventDefault();window.ANCHOR_ADMIN&&ANCHOR_ADMIN.top()">관리자</a></div><div class="tc"><a href="#/center/urun">CH-U-RUN센터</a><a href="#/center/safety">건강안전지원센터</a><a href="#/center/care">늘돌봄지원센터</a><a href="#/center/tree">수목진단센터</a><a href="#/center/icc">기업협업지원센터</a><a href="#/center/wellness">웰니스문화관광센터</a><a href="#/center/global">글로벌센터</a></div><div class="tr"><span class="tsys" id="sysm4"></span><div class="lang" id="langSel"></div><button type="button" class="nlbtn tshare" onclick="shareSite()" title="홈페이지 주소 복사·QR·공유"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>홈페이지 공유</span></button></div></div>
@@ -974,7 +998,7 @@ header,header.on,header.sub{height:108px}
 const MENU=[
  {t:'사업단 소개',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','조직 및 연락처'],['location','오시는 길']]},
  {t:'공지',c:[['notice','공지사항'],['programs','운영 프로그램'],['call','과제공고'],['jobs','채용공고']]},
- {t:'신청',c:[['apply','프로그램 참가 신청'],['equip','공용장비 신청']]},
+ {t:'신청',c:[['apply','프로그램 참가 신청'],['equip','공용장비 신청'],['tech','기업 애로기술 지원 신청']]},
  {t:'알림·소식',c:[['press','언론보도'],['gallery','포토갤러리'],['video','홍보영상'],['newsletter','뉴스레터']]},
  {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]},
  {t:'업무 도구',c:[['tools','전체 보기'],['calendar','바탕화면 달력'],['dabom','다봄뷰어'],['masking','개인정보 마스킹']]}
@@ -1416,7 +1440,7 @@ function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return
 
 /* GNB / sitemap */
 $('#hd').style.setProperty('--mh',(Math.max(...MENU.map(m=>m.c.length))*46+56+(innerWidth<=1600?44:0))+'px');
-const MENU_DESC={'사업단 소개':'지역과 함께 성장하는\n보건의료 인재양성 거점','공지':'사업단의 공지와 공고를\n한곳에서 확인하세요','신청':'프로그램과 공용장비를\n온라인으로 신청하세요','알림·소식':'앵커사업단의 활동과\n성과 소식을 전합니다','커뮤니티':'궁금한 점을 묻고\n자료를 함께 나눕니다','업무 도구':'업무에 필요한 도구를\n바로 사용하세요'};
+const MENU_DESC={'사업단 소개':'지역과 함께 성장하는\n보건의료 인재양성 거점','공지':'사업단의 공지와 공고를\n한곳에서 확인하세요','신청':'프로그램·장비·기술지원을\n온라인으로 신청하세요','알림·소식':'앵커사업단의 활동과\n성과 소식을 전합니다','커뮤니티':'궁금한 점을 묻고\n자료를 함께 나눕니다','업무 도구':'업무에 필요한 도구를\n바로 사용하세요'};
 $('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div class="dep2"><div class="mg"><div class="mg-h"><b>${m.t}</b><p>${(MENU_DESC[m.t]||'').split('\n').join('<br>')}</p></div><div class="mg-c">${m.c.map(c=>`<a href="#/${c[0]}">${c[1]}</a>`).join('')}</div></div></div></li>`).join('');
 $('#gnb').addEventListener('click',e=>{const a=e.target.closest('.dep2 a');if(a){const li=a.closest('li');li.style.pointerEvents='none';setTimeout(()=>li.style.pointerEvents='',500)}});
 
@@ -1538,6 +1562,19 @@ function eqSubmit(e){e.preventDefault();const f=e.target,v=n=>(f.elements[n]&&f.
  const um=(f.querySelector('input[name=useMat]:checked')||{}).value||'';if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 신청할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;
  const body=['[공용장비활용 신청서]','','■ 신청인','기업체(기관)명: '+v('org'),'사업자 등록번호: '+v('bizno'),'대표자: '+v('ceo'),'주소: '+v('addr'),'','■ 담당자','이름: '+v('name'),'부서/직위: '+v('dept'),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'','■ 공용장비 활용 신청','희망 장비: '+eqs.concat(v('etc')?['기타('+v('etc')+')']:[]).join(', '),'재료: '+v('mat'),'장비 및 내용: '+v('desc'),'희망 사용기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'','■ 사용 내역','사용시간: '+v('hours'),'재료 사용: '+um,'기타: '+v('memo'),'','위와 같이 공용장비 활용을 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청인 성명: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'※ 서명이 들어간 신청서는 ‘PDF로 저장’으로 PDF를 만들어 이 메일에 첨부해 주세요.','','춘해보건대학교 앵커사업단장 귀하'].join('\n');
  location.href='mailto:sugi1994@ch.ac.kr?subject='+encodeURIComponent('[공용장비활용 신청] '+v('org')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
+/* 기업 애로기술 지원 신청 */
+function tsK(){const f=document.getElementById('eqf');return f&&f.elements.kind?f.elements.kind.value:'기술지도'}
+function tsName(){return (tsK()==='기술지도'?'기술지도':'컨설팅 지도')+' 자문 지원신청서'}
+function tsKind(){const k=tsK(),f=document.getElementById('eqf');if(!f)return;f.querySelectorAll('.tsf').forEach(d=>{const on=d.dataset.k===k;d.hidden=!on;if(!on)d.querySelectorAll('input').forEach(i=>i.checked=false)});const t=document.getElementById('tstitle');if(t)t.innerHTML=tsName()+'<small>(기업체용)</small>';const e=document.getElementById('tsend');if(e)e.textContent='위와 같이 '+k+' 자문 지원을 신청합니다.'}
+function tsFee(){const f=document.getElementById('eqf'),n=+f.elements.cnt.value;document.getElementById('tsfee').textContent=(n*200000).toLocaleString('ko-KR')+'원 (회당 200,000원)'}
+function tsDate(){const f=document.getElementById('eqf'),h=document.getElementById('tshint');if(!f.elements.d1.value)return true;const d=new Date(f.elements.d1.value),m=new Date();m.setHours(0,0,0,0);m.setDate(m.getDate()+7);const ok=d>=m;h.classList.toggle('bad',!ok);h.textContent=ok?'신청일은 첫 자문일보다 최소 일주일 이전이어야 합니다.':'첫 자문일은 오늘부터 7일 이후로 정해 주세요.';return ok}
+function tsSubmit(e){e.preventDefault();const f=e.target,v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
+ const flds=[...f.querySelectorAll('input[name=fld]:checked')].map(c=>c.value==='기타'&&v('fldetc')?'기타('+v('fldetc')+')':c.value);if(!flds.length&&!v('fldetc')){alert('자문 분야를 하나 이상 선택해 주세요.');return false}
+ if(!tsDate()){alert('첫 자문일은 신청일로부터 최소 일주일 이후여야 합니다.');return false}
+ if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 신청할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;
+ const k=tsK(),n=+v('cnt');
+ const body=['['+tsName()+'(기업체용)]','','■ 신청인','기업체명: '+v('org'),'사업자 등록번호: '+v('bizno'),'주소: '+v('addr'),'','■ 실무 담당자','이름: '+v('name'),'부서/직위: '+v('dept'),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'','■ 애로기술 자문 신청내용','자문명: '+v('title'),'자문 분야: '+flds.join(', '),'1. 문제상황(현황): '+v('q1'),'2. 문제 원인: '+v('q2'),'3. 지도 내용: '+v('q3'),'4. 개선 방향·기대효과: '+v('q4'),'자문 기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'총 자문 횟수: '+n+'회 / 자문료 '+(n*200000).toLocaleString('ko-KR')+'원 (회당 200,000원)','자문료 지급: '+((f.querySelector('input[name=pay]:checked')||{}).value||''),'','■ 희망 자문 전문가','성명: '+v('ex1'),'소속(부서/직위): '+v('ex2'),'연락처: '+v('ex3'),'','■ 개인정보 수집·활용 동의: 동의함','■ 첨부서류: 자문 신청기업 사업자등록증 사본 1부','','위와 같이 '+k+' 자문 지원을 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청인 성명: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'※ 사업자등록증 사본과 서명한 신청서 PDF를 이 메일에 첨부해 주세요.','','춘해보건대학교 지역성장 인재양성체계(앵커) 사업단장 귀하'].join('\n');
+ location.href='mailto:sugi1994@ch.ac.kr?subject='+encodeURIComponent('['+k+' 자문 신청] '+v('org')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
 function eqFill(){const d=document.getElementById('eqdate');if(d){const t=new Date();d.textContent=t.getFullYear()+'년 '+(t.getMonth()+1)+'월 '+t.getDate()+'일'}const f=document.getElementById('eqf');if(!f||f._init)return;f._init=1;const sg=f.elements.signer;let auto=true;sg.addEventListener('input',()=>auto=!sg.value);f.elements.name.addEventListener('input',e=>{if(auto)sg.value=e.target.value});f.addEventListener('reset',()=>{auto=true;sigSet('')})}
 /* 서명 패드 */
 let sigData='';
@@ -1976,6 +2013,53 @@ const PAGES={
    <p class="eqnote">※ ‘이메일로 신청하기’를 누르면 작성 내용이 담긴 메일 창이 열립니다. 내용을 확인한 뒤 보내 주세요(받는 곳: 기업협업지원센터 sugi1994@ch.ac.kr). 메일 프로그램이 없으면 ‘PDF로 저장’으로 PDF를 만들어 이메일로 보내 주세요.<br>※ 사용비용은 기업협업지원센터에서 상담 후 안내합니다. &nbsp;|&nbsp; 문의: ${tel}, 도생관 2층 213호</p>
   </div>
  </section>`},
+ tech:()=>{const tel='기업협업지원센터 052-270-0515';const TF=['기술개발','AI·DX 기술','인증·품질','사업화·특허'],CF=['경영·법무','마케팅·홍보 전략','고객서비스·CS 개선','창업·사업화'];
+ const fbox=(nm,arr,show)=>`<div class="tsf" data-k="${nm}"${show?'':' hidden'}>${arr.map(x=>`<label><input type="checkbox" name="fld" value="${x}"> ${x}</label>`).join('')}<label><input type="checkbox" name="fld" value="기타"> 기타</label></div>`;
+ return `
+ <section>${stit('기업 애로기술 지원 신청','Technical Support')}
+  <p class="para">춘해보건대학교 앵커사업단 기업협업지원센터는 울산지역 기업의 기술·경영 애로사항을 대학 전문가가 직접 찾아가 해결하도록 돕습니다. 아래 내용을 확인한 뒤 신청서를 작성해 제출해 주세요.</p>
+  <div class="ts-cards">
+   <div class="ts-card"><span class="ts-ic">🛠</span><b>기술지도 분야</b><p>공정 개선, 장비 운영, 제품 개발 등 기술적 애로 해결</p><small>시제품 제작 · 콘텐츠 개발 · 데이터 분석·활용 · 제품 설계·도면 · 방사선 선량 계산 · 재료 인장 분석 등</small></div>
+   <div class="ts-card"><span class="ts-ic">📈</span><b>컨설팅 분야</b><p>경영, 품질관리, 마케팅 등 비기술 분야 애로 해결</p><small>경영·운영 · 마케팅 · 데이터 기반 분석 · 창업·기술사업화 컨설팅 등</small></div>
+   <div class="ts-card"><span class="ts-ic">🤝</span><b>지원 내용</b><p>기업당 최대 2회 대면 자문(회당 2시간 이상)</p><small>자문료 회당 20만 원은 앵커사업단이 지급 · 참여기업은 산학협력 협약 체결 필수</small></div>
+   <div class="ts-card"><span class="ts-ic">🏢</span><b>참여 대상</b><p>울산지역 소재 중견·중소기업, 소상공인, 병의원 등</p><small>신청: 상시 · 신청 후 2개월 이내 1·2차 자문 완료 · 결과보고는 자문 종료 후 1주 이내</small></div>
+  </div>
+  <ol class="eqflow">${['신청서 제출','검토·전문가 매칭','산학협력 협약','1·2차 자문','결과보고'].map((x,i)=>`<li><em>${String(i+1).padStart(2,'0')}</em><b>${x}</b></li>`).join('')}</ol>
+  <div class="ts-dl"><b>원본 서식(한글 파일) 내려받기</b><a href="https://drive.google.com/uc?export=download&id=1mukXucg_6BYwtp2XvLdPM8KHv4-uZiBO" target="_blank" rel="noopener"><span class="rp-ext ext-zip">ZIP</span>기술지도 분야 신청서류</a><a href="https://drive.google.com/uc?export=download&id=1_n7AJBxWQ6hL9zrMjA98OYDyinjG_Bvp" target="_blank" rel="noopener"><span class="rp-ext ext-zip">ZIP</span>컨설팅 분야 신청서류</a></div>
+  <div class="eqform" id="eqform">
+   <div class="eqfh"><h4 id="tstitle">기술지도 자문 지원신청서<small>(기업체용)</small></h4><span class="eqreq"><b>*</b> 필수 입력</span></div>
+   <form id="eqf" onsubmit="return tsSubmit(event)">
+   <div class="ts-type"><label><input type="radio" name="kind" value="기술지도" checked onchange="tsKind()"> 기술지도 자문</label><label><input type="radio" name="kind" value="컨설팅 지도" onchange="tsKind()"> 컨설팅 지도 자문</label></div>
+   <table class="tbl eqft">
+    <tr><th rowspan="3">신청인</th><th>기업체명 <b>*</b></th><td><input name="org" required placeholder="예) ○○주식회사"></td></tr>
+    <tr><th>사업자 등록번호 <b>*</b></th><td><input name="bizno" required placeholder="000-00-00000"></td></tr>
+    <tr><th>주소</th><td><input name="addr"></td></tr>
+    <tr><th rowspan="4">실무<br>담당자</th><th>이름 <b>*</b></th><td><input name="name" required></td></tr>
+    <tr><th>부서/직위</th><td><input name="dept"></td></tr>
+    <tr><th>휴대폰 <b>*</b></th><td><input name="tel" type="tel" required placeholder="010-0000-0000"></td></tr>
+    <tr><th>E-mail <b>*</b></th><td><input name="mail" type="email" required placeholder="name@example.com"></td></tr>
+    <tr><th rowspan="9">애로기술<br>자문<br>신청내용</th><th>자문명 <b>*</b></th><td><input name="title" required placeholder="예) 제품 구조 개선을 위한 설계 자문"></td></tr>
+    <tr><th>자문 분야 <b>*</b></th><td class="l">${fbox('기술지도',TF,1)}${fbox('컨설팅 지도',CF,0)}<input name="fldetc" placeholder="기타 분야(직접 입력)" style="margin-top:8px"></td></tr>
+    <tr><th>문제상황(현황) <b>*</b></th><td><textarea name="q1" rows="2" required placeholder="예) 기존 제품의 성능 저하 문제가 발생하고 있음"></textarea></td></tr>
+    <tr><th>문제 원인</th><td><textarea name="q2" rows="2" placeholder="예) 구조적 설계 미흡이 주요 원인으로 판단됨"></textarea></td></tr>
+    <tr><th>지도 내용 <b>*</b><br><small>(핵심 요청사항)</small></th><td><textarea name="q3" rows="3" required placeholder="예) 제품 구조 개선, 핵심 부품 설계 보완, 성능 테스트 기반 최적 설계 도출"></textarea></td></tr>
+    <tr><th>개선 방향·기대효과</th><td><textarea name="q4" rows="2" placeholder="예) 제품 성능 향상 및 시장 경쟁력 확보"></textarea></td></tr>
+    <tr><th>자문 기간 <b>*</b></th><td class="l"><input name="d1" type="date" required class="eqdt" onchange="tsDate()"> ~ <input name="d2" type="date" class="eqdt"><small class="ts-hint" id="tshint">신청일은 첫 자문일보다 최소 일주일 이전이어야 합니다.</small></td></tr>
+    <tr><th>총 자문 횟수·자문료</th><td class="l"><select name="cnt" onchange="tsFee()" class="ts-sel"><option value="2">2회</option><option value="1">1회</option></select> <span class="ts-fee" id="tsfee">400,000원 (회당 200,000원)</span></td></tr>
+    <tr><th>자문료 지급</th><td class="l"><label class="eqrd"><input type="radio" name="pay" value="춘해보건대학교 앵커사업단" checked> 춘해보건대학교 앵커사업단</label><label class="eqrd"><input type="radio" name="pay" value="기업체"> 기업체</label><label class="eqrd"><input type="radio" name="pay" value="기타"> 기타</label><small class="ts-hint">앵커사업단 등 기업 외 재원으로 지급하면 ‘애로기술 자문비 의뢰서’를 별도로 제출합니다.</small></td></tr>
+    <tr><th rowspan="3">희망<br>자문 전문가</th><th>성명</th><td><input name="ex1" placeholder="희망하는 전문가가 있으면 입력(없으면 비워 두세요)"></td></tr>
+    <tr><th>소속(부서/직위)</th><td><input name="ex2" placeholder="예) 춘해보건대학교 ○○과 교수"></td></tr>
+    <tr><th>연락처</th><td><input name="ex3" type="tel" placeholder="010-0000-0000"></td></tr>
+    <tr><th colspan="2">개인정보 수집·활용 동의 <b>*</b></th><td class="l"><label class="ts-agree"><input type="checkbox" name="agree" required> 애로기술 자문 신청을 위해 개인정보를 제공하며, 수집된 개인정보는 애로기술 자문 운영과 관련 업무 처리 목적 외에는 사용되지 않음에 동의합니다.</label></td></tr>
+    <tr><th colspan="2">첨부서류</th><td class="l">자문 신청기업 사업자등록증 사본 1부 <small class="ts-hint">이메일에 첨부해 주세요.</small></td></tr>
+   </table>
+   <p class="eqfs"><span id="tsend">위와 같이 기술지도 자문 지원을 신청합니다.</span><br><br><span id="eqdate"></span><br><br><span class="eqsl">신청인 성명: <input id="eqsigner" name="signer" class="eqsignin" required placeholder="성명 입력" autocomplete="name"> <button type="button" class="eqsigbox" id="eqsigbox" onclick="sigOpen()" title="눌러서 서명하기"><img id="eqsigimg" alt="서명" hidden><em>(서명)</em></button></span><small class="eqsigtip">‘(서명)’을 누르면 마우스·손가락으로 서명하거나, QR코드를 찍어 휴대폰으로 서명할 수 있습니다.</small><br><br><b>춘해보건대학교 지역성장 인재양성체계(앵커) 사업단장 귀하</b></p>
+   <div class="eqbtns"><button type="submit" class="btn">이메일로 신청하기</button><button type="button" class="btn ghost" onclick="savePdfForm(tsName()+'.pdf',this)">📄 PDF로 저장</button><button type="button" class="btn ghost" onclick="printEqForm()">🖨 인쇄</button><button type="reset" class="btn ghost" onclick="setTimeout(tsKind,0)">다시 작성</button></div>
+   </form>
+   <p class="eqnote">※ ‘이메일로 신청하기’를 누르면 작성 내용이 담긴 메일 창이 열립니다. 사업자등록증 사본과, 서명한 신청서 PDF(‘PDF로 저장’)를 함께 첨부해 보내 주세요(받는 곳: 기업협업지원센터 sugi1994@ch.ac.kr).<br>※ 선정 후 자문 진행에 필요한 서류(자문 결과 보고서, 만족도 평가지 등)는 담당자가 안내합니다. &nbsp;|&nbsp; 문의: ${tel}, 조경숙 연구원</p>
+  </div>
+ </section>`},
+
  inquiry:()=>`
  <section>${stit('문의하기','Contact')}
   <p class="para">앵커사업 관련 문의는 아래 연락처로 해 주시기 바랍니다.</p>
