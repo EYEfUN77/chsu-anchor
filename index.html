@@ -933,6 +933,10 @@ header,header.on,header.sub{height:108px}
 .trn-h5{font-size:18px;font-weight:800;margin:30px 0 12px;color:#1c2330}.trn-h5 small{font-size:13px;color:#888;font-weight:600}
 .trn-att{display:flex;flex-direction:column;gap:4px;margin:18px 0 0;padding:14px 18px;background:#f6f8fb;border-radius:10px;font-size:14.5px;color:#444}
 .trn-att b{color:#1d4f9a}
+.trn-dept{display:flex;gap:10px}.trn-dept .trn-sel{flex:1.6;width:auto!important;min-width:0}.trn-pos{flex:1;min-width:0}
+.trn-dext{margin-top:8px}
+@media(max-width:600px){.trn-dept{flex-direction:column}}
+
 .trn-plan th{width:26%}
 /* 섹션 제목·게시판 목록 */
 .stit{display:block;border:0;padding:0;margin:0 0 34px}
@@ -1616,7 +1620,7 @@ function trnPage(k){const T=TRN[k],w=T.w;return `
     <tr><th>프로그램</th><td><input name="prog" placeholder="프로그램명"></td></tr>
     <tr><th>(하위)프로그램</th><td><input name="sprog" value="${k==='maj'?'전공교육 및 연수':''}" placeholder="(하위)프로그램명"></td></tr>
     <tr><th rowspan="4">${w}<br>신청자</th><th>성명 <b>*</b></th><td><input name="name" required></td></tr>
-    <tr><th>소속 <b>*</b></th><td><input name="dept" required placeholder="예) ○○과 교수"></td></tr>
+    <tr><th>소속 <b>*</b></th><td class="l"><div class="trn-dept"><select name="dsel" required class="trn-sel" onchange="trnDept(this)">${trnDeptOpts()}</select><input name="dpos" class="trn-pos" placeholder="직책 (예: 교수)"></div><input name="dext" class="trn-dext" placeholder="소속 직접 입력" hidden></td></tr>
     <tr><th>거래은행</th><td><input name="bank" placeholder="출장비 지급 은행"></td></tr>
     <tr><th>계좌번호</th><td><input name="acct" inputmode="numeric" placeholder="출장비 지급 계좌"></td></tr>
     <tr><th rowspan="7">${T.org}</th><th>기관명 <b>*</b></th><td><input name="org" required></td></tr>
@@ -1641,17 +1645,21 @@ function trnPage(k){const T=TRN[k],w=T.w;return `
    <div class="trn-att"><b>첨부</b>${T.att.map((a,i)=>`<span>${i+1}. ${a}</span>`).join('')}</div>
    <div class="eqbtns"><button type="submit" class="btn">이메일로 제출하기</button><button type="button" class="btn ghost" onclick="savePdfForm('${T.t}.pdf',this)">📄 PDF로 저장</button><button type="button" class="btn ghost" onclick="printEqForm()">🖨 인쇄</button><button type="reset" class="btn ghost" onclick="setTimeout(()=>{trnSum();trnDays()},0)">다시 작성</button></div>
    </form>
-   <p class="eqnote">※ 결재(담당 → ${k==='ind'?'센터장':'책임교수'} → 부단장 → 단장 → 총장)는 학내 전자결재로 진행합니다. ‘PDF로 저장’한 신청서를 기안문에 첨부해 주세요.<br>※ 출장비는 앵커사업 사업비 집행 기준(여비 규정)에 맞춰 작성해 주세요.</p>
+   <p class="eqnote">※ 결재(담당 → 센터장 → 부단장 → 단장 → 총장)는 학내 전자결재로 진행합니다. ‘PDF로 저장’한 신청서를 기안문에 첨부해 주세요.<br>※ 출장비는 앵커사업 사업비 집행 기준(여비 규정)에 맞춰 작성해 주세요.</p>
   </div>
  </section>`}
+const TRN_DEPT=[['전문학사 학과',['간호학부','글로벌뷰티과','글로벌케어과','물리치료과','방사선과','보건행정과','사회복지케어과','산림조경비즈니스과','안경광학과','언어치료과','요가과','웰니스문화관광과','유아교육과','응급구조과','작업치료과','치위생과','평생교육상담과']],['학사학위 전공심화과정',['물리치료학과(전공심화)','방사선학과(전공심화)','산림조경비즈니스학과(전공심화)','언어치료학과(전공심화)','유아교육학과(전공심화)','응급구조학과(전공심화)','작업치료학과(전공심화)','치위생학과(전공심화)']],['전문기술석사과정',['행동분석재활융합학과(전문기술석사)']]];
+function trnDeptOpts(){return '<option value="">— 학과를 선택하세요 —</option>'+TRN_DEPT.map(g=>'<optgroup label="'+g[0]+'">'+g[1].map(x=>'<option>'+x+'</option>').join('')+'</optgroup>').join('')+'<option value="기타">기타 (직접 입력)</option>'}
+function trnDept(sel){const x=sel.form.elements.dext;x.hidden=sel.value!=='기타';x.required=sel.value==='기타';if(!x.hidden)x.focus()}
+function trnDeptVal(f){const s=f.elements.dsel.value,d=s==='기타'?f.elements.dext.value.trim():s,p=f.elements.dpos.value.trim();return (d+(p?' '+p:'')).trim()}
 function trnSum(){const f=document.getElementById('eqf');if(!f||!f.dataset.k)return;const n=TRN[f.dataset.k].items.length;let t=0;for(let i=0;i<n;i++){const a=(+f.elements['u'+i].value||0)*(+f.elements['n'+i].value||0);t+=a;document.getElementById('trna'+i).textContent=a.toLocaleString('ko-KR')}document.getElementById('trntot').textContent=t.toLocaleString('ko-KR');return t}
 function trnDays(){const f=document.getElementById('eqf'),o=document.getElementById('trndays');if(!f||!o)return;const a=f.elements.d1.value,b=f.elements.d2.value;if(a&&b){const d=Math.round((new Date(b)-new Date(a))/864e5)+1;o.textContent=d>0?'('+d+'일)':'종료일을 확인해 주세요';return d}o.textContent='';return 0}
 function trnSubmit(e){e.preventDefault();const f=e.target,k=f.dataset.k,T=TRN[k],v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
  if(trnDays()<=0){alert(T.w+'기간을 확인해 주세요.');return false}
  if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 제출할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;
  const cost=T.items.map((x,i)=>v('u'+i)||v('n'+i)?'- '+x+': '+(+v('u'+i)||0).toLocaleString('ko-KR')+'원 × '+(v('n'+i)||0)+' = '+((+v('u'+i)||0)*(+v('n'+i)||0)).toLocaleString('ko-KR')+'원'+(v('m'+i)?' ('+v('m'+i)+')':''):'').filter(Boolean);
- const body=['['+T.t+'] '+T.no,'2026년 지역성장 인재양성체계(앵커) 사업','','■ 운영',(k==='ind'?'세부과제':'하위과제')+': '+v('task'),'프로그램: '+v('prog'),'(하위)프로그램: '+v('sprog'),'','■ '+T.w+' 신청자','성명: '+v('name'),'소속: '+v('dept'),'거래은행: '+v('bank'),'계좌번호: '+v('acct'),'','■ '+T.org,'기관명: '+v('org'),'대표자: '+v('ceo'),'전화번호: '+v('otel'),'Fax번호: '+v('fax'),'주소: '+v('addr'),'홈페이지: '+v('web'),'주요업종: '+v('biz'),'',T.w+'명: '+v('title'),T.w+'기간: '+v('d1')+' ~ '+v('d2')+' ('+trnDays()+'일), 총 '+(v('hrs')||'-')+'시간','','■ 출장비 내역'].concat(cost.length?cost:['- 없음'],['합계: '+trnSum().toLocaleString('ko-KR')+'원','','■ 계획 개요',T.w+' 목적: '+v('p1')],k==='ind'?['산학협동 체결 여부 및 실적: '+v('p2'),'공동 수행과제 등 업무 참여내용: '+v('p3')]:[],[T.w+'결과 활용계획 및 기대효과: '+v('p4'),'','위와 같이 '+T.w+(k==='ind'?'를':'을')+' 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청자: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'','※ 첨부: '+T.att.join(' / '),'※ 서명이 들어간 신청서는 ‘PDF로 저장’으로 만든 PDF를 이 메일에 첨부해 주세요.']).join('\n');
- location.href='mailto:'+TRN_MAIL+'?subject='+encodeURIComponent('['+T.t+'] '+v('dept')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
+ const body=['['+T.t+'] '+T.no,'2026년 지역성장 인재양성체계(앵커) 사업','','■ 운영',(k==='ind'?'세부과제':'하위과제')+': '+v('task'),'프로그램: '+v('prog'),'(하위)프로그램: '+v('sprog'),'','■ '+T.w+' 신청자','성명: '+v('name'),'소속: '+trnDeptVal(f),'거래은행: '+v('bank'),'계좌번호: '+v('acct'),'','■ '+T.org,'기관명: '+v('org'),'대표자: '+v('ceo'),'전화번호: '+v('otel'),'Fax번호: '+v('fax'),'주소: '+v('addr'),'홈페이지: '+v('web'),'주요업종: '+v('biz'),'',T.w+'명: '+v('title'),T.w+'기간: '+v('d1')+' ~ '+v('d2')+' ('+trnDays()+'일), 총 '+(v('hrs')||'-')+'시간','','■ 출장비 내역'].concat(cost.length?cost:['- 없음'],['합계: '+trnSum().toLocaleString('ko-KR')+'원','','■ 계획 개요',T.w+' 목적: '+v('p1')],k==='ind'?['산학협동 체결 여부 및 실적: '+v('p2'),'공동 수행과제 등 업무 참여내용: '+v('p3')]:[],[T.w+'결과 활용계획 및 기대효과: '+v('p4'),'','위와 같이 '+T.w+(k==='ind'?'를':'을')+' 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청자: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'','※ 첨부: '+T.att.join(' / '),'※ 서명이 들어간 신청서는 ‘PDF로 저장’으로 만든 PDF를 이 메일에 첨부해 주세요.']).join('\n');
+ location.href='mailto:'+TRN_MAIL+'?subject='+encodeURIComponent('['+T.t+'] '+trnDeptVal(f)+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
 function eqFill(){const d=document.getElementById('eqdate');if(d){const t=new Date();d.textContent=t.getFullYear()+'년 '+(t.getMonth()+1)+'월 '+t.getDate()+'일'}const f=document.getElementById('eqf');if(!f||f._init)return;f._init=1;const sg=f.elements.signer;let auto=true;sg.addEventListener('input',()=>auto=!sg.value);f.elements.name.addEventListener('input',e=>{if(auto)sg.value=e.target.value});f.addEventListener('reset',()=>{auto=true;sigSet('')})}
 /* 서명 패드 */
 let sigData='';
