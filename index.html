@@ -883,6 +883,43 @@ header,header.on,header.sub{height:108px}
 .rp-orig span{transition:.18s}.rp-orig:hover{background:var(--g);color:#fff}.rp-orig:hover span{transform:translate(2px,-2px)}
 .rp .pr-art{max-width:880px}
 @media(max-width:680px){.rp .rp-h h3{font-size:21px}.rp .rp-meta{font-size:13px}.rp .rp-meta span+span::before{margin:0 10px}}
+
+@media(min-width:681px){.hd .logo b{font-size:20px}.hd .logo small{font-size:8px}}
+@media(min-width:1281px){.hd .logo{margin-right:clamp(30px,4.4vw,67px)}}
+/* 섹션 제목·게시판 목록 */
+.stit{display:block;border:0;padding:0;margin:0 0 34px}
+.stit .st-en{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--g);margin-bottom:10px}
+.stit .st-en::before{content:"";width:24px;height:3px;border-radius:2px;background:linear-gradient(90deg,#4E79BD,#7ABE47)}
+.stit h3{font-size:32px;font-weight:800;letter-spacing:-1px;color:#111;line-height:1.25}
+.lbar{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}
+.lcnt{font-size:14.5px;color:#6b7483}.lcnt b{color:var(--g);font-weight:800;margin:0 1px}
+.tbl{border-top:0;border-collapse:separate;border-spacing:0;font-size:16px}
+.tbl th{background:#f3f6fb;color:#5b6576;font-size:14.5px;font-weight:600;padding:14px 10px;border:0;border-top:1px solid #e3e8f0;border-bottom:1px solid #e3e8f0}
+.tbl th:first-child{border-left:1px solid #e3e8f0;border-radius:10px 0 0 10px}
+.tbl th:last-child{border-right:1px solid #e3e8f0;border-radius:0 10px 10px 0}
+.tbl td{padding:16px 10px;border-bottom:1px solid #eef1f5;color:#2b3340;font-size:15.5px}
+.tbl.blt td{color:#6b7483;font-size:15px;padding:17px 10px}
+.tbl.blt td.bn{color:#a0a8b6;font-size:14px}
+.tbl.blt td.bt a{color:#1c2330;font-size:16.5px;font-weight:500;transition:.15s}
+.tbl tr:hover td{background:#f8fafd}
+.tbl.blt tr:hover td.bt a{color:var(--g)}
+@media(max-width:680px){.tbl.blt td{padding:13px 6px}.tbl.blt td.bt a{font-size:15px}.tbl.blt th{font-size:13px;padding:11px 6px}.stit{margin-bottom:24px}.stit h3{font-size:24px}.stit .st-en{font-size:11.5px;letter-spacing:1.8px}}
+
+/* 사업단 연락처 카드 */
+.ct-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.ct-card{background:#fff;border:1px solid #e3e8f0;border-radius:14px;overflow:hidden;transition:.18s}
+.ct-card:hover{box-shadow:0 10px 24px rgba(16,33,63,.07);border-color:#d3dcea}
+.ct-wide{grid-column:1/-1}
+.ct-hd{padding:16px 22px;background:#f6f8fb;border-bottom:1px solid #e9edf3;font-size:16.5px;font-weight:700;color:#1c2330;display:flex;align-items:center;gap:8px;word-break:keep-all}
+.ct-list{list-style:none;margin:0;padding:6px 22px}
+.ct-wide .ct-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}
+.ct-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed #e6eaf0}
+.ct-list li:last-child,.ct-wide .ct-list li:nth-last-child(2):nth-child(odd){border-bottom:0}
+.ct-role{font-size:15.5px;color:#2b3340}
+.ct-tel{display:inline-flex;align-items:center;gap:7px;font-size:15px;font-weight:600;color:var(--g);white-space:nowrap;padding:6px 12px;border-radius:18px;background:#f0f5fd;transition:.15s}
+.ct-tel svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ct-tel:hover{background:var(--g);color:#fff}
+@media(max-width:900px){.ct-grid{grid-template-columns:1fr}.ct-wide .ct-list{grid-template-columns:1fr}.ct-wide .ct-list li:nth-last-child(2):nth-child(odd){border-bottom:1px dashed #e6eaf0}}
 </style>
 <script>window.I18N_EXTRA={"en": {"춘해보건대학교 앵커사업단": "Choonhae Anchor Project Group", "지역과 함께 성장하는": "A regional hub for", "보건의료 인재양성 거점": "healthcare talent", "사업단의 공지와 공고를": "All notices and calls", "한곳에서 확인하세요": "in one place", "프로그램과 공용장비를": "Apply online for", "온라인으로 신청하세요": "programs and equipment", "앵커사업단의 활동과": "News of our activities", "성과 소식을 전합니다": "and achievements", "궁금한 점을 묻고": "Ask questions and", "자료를 함께 나눕니다": "share resources", "업무에 필요한 도구를": "Tools you need", "바로 사용하세요": "for your work"}, "ja": {"춘해보건대학교 앵커사업단": "春海保健大学 アンカー事業団", "지역과 함께 성장하는": "地域とともに成長する", "보건의료 인재양성 거점": "保健医療人材育成の拠点", "사업단의 공지와 공고를": "事業団のお知らせと公募を", "한곳에서 확인하세요": "一か所でご確認ください", "프로그램과 공용장비를": "プログラムと共用機器を", "온라인으로 신청하세요": "オンラインでお申し込みください", "앵커사업단의 활동과": "アンカー事業団の活動と", "성과 소식을 전합니다": "成果をお伝えします", "궁금한 점을 묻고": "ご質問をお寄せいただき", "자료를 함께 나눕니다": "資料を共有します", "업무에 필요한 도구를": "業務に必要なツールを", "바로 사용하세요": "すぐにご利用ください"}, "zh": {"춘해보건대학교 앵커사업단": "春海保健大学 锚定事业团", "지역과 함께 성장하는": "与地区共同成长的", "보건의료 인재양성 거점": "保健医疗人才培养基地", "사업단의 공지와 공고를": "事业团的通知与公告", "한곳에서 확인하세요": "在此一站查看", "프로그램과 공용장비를": "项目与共用设备", "온라인으로 신청하세요": "均可在线申请", "앵커사업단의 활동과": "传递锚定事业团的", "성과 소식을 전합니다": "活动与成果消息", "궁금한 점을 묻고": "提出疑问", "자료를 함께 나눕니다": "共享资料", "업무에 필요한 도구를": "工作所需的工具", "바로 사용하세요": "即刻使用"}, "vi": {"춘해보건대학교 앵커사업단": "Ban Dự án ANCHOR Đại học Choonhae", "지역과 함께 성장하는": "Trung tâm đào tạo nhân lực", "보건의료 인재양성 거점": "y tế cùng phát triển với địa phương", "사업단의 공지와 공고를": "Xem mọi thông báo", "한곳에서 확인하세요": "và công bố tại một nơi", "프로그램과 공용장비를": "Đăng ký trực tuyến", "온라인으로 신청하세요": "chương trình và thiết bị", "앵커사업단의 활동과": "Tin tức về hoạt động", "성과 소식을 전합니다": "và thành quả của Ban", "궁금한 점을 묻고": "Đặt câu hỏi và", "자료를 함께 나눕니다": "chia sẻ tài liệu", "업무에 필요한 도구를": "Công cụ cần thiết", "바로 사용하세요": "cho công việc"}}</script></head>
 <body>
@@ -1701,7 +1738,7 @@ function maskPage(){return `
  </ol>
  <p class="dc-note">PDF는 각자 PC의 브라우저 안에서만 처리되며 서버로 전송되지 않습니다. 자동 검출은 완벽하지 않으니 저장 전에 반드시 눈으로 확인해 주세요. 사진 속 얼굴은 직접 상자를 그려 가려야 합니다.</p></section>`}
 
-function stit(t,e){return `<div class="stit"><h3>${t}</h3><small>${e}</small></div>`}
+function stit(t,e){return `<div class="stit"><span class="st-en">${e}</span><h3>${t}</h3></div>`}
 const JOBS=[
  {t:'앵커사업단 연구원(행정사무) 채용',org:'춘해보건대학교 산학협력단',dept:'앵커사업단',pos:'연구원(행정사무)',n:1,emp:'계약직(사업 종료 시까지)',career:'경력 무관 · 국가프로젝트 수행경험자 우대',edu:'전문대학 이상 졸업자',pay:'월 230만원',place:'울산 울주군 웅촌면',
   open:'2026-11-24T00:00',close:'2026-11-30T15:00',term:'2026년 12월 ~ 사업 종료 시까지',start:'2026년 12월(예정)',
@@ -1865,9 +1902,7 @@ const PAGES={
   </div>
  </section>
  <section>${stit('사업단 연락처','Contact')}
-  <table class="tbl"><tr><th style="width:42%">소속</th><th>담당</th><th style="width:22%">전화번호</th></tr>
-  ${groups.map(g=>{const rows=C.filter(c=>c[0]===g);return rows.map((c,i)=>`<tr>${i?'':`<td class="l" rowspan="${rows.length}">${gname(g)}</td>`}<td class="l">${c[1]}</td><td>${tel(c[2])}</td></tr>`).join('')}).join('')}
-  </table>
+  <div class="ct-grid">${groups.map(g=>{const rows=C.filter(c=>c[0]===g);return `<div class="ct-card ct-wide"><div class="ct-hd">${gname(g)}</div><ul class="ct-list">${rows.map(c=>`<li><span class="ct-role">${c[1]}</span>${c[2]?`<a class="ct-tel" href="tel:${tel(c[2])}"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>${tel(c[2])}</a>`:''}</li>`).join('')}</ul></div>`}).join('')}</div>
   <p class="note">교직원 전화번호부(2026. 11. 20.) 기준입니다.</p>
  </section>`},
  location:()=>`
@@ -1957,6 +1992,7 @@ function rpClean(h){const t=document.createElement('template');t.innerHTML=h||''
 function rpExt(n){const m=String(n).match(/\.([a-z0-9]+)$/i);return m?m[1].toLowerCase():'file'}
 function rpHead(lab,p,extra){return `<div class="rp-h"><div class="rp-tags"><span class="rp-cat">${esc(lab)}</span>${p.src&&p.src!==lab?`<span class="rp-dept">${esc(p.src)}</span>`:''}</div><h3>${esc(p.t)}</h3><div class="rp-meta"><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>${p.d||''}</span><span><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg>${esc(p.src||'춘해보건대학교 앵커사업단')}</span>${extra||''}</div></div>`}
 function plainPost(k,p,lab,ims){const f=p.files||[],fs=f.some(x=>typeof x==='string');
+ if(k==='press'&&!p.ti&&p.u&&!p._og&&/^https?:/.test(p.u)&&!/news\.google\.com/.test(p.u)){p._og=1;fetch(RP_API+'?og='+encodeURIComponent(p.u)).then(r=>r.json()).then(j=>{if(j&&j.ok&&(j.ti||j.b)){if(j.ti)p.ti=j.ti;if(j.b&&!p.b)p.b=j.b;if(location.hash.indexOf('#/press/')===0)route()}}).catch(()=>{})}
  const body=k==='press'?((p.ti||p.b)?`<div class="rp-body pr-art">${p.ti?`<img class="pr-img" src="${esc(prFull(p.ti))}" data-th="${esc(p.ti)}" alt="${esc(p.t)}" loading="lazy" referrerpolicy="no-referrer" onerror="if(this.dataset.th&&this.src!==this.dataset.th){this.src=this.dataset.th;this.dataset.th=''}else this.remove()">`:''}${p.b?`<p class="pr-sum">${esc(p.b)}</p>`:''}<p class="pr-note">출처: ${esc(p.src||'')} · 전체 기사는 아래 「기사 원문 보기」에서 확인할 수 있습니다.</p></div>`:''):(p.b?`<div class="rp-body" style="white-space:pre-line">${esc(p.b)}</div>`:'');
  return `<section>${stit(lab,BOARD_EN[k])}<article class="rp">${rpHead(lab,p,f.length?`<span><svg viewBox="0 0 24 24"><path d="M21 11l-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/></svg>첨부 ${f.length}개</span>`:'')}
  ${body}
@@ -1978,7 +2014,7 @@ function richPost(k,p,lab,idx){
 function boardPage(k,idx){if(k==='video')return videoPage(k);if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
  if(idx!=null&&a[idx]&&a[idx].rich)return richPost(k,a[idx],lab,idx);
  if(idx!=null&&a[idx]){const p=a[idx];return plainPost(k,p,lab,k!=='press'?(p.im||[]):[])}
- return `<section>${stit(lab,BOARD_EN[k])}<p style="font-size:14px;margin-bottom:12px">전체 <b style="color:var(--g)">${a.length}</b>건</p>
+ return `<section>${stit(lab,BOARD_EN[k])}<div class="lbar"><span class="lcnt">전체 <b>${a.length}</b>건</span></div>
  <table class="tbl blt"><tr><th class="bn" style="width:80px">번호</th><th class="bt">제목</th><th class="bw" style="width:140px">${k==='press'?'매체':'작성자'}</th><th class="bd" style="width:120px">등록일</th></tr>
  ${a.length?a.map((p,i)=>`<tr><td class="bn">${a.length-i}</td><td class="l bt"><a href="#/${k}/${i}">${esc(p.t)}</a></td><td class="bw">${esc(p.src||'앵커사업단')}</td><td class="bd">${p.d}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">등록된 게시물이 없습니다.</td></tr>'}</table></section>`}
 
