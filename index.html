@@ -835,6 +835,7 @@ header,header.on,header.sub{height:108px}
 <style>.ap-pick{display:flex;flex-direction:column;gap:6px}.ap-pick select{font:inherit;font-size:15px;padding:9px 10px;border:1px solid #cdd6e3;border-radius:8px;background:#fff;max-width:100%}.ap-dept{color:#0e7a45;font-weight:700}.ap-print{display:none}.ap-hint{color:#888;font-size:13px}.ap-agree{margin:22px 0 0;border:1px solid #dfe6f0;border-radius:12px;padding:16px 18px;background:#fafcff}.ap-agree h5{font-size:16.5px;margin-bottom:8px}.ap-agree h5 small{color:#888;font-weight:500}.ap-agree details{margin-bottom:10px}.ap-agree summary{cursor:pointer;color:#1d4f9a;font-weight:700}.ap-agtx{font-size:14px;color:#444;line-height:1.7;margin-top:8px}.ap-agtx p{margin:0 0 8px}.ap-ag{display:block;margin:6px 0;font-size:15px;cursor:pointer}.ap-req{color:#e0383e;font-size:13px}@media print{body.pf .ap-pick input,body.pf .ap-pick select,body.pf .ap-dept,body.pf .ap-hint,body.pf .ap-agree summary{display:none!important}body.pf .ap-print{display:block;font-weight:700}body.pf .ap-agree details{display:block}body.pf .ap-agree details>div{display:block}body.pf .ap-agtx{font-size:11px}body.pf .eqft input,body.pf .eqft textarea,body.pf .eqft select{border:0!important;background:none!important;box-shadow:none!important;outline:0}body.pf .ap-empty{color:transparent!important}body.pf input[type=date]::-webkit-calendar-picker-indicator{display:none}body.pf #eqform .eqnote{display:none}body.pf .ap-agree{break-inside:avoid}}</style>
 <style>@media(max-width:680px){.eqform{padding:14px 12px!important}.eqfh{flex-wrap:wrap;gap:4px}.eqft,.eqft tbody,.eqft tr,.eqft th,.eqft td{display:block;width:100%!important;box-sizing:border-box}.eqft tr{border-bottom:1px solid #e3e8f0;padding:6px 0}.eqft th{text-align:left;background:none!important;padding:6px 2px 2px!important;font-size:14.5px!important;white-space:normal!important;border:0!important;height:auto!important}.eqft th br{display:none}.eqft td{padding:2px 0 6px!important;border:0!important;height:auto!important}.eqft input:not([type=checkbox]):not([type=radio]),.eqft textarea,.eqft select{max-width:100%!important;width:100%!important;font-size:16px!important}.eqft .eqdt{width:calc(50% - 12px)!important;display:inline-block}.eqft .eqrd{display:inline-flex;align-items:center;gap:4px;margin:4px 14px 4px 0;font-size:15px}.ap-hint{display:block;margin-top:4px}.eqcks{display:block}.eqfs{font-size:15px}.eqfs br{display:none}.eqfs #eqdate,.eqfs .eqsl,.eqfs b{display:block;margin:10px 0}.eqsl{justify-content:center}.eqsignin{width:150px!important}.eqbtns .btn{flex:1 1 100%}.ap-agree{padding:12px}}</style>
 <style>.ap-listbtn{align-self:flex-start;font:inherit;font-size:14.5px;font-weight:700;color:#1d4f9a;background:#eef4fd;border:1.5px solid #1d4f9a;border-radius:8px;padding:7px 14px;cursor:pointer}.ap-listbtn:hover{background:#1d4f9a;color:#fff}.ap-list{display:flex;flex-direction:column;gap:6px;border:1px solid #dfe6f0;border-radius:10px;padding:10px;background:#fafcff}.ap-list[hidden]{display:none}@media print{body.pf .ap-listbtn,body.pf .ap-list{display:none!important}body.pf .ap-print{display:none!important}body.pf .ap-pick #apname{display:block!important}}</style>
+<style>.ap-aglead{font-size:14px;color:#555;margin:0 0 10px;line-height:1.6}.ap-agbox{border:1px solid #dfe6f0;border-radius:10px;background:#fff;padding:12px 14px;margin-bottom:10px}.ap-agbox>b{display:block;font-size:15.5px;margin-bottom:8px;color:#0b2a5b}.ap-agt{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.55}.ap-agt th{width:92px;text-align:left;vertical-align:top;background:#f3f6fb;color:#333;padding:6px 8px;border:1px solid #e3e8f0;white-space:nowrap}.ap-agt td{padding:6px 8px;border:1px solid #e3e8f0;color:#444}.ap-agyn{display:flex;gap:18px;justify-content:flex-end;margin-top:8px;font-size:15px;font-weight:700}.ap-agyn label{display:inline-flex;align-items:center;gap:5px;cursor:pointer}@media(max-width:680px){.ap-agt th,.ap-agt td{display:block;width:100%!important;border:0;padding:3px 2px}.ap-agt th{background:none;color:#0b2a5b}.ap-agt tr{display:block;border-bottom:1px solid #eef1f5;padding:4px 0}.ap-agyn{justify-content:flex-start}}@media print{body.pf .ap-agt{font-size:10.5px}body.pf .ap-agbox{break-inside:avoid}}</style>
 </head>
 <body>
 <header id="hd">
@@ -1537,6 +1538,11 @@ function applyFilter(){const sel=document.getElementById('apsel');if(!sel)return
  const g={};L.forEach(p=>{const u=String(p.c).slice(0,2);(g[u]=g[u]||[]).push(p)});
  sel.innerHTML='<option value="">'+(APPLY_PROGS&&APPLY_PROGS.length?(L.length?'— 프로그램을 선택하세요 ('+L.length+'개) —':'— 검색 결과가 없습니다 —'):'— 목록을 불러오지 못했습니다. 위 칸에 직접 입력하세요 —')+'</option>'+Object.keys(g).map(u=>'<optgroup label="'+u+' 단위과제">'+g[u].map(p=>'<option value="'+esc(p.c)+'">'+(p.s?'　└ ':'')+'['+esc(p.c)+'] '+esc(p.n)+(p.s&&p.p?' ('+esc(p.p)+')':'')+'</option>').join('')+'</optgroup>').join('');
  if(cur&&[...sel.options].some(o=>o.value===cur))sel.value=cur}
+
+/* 휴대폰 번호 자동 하이픈: 01074332447 → 010-7433-2447 */
+function fmtTel(v){const d=String(v).replace(/\D/g,'').slice(0,11);if(d.startsWith('02')){return d.length<3?d:d.length<6?d.slice(0,2)+'-'+d.slice(2):d.length<10?d.slice(0,2)+'-'+d.slice(2,5)+'-'+d.slice(5):d.slice(0,2)+'-'+d.slice(2,6)+'-'+d.slice(6,10)}
+ if(d.length<4)return d;if(d.length<8)return d.slice(0,3)+'-'+d.slice(3);if(d.length<11)return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);return d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7)}
+document.addEventListener('input',e=>{const t=e.target;if(t&&t.matches&&t.matches('#eqf input[type=tel]')){const f=fmtTel(t.value);if(f!==t.value)t.value=f}});
 function applyList(){const l=document.getElementById('aplist'),b=document.getElementById('aplistbtn');l.hidden=!l.hidden;b.textContent=l.hidden?'📋 등록된 프로그램 목록에서 선택':'▲ 목록 닫기';if(!l.hidden){const sl=document.getElementById('apsel');sl.size=matchMedia('(max-width:680px)').matches?1:8;sl.style.minHeight=sl.size>1?'180px':'auto';applyLoad();setTimeout(()=>document.getElementById('apq').focus(),50)}}
 let APPLY_SEL=null;
 function applySel(){const v=document.getElementById('apsel').value,p=(APPLY_PROGS||[]).find(x=>x.c===v);if(!p)return;APPLY_SEL=p;
@@ -1544,19 +1550,18 @@ function applySel(){const v=document.getElementById('apsel').value,p=(APPLY_PROG
 function applyPick(){const n=document.getElementById('apname');const v=(n.value||'').trim();
  if(APPLY_SEL&&v!==(APPLY_SEL.s&&APPLY_SEL.p?APPLY_SEL.p+' › ':'')+APPLY_SEL.n+' ('+APPLY_SEL.c+')')APPLY_SEL=null;
  document.getElementById('apdept').textContent=APPLY_SEL&&APPLY_SEL.d?'담당 부서: '+APPLY_SEL.d:'';document.getElementById('appn').textContent=v}
-function applyType(){const t=(document.querySelector('#eqf input[name=atype]:checked')||{}).value;document.querySelectorAll('.ap-stu').forEach(e=>e.style.display=t==='재학생'?'':'none');document.getElementById('aporgl').textContent=t==='재학생'?'학과':(t==='교직원'?'소속 부서':'소속(기관·기업)')}
+function applyType(){const t=(document.querySelector('#eqf input[name=atype]:checked')||{}).value;document.querySelectorAll('.ap-stu').forEach(e=>e.style.display=t==='재학생'?'':'none');}
 function applyCheck(){const f=document.getElementById('eqf');const v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
  if(!v('progName')){alert('참가할 프로그램명을 입력하거나 목록에서 선택해 주세요.');document.getElementById('apname').focus();return false}
  if(!f.reportValidity())return false;
- if(!f.elements.agree1.checked||!f.elements.agree2.checked){alert('개인정보 수집·이용 및 제3자 제공에 동의해야 신청할 수 있습니다.');return false}
+ const ag=n=>(f.querySelector('input[name='+n+']:checked')||{}).value;if(ag('agree1')!=='y'||ag('agree2')!=='y'){alert('개인정보 수집·이용(①)과 제3자 제공(②)에 모두 「동의함」을 선택해야 신청할 수 있습니다.');f.querySelector('.ap-agree').scrollIntoView({behavior:'smooth',block:'center'});return false}
  if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 진행할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;return true}
-function applyPdf(){if(!applyCheck())return;applyPick();const d=document.querySelector('.ap-agree details');if(d)d.open=true;document.querySelectorAll('#eqf input[type=date]').forEach(i=>i.classList.toggle('ap-empty',!i.value));printEqForm()}
+function applyPdf(){if(!applyCheck())return;applyPick();document.querySelectorAll('#eqf input[type=date]').forEach(i=>i.classList.toggle('ap-empty',!i.value));printEqForm()}
 function applyMail(){if(!applyCheck())return;const f=document.getElementById('eqf'),v=n=>(f.elements[n]&&f.elements[n].value||'').trim();const pn=document.getElementById('appn').textContent;
  const body=['[프로그램 참가 신청서]','','(하위)프로그램: '+pn,'운영 기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'구분: '+((f.querySelector('input[name=atype]:checked')||{}).value||''),'성명: '+v('name')+(v('ename')?' ('+v('ename')+')':'')+' / '+((f.querySelector('input[name=sex]:checked')||{}).value||''),'소속: '+v('org')+(v('sno')?' / 학번 '+v('sno'):''),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'신청 동기·요청 사항: '+v('memo'),'','개인정보 수집·이용 동의: 동의함 / 제3자 제공 동의: 동의함','신청인: '+v('signer')+(sigData?' (전자서명 완료)':''),'※ 서명이 들어간 신청서는 ‘PDF 저장’으로 만들어 이 메일에 첨부해 주세요.'].join('\n');
  location.href='mailto:'+APPLY_MAIL+'?subject='+encodeURIComponent('[프로그램 참가 신청] '+pn+' '+v('name'))+'&body='+encodeURIComponent(body)}
 function applyPage(){setTimeout(()=>{APPLY_SEL=null;applyType()},30);const today=new Date(Date.now()+324e5).toISOString().slice(0,10);
- const ck=(n,lab)=>`<label class="ap-ag"><input type="checkbox" name="${n}" required> <b>${lab}에 동의합니다.</b> <span class="ap-req">(필수)</span></label>`;
- return `<section>${stit('프로그램 참가 신청','Program Application')}
+  return `<section>${stit('프로그램 참가 신청','Program Application')}
  <p class="eqnote">앵커사업단 (하위)프로그램 참가 신청서입니다. 프로그램을 고르고 내용을 작성한 뒤 <b>「PDF로 저장」</b>해 프로그램 담당자에게 제출해 주세요.<br>작성한 내용은 홈페이지 서버에 저장되지 않으며, 이 화면을 닫으면 사라집니다.</p>
  <div class="eqform" id="eqform">
   <div class="eqfh"><h4>참가 신청서</h4><span class="eqreq">【서식 20호】 · <b>*</b> 필수 입력</span></div>
@@ -1567,18 +1572,21 @@ function applyPage(){setTimeout(()=>{APPLY_SEL=null;applyType()},30);const today
    <tr><th colspan="2">신청 구분 <b>*</b></th><td class="l">${['재학생','교직원','지역주민·일반','기업·기관'].map((t,i)=>`<label class="eqrd"><input type="radio" name="atype" value="${t}" ${i?'':'checked'} onchange="applyType()"> ${t}</label>`).join('')}</td></tr>
    <tr><th rowspan="2">성명</th><th>한글 <b>*</b></th><td class="l"><input name="name" required style="max-width:240px"> ${['남','여'].map(t=>`<label class="eqrd"><input type="radio" name="sex" value="${t}" required> ${t}</label>`).join('')}</td></tr>
    <tr><th>영문</th><td><input name="ename" placeholder="수료증 발급 시 필요(선택)"></td></tr>
-   <tr><th colspan="2"><span id="aporgl">학과</span> <b>*</b></th><td><input name="org" required placeholder="예) 치위생과 / ○○기관"></td></tr>
+   <tr><th colspan="2"><span id="aporgl">학과/기관</span> <b>*</b></th><td><input name="org" required placeholder="예) 치위생과 / ○○기관"></td></tr>
    <tr class="ap-stu"><th colspan="2">학번</th><td><input name="sno" inputmode="numeric" placeholder="재학생만"></td></tr>
-   <tr><th colspan="2">휴대폰 <b>*</b></th><td><input name="tel" type="tel" required placeholder="010-0000-0000"></td></tr>
+   <tr><th colspan="2">휴대폰 <b>*</b></th><td><input name="tel" type="tel" inputmode="numeric" maxlength="13" required placeholder="010-0000-0000"></td></tr>
    <tr><th colspan="2">E-mail</th><td><input name="mail" type="email" placeholder="name@example.com"></td></tr>
    <tr><th colspan="2">신청 동기·<br>요청 사항</th><td><textarea name="memo" rows="3" placeholder="(선택) 참가 동기, 필요한 지원 사항 등"></textarea></td></tr>
   </table>
   <div class="ap-agree">
-   <h5>개인(신용)정보 수집·이용 및 제공 동의 <small>【서식 20-4호】</small></h5>
-   <details><summary>내용 보기</summary><div class="ap-agtx">
-    <p><b>1. 수집·이용에 관한 사항</b><br>· 목적: 앵커사업 프로그램 참가자 선발 및 사업 운영·관리<br>· 항목(필수): 성명, 소속, 휴대전화, E-mail, 학번(재학생) 등 개인식별정보<br>· 보유·이용기간: 보유목적 달성 시 또는 삭제 요청 시 지체 없이 파기. 단, 사업 종료 후 정부지원사업 이력관리를 위해 3년간 보유(공공기록물 관리에 관한 법률 시행령)<br>· 동의를 거부할 수 있으나, 거부하면 프로그램 참가 신청이 불가합니다.</p>
-    <p><b>2. 제3자 제공에 관한 사항</b><br>· 제공받는 자: 교육부, 지역성장인재양성체계(앵커) 사업 관리 전문기관<br>· 이용 목적: 앵커사업 관리·운영, 관련 자료 및 정책자료 활용<br>· 항목: 수집·이용에 동의한 정보 및 학번, 출석 등 학적사항<br>· 보유·이용기간: 제공된 날부터 5년(보유목적 달성 또는 삭제 요청 시 지체 없이 파기)<br>· 동의를 거부할 수 있으나, 거부하면 프로그램 참가 신청이 불가합니다.</p></div></details>
-   ${ck('agree1','개인정보 수집·이용')}${ck('agree2','개인정보 제3자 제공')}
+   <h5>개인(신용)정보 수집·이용 및 제3자 제공 동의 <small>【서식 20-4호】</small></h5>
+   <p class="ap-aglead">춘해보건대학교는 「개인정보 보호법」 제15조·제17조에 따라 아래와 같이 개인정보를 수집·이용하고 제3자에게 제공하는 데 동의를 받습니다.</p>
+   <div class="ap-agbox"><b>① 개인정보 수집·이용 (필수)</b>
+    <table class="ap-agt"><tr><th>수집 목적</th><td>앵커사업 프로그램 참가자 선발, 프로그램 운영·관리, 수료증 발급</td></tr><tr><th>수집 항목</th><td>성명(한글·영문), 성별, 학과/기관, 학번(재학생), 휴대폰, E-mail</td></tr><tr><th>보유 기간</th><td>목적 달성 또는 삭제 요청 시 지체 없이 파기(단, 정부지원사업 이력관리를 위해 사업 종료 후 3년 보관)</td></tr><tr><th>거부 권리</th><td>동의를 거부할 수 있으나, 거부하면 프로그램 참가 신청이 불가합니다.</td></tr></table>
+    <div class="ap-agyn"><label><input type="radio" name="agree1" value="y" required> 동의함</label><label><input type="radio" name="agree1" value="n"> 동의하지 않음</label></div></div>
+   <div class="ap-agbox"><b>② 개인정보 제3자 제공 (필수)</b>
+    <table class="ap-agt"><tr><th>제공받는 자</th><td>교육부, 지역성장인재양성체계(앵커) 사업 관리 전문기관</td></tr><tr><th>이용 목적</th><td>앵커사업 관리·운영, 성과 관리 및 정책자료 활용</td></tr><tr><th>제공 항목</th><td>①에서 수집한 정보 및 학번·출석 등 참여 사항</td></tr><tr><th>보유 기간</th><td>제공일부터 5년(목적 달성 또는 삭제 요청 시 지체 없이 파기)</td></tr><tr><th>거부 권리</th><td>동의를 거부할 수 있으나, 거부하면 프로그램 참가 신청이 불가합니다.</td></tr></table>
+    <div class="ap-agyn"><label><input type="radio" name="agree2" value="y" required> 동의함</label><label><input type="radio" name="agree2" value="n"> 동의하지 않음</label></div></div>
   </div>
   <p class="eqfs">상기 본인은 2026년 춘해보건대학교 앵커사업단에서 실시하는 프로그램 운영 전반에 대한 사항을 준수하며 <br>성실히 교육에 참여할 것을 약속드리며 프로그램 참가를 신청합니다.<br><br><span id="eqdate"></span><br><br><span class="eqsl">신청인: <input id="eqsigner" name="signer" class="eqsignin" required placeholder="성명 입력" autocomplete="name"> <button type="button" class="eqsigbox" id="eqsigbox" onclick="sigOpen()" title="눌러서 서명하기"><img id="eqsigimg" alt="서명" hidden><em>(서명)</em></button></span><small class="eqsigtip">‘(서명)’을 누르면 마우스·손가락으로 서명하거나, QR코드를 찍어 휴대폰으로 서명할 수 있습니다.</small><br><br><b>춘해보건대학교 앵커사업단 귀중</b></p>
   <div class="eqbtns"><button type="button" class="btn" onclick="applyPdf()">PDF로 저장 · 인쇄</button>${APPLY_MAIL?'<button type="button" class="btn ghost" onclick="applyMail()">이메일로 신청하기</button>':''}<button type="reset" class="btn ghost" onclick="setTimeout(()=>{APPLY_SEL=null;applyPick();applyType();const l=document.getElementById('aplist');l.hidden=true;document.getElementById('aplistbtn').textContent='📋 등록된 프로그램 목록에서 선택'},0)">다시 작성</button></div>
