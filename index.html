@@ -832,6 +832,7 @@ header,header.on,header.sub{height:108px}
 <style>.util .sharebtn{white-space:nowrap;flex-shrink:0;width:auto!important;height:34px!important;display:inline-flex;align-items:center;gap:5px;padding:0 12px;border-radius:17px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff!important;font-weight:800;font-size:14px;box-shadow:0 3px 10px rgba(109,40,217,.3);align-self:center}.util .sharebtn svg{width:16px;height:16px}.util .sharebtn:hover{filter:brightness(1.06)}#systoast{white-space:pre-line;text-align:center;max-width:90vw}@media(max-width:1600px) and (min-width:1281px){.util{gap:12px;min-width:0}}@media(max-width:1400px) and (min-width:1281px){.util .sharebtn span{display:none}.util .sharebtn{padding:0 9px}}@media(max-width:680px){.util .sharebtn span{display:none}.util .sharebtn{height:28px!important;padding:0 7px;font-size:12px;gap:3px}.util .sharebtn svg{width:13px;height:13px}}</style>
 <style>#shm{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:99999;display:none;align-items:center;justify-content:center;padding:16px}#shm.on{display:flex}.shbox{position:relative;background:#fff;border-radius:18px;padding:26px 28px 24px;width:min(560px,100%);max-height:94vh;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.3);color:#1d2430}.shbox h3{font-size:22px;color:#0b2a5b}.shsub{color:#666;font-size:14.5px;margin:4px 0 16px}.shx{position:absolute;right:14px;top:10px;font-size:30px;line-height:1;color:#888;background:none;border:0;cursor:pointer}.shsec{border:1px solid #e3e8f0;border-radius:14px;padding:14px 16px;margin-bottom:12px}.shsec>b{display:block;font-size:16px;margin-bottom:10px}.shurl{display:flex;gap:8px}.shurl input{flex:1;min-width:0;font:inherit;font-size:15px;border:1.5px solid #cfd8e6;border-radius:10px;padding:10px 12px;background:#f8fafd;color:#1d2430}.shbtn{font:inherit;font-size:15px;font-weight:700;border:1.5px solid #6d28d9;color:#6d28d9;background:#fff;border-radius:10px;padding:10px 16px;cursor:pointer;white-space:nowrap}.shbtn:hover{background:#f3eeff}.shbtn.pri{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border-color:#6d28d9}.shbtn.wide{width:100%;margin-top:2px;background:#fee500;border-color:#e6cf00;color:#3a1d1d}.shqr{display:flex;gap:16px;align-items:center}.shqri{width:170px;height:170px;flex-shrink:0;border:1px solid #e3e8f0;border-radius:12px;padding:8px;background:#fff}.shqri svg{width:100%;height:100%;display:block}.shqrb p{font-size:14px;color:#555;line-height:1.6;margin:0 0 10px}.shqrb .shbtn{margin:0 6px 6px 0}@media(max-width:520px){.shbox{padding:22px 18px 18px}.shqr{flex-direction:column;align-items:stretch}.shqri{margin:0 auto}.shqrb{text-align:center}.shurl{flex-direction:column}}</style>
 <style>.shp{font-size:14px;color:#555;line-height:1.6;margin:0 0 10px}.shms{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.shms a.shbtn{display:inline-flex;align-items:center;text-decoration:none}@media(max-width:520px){.shms{flex-direction:column}.shms .shbtn{justify-content:center;text-align:center}}</style>
+<style>.ap-pick{display:flex;flex-direction:column;gap:6px}.ap-pick select{font:inherit;font-size:15px;padding:9px 10px;border:1px solid #cdd6e3;border-radius:8px;background:#fff;max-width:100%}.ap-dept{color:#0e7a45;font-weight:700}.ap-print{display:none}.ap-hint{color:#888;font-size:13px}.ap-agree{margin:22px 0 0;border:1px solid #dfe6f0;border-radius:12px;padding:16px 18px;background:#fafcff}.ap-agree h5{font-size:16.5px;margin-bottom:8px}.ap-agree h5 small{color:#888;font-weight:500}.ap-agree details{margin-bottom:10px}.ap-agree summary{cursor:pointer;color:#1d4f9a;font-weight:700}.ap-agtx{font-size:14px;color:#444;line-height:1.7;margin-top:8px}.ap-agtx p{margin:0 0 8px}.ap-ag{display:block;margin:6px 0;font-size:15px;cursor:pointer}.ap-req{color:#e0383e;font-size:13px}@media print{body.pf .ap-pick input,body.pf .ap-pick select,body.pf .ap-dept,body.pf .ap-hint,body.pf .ap-agree summary{display:none!important}body.pf .ap-print{display:block;font-weight:700}body.pf .ap-agree details{display:block}body.pf .ap-agree details>div{display:block}body.pf .ap-agtx{font-size:11px}body.pf .eqft input,body.pf .eqft textarea,body.pf .eqft select{border:0!important;background:none!important;box-shadow:none!important;outline:0}body.pf .ap-empty{color:transparent!important}body.pf input[type=date]::-webkit-calendar-picker-indicator{display:none}body.pf #eqform .eqnote{display:none}body.pf .ap-agree{break-inside:avoid}}</style>
 </head>
 <body>
 <header id="hd">
@@ -883,7 +884,7 @@ header,header.on,header.sub{height:108px}
 /* ===== 메뉴 구성 (울산대 앵커사업단과 동일한 4개 대메뉴·12개 소메뉴) ===== */
 const MENU=[
  {t:'춘해보건대 앵커사업',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','조직 및 연락처'],['location','오시는 길']]},
- {t:'공지·신청',c:[['notice','공지사항'],['programs','운영 프로그램'],['call','과제공고'],['jobs','채용공고'],['equip','공용장비 신청']]},
+ {t:'공지·신청',c:[['notice','공지사항'],['programs','운영 프로그램'],['call','과제공고'],['jobs','채용공고'],['equip','공용장비 신청'],['apply','프로그램 참가 신청']]},
  {t:'알림·소식',c:[['press','언론보도'],['gallery','포토갤러리'],['video','홍보영상'],['newsletter','뉴스레터']]},
  {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]},
  {t:'업무 도구',c:[['tools','전체 보기'],['calendar','바탕화면 달력'],['dabom','다봄뷰어'],['masking','개인정보 마스킹']]}
@@ -1520,6 +1521,65 @@ function testerSteps(pkg,name,qr){return `<section class="tst" id="tst-${pkg.spl
  <div class="tst-qr"><div class="ab-qrbox">${qr}</div><b>📱 PC에서 보고 있다면</b><p>휴대폰 카메라로 QR코드를 찍으면<br>휴대폰에 이 안내 화면이 열립니다.<br>휴대폰에서 ①→②→③을 누르세요.</p></div></div>
 </section>`}
 function tstGo(id){const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})}
+
+/* ===== 프로그램 참가 신청 — 【서식 20호】 참가신청서 + 【서식 20-4호】 개인정보 동의서
+ * 작성 내용은 서버에 저장하지 않음. PDF로 저장해 담당자에게 제출.
+ * 이메일 접수를 하려면 APPLY_MAIL에 받는 주소를 넣으면 「이메일로 신청하기」 버튼이 나타남. */
+const APPLY_MAIL='';
+let APPLY_PROGS=null;
+async function applyLoad(){const sel=document.getElementById('apsel');if(!sel)return;
+ try{if(!APPLY_PROGS){const r=await (await fetch(SIG_API+'?progs=1&t='+Math.floor(Date.now()/600000))).json();APPLY_PROGS=((r&&r.list)||[]).filter(p=>p.n&&!/^테스트|test/i.test(p.n))}}catch(e){APPLY_PROGS=APPLY_PROGS||[]}
+ applyFilter()}
+function applyFilter(){const sel=document.getElementById('apsel');if(!sel)return;const q=(document.getElementById('apq').value||'').trim().toLowerCase();const cur=sel.value;
+ const L=(APPLY_PROGS||[]).filter(p=>!q||(p.c+' '+p.n+' '+(p.p||'')+' '+(p.d||'')).toLowerCase().includes(q));
+ const g={};L.forEach(p=>{const u=String(p.c).slice(0,2);(g[u]=g[u]||[]).push(p)});
+ sel.innerHTML='<option value="">'+(APPLY_PROGS&&APPLY_PROGS.length?(L.length?'— 프로그램을 선택하세요 ('+L.length+'개) —':'— 검색 결과가 없습니다 —'):'— 목록을 불러오지 못했습니다. 아래 칸에 직접 입력하세요 —')+'</option>'+Object.keys(g).map(u=>'<optgroup label="'+u+' 단위과제">'+g[u].map(p=>'<option value="'+esc(p.c)+'">'+(p.s?'　└ ':'')+'['+esc(p.c)+'] '+esc(p.n)+(p.s&&p.p?' ('+esc(p.p)+')':'')+'</option>').join('')+'</optgroup>').join('')+'<option value="__etc">목록에 없음 — 직접 입력</option>';
+ if(cur&&[...sel.options].some(o=>o.value===cur))sel.value=cur;applyPick()}
+function applyPick(){const sel=document.getElementById('apsel');const v=sel.value,p=(APPLY_PROGS||[]).find(x=>x.c===v);
+ document.getElementById('apetc').style.display=v==='__etc'||(APPLY_PROGS&&!APPLY_PROGS.length)?'':'none';
+ document.getElementById('apdept').textContent=p&&p.d?'담당 부서: '+p.d:'';
+ document.getElementById('appn').textContent=p?(p.s&&p.p?p.p+' › ':'')+p.n+' ('+p.c+')':(v==='__etc'?document.getElementById('apetc').value:'')}
+function applyType(){const t=(document.querySelector('#eqf input[name=atype]:checked')||{}).value;document.querySelectorAll('.ap-stu').forEach(e=>e.style.display=t==='재학생'?'':'none');document.getElementById('aporgl').textContent=t==='재학생'?'학과':(t==='교직원'?'소속 부서':'소속(기관·기업)')}
+function applyCheck(){const f=document.getElementById('eqf');const v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
+ const sel=document.getElementById('apsel').value;if(!sel||(sel==='__etc'&&!v('etcProg'))){alert('신청할 프로그램을 선택해 주세요.');return false}
+ if(!f.reportValidity())return false;
+ if(!f.elements.agree1.checked||!f.elements.agree2.checked){alert('개인정보 수집·이용 및 제3자 제공에 동의해야 신청할 수 있습니다.');return false}
+ if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 진행할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;return true}
+function applyPdf(){if(!applyCheck())return;applyPick();const d=document.querySelector('.ap-agree details');if(d)d.open=true;document.querySelectorAll('#eqf input[type=date]').forEach(i=>i.classList.toggle('ap-empty',!i.value));printEqForm()}
+function applyMail(){if(!applyCheck())return;const f=document.getElementById('eqf'),v=n=>(f.elements[n]&&f.elements[n].value||'').trim();const pn=document.getElementById('appn').textContent;
+ const body=['[프로그램 참가 신청서]','','(하위)프로그램: '+pn,'운영 기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'구분: '+((f.querySelector('input[name=atype]:checked')||{}).value||''),'성명: '+v('name')+(v('ename')?' ('+v('ename')+')':'')+' / '+((f.querySelector('input[name=sex]:checked')||{}).value||''),'소속: '+v('org')+(v('sno')?' / 학번 '+v('sno'):''),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'신청 동기·요청 사항: '+v('memo'),'','개인정보 수집·이용 동의: 동의함 / 제3자 제공 동의: 동의함','신청인: '+v('signer')+(sigData?' (전자서명 완료)':''),'※ 서명이 들어간 신청서는 ‘PDF 저장’으로 만들어 이 메일에 첨부해 주세요.'].join('\n');
+ location.href='mailto:'+APPLY_MAIL+'?subject='+encodeURIComponent('[프로그램 참가 신청] '+pn+' '+v('name'))+'&body='+encodeURIComponent(body)}
+function applyPage(){setTimeout(()=>{applyLoad();applyType()},30);const today=new Date(Date.now()+324e5).toISOString().slice(0,10);
+ const ck=(n,lab)=>`<label class="ap-ag"><input type="checkbox" name="${n}" required> <b>${lab}에 동의합니다.</b> <span class="ap-req">(필수)</span></label>`;
+ return `<section>${stit('프로그램 참가 신청','Program Application')}
+ <p class="eqnote">앵커사업단 (하위)프로그램 참가 신청서입니다. 프로그램을 고르고 내용을 작성한 뒤 <b>「PDF로 저장」</b>해 프로그램 담당자에게 제출해 주세요.<br>작성한 내용은 홈페이지 서버에 저장되지 않으며, 이 화면을 닫으면 사라집니다.</p>
+ <div class="eqform" id="eqform">
+  <div class="eqfh"><h4>참가 신청서</h4><span class="eqreq">【서식 20호】 · <b>*</b> 필수 입력</span></div>
+  <form id="eqf" onsubmit="return false">
+  <table class="tbl eqft">
+   <tr><th colspan="2">(하위)프로그램 <b>*</b></th><td class="l"><div class="ap-pick"><input id="apq" placeholder="🔍 프로그램 이름·코드로 찾기 (예: 효잔치, D2)" oninput="applyFilter()"><select id="apsel" onchange="applyPick()"><option value="">불러오는 중…</option></select><input id="apetc" name="etcProg" placeholder="프로그램 이름 직접 입력" style="display:none" oninput="applyPick()"><small id="apdept" class="ap-dept"></small><div class="ap-print" id="appn"></div></div></td></tr>
+   <tr><th colspan="2">운영 기간</th><td class="l"><input name="d1" type="date" class="eqdt"> ~ <input name="d2" type="date" class="eqdt"> <small class="ap-hint">공고문에 적힌 기간(모르면 비워 두세요)</small></td></tr>
+   <tr><th colspan="2">신청 구분 <b>*</b></th><td class="l">${['재학생','교직원','지역주민·일반','기업·기관'].map((t,i)=>`<label class="eqrd"><input type="radio" name="atype" value="${t}" ${i?'':'checked'} onchange="applyType()"> ${t}</label>`).join('')}</td></tr>
+   <tr><th rowspan="2">성명</th><th>한글 <b>*</b></th><td class="l"><input name="name" required style="max-width:240px"> ${['남','여'].map(t=>`<label class="eqrd"><input type="radio" name="sex" value="${t}" required> ${t}</label>`).join('')}</td></tr>
+   <tr><th>영문</th><td><input name="ename" placeholder="수료증 발급 시 필요(선택)"></td></tr>
+   <tr><th colspan="2"><span id="aporgl">학과</span> <b>*</b></th><td><input name="org" required placeholder="예) 치위생과 / ○○기관"></td></tr>
+   <tr class="ap-stu"><th colspan="2">학번</th><td><input name="sno" inputmode="numeric" placeholder="재학생만"></td></tr>
+   <tr><th colspan="2">휴대폰 <b>*</b></th><td><input name="tel" type="tel" required placeholder="010-0000-0000"></td></tr>
+   <tr><th colspan="2">E-mail</th><td><input name="mail" type="email" placeholder="name@example.com"></td></tr>
+   <tr><th colspan="2">신청 동기·<br>요청 사항</th><td><textarea name="memo" rows="3" placeholder="(선택) 참가 동기, 필요한 지원 사항 등"></textarea></td></tr>
+  </table>
+  <div class="ap-agree">
+   <h5>개인(신용)정보 수집·이용 및 제공 동의 <small>【서식 20-4호】</small></h5>
+   <details><summary>내용 보기</summary><div class="ap-agtx">
+    <p><b>1. 수집·이용에 관한 사항</b><br>· 목적: 앵커사업 프로그램 참가자 선발 및 사업 운영·관리<br>· 항목(필수): 성명, 소속, 휴대전화, E-mail, 학번(재학생) 등 개인식별정보<br>· 보유·이용기간: 보유목적 달성 시 또는 삭제 요청 시 지체 없이 파기. 단, 사업 종료 후 정부지원사업 이력관리를 위해 3년간 보유(공공기록물 관리에 관한 법률 시행령)<br>· 동의를 거부할 수 있으나, 거부하면 프로그램 참가 신청이 불가합니다.</p>
+    <p><b>2. 제3자 제공에 관한 사항</b><br>· 제공받는 자: 교육부, 지역성장인재양성체계(앵커) 사업 관리 전문기관<br>· 이용 목적: 앵커사업 관리·운영, 관련 자료 및 정책자료 활용<br>· 항목: 수집·이용에 동의한 정보 및 학번, 출석 등 학적사항<br>· 보유·이용기간: 제공된 날부터 5년(보유목적 달성 또는 삭제 요청 시 지체 없이 파기)<br>· 동의를 거부할 수 있으나, 거부하면 프로그램 참가 신청이 불가합니다.</p></div></details>
+   ${ck('agree1','개인정보 수집·이용')}${ck('agree2','개인정보 제3자 제공')}
+  </div>
+  <p class="eqfs">상기 본인은 2026년 춘해보건대학교 앵커사업단에서 실시하는 프로그램 운영 전반에 대한 사항을 준수하며<br>성실히 교육에 참여할 것을 약속드리며 프로그램 참가를 신청합니다.<br><br><span id="eqdate"></span><br><br><span class="eqsl">신청인: <input id="eqsigner" name="signer" class="eqsignin" required placeholder="성명 입력" autocomplete="name"> <button type="button" class="eqsigbox" id="eqsigbox" onclick="sigOpen()" title="눌러서 서명하기"><img id="eqsigimg" alt="서명" hidden><em>(서명)</em></button></span><small class="eqsigtip">‘(서명)’을 누르면 마우스·손가락으로 서명하거나, QR코드를 찍어 휴대폰으로 서명할 수 있습니다.</small><br><br><b>춘해보건대학교 앵커사업단 귀중</b></p>
+  <div class="eqbtns"><button type="button" class="btn" onclick="applyPdf()">PDF로 저장 · 인쇄</button>${APPLY_MAIL?'<button type="button" class="btn ghost" onclick="applyMail()">이메일로 신청하기</button>':''}<button type="reset" class="btn ghost" onclick="setTimeout(()=>{applyPick();applyType()},0)">다시 작성</button></div>
+  </form>
+  <p class="eqnote">※ 「PDF로 저장 · 인쇄」를 누른 뒤 인쇄 창의 대상(프린터)에서 <b>「PDF로 저장」</b>을 고르면 파일로 저장됩니다. 저장한 PDF를 프로그램 담당자(공고문의 문의처)에게 메일·메신저로 제출해 주세요.<br>※ 휴대폰에서는 공유·인쇄 메뉴의 「PDF로 저장」을 이용하세요. &nbsp;|&nbsp; 문의: 앵커사업단 052-270-0480</p>
+ </div></section>`}
 function toolsPage(){return `<section>${stit('업무 도구','Work Tools')}
  <p class="tl-lead">앵커사업단에서 직접 만든 업무용 앱과 프로그램입니다. 모두 무료이며 광고가 없습니다. 도구를 고르면 설치·사용 방법을 볼 수 있습니다.</p>
  <div class="tl-grid">${TOOLS.map(t=>`<a class="tl-card" href="#/${t.k}"><div class="tl-ico">${t.ico?`<img src="${t.ico}" alt="">`:`<span>${t.emo}</span>`}</div><h4>${t.n}</h4><div class="tl-pf">${t.pf.map(p=>`<span>${p}</span>`).join('')}</div><p>${t.d}</p><b>설치·사용 안내 →</b></a>`).join('')}</div></section>`}
@@ -1601,6 +1661,7 @@ function jobView(i){const j=JOBS[i],st=jobSt(j);
  </section>`}
 const PAGES={
  jobs:idx=>jobsPage(idx),
+ apply:()=>applyPage(),
  programs:idx=>progPage(idx),
  tools:()=>toolsPage(),
  dabom:()=>dabomPage(),
