@@ -1916,7 +1916,7 @@ function richPost(k,p,lab,idx){
  ${pdf?`<div class="rp-pdf"><iframe src="https://drive.google.com/file/d/${encodeURIComponent(pdf)}/preview" title="${esc(p.t)}" loading="lazy" allow="autoplay"></iframe></div>`:''}
  ${p.h?`<div class="rp-body">${rpClean(p.h)}</div>`:''}
  ${!pdf&&!p.h?`<p class="rp-load">본문은 아래 첨부파일에 있습니다.</p>`:''}
- ${f.length?`<div class="rp-files"><b>첨부파일</b>${f.map(x=>{const e=rpExt(x.n);return `<a class="rp-file" href="${esc(x.u)}" download target="_blank" rel="noopener"><span class="rp-ext ext-${e}">${e.toUpperCase()}</span><span class="rp-fn">${esc(x.n)}</span><i>⬇ 내려받기</i></a>`}).join('')}</div>`:''}
+ ${f.length?`<div class="rp-files"><b>첨부파일</b>${f.map(x=>{const e=rpExt(x.n);const hu=x.id?`https://drive.google.com/uc?export=download&id=${encodeURIComponent(x.id)}`:x.u;return `<a class="rp-file" href="${esc(hu)}" target="_blank" rel="noopener"><span class="rp-ext ext-${e}">${e.toUpperCase()}</span><span class="rp-fn">${esc(x.n)}</span><i>⬇ 내려받기</i></a>`}).join('')}</div>`:''}
  </article><p style="text-align:center;margin-top:30px"><a class="btn" href="#/${k}">목록</a></p></section>`}
 function boardPage(k,idx){if(k==='video')return videoPage(k);if(k==='gallery'||k==='newsletter')return mediaPage(k,idx);const a=BOARD[k],lab=findMenu(k)[1][1];
  if(idx!=null&&a[idx]&&a[idx].rich)return richPost(k,a[idx],lab,idx);
