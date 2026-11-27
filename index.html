@@ -910,6 +910,30 @@ header,header.on,header.sub{height:108px}
 .ts-agree{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;line-height:1.55}
 @media(max-width:1000px){.ts-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.ts-cards{grid-template-columns:1fr}.ts-type{flex-direction:column}}
+
+.mg-ico{flex:none;width:40px;height:40px;border-radius:11px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;background:#eef3fb;margin-right:14px;box-shadow:0 2px 6px rgba(16,33,63,.08)}
+.mg-ico img{width:100%;height:100%;object-fit:cover;display:block}
+.mg-ico b{font-size:21px;line-height:1}
+.mg-all{background:linear-gradient(135deg,#4E79BD,#7ABE47)}
+.mg-all i{display:block;background:#fff;border-radius:3px;opacity:.95}
+#gnb .mg-c a .mg-t{flex:1;min-width:0}
+#gnb .mg-c a{justify-content:flex-start}
+/* 교원 연수 신청 */
+.trn-top{margin:-6px 0 14px;font-size:14px;color:#667;font-weight:600}
+.trn-sel{width:100%!important;padding:10px 12px;border:1px solid #dfe5ee;border-radius:8px;font-size:15px;background:#fff}
+.trn-num{width:110px!important;text-align:right}
+.trn-days{margin-left:8px;font-weight:700;color:var(--g)}
+.trn-hrs{margin-top:10px;font-size:15px}
+.trn-cost{width:100%;border-collapse:collapse;font-size:14.5px}
+.trn-cost th{background:#f6f8fb;border:1px solid #e3e8f0;padding:8px;font-weight:600;color:#5b6576}
+.trn-cost td{border:1px solid #e3e8f0;padding:6px 8px;text-align:center}
+.trn-cost td input{width:100%!important;padding:6px 8px}
+.trn-amt,#trntot{text-align:right!important;font-weight:600}
+.trn-tot td{background:#f3f6fb;font-weight:800}
+.trn-h5{font-size:18px;font-weight:800;margin:30px 0 12px;color:#1c2330}.trn-h5 small{font-size:13px;color:#888;font-weight:600}
+.trn-att{display:flex;flex-direction:column;gap:4px;margin:18px 0 0;padding:14px 18px;background:#f6f8fb;border-radius:10px;font-size:14.5px;color:#444}
+.trn-att b{color:#1d4f9a}
+.trn-plan th{width:26%}
 /* 섹션 제목·게시판 목록 */
 .stit{display:block;border:0;padding:0;margin:0 0 34px}
 .stit .st-en{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--g);margin-bottom:10px}
@@ -998,7 +1022,7 @@ header,header.on,header.sub{height:108px}
 const MENU=[
  {t:'사업단 소개',c:[['greeting','사업단장 인사말'],['overview','앵커사업 개요'],['projects','프로젝트 및 단위과제'],['staff','조직 및 연락처'],['location','오시는 길']]},
  {t:'공지',c:[['notice','공지사항'],['programs','운영 프로그램'],['call','과제공고'],['jobs','채용공고']]},
- {t:'신청',c:[['apply','프로그램 참가 신청'],['equip','공용장비 신청'],['tech','기업 애로기술 지원 신청']]},
+ {t:'신청',c:[['apply','프로그램 참가 신청'],['equip','공용장비 신청'],['tech','기업 애로기술 지원 신청'],['training','산업체 연수(교육) 신청'],['study','전공 교육(연수) 신청']]},
  {t:'알림·소식',c:[['press','언론보도'],['gallery','포토갤러리'],['video','홍보영상'],['newsletter','뉴스레터']]},
  {t:'커뮤니티',c:[['faq','FAQ'],['inquiry','문의하기'],['archive','자료실']]},
  {t:'업무 도구',c:[['tools','전체 보기'],['calendar','바탕화면 달력'],['dabom','다봄뷰어'],['masking','개인정보 마스킹']]}
@@ -1312,7 +1336,7 @@ const BOARD={
   {d:'2026-11-20',t:'춘해보건대학교 앵커사업단 홈페이지 개설 안내',b:'춘해보건대학교 지역성장 인재양성체계(ANCHOR·앵커) 사업단 홈페이지를 개설하였습니다. 사업 소식과 공지, 과제공고를 이 홈페이지에서 안내합니다.'},
   {d:'2026-05',t:'춘해보건대학교 앵커사업 2차년도 본격 가동',b:'춘해보건대학교는 울산광역시와 함께 추진하는 지역성장 인재양성체계(ANCHOR·앵커) 사업 2차년도(2026년) 운영을 본격 가동합니다.\n\n■ 1차년도 성과\n- 성과지표 32개 중 31개 100% 이상 달성(평균 달성도 약 144%)\n- 대표과제(D2 통합 건강관리) 우수성과 인정\n\n■ 2차년도 추진 체계\n- 4대 프로젝트, 8개 단위과제(A1·A3·B1·B4·C1·C2·D2·D3)\n\n■ 2차년도 중점 추진\n- 동남권 6개 대학 보건의료 빅데이터 협의체 및 데이터 분석센터 본격 운영\n- 방사선 안전·산업보건 중심의 복합재난 안전 시그니처 강화\n- 베트남 하노이보건대 방사선과 2+2 공동학위, 외국인 요양보호사 양성\n- CH-U-RUN 센터 기반 평생·직업교육 4대 아카데미 운영\n- 늘봄·돌봄과 지역 통합 건강관리 서비스 확대'}
  ],
- call:[],press:PRESS.sort((a,b)=>b.d.localeCompare(a.d)),gallery:GALLERY,video:[{d:'2026-11-21',t:'춘해보건대학교 앵커사업단 홍보영상 「성공은 모두의 것」',v:'video/promo3.mp4',b:'2026년 앵커사업 프로그램 현장 사진을 노래 「성공은 모두의 것」과 함께 담았습니다.'},{d:'2026-11-28',t:'춘해보건대학교 앵커사업단 뮤직비디오 「성공은 모두의 것」',v:'video/promo4.mp4',b:'간호·치위생·응급구조·방사선·물리치료·작업치료·언어치료·안경광학·보건행정·산림조경·웰니스·글로벌 학과 등 여러 학과의 전공 실습 장면을 노래 「성공은 모두의 것」과 가사 자막으로 담았습니다.'}],newsletter:NEWSLETTER,archive:[]
+ call:[],press:PRESS.sort((a,b)=>b.d.localeCompare(a.d)),gallery:GALLERY,video:[{d:'2026-11-21',t:'춘해보건대학교 앵커사업단 홍보영상 「성공은 모두의 것」',v:'video/promo3.mp4',b:'2026년 앵커사업 프로그램 현장 사진을 노래 「성공은 모두의 것」과 함께 담았습니다.'},{d:'2026-11-28',t:'춘해보건대학교 앵커사업단 뮤직비디오 「성공은 모두의 것」',v:'video/promo4.mp4',b:'간호·치위생·응급구조·방사선·물리치료·작업치료·언어치료·안경광학·보건행정·산림조경·웰니스·글로벌 학과 등 여러 학과의 전공 실습 장면을 노래 「성공은 모두의 것」과 가사 자막으로 담았습니다.'}],newsletter:NEWSLETTER,archive:[{d:'2026-11-17',t:'앵커사업단 각종 서식 모음(2026. 11. 17. 기준)',src:'앵커사업단',b:'앵커사업단 운영에 쓰는 각종 서식 78종을 한 번에 내려받을 수 있도록 압축파일로 묶었습니다.\n\n· 프로그램 운영: 운영계획서·예산서, (하위)프로그램 계획서·예산서, 변경계획서, 결과보고서, 기안문 예시\n· 강사·자문: 강사료·자문료 지급청구서, 강사이력사항, 강의일정표, 원고료 책정 요청서, 원천징수 자료제공 동의서\n· 구매·출장: 구매요구서(작성법 포함), 물품검수조서, 출장명령부·복명서, 영수증 첨부철\n· 교육·연수: 전공 교육(연수), 산업체 연수(교육) 신청서·계획·보고서\n· 학생 지원: 참가신청서, 채용연계형 교육과정, 동아리 활동, 캡스톤디자인, 경진대회·어학·학회발표 시상금(장학금)\n· 기타: 만족도 평가지, 상장·수료증·장학증서, 회의록, 협약서 양식\n\n※ 2026. 11. 17.(화) 기준 서식입니다. 한글(HWP) 프로그램으로 열어 사용하세요.',files:[{n:'앵커사업단 서식 모음(2026.11.17 기준).zip',u:'files/'+encodeURIComponent('앵커사업단 서식 모음(2026.11.17 기준).zip')}]}]
 };
 
 BOARD.notice=BOARD.notice.concat(RNOT).sort((a,b)=>b.d.localeCompare(a.d));
@@ -1440,8 +1464,9 @@ function findMenu(id){for(const m of MENU)for(const c of m.c)if(c[0]===id)return
 
 /* GNB / sitemap */
 $('#hd').style.setProperty('--mh',(Math.max(...MENU.map(m=>m.c.length))*46+56+(innerWidth<=1600?44:0))+'px');
+function mgIco(k){return ['tools','calendar','dabom','masking'].includes(k)?'<span class="mg-ico'+(k==='tools'?' mg-all':'')+'" data-k="'+k+'">'+(k==='tools'?'<svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="3" width="8" height="8" rx="2" fill="#fff"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#fff" opacity=".85"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#fff" opacity=".85"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#fff"/></svg>':'')+'</span>':''}
 const MENU_DESC={'사업단 소개':'지역과 함께 성장하는\n보건의료 인재양성 거점','공지':'사업단의 공지와 공고를\n한곳에서 확인하세요','신청':'프로그램·장비·기술지원을\n온라인으로 신청하세요','알림·소식':'앵커사업단의 활동과\n성과 소식을 전합니다','커뮤니티':'궁금한 점을 묻고\n자료를 함께 나눕니다','업무 도구':'업무에 필요한 도구를\n바로 사용하세요'};
-$('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div class="dep2"><div class="mg"><div class="mg-h"><b>${m.t}</b><p>${(MENU_DESC[m.t]||'').split('\n').join('<br>')}</p></div><div class="mg-c">${m.c.map(c=>`<a href="#/${c[0]}">${c[1]}</a>`).join('')}</div></div></div></li>`).join('');
+$('#gnb').innerHTML=MENU.map(m=>`<li><a href="#/${m.c[0][0]}">${m.t}</a><div class="dep2"><div class="mg"><div class="mg-h"><b>${m.t}</b><p>${(MENU_DESC[m.t]||'').split('\n').join('<br>')}</p></div><div class="mg-c">${m.c.map(c=>`<a href="#/${c[0]}">${mgIco(c[0])}<span class="mg-t">${c[1]}</span></a>`).join('')}</div></div></div></li>`).join('');
 $('#gnb').addEventListener('click',e=>{const a=e.target.closest('.dep2 a');if(a){const li=a.closest('li');li.style.pointerEvents='none';setTimeout(()=>li.style.pointerEvents='',500)}});
 
 /* 우측 강조 메뉴 — url에 시스템 주소를 넣으면 바로 연결됩니다 */
@@ -1575,6 +1600,58 @@ function tsSubmit(e){e.preventDefault();const f=e.target,v=n=>(f.elements[n]&&f.
  const k=tsK(),n=+v('cnt');
  const body=['['+tsName()+'(기업체용)]','','■ 신청인','기업체명: '+v('org'),'사업자 등록번호: '+v('bizno'),'주소: '+v('addr'),'','■ 실무 담당자','이름: '+v('name'),'부서/직위: '+v('dept'),'휴대폰: '+v('tel'),'E-mail: '+v('mail'),'','■ 애로기술 자문 신청내용','자문명: '+v('title'),'자문 분야: '+flds.join(', '),'1. 문제상황(현황): '+v('q1'),'2. 문제 원인: '+v('q2'),'3. 지도 내용: '+v('q3'),'4. 개선 방향·기대효과: '+v('q4'),'자문 기간: '+v('d1')+(v('d2')?' ~ '+v('d2'):''),'총 자문 횟수: '+n+'회 / 자문료 '+(n*200000).toLocaleString('ko-KR')+'원 (회당 200,000원)','자문료 지급: '+((f.querySelector('input[name=pay]:checked')||{}).value||''),'','■ 희망 자문 전문가','성명: '+v('ex1'),'소속(부서/직위): '+v('ex2'),'연락처: '+v('ex3'),'','■ 개인정보 수집·활용 동의: 동의함','■ 첨부서류: 자문 신청기업 사업자등록증 사본 1부','','위와 같이 '+k+' 자문 지원을 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청인 성명: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'※ 사업자등록증 사본과 서명한 신청서 PDF를 이 메일에 첨부해 주세요.','','춘해보건대학교 지역성장 인재양성체계(앵커) 사업단장 귀하'].join('\n');
  location.href='mailto:sugi1994@ch.ac.kr?subject='+encodeURIComponent('['+k+' 자문 신청] '+v('org')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
+/* 교원 연수 신청 — 산업체 연수(교육) 【서식 16-1·16-2호】 / 전공 교육(연수) 【서식 11-1호】 */
+const TRN_MAIL='';
+const TRN={ind:{t:'산업체 연수(교육) 신청서',no:'【서식 16-1·16-2호】',en:'Industry Training',org:'연수 산업체',w:'연수',items:['교통비','일비','식비','숙박비','기타'],att:['프로그램 운영계획서, 관련 공문 사본 1부','연수 산업체 사업자등록증 사본 1부','(협약 체결 시) 산학협력 협약서 사본 1부'],lead:'교원이 산업체 현장에서 기술을 익히고 교재·교육과정 개발, 공동연구, 학생 현장실습·취업 연계에 활용하도록 지원하는 산업체 연수(교육) 신청서입니다.'},
+ maj:{t:'전공 교육(연수) 신청서',no:'【서식 11-1호】',en:'Major Training',org:'교육 기관',w:'교육',items:['교육비','교통비','일비','식비','숙박비','기타'],att:['프로그램 운영계획 기안문, 관련 공문 사본 1부'],lead:'교원이 전공 분야의 외부 교육·연수에 참여해 교육과정 개선과 학생 지도에 활용하도록 지원하는 전공 교육(연수) 신청서입니다.'}};
+function trnPage(k){const T=TRN[k],w=T.w;return `
+ <section>${stit(T.t.replace(' 신청서',' 신청'),T.en)}
+  <p class="para">${T.lead} 작성 후 서명하고 ‘PDF로 저장’ 또는 ‘인쇄’해 결재를 올리거나, ‘이메일로 제출하기’로 보내 주세요.</p>
+  <div class="eqform" id="eqform">
+   <div class="eqfh"><h4>${T.t}<small>${T.no}</small></h4><span class="eqreq"><b>*</b> 필수 입력</span></div>
+   <p class="trn-top">2026년 지역성장 인재양성체계(앵커) 사업</p>
+   <form id="eqf" data-k="${k}" onsubmit="return trnSubmit(event)">
+   <table class="tbl eqft">
+    <tr><th rowspan="3">운영</th><th>${k==='ind'?'세부과제':'하위과제'} <b>*</b></th><td><select name="task" required class="trn-sel"><option value="">선택하세요</option>${TASKS.map(t=>`<option>${t.c} ${t.n}</option>`).join('')}</select></td></tr>
+    <tr><th>프로그램</th><td><input name="prog" placeholder="프로그램명"></td></tr>
+    <tr><th>(하위)프로그램</th><td><input name="sprog" value="${k==='maj'?'전공교육 및 연수':''}" placeholder="(하위)프로그램명"></td></tr>
+    <tr><th rowspan="4">${w}<br>신청자</th><th>성명 <b>*</b></th><td><input name="name" required></td></tr>
+    <tr><th>소속 <b>*</b></th><td><input name="dept" required placeholder="예) ○○과 교수"></td></tr>
+    <tr><th>거래은행</th><td><input name="bank" placeholder="출장비 지급 은행"></td></tr>
+    <tr><th>계좌번호</th><td><input name="acct" inputmode="numeric" placeholder="출장비 지급 계좌"></td></tr>
+    <tr><th rowspan="7">${T.org}</th><th>기관명 <b>*</b></th><td><input name="org" required></td></tr>
+    <tr><th>대표자</th><td><input name="ceo"></td></tr>
+    <tr><th>전화번호</th><td><input name="otel" type="tel"></td></tr>
+    <tr><th>Fax번호</th><td><input name="fax" type="tel"></td></tr>
+    <tr><th>주소</th><td><input name="addr"></td></tr>
+    <tr><th>홈페이지</th><td><input name="web" placeholder="https://"></td></tr>
+    <tr><th>주요업종</th><td><input name="biz"></td></tr>
+    <tr><th colspan="2">${w}명 <b>*</b></th><td><input name="title" required></td></tr>
+    <tr><th colspan="2">${w}기간 <b>*</b></th><td class="l"><input name="d1" type="date" required class="eqdt" onchange="trnDays()"> ~ <input name="d2" type="date" required class="eqdt" onchange="trnDays()"> <span class="trn-days" id="trndays"></span><div class="trn-hrs">총 시간 <input name="hrs" type="number" min="0" class="trn-num" value="${k==='ind'?40:''}"> 시간</div></td></tr>
+    <tr><th colspan="2">출장비 내역</th><td class="l"><table class="trn-cost"><tr><th>구분</th><th>단가(원)</th><th>수</th><th>금액(원)</th><th>비고</th></tr>${T.items.map((x,i)=>`<tr><td>${x}</td><td><input name="u${i}" type="number" min="0" step="1000" class="trn-num" oninput="trnSum()"></td><td><input name="n${i}" type="number" min="0" class="trn-num" oninput="trnSum()"></td><td class="trn-amt" id="trna${i}">0</td><td><input name="m${i}"></td></tr>`).join('')}<tr class="trn-tot"><td>합계</td><td></td><td></td><td id="trntot">0</td><td></td></tr></table></td></tr>
+   </table>
+   <h5 class="trn-h5">${T.t.replace(' 신청서','')} 계획 개요${k==='ind'?' <small>【서식 16-2호】</small>':''}</h5>
+   <table class="tbl eqft trn-plan">
+    <tr><th>${w} 목적 <b>*</b></th><td><textarea name="p1" rows="3" required></textarea></td></tr>
+    ${k==='ind'?`<tr><th>산학협동 체결 여부 및 실적</th><td><textarea name="p2" rows="3" placeholder="협약이 있으면 체결 연도와 그간의 구체적 성과·실적을 적어 주세요(산학협력 협약서 사본 첨부)."></textarea></td></tr>
+    <tr><th>공동 수행과제 등 업무 참여내용</th><td><textarea name="p3" rows="3"></textarea></td></tr>`:''}
+    <tr><th>${w}결과 활용계획 및 기대효과 <b>*</b></th><td><textarea name="p4" rows="4" required placeholder="${k==='ind'?'기술 습득, 교재·교육과정 개발, 공동연구, 기술지도, 학생 현장실습·취업 활동 가운데 주된 활동을 중심으로 적어 주세요.':'교육과정 개선, 학생 지도 등 활용 계획과 기대효과를 적어 주세요.'}"></textarea></td></tr>
+   </table>
+   <p class="eqfs">위와 같이 ${w}${k==='ind'?'를':'을'} 신청합니다.<br><br><span id="eqdate"></span><br><br><span class="eqsl">신청자: <input id="eqsigner" name="signer" class="eqsignin" required placeholder="성명 입력" autocomplete="name"> <button type="button" class="eqsigbox" id="eqsigbox" onclick="sigOpen()" title="눌러서 서명하기"><img id="eqsigimg" alt="서명" hidden><em>(서명)</em></button></span><small class="eqsigtip">‘(서명)’을 누르면 마우스·손가락으로 서명하거나, QR코드를 찍어 휴대폰으로 서명할 수 있습니다.</small></p>
+   <div class="trn-att"><b>첨부</b>${T.att.map((a,i)=>`<span>${i+1}. ${a}</span>`).join('')}</div>
+   <div class="eqbtns"><button type="submit" class="btn">이메일로 제출하기</button><button type="button" class="btn ghost" onclick="savePdfForm('${T.t}.pdf',this)">📄 PDF로 저장</button><button type="button" class="btn ghost" onclick="printEqForm()">🖨 인쇄</button><button type="reset" class="btn ghost" onclick="setTimeout(()=>{trnSum();trnDays()},0)">다시 작성</button></div>
+   </form>
+   <p class="eqnote">※ 결재(담당 → ${k==='ind'?'센터장':'책임교수'} → 부단장 → 단장 → 총장)는 학내 전자결재로 진행합니다. ‘PDF로 저장’한 신청서를 기안문에 첨부해 주세요.<br>※ 출장비는 앵커사업 사업비 집행 기준(여비 규정)에 맞춰 작성해 주세요.</p>
+  </div>
+ </section>`}
+function trnSum(){const f=document.getElementById('eqf');if(!f||!f.dataset.k)return;const n=TRN[f.dataset.k].items.length;let t=0;for(let i=0;i<n;i++){const a=(+f.elements['u'+i].value||0)*(+f.elements['n'+i].value||0);t+=a;document.getElementById('trna'+i).textContent=a.toLocaleString('ko-KR')}document.getElementById('trntot').textContent=t.toLocaleString('ko-KR');return t}
+function trnDays(){const f=document.getElementById('eqf'),o=document.getElementById('trndays');if(!f||!o)return;const a=f.elements.d1.value,b=f.elements.d2.value;if(a&&b){const d=Math.round((new Date(b)-new Date(a))/864e5)+1;o.textContent=d>0?'('+d+'일)':'종료일을 확인해 주세요';return d}o.textContent='';return 0}
+function trnSubmit(e){e.preventDefault();const f=e.target,k=f.dataset.k,T=TRN[k],v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
+ if(trnDays()<=0){alert(T.w+'기간을 확인해 주세요.');return false}
+ if(!sigData&&!confirm('아직 서명하지 않았습니다. 서명 없이 제출할까요?\n(‘(서명)’을 눌러 서명할 수 있습니다)'))return false;
+ const cost=T.items.map((x,i)=>v('u'+i)||v('n'+i)?'- '+x+': '+(+v('u'+i)||0).toLocaleString('ko-KR')+'원 × '+(v('n'+i)||0)+' = '+((+v('u'+i)||0)*(+v('n'+i)||0)).toLocaleString('ko-KR')+'원'+(v('m'+i)?' ('+v('m'+i)+')':''):'').filter(Boolean);
+ const body=['['+T.t+'] '+T.no,'2026년 지역성장 인재양성체계(앵커) 사업','','■ 운영',(k==='ind'?'세부과제':'하위과제')+': '+v('task'),'프로그램: '+v('prog'),'(하위)프로그램: '+v('sprog'),'','■ '+T.w+' 신청자','성명: '+v('name'),'소속: '+v('dept'),'거래은행: '+v('bank'),'계좌번호: '+v('acct'),'','■ '+T.org,'기관명: '+v('org'),'대표자: '+v('ceo'),'전화번호: '+v('otel'),'Fax번호: '+v('fax'),'주소: '+v('addr'),'홈페이지: '+v('web'),'주요업종: '+v('biz'),'',T.w+'명: '+v('title'),T.w+'기간: '+v('d1')+' ~ '+v('d2')+' ('+trnDays()+'일), 총 '+(v('hrs')||'-')+'시간','','■ 출장비 내역'].concat(cost.length?cost:['- 없음'],['합계: '+trnSum().toLocaleString('ko-KR')+'원','','■ 계획 개요',T.w+' 목적: '+v('p1')],k==='ind'?['산학협동 체결 여부 및 실적: '+v('p2'),'공동 수행과제 등 업무 참여내용: '+v('p3')]:[],[T.w+'결과 활용계획 및 기대효과: '+v('p4'),'','위와 같이 '+T.w+(k==='ind'?'를':'을')+' 신청합니다.','신청일: '+new Date().toLocaleDateString('ko-KR'),'신청자: '+v('signer')+(sigData?' (전자서명 완료)':' (서명 없음)'),'','※ 첨부: '+T.att.join(' / '),'※ 서명이 들어간 신청서는 ‘PDF로 저장’으로 만든 PDF를 이 메일에 첨부해 주세요.']).join('\n');
+ location.href='mailto:'+TRN_MAIL+'?subject='+encodeURIComponent('['+T.t+'] '+v('dept')+' '+v('name'))+'&body='+encodeURIComponent(body);return false}
 function eqFill(){const d=document.getElementById('eqdate');if(d){const t=new Date();d.textContent=t.getFullYear()+'년 '+(t.getMonth()+1)+'월 '+t.getDate()+'일'}const f=document.getElementById('eqf');if(!f||f._init)return;f._init=1;const sg=f.elements.signer;let auto=true;sg.addEventListener('input',()=>auto=!sg.value);f.elements.name.addEventListener('input',e=>{if(auto)sg.value=e.target.value});f.addEventListener('reset',()=>{auto=true;sigSet('')})}
 /* 서명 패드 */
 let sigData='';
@@ -1651,6 +1728,7 @@ const TOOLS=[
  {k:'dabom',n:'다봄뷰어',ico:DB.icon,pf:['안드로이드 휴대폰','Google Play 테스트 참여'],d:'HWP·PDF·워드·엑셀·파워포인트·압축 파일을 광고 없이 원본 모양 그대로 보는 문서 뷰어입니다.'},
  {k:'masking',n:'개인정보 마스킹',emo:'🔒',pf:['PC 브라우저(크롬·엣지)','설치 없음'],d:'결재 첨부 PDF의 서명·연락처·이름 가운데 글자 등을 찾아 복원할 수 없게 가립니다.'}
 ];
+document.querySelectorAll('.mg-ico[data-k]').forEach(el=>{const t=TOOLS.find(x=>x.k===el.dataset.k);if(t)el.innerHTML=t.ico?'<img src="'+t.ico+'" alt="">':'<b>'+t.emo+'</b>'});
 
 /* 구글 플레이 비공개 테스트 참여 안내 — ① 테스터 모임 가입 ② 테스터 되기 ③ 설치 */
 const TESTER_GROUP='https://groups.google.com/g/desktop-calendar-testers';
@@ -2013,6 +2091,8 @@ const PAGES={
    <p class="eqnote">※ ‘이메일로 신청하기’를 누르면 작성 내용이 담긴 메일 창이 열립니다. 내용을 확인한 뒤 보내 주세요(받는 곳: 기업협업지원센터 sugi1994@ch.ac.kr). 메일 프로그램이 없으면 ‘PDF로 저장’으로 PDF를 만들어 이메일로 보내 주세요.<br>※ 사용비용은 기업협업지원센터에서 상담 후 안내합니다. &nbsp;|&nbsp; 문의: ${tel}, 도생관 2층 213호</p>
   </div>
  </section>`},
+ training:()=>trnPage('ind'),
+ study:()=>trnPage('maj'),
  tech:()=>{const tel='기업협업지원센터 052-270-0515';const TF=['기술개발','AI·DX 기술','인증·품질','사업화·특허'],CF=['경영·법무','마케팅·홍보 전략','고객서비스·CS 개선','창업·사업화'];
  const fbox=(nm,arr,show)=>`<div class="tsf" data-k="${nm}"${show?'':' hidden'}>${arr.map(x=>`<label><input type="checkbox" name="fld" value="${x}"> ${x}</label>`).join('')}<label><input type="checkbox" name="fld" value="기타"> 기타</label></div>`;
  return `
